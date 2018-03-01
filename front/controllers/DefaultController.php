@@ -2,7 +2,9 @@
 
 namespace app\front\controllers;
 
+use yii\helpers\VarDumper;
 use yii\web\Controller;
+use app\front\models\fPartners;
 
 /**
  * Default controller for the `front` module
@@ -16,5 +18,12 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionShow()
+    {
+        $partners = new fPartners();
+        $partners = $partners->getAll();
+        VarDumper::dump($partners,10,true);
     }
 }

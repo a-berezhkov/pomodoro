@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 //test comment
+//test comment by Ziablik
 /**
  * StoreController implements the CRUD actions for Store model.
  */

@@ -40,14 +40,14 @@ class fPartners extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'image_id' => 'Image ID',
-            'url' => 'Url',
+            'title' => \Yii::t('app', 'Title of partners'),
+            'image_id' => \Yii::t('app', 'Image of partners'),
+            'url' => \Yii::t('app', 'Url of partners'),
         ];
     }
 
-    public function getAll()
+    public static function getAll()
     {
-        return fPartners::find()->asArray()->all();
+        return fPartners::find()->all();
     }
 }

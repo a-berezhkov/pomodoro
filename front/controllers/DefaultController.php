@@ -22,8 +22,7 @@ class DefaultController extends Controller
 
     public function actionShow()
     {
-        $partners = new fPartners();
-        $partners = $partners->getAll();
+        $partners = fPartners::getAll();
         VarDumper::dump($partners,10,true);
     }
 }

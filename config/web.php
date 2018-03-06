@@ -136,7 +136,7 @@ $config = [
 			'class'                  => 'dektrium\user\Module',
 			'layout'                 => '@app/admin/views/layouts/main.php',
 			'modelMap'               => [
-				'Profile' => 'app\models\Profile',
+				'Profile' => 'app\front\models\Profile',
 			],
 			'enableUnconfirmedLogin' => true,
 			'confirmWithin'          => 21600,

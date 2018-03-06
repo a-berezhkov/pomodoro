@@ -3,7 +3,7 @@
 namespace app\front\models;
 
 use app\models\Profile;
-use app\models\User;
+use app\front\models\User;
 use noam148\imagemanager\models\ImageManager;
 use Yii;
 use yii\behaviors\BlameableBehavior;

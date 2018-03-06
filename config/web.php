@@ -56,7 +56,8 @@ $config = [
 			'theme' => [
 				'pathMap' => [
 					#переопределение моудуля dektrium/user
-					'@dektrium/user/views' => '@app/admin/views/user',
+					'@dektrium/user/views/admin' => '@app/admin/views/user/',
+					'@dektrium/user/views/settings' => '@app/front/views/user',
 
 				],
 			],

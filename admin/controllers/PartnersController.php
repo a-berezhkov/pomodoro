@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * PartnersController implements the CRUD actions for fPartners model.
  */
+//close #4
 class PartnersController extends Controller
 {
     /**

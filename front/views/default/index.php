@@ -12,7 +12,16 @@ use rmrevin\yii\fontawesome\FA;
         2
     </div>
     <div class="front-search">
-        3
+        <div class="special-row">
+            <div class="col-md-12">
+                <div class="search-panel">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn"><button class="btn button-search" type="button">Найти</button></span>
+                    </div><!-- /input-group -->
+                </div>
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
     </div>
     <div class="front-helpdesk">
         <div class="row">

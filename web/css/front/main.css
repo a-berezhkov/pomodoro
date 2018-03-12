@@ -1,3 +1,39 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px; }
+  body a {
+    color: #000; }
+    body a:hover {
+      color: rgba(0, 0, 0, 0.76);
+      text-decoration: none; }
+  @media (min-width: 1200px) {
+    body .container {
+      width: 1280px; } }
+
+header.header {
+  background: #fff; }
+  header.header .navbar-brand {
+    padding: 0px; }
+  header.header .navbar-brand > img {
+    height: 100%;
+    padding: 15px;
+    width: auto; }
+  header.header .navbar-logo {
+    width: 260px;
+    height: 74px;
+    background: #ccc; }
+  header.header nav ul.navbar-nav {
+    list-style-type: none;
+    padding-left: 0; }
+    header.header nav ul.navbar-nav li.menu-item {
+      display: inline-block; }
+      header.header nav ul.navbar-nav li.menu-item a {
+        font-size: 16px;
+        font-weight: 500;
+        position: relative;
+        display: block;
+        padding: 27px 15px; }
+
 header {
   background: #fff; }
 

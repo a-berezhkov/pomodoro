@@ -1,3 +1,34 @@
+.front-helpdesk {
+
+  .video {
+      height: 300px;
+      background: #ccc;
+    .message {
+      padding-top: 12%;
+      .title, .icon {
+        margin-bottom: 15px;
+      }
+      .title {
+        font-size: $font-size-24px;
+        font-weight: $font-weight-normal;
+        color: #fff;
+      }
+      a {
+        color: #fff;
+        .play-icon {
+          width: 80px;
+          height: 80px;
+          font-size: $font-size-32px;
+          margin: 0 auto;
+          border: 7px solid #fff;
+          border-radius: 50%;
+          padding: 2% 3.5%;
+        }
+      }
+    }
+  }
+}
+
 .front-partners {
   margin: 20px 0;
   .partner {

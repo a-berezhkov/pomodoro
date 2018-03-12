@@ -28,6 +28,28 @@ footer.footer {
     font-size: 1.25rem;
     font-weight: 500; }
 
+.front-helpdesk .video {
+  height: 300px;
+  background: #ccc; }
+  .front-helpdesk .video .message {
+    padding-top: 12%; }
+    .front-helpdesk .video .message .title, .front-helpdesk .video .message .icon {
+      margin-bottom: 15px; }
+    .front-helpdesk .video .message .title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #fff; }
+    .front-helpdesk .video .message a {
+      color: #fff; }
+      .front-helpdesk .video .message a .play-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin: 0 auto;
+        border: 7px solid #fff;
+        border-radius: 50%;
+        padding: 2% 3.5%; }
+
 .front-partners {
   margin: 20px 0; }
   .front-partners .partner {

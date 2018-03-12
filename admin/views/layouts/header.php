@@ -24,7 +24,7 @@ use yii\helpers\Html;
 
                 <!-- Tasks: style can be found in dropdown.less -->
                 <!-- TODO не работает, нужно выспаться -->
-                <? if ($userIdentity) : ?>
+                <?php if ($userIdentity) : ?>
                     <? $queryEx =  1 ?>
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

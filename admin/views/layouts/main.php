@@ -15,7 +15,8 @@ $directoryAsset = null;
 AppAsset::register($this);
 ?>
 
-<?
+<?php
+
 $userIdentity = null;
 if (\Yii::$app->user->identity){
     $userIdentity =  \Yii::$app->user->identity;

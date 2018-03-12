@@ -21,6 +21,8 @@ FrontAsset::register($this);
         <meta charset="<?= Yii::$app->charset ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic,cyrillic-ext"
+              rel="stylesheet">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
@@ -33,49 +35,62 @@ FrontAsset::register($this);
 
             <div class="container">
                 <nav class="navbar">
-                    <div class="navbar-left">
-                        <?php
-                        echo Menu::widget([
-                            'items' => [
-                                ['label' => 'Магазин', 'url' => ['#']],
-                                ['label' => 'Доставка', 'url' => ['#']],
-                                ['label' => 'Контакты', 'url' => ['#']],
-                                ['label' => 'Личный кабинет', 'url' => ['#']],
-                                // 'Products' menu item will be selected as long as the route is 'product/index'
-                            ],
-                        ]);
-                        ?>
-                    </div>
-                    <div class="navbar-right">
-                        <?php
-                        echo Menu::widget([
-                            'items' => [
-                                ['label' => '8-800-200-34-19', 'url' => ['tel:8-800-200-34-19']],
-                                ['label' => 'Обратный звонок', 'url' => ['#']],
-                                ['label' => 'ico1', 'url' => ['#']],
-                                ['label' => 'ico2', 'url' => ['#']],
-                                ['label' => 'ico3', 'url' => ['#']],
-                            ]
-                        ]);
-                        ?>
-                    </div>
+
+                    <?php $logo = '#'; ?>
+                    <?= Html::a(Html::img($logo), ['default/index/'], ['class' => 'navbar-brand navbar-logo']) ?>
+
+                    <?php
+                    echo Menu::widget([
+                        'items' => [
+                            ['label' => 'Магазин', 'url' => ['#']],
+                            ['label' => 'Доставка', 'url' => ['#']],
+                            ['label' => 'Контакты', 'url' => ['#']],
+                            ['label' => 'Личный кабинет', 'url' => ['#']],
+                        ],
+                        'options' => [
+                            'class' => 'navbar-nav navbar-left',
+                        ],
+                        'itemOptions' => [
+                            'class' => 'menu-item'
+                        ],
+                    ]);
+                    ?>
+                    <?php
+                    echo Menu::widget([
+                        'items' => [
+                            ['label' => '8-800-200-34-19', 'url' => 'tel:8-800-200-34-19'],
+                            ['label' => 'Обратный звонок', 'url' => ['#']],
+                            ['label' => '1', 'url' => ['#']],
+                            ['label' => '2', 'url' => ['#']],
+                            ['label' => '3', 'url' => ['#']],
+                        ],
+                        'options' => [
+                            'class' => 'navbar-nav navbar-right'
+                        ],
+                        'itemOptions' => [
+                            'class' => 'menu-item'
+                        ],
+                    ]);
+                    ?>
                 </nav>
             </div>
         </header>
 
         <main class="main">
-        <div class="container">
-            <?= $content ?>
-        </div>
+            <div class="container">
+                <?= $content ?>
+            </div>
         </main>
 
         <footer class="footer">
 
             <div class="container">
-                <div class="col-md-3">1</div>
-                <div class="col-md-3">2</div>
-                <div class="col-md-3">3</div>
-                <div class="col-md-3">4</div>
+                <div class="row">
+                    <div class="col-md-3">1</div>
+                    <div class="col-md-3">2</div>
+                    <div class="col-md-3">3</div>
+                    <div class="col-md-3">4</div>
+                </div>
             </div>
         </footer>
     </div>

@@ -86,10 +86,24 @@ FrontAsset::register($this);
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">1</div>
-                    <div class="col-md-3">2</div>
-                    <div class="col-md-3">3</div>
-                    <div class="col-md-3">4</div>
+                    <div class="col-md-3">
+                        <div class="copyright">
+                            <p>© 2018 / ООО «Синьор Помидор»<br/>Россия, Санкт-Петербург, ул. Салова 34</p>
+                            <p><?= Html::a('Схема проезда', '#') ?> / <?= Html::a('Информация об ограничениях', '#')?></p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">2</div>
+                    <div class="col-md-3">
+                        <div class="call">
+                            <div class="text-right"><?= Html::a('8-800-200-34-19', 'tel:8-800-200-34-19', ['class' => 'number']) ?></div>
+                            <div class="text-right"><?= Html::a('Обратный звонок', '#', ['class' => 'back']) ?></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="social">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>

@@ -8,8 +8,43 @@ use rmrevin\yii\fontawesome\FA;
     <div class="front-banners">
         1
     </div>
-    <div class="fornt-hot">
-        2
+    <div class="front-hot">
+        <h2 class="title text-center">Горячие предложения</h2>
+        <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в соответствии с какой-нибудь классической теорией. </p>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="product">
+                    <div class="picture">
+
+                    </div>
+                    <div class="name text-center">
+                        Томаты Бакинские
+                    </div>
+                    <div class="details">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product">
+                    <div class="picture">
+
+                    </div>
+                    <div class="name text-center">
+                        Огурцы Муромские
+                    </div>
+                    <div class="details">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product"></div>
+            </div>
+            <div class="col-md-3">
+                <div class="product"></div>
+            </div>
+        </div>
     </div>
     <div class="front-search">
         <div class="special-row">

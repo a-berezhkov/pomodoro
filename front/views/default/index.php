@@ -6,28 +6,28 @@ use rmrevin\yii\fontawesome\FA;
 
 <div class="front-default-index">
     <div class="front-banners">
-        <div class="row special-row">
-            <div class="col-md-8 special-col">
+        <div class="row">
+            <div class="col-md-8">
                 <div class="product main">
 
                 </div>
             </div>
-            <div class="col-md-4 special-col">
+            <div class="col-md-4">
                 <div class="product sub-main"></div>
                 <div class="product sub-main"></div>
             </div>
         </div>
-        <div class="row special-row">
-            <div class="col-md-3 special-col">
+        <div class="row">
+            <div class="col-md-3">
                 <div class="product add"></div>
             </div>
-            <div class="col-md-3 special-col">
+            <div class="col-md-3">
                 <div class="product add"></div>
             </div>
-            <div class="col-md-3 special-col">
+            <div class="col-md-3">
                 <div class="product add"></div>
             </div>
-            <div class="col-md-3 special-col">
+            <div class="col-md-3">
                 <div class="product add"></div>
             </div>
         </div>

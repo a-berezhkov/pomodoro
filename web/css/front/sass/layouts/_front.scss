@@ -1,12 +1,4 @@
 .front-banners {
-  .special-row {
-    margin-right: -10px;
-    margin-left: -10px;
-    .special-col {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
   .product {
     border: 1px solid #000;
     &.main {
@@ -14,7 +6,7 @@
     }
     &.sub-main {
       height: 190px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     &.add {
       height: 190px;

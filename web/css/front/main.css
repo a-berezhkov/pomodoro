@@ -34,19 +34,13 @@ footer.footer {
     font-size: 1.25rem;
     font-weight: 500; }
 
-.front-banners .special-row {
-  margin-right: -10px;
-  margin-left: -10px; }
-  .front-banners .special-row .special-col {
-    padding-left: 10px;
-    padding-right: 10px; }
 .front-banners .product {
   border: 1px solid #000; }
   .front-banners .product.main {
     height: 400px; }
   .front-banners .product.sub-main {
     height: 190px;
-    margin-bottom: 20px; }
+    margin-bottom: 25px; }
   .front-banners .product.add {
     height: 190px; }
 

@@ -87,15 +87,20 @@ header.header {
     background: #ccc; }
   header.header nav ul.navbar-nav {
     list-style-type: none;
-    padding-left: 0; }
-    header.header nav ul.navbar-nav li.menu-item {
-      display: inline-block; }
-      header.header nav ul.navbar-nav li.menu-item a {
-        font-size: 1rem;
-        font-weight: 500;
-        position: relative;
-        display: block;
-        padding: 27px 15px; }
+    padding-left: 0;
+    margin: 15px 0; }
+    header.header nav ul.navbar-nav li.menu-item a {
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      display: block;
+      padding: 12px 15px; }
+    header.header nav ul.navbar-nav li.menu-item.call-button {
+      background: #000; }
+      header.header nav ul.navbar-nav li.menu-item.call-button a {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 0.75rem; }
 
 header {
   background: #fff; }

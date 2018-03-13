@@ -59,7 +59,7 @@ FrontAsset::register($this);
                     echo Menu::widget([
                         'items' => [
                             ['label' => '8-800-200-34-19', 'url' => 'tel:8-800-200-34-19'],
-                            ['label' => 'Обратный звонок', 'url' => ['#']],
+                            ['label' => 'Обратный звонок', 'url' => ['#'], 'options' => ['class' => 'menu-item call-button']],
                             ['label' => '1', 'url' => ['#']],
                             ['label' => '2', 'url' => ['#']],
                             ['label' => '3', 'url' => ['#']],

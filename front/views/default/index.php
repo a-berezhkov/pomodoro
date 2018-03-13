@@ -36,6 +36,7 @@ use rmrevin\yii\fontawesome\FA;
                                 </div>
                             </a>
                         </div>
+
                         <div class="title text-center">Посмотрите обучающее видео</div>
                     </div>
                 </div>
@@ -43,11 +44,8 @@ use rmrevin\yii\fontawesome\FA;
             <div class="col-md-6">
                 <div class="order">
                     <div class="row">
-                        <div class="col-md-6">
-
-                        </div>
-                        <div class="col-md-6">
-                            Отследить
+                        <div class="col-md-offset-6 col-md-6">
+                            <button class="btn button-get">Отследить</button>
                         </div>
                     </div>
                 </div>

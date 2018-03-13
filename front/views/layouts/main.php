@@ -5,12 +5,9 @@
 
 use yii\helpers\Html;
 
-//use Nav
-//use yii\bootstrap\Nav;
-//use yii\bootstrap\NavBar;
 use yii\widgets\Menu; // Вместо yii\bootstrap\Nav
-//use yii\widgets\Breadcrumbs;
 use app\assets\FrontAsset;
+use rmrevin\yii\fontawesome\FA;
 
 FrontAsset::register($this);
 ?>
@@ -60,9 +57,9 @@ FrontAsset::register($this);
                         'items' => [
                             ['label' => '8-800-200-34-19', 'url' => 'tel:8-800-200-34-19'],
                             ['label' => 'Обратный звонок', 'url' => ['#'], 'options' => ['class' => 'menu-item call-button']],
-                            ['label' => '1', 'url' => ['#']],
-                            ['label' => '2', 'url' => ['#']],
-                            ['label' => '3', 'url' => ['#']],
+                            ['label' => FA::i('shopping-basket'), 'url' => ['#']],
+                            ['label' => FA::i('search'), 'url' => ['#']],
+                            ['label' => FA::i('lock'), 'url' => ['#']],
                         ],
                         'options' => [
                             'class' => 'navbar-nav navbar-right'
@@ -70,6 +67,7 @@ FrontAsset::register($this);
                         'itemOptions' => [
                             'class' => 'menu-item'
                         ],
+                        'encodeLabels' => false,
                     ]);
                     ?>
                 </nav>

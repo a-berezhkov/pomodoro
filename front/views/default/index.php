@@ -17,7 +17,8 @@ use rmrevin\yii\fontawesome\FA;
                 <div class="search-panel">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn"><button class="btn button-search" type="button">Найти</button></span>
+                        <span class="input-group-btn"><button class="btn button-search"
+                                                              type="button">Найти</button></span>
                     </div><!-- /input-group -->
                 </div>
             </div><!-- /.col-lg-6 -->

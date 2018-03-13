@@ -106,6 +106,16 @@ $config = [
 			],
 		],
 	],
+    'controllerMap'  => [
+        'elfinder' => [
+            'class'  => 'mihaildev\elfinder\PathController',
+            'access' => [ '@' ],
+            'root'   => [
+                'path' => 'uploads',
+                'name' => 'Files',
+            ],
+        ],
+    ],
 	'modules'        => [
 		/**
 		 * Компонент загрузки фотографий

@@ -26,7 +26,7 @@
         "kartik-v/yii2-widgets": "*",
         "2amigos/yii2-chartjs-widget": "~2.0",
         "noam148/yii2-image-manager": "*",
-        "rmrevin/yii2-fontawesome": "~2.17"
+        "mihaildev/yii2-elfinder": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

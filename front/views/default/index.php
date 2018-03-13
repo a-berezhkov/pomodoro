@@ -10,7 +10,9 @@ use rmrevin\yii\fontawesome\FA;
     </div>
     <div class="front-hot">
         <h2 class="title text-center">Горячие предложения</h2>
-        <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в соответствии с какой-нибудь классической теорией. </p>
+        <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье
+            представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в соответствии
+            с какой-нибудь классической теорией. </p>
         <div class="row">
             <div class="col-md-3">
                 <div class="product">
@@ -63,7 +65,7 @@ use rmrevin\yii\fontawesome\FA;
         <div class="row">
             <div class="col-md-6">
                 <div class="video">
-                    <div class="message align-middle">
+                    <div class="message">
                         <div class="title text-center">Как тут все работает?</div>
                         <div class="icon text-center">
                             <a href="#">
@@ -81,7 +83,10 @@ use rmrevin\yii\fontawesome\FA;
                 <div class="order">
                     <div class="row">
                         <div class="col-md-offset-6 col-md-6">
-                            <button class="btn button-get">Отследить</button>
+                            <div class="order-form">
+                                <input type="text" class="form-control number" placeholder="Введите номер накладной">
+                                <button class="btn button-get-orders">Отследить</button>
+                            </div>
                         </div>
                     </div>
                 </div>

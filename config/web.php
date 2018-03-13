@@ -56,7 +56,8 @@ $config = [
 			'theme' => [
 				'pathMap' => [
 					#переопределение моудуля dektrium/user
-					'@dektrium/user/views' => '@app/admin/views/user',
+					'@dektrium/user/views/admin' => '@app/admin/views/user/',
+					'@dektrium/user/views/settings' => '@app/front/views/user',
 
 				],
 			],
@@ -136,7 +137,7 @@ $config = [
 			'class'                  => 'dektrium\user\Module',
 			'layout'                 => '@app/admin/views/layouts/main.php',
 			'modelMap'               => [
-				'Profile' => 'app\models\Profile',
+				'Profile' => 'app\front\models\Profile',
 			],
 			'enableUnconfirmedLogin' => true,
 			'confirmWithin'          => 21600,

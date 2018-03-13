@@ -41,11 +41,13 @@
                     'visible' =>
                         Yii::$app->user->can('patient')],
 
-                    #ДЛЯ АДМИНА
+                    #ДЛЯ менеджера
                     ['label' => 'Администратор', 'options' => ['class' => 'header'],'visible' =>
                         Yii::$app->user->can('admin')],
                     ['label' => 'Уаправление складом', 'icon' => 'table', 'url' => ['/admin/store/index'],'visible' =>
                             Yii::$app->user->can('admin')],
+                    ['label' => 'Управление баннерами', 'icon' => 'table', 'url' => ['/admin/partners/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
                     #ДЛЯ АДМИНА
                     ['label' => 'Администратор', 'options' => ['class' => 'header'],'visible' =>
                         Yii::$app->user->can('admin')],

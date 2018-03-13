@@ -7,6 +7,7 @@ namespace app\front;
  */
 class Front extends \yii\base\Module
 {
+    public $layout = 'main.php';
     /**
      * @inheritdoc
      */

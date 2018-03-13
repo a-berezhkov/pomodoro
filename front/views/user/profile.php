@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="panel-heading">
                 <?= Html::encode($this->title) ?>
             </div>
+
             <div class="panel-body">
                 <?php $form = ActiveForm::begin([
                     'id' => 'profile-form',

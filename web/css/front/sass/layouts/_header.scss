@@ -1,0 +1,43 @@
+header.header {
+  background: #fff;
+  nav {
+    margin-top: 1%;
+    .navbar-brand {
+      padding: 0px;
+    }
+    .navbar-brand > img {
+      height: 100%;
+      padding: 15px;
+      width: auto;
+    }
+    .navbar-logo {
+      width: 260px;
+      height: 74px;
+      background: #ccc;
+    }
+
+    ul.navbar-nav {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 15px 0;
+      li.menu-item {
+        a {
+          font-size: $font-size-16px;
+          font-weight: $font-weight-normal;
+          position: relative;
+          display: block;
+          //padding: 27px 15px;
+          padding: 12px 15px;
+        }
+        &.call-button {
+          background: #000;
+          a {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: $font-size-12px;
+          }
+        }
+      }
+    }
+  }
+}

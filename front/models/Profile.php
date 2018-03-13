@@ -5,7 +5,7 @@
  * Date: 14.08.2017
  * Time: 0:51
  */
-namespace app\models;
+namespace app\front\models;
 
 use Yii;
 

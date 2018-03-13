@@ -6,7 +6,31 @@ use rmrevin\yii\fontawesome\FA;
 
 <div class="front-default-index">
     <div class="front-banners">
-        1
+        <div class="row special-row">
+            <div class="col-md-8 special-col">
+                <div class="product main">
+
+                </div>
+            </div>
+            <div class="col-md-4 special-col">
+                <div class="product sub-main"></div>
+                <div class="product sub-main"></div>
+            </div>
+        </div>
+        <div class="row special-row">
+            <div class="col-md-3 special-col">
+                <div class="product add"></div>
+            </div>
+            <div class="col-md-3 special-col">
+                <div class="product add"></div>
+            </div>
+            <div class="col-md-3 special-col">
+                <div class="product add"></div>
+            </div>
+            <div class="col-md-3 special-col">
+                <div class="product add"></div>
+            </div>
+        </div>
     </div>
     <div class="front-hot">
         <h2 class="title text-center">Горячие предложения</h2>
@@ -15,7 +39,7 @@ use rmrevin\yii\fontawesome\FA;
             с какой-нибудь классической теорией. </p>
         <div class="row">
             <div class="col-md-3">
-                <div class="product">
+                <div class="suggest">
                     <div class="picture">
 
                     </div>
@@ -28,7 +52,7 @@ use rmrevin\yii\fontawesome\FA;
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="product">
+                <div class="suggest">
                     <div class="picture">
 
                     </div>
@@ -41,10 +65,10 @@ use rmrevin\yii\fontawesome\FA;
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="product"></div>
+                <div class="suggest"></div>
             </div>
             <div class="col-md-3">
-                <div class="product"></div>
+                <div class="suggest"></div>
             </div>
         </div>
     </div>

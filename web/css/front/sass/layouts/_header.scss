@@ -1,19 +1,21 @@
 header.header {
   background: #fff;
-  .navbar-brand {
-    padding: 0px;
-  }
-  .navbar-brand>img {
-    height: 100%;
-    padding: 15px;
-    width: auto;
-  }
-  .navbar-logo {
-    width: 260px;
-    height: 74px;
-    background: #ccc;
-  }
   nav {
+    margin-top: 1%;
+    .navbar-brand {
+      padding: 0px;
+    }
+    .navbar-brand > img {
+      height: 100%;
+      padding: 15px;
+      width: auto;
+    }
+    .navbar-logo {
+      width: 260px;
+      height: 74px;
+      background: #ccc;
+    }
+
     ul.navbar-nav {
       list-style-type: none;
       padding-left: 0;

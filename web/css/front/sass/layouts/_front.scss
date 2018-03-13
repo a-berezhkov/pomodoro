@@ -1,9 +1,33 @@
+.front-banners {
+  .special-row {
+    margin-right: -10px;
+    margin-left: -10px;
+    .special-col {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .product {
+    border: 1px solid #000;
+    &.main {
+      height: 400px;
+    }
+    &.sub-main {
+      height: 190px;
+      margin-bottom: 20px;
+    }
+    &.add {
+      height: 190px;
+    }
+  }
+}
+
 .front-hot {
   .title {
     font-size: $font-size-28px;
     font-weight: $font-weight-normal;
   }
-  .product {
+  .suggest {
     border: 1px solid #000;
     height: 240px;
     .picture {

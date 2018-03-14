@@ -89,27 +89,73 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-md-3">
                 <div class="suggest">
-                    <div class="picture">
-
+                    <div class="picture text-center">
+                        <?= Html::img(['/img/products/1.png']) ?>
                     </div>
                     <div class="name text-center">
                         Томаты Бакинские
                     </div>
                     <div class="details">
+                        <div class="row current-suggestion">
+                            <div class="col-md-6">
+                                <div class="old-price text-center">
+                                    <s>7640 ₽</s>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <div class="meta">
+                                    29 КГ
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="row new-suggestion">
+                            <div class="col-md-6 special-col text-right">
+                                <div class="new-price text-center">
+                                    <div class="price">6940 ₽</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 special-col">
+                                <button class="btn button-busket">В корзину</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="suggest">
-                    <div class="picture">
-
+                    <div class="picture text-center">
+                        <?= Html::img(['/img/products/2.png']) ?>
                     </div>
                     <div class="name text-center">
                         Огурцы Муромские
                     </div>
                     <div class="details">
+                        <div class="row current-suggestion">
+                            <div class="col-md-6">
+                                <div class="old-price text-center">
+                                    <s>23400 ₽</s>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <div class="meta">
+                                    29 КГ
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="row new-suggestion">
+                            <div class="col-md-6 special-col text-right">
+                                <div class="new-price text-center">
+                                    <div class="price">19600 ₽</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 special-col">
+                                <button class="btn button-busket">В корзину</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,7 +203,8 @@ use yii\helpers\Html;
                     <div class="row">
                         <div class="col-md-offset-6 col-md-6">
                             <div class="order-form">
-                                <input type="text" class="form-control number" placeholder="Введите номер накладной">
+                                <input type="text" class="form-control number"
+                                       placeholder="Введите номер накладной">
                                 <button class="btn button-get-orders">Отследить</button>
                             </div>
                         </div>

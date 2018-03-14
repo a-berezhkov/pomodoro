@@ -20,8 +20,12 @@ a {
   }
 }
 
-button.btn {
-  border-radius: 0;
+button {
+  text-transform: uppercase;
+  color: #fff;
+  &.btn {
+    border-radius: 0;
+  }
 }
 
 input.form-control {

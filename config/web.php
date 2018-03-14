@@ -70,7 +70,7 @@ $config = [
 			'class' => 'yii\caching\FileCache',
 		],
 		'errorHandler' => [
-			'errorAction' => '/admin/views/error',
+			  'errorAction' => 'admin/default/error',
 		],
 		'mailer'       => [
 			'class'            => 'yii\swiftmailer\Mailer',

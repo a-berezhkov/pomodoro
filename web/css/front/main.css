@@ -130,12 +130,10 @@ header.header {
       padding: 0px; }
     header.header nav .navbar-brand > img {
       height: 100%;
-      padding: 15px;
       width: auto; }
     header.header nav .navbar-logo {
       width: 260px;
-      height: 74px;
-      background: #ccc; }
+      height: 74px; }
     header.header nav ul.navbar-nav {
       list-style-type: none;
       padding-left: 0;

@@ -33,7 +33,7 @@ FrontAsset::register($this);
             <div class="container">
                 <nav class="navbar">
 
-                    <?php $logo = '#'; ?>
+                    <?php $logo = ['/img/brand-logo.png']; ?>
                     <?= Html::a(Html::img($logo), ['default/index/'], ['class' => 'navbar-brand navbar-logo']) ?>
 
                     <?php

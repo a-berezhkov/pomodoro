@@ -11,6 +11,33 @@
     }
     &.add {
       height: 190px;
+      position: relative;
+      .details {
+        position: absolute;
+        bottom: 0;
+        height: 60px;
+        background-color: $color-banner-details;
+        width: 100%;
+        .product-icon {
+          background-color: $color-banner-details-icon;
+          width: 60px;
+          height: 100%;
+          display: inline-block;
+          background-repeat: no-repeat;
+          background-position: 50%;
+          //background-color: ;
+          //content: ' ';
+        }
+        .name {
+          font-size: $font-size-18px;
+          font-weight: $font-weight-normal;
+          color: #fff;
+          display: inline-block;
+          padding: 0 6px;
+          bottom: 22px;
+          position: relative;
+        }
+      }
     }
     img {
       min-height: 100%;
@@ -18,6 +45,11 @@
       height: auto;
       width: auto;
     }
+    .product-icon-greens { background: url(#{$path-image}/icons/icon-greens.png) }
+    .product-icon-nuts { background: url(#{$path-image}/icons/icon-nuts.png) }
+    .product-icon-berry-froze { background: url(#{$path-image}/icons/icon-berry-froze.png) }
+    .product-icon-peppers { background: url(#{$path-image}/icons/icon-peppers.png) }
+
   }
 }
 

@@ -10,7 +10,19 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-md-8">
                 <div class="product main">
-                    <?= Html::img(['/img/products/m-1.png']); ?>
+                    <? //= Html::img(['/img/products/m-1.png']); ?>
+                    <div class="details">
+                        <div class="name">
+                            Томаты Бакинские
+                        </div>
+                        <div class="price">
+                            <s>7550</s> 6850 ₽
+                        </div>
+                        <div class="meta">
+
+                        </div>
+                        <button class="btn button-more"></button>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -25,21 +37,45 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-md-3">
                 <div class="product add">
+                    <div class="details">
+                        <div class="product-icon product-icon-greens">
+                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
+                        </div>
+                        <div class="name">Зелень</div>
+                    </div>
                     <?= Html::img(['/img/products/l-1.png']); ?>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="product add">
+                    <div class="details">
+                        <div class="product-icon product-icon-nuts">
+                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
+                        </div>
+                        <div class="name">Орехи</div>
+                    </div>
                     <?= Html::img(['/img/products/l-2.png']); ?>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="product add">
+                    <div class="details">
+                        <div class="product-icon product-icon-peppers">
+                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
+                        </div>
+                        <div class="name">Овощи заморозка</div>
+                    </div>
                     <?= Html::img(['/img/products/l-3.png']); ?>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="product add">
+                    <div class="details">
+                        <div class="product-icon product-icon-berry-froze">
+                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
+                        </div>
+                        <div class="name">Фрукты заморозка</div>
+                    </div>
                     <?= Html::img(['/img/products/l-4.png']); ?>
                 </div>
             </div>

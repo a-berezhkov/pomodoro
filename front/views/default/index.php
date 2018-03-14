@@ -10,16 +10,16 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-md-8">
                 <div class="product main">
-                    <? //= Html::img(['/img/products/m-1.png']); ?>
+                    <?= Html::img(['/img/products/m-1.png']); ?>
                     <div class="details">
-                        <div class="name">
+                        <div class="name text-center">
                             Томаты Бакинские
                         </div>
-                        <div class="price">
+                        <div class="price text-center">
                             <s>7550</s> 6850 ₽
                         </div>
-                        <div class="meta">
-
+                        <div class="meta text-center">
+                            Цена за упаковку
                         </div>
                         <button class="btn button-more"></button>
                     </div>

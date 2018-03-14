@@ -2,8 +2,37 @@
   .product {
     border: 1px solid #000;
     overflow: hidden;
+    position: relative;
     &.main {
       height: 400px;
+      .details {
+        background: rgba(255, 255, 255, 0.51);
+        height: 100%;
+        width: 50%;
+        top: 0;
+        padding-top: 12%;
+        border-right: 1px solid #000;
+        .name {
+          font-size: $font-size-36px;
+          color: #000
+        }
+        .price {
+          margin-top: 30px;
+          background: $color-primary;
+          color: #fff;
+          padding: 2%;
+          font-size: $font-size-40px;
+          font-weight: $font-weight-normal;
+          s {
+            opacity: .5;
+          }
+        }
+        .meta {
+          margin-top: 20px;
+          font-size: $font-size-20px;
+          font-weight: normal;
+        }
+      }
     }
     &.sub-main {
       height: 190px;
@@ -11,9 +40,7 @@
     }
     &.add {
       height: 190px;
-      position: relative;
       .details {
-        position: absolute;
         bottom: 0;
         height: 60px;
         background-color: $color-banner-details;
@@ -38,6 +65,9 @@
           position: relative;
         }
       }
+    }
+    .details {
+      position: absolute;
     }
     img {
       min-height: 100%;

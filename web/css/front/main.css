@@ -38,17 +38,39 @@ footer.footer {
 
 .front-banners .product {
   border: 1px solid #000;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
   .front-banners .product.main {
     height: 400px; }
+    .front-banners .product.main .details {
+      background: rgba(255, 255, 255, 0.51);
+      height: 100%;
+      width: 50%;
+      top: 0;
+      padding-top: 12%;
+      border-right: 1px solid #000; }
+      .front-banners .product.main .details .name {
+        font-size: 2.25rem;
+        color: #000; }
+      .front-banners .product.main .details .price {
+        margin-top: 30px;
+        background: #ff243f;
+        color: #fff;
+        padding: 2%;
+        font-size: 2.5rem;
+        font-weight: 500; }
+        .front-banners .product.main .details .price s {
+          opacity: .5; }
+      .front-banners .product.main .details .meta {
+        margin-top: 20px;
+        font-size: 1.25rem;
+        font-weight: normal; }
   .front-banners .product.sub-main {
     height: 190px;
     margin-bottom: 20px; }
   .front-banners .product.add {
-    height: 190px;
-    position: relative; }
+    height: 190px; }
     .front-banners .product.add .details {
-      position: absolute;
       bottom: 0;
       height: 60px;
       background-color: rgba(48, 56, 32, 0.8);
@@ -68,6 +90,8 @@ footer.footer {
         padding: 0 6px;
         bottom: 22px;
         position: relative; }
+  .front-banners .product .details {
+    position: absolute; }
   .front-banners .product img {
     min-height: 100%;
     min-width: 100%;

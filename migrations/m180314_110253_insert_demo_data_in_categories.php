@@ -27,7 +27,7 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
             'created' => new \yii\db\Expression('NOW()'),
         ]);
         $this->insert('categories', [
-            'id' => NULL,
+            //'id' => NULL,
             'name' => 'Зелень',
             'image_id' => 1,
             'icon' => 'product-icon product-icon-greens',
@@ -43,7 +43,7 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
             'created' => new \yii\db\Expression('NOW()'),
         ]);
         $this->insert('categories', [
-            'id' => NULL,
+            //'id' => NULL,
             'name' => 'Орехи',
             'image_id' => 2,
             'icon' => 'product-icon product-icon-nuts',
@@ -58,7 +58,7 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
             'created' => new \yii\db\Expression('NOW()'),
         ]);
         $this->insert('categories', [
-            'id' => NULL,
+            //'id' => NULL,
             'name' => 'Овощи заморозка',
             'image_id' => 3,
             'icon' => 'product-icon product-icon-peppers',
@@ -74,7 +74,7 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
 
         ]);
         $this->insert('categories', [
-            'id' => NULL,
+            //'id' => NULL,
             'name' => 'Фрукты заморозка',
             'image_id' => 4,
             'icon' => 'product-icon product-icon-berry-froze',
@@ -99,7 +99,7 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
             'created' => new \yii\db\Expression('NOW()'),
         ]);
         $this->insert('categories', [
-            'id' => NULL,
+            //'id' => NULL,
             'name' => 'Овощи',
             'image_id' => 6,
             'icon' => '',
@@ -114,7 +114,7 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
         ]);
 
         $this->insert('categories', [
-            'id' => NULL,
+            //'id' => NULL,
             'name' => 'Фрукты',
             'image_id' => 7,
             'icon' => '',
@@ -124,13 +124,13 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
          * For SALE
          */
         $this->insert('ImageManager', [
-            'id' => NULL,
+            'id' => 8,
             'filename' => '/web/img/products/1.png',
             'fileHash' => Yii::$app->getSecurity()->generateRandomString(32),
             'created' => new \yii\db\Expression('NOW()'),
         ]);
         $this->insert('ImageManager', [
-            'id' => NULL,
+            'id' => 9,
             'filename' => '/web/img/products/2.png',
             'fileHash' => Yii::$app->getSecurity()->generateRandomString(32),
             'created' => new \yii\db\Expression('NOW()'),

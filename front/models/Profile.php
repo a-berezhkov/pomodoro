@@ -24,7 +24,9 @@ class Profile extends \dektrium\user\models\Profile
             'surname' => ['surname', 'string', 'max' => 255],
             'middlename' => ['middlename', 'string', 'max' => 255],
             'phone' => ['phone', 'string', 'max' => 100],
-
+            'inn' => ['inn', 'integer', 'max' => 11],
+            'address' => ['address', 'string', 'max' => 255],
+            'company_name' => ['company_name', 'string', 'max' => 255]
 
 
         ];
@@ -43,7 +45,9 @@ class Profile extends \dektrium\user\models\Profile
             'surname' => \Yii::t('profile', 'surname'),
             'middlename' => \Yii::t('profile', 'middlename'),
             'birth_date' => \Yii::t('profile', 'birth date'),
-
+            'inn' => \Yii::t('profile', 'inn'),
+            'address' => \Yii::t('profile', 'address'),
+            'company_name' => \Yii::t('profile', 'company_name'),
         ];
         return array_merge($attributeLabels, $newattributeLabels);
     }

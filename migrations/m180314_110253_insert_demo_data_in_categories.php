@@ -14,6 +14,11 @@ class m180314_110253_insert_demo_data_in_categories extends Migration
      */
     public function safeUp()
     {
+        Yii::$app->db->createCommand('set foreign_key_checks=0')->execute();
+        Yii::$app->db->createCommand()->truncateTable('ImageManager')->execute();
+        Yii::$app->db->createCommand()->truncateTable('categories')->execute();
+        Yii::$app->db->createCommand('set foreign_key_checks=1')->execute();
+
         // Зелень
         $this->insert('ImageManager', [
             'id' => 1,

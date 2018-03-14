@@ -116,6 +116,7 @@
   margin: 20px 0;
   .partner {
     height: 150px;
-    background: #ccc;
+    background: url(#{$path-image}/DHL_Express.png) no-repeat 50%;
+
   }
 }

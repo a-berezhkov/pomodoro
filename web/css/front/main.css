@@ -30,6 +30,8 @@ footer.footer {
   footer.footer .copyright {
     font-size: 0.75rem;
     font-weight: 500; }
+  footer.footer .logo img {
+    width: 75%; }
   footer.footer .call .number {
     font-size: 1.25rem;
     font-weight: 500; }
@@ -78,7 +80,7 @@ footer.footer {
   margin-top: 30px; }
   .front-helpdesk .video {
     height: 300px;
-    background: url(../../img//hiw.jpg); }
+    background: url(../../img/hiw.jpg); }
     .front-helpdesk .video .message {
       padding-top: 11%; }
       .front-helpdesk .video .message .title, .front-helpdesk .video .message .icon {
@@ -100,10 +102,10 @@ footer.footer {
   .front-helpdesk .order {
     background: #ccc;
     height: 300px;
-    background: url(../../img//car.png) no-repeat;
+    background: url(../../img/car.png) no-repeat;
     background-size: 50%; }
     .front-helpdesk .order .order-form {
-      background: url(../../img//map.png) no-repeat;
+      background: url(../../img/map.png) no-repeat;
       padding-top: 32%;
       height: 300px; }
       .front-helpdesk .order .order-form .number {
@@ -125,7 +127,7 @@ footer.footer {
   margin: 20px 0; }
   .front-partners .partner {
     height: 150px;
-    background: #ccc; }
+    background: url(../../img/DHL_Express.png) no-repeat 50%; }
 
 header.header {
   background: #fff; }

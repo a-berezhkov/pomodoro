@@ -78,7 +78,7 @@ footer.footer {
   margin-top: 30px; }
   .front-helpdesk .video {
     height: 300px;
-    background: #ccc; }
+    background: url(../../img//hiw.jpg); }
     .front-helpdesk .video .message {
       padding-top: 11%; }
       .front-helpdesk .video .message .title, .front-helpdesk .video .message .icon {

@@ -1,6 +1,7 @@
 <?php
 
 use rmrevin\yii\fontawesome\FA;
+use yii\helpers\Html;
 
 ?>
 
@@ -9,7 +10,7 @@ use rmrevin\yii\fontawesome\FA;
         <div class="row">
             <div class="col-md-8">
                 <div class="product main">
-
+                    <?= Html::img(['/img/products/']); ?>
                 </div>
             </div>
             <div class="col-md-4">

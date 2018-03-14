@@ -2,6 +2,7 @@
 
 namespace app\front\models;
 
+use noam148\imagemanager\models\ImageManager;
 use Yii;
 
 /**
@@ -9,7 +10,10 @@ use Yii;
  *
  * @property int $id
  * @property string $name Название категории товаров
+ * @property int $image_id
+ * @property string $icon
  *
+ * @property ImageManager $image
  * @property Store[] $stores
  */
 class Categories extends \yii\db\ActiveRecord
@@ -29,7 +33,10 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['image_id'], 'integer'],
             [['name'], 'string', 'max' => 50],
+            [['icon'], 'string', 'max' => 255],
+            [['image_id'], 'exist', 'skipOnError' => true, 'targetClass' => ImageManager::className(), 'targetAttribute' => ['image_id' => 'id']],
         ];
     }
 
@@ -41,7 +48,17 @@ class Categories extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
+            'image_id' => Yii::t('app', 'Image'),
+            'icon' => Yii::t('app', 'Icon class'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImage()
+    {
+        return $this->hasOne(ImageManager::className(), ['id' => 'image_id']);
     }
 
     /**

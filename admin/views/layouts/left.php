@@ -44,13 +44,15 @@
                     #ДЛЯ менеджера
                     ['label' => 'Администратор', 'options' => ['class' => 'header'],'visible' =>
                         Yii::$app->user->can('admin')],
+                    ['label' => 'Категории товаров', 'icon' => 'table', 'url' => ['/admin/categories/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
                     ['label' => 'Уаправление складом', 'icon' => 'table', 'url' => ['/admin/store/index'],'visible' =>
                             Yii::$app->user->can('admin')],
                     ['label' => 'Управление баннерами', 'icon' => 'table', 'url' => ['/admin/partners/index'],'visible' =>
                         Yii::$app->user->can('admin')],
-                    #ДЛЯ АДМИНА
-                    ['label' => 'Администратор', 'options' => ['class' => 'header'],'visible' =>
-                        Yii::$app->user->can('admin')],
+                    #Товары
+                    ['label' => 'Работа с товарами', 'options' => ['class' => 'header']],
+
                     ['label' => 'Управление пользователями', 'icon' => 'users', 'url' => ['/user/admin'],'visible' =>
                         Yii::$app->user->can('admin')],
                     Yii::$app->user->isGuest ?

@@ -29,23 +29,21 @@ use yii\helpers\Html;
                 <?=
                 /**
                  * Раздел с категориями на главной
+                 * Категории справа
                  */
-                $this->render('_categories-right',['categories'=>$categories])
-
+                $this->render('_categories-right', ['categories' => $categories])
                 ?>
 
             </div>
         </div>
-
         <?=
         /**
          * Раздел с категориями на главной
+         * Категории снизу
          */
-        $this->render('_categories-bottom',['categories'=>$categories])
-
+        $this->render('_categories-bottom', ['categories' => $categories])
         ?>
-
-</div>
+    </div>
     <div class="front-hot">
         <h2 class="title text-center">Горячие предложения</h2>
         <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье

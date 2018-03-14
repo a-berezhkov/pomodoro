@@ -17,16 +17,14 @@ $countPerRow = 4; //Количество колонок в одной строк
 
     <? if ($category->position == 'right'): ?>
 
-        <div class="product sub-main">
-            <div class="product add">
+        <div class="category category-right">
+<!--            <div class="product add">-->
                 <div class="details">
-                    <div class="<?= $category->icon ?>">
-                        <? //= Html::img(['/img/icons/icon-greens.png']); ?>
-                    </div>
-                    <div class="name"><?= $category->name ?></div>
+                    <div class="category-icon <?= $category->icon ?>"></div>
+                    <div class="name text-center"><?= $category->name ?></div>
                 </div>
                 <?= Html::img(\Yii::$app->imagemanager->getImagePath($category->image_id, '440', '190', 'inset')); ?>
-            </div>
+<!--            </div>-->
         </div>
     <?php endif; ?>
     <?= $counterRow % $countPerRow == 0 ? '</div>' : null; ?>

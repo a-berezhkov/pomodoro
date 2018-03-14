@@ -18,11 +18,9 @@ $countPerRow = 4; //Количество колонок в одной строк
     <? if ($category->position == 'bottom'): ?>
 
         <div class="col-md-3">
-            <div class="product add">
+            <div class="category category-bottom">
                 <div class="details">
-                    <div class="<?= $category->icon ?>">
-                        <? //= Html::img(['/img/icons/icon-greens.png']); ?>
-                    </div>
+                    <div class="category-icon <?= $category->icon ?>"></div>
                     <div class="name"><?= $category->name ?></div>
                 </div>
                 <?= Html::img(\Yii::$app->imagemanager->getImagePath($category->image_id, '285', '190', 'inset')); ?>

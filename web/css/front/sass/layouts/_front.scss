@@ -75,10 +75,18 @@
       height: auto;
       width: auto;
     }
-    .product-icon-greens { background: url(#{$path-image}/icons/icon-greens.png) }
-    .product-icon-nuts { background: url(#{$path-image}/icons/icon-nuts.png) }
-    .product-icon-berry-froze { background: url(#{$path-image}/icons/icon-berry-froze.png) }
-    .product-icon-peppers { background: url(#{$path-image}/icons/icon-peppers.png) }
+    .product-icon-greens {
+      background: url(#{$path-image}/icons/icon-greens.png)
+    }
+    .product-icon-nuts {
+      background: url(#{$path-image}/icons/icon-nuts.png)
+    }
+    .product-icon-berry-froze {
+      background: url(#{$path-image}/icons/icon-berry-froze.png)
+    }
+    .product-icon-peppers {
+      background: url(#{$path-image}/icons/icon-peppers.png)
+    }
 
   }
 }
@@ -94,13 +102,60 @@
     .picture {
       height: 130px;
       border-bottom: 1px solid #000;
+      img {
+        max-height: 90%;
+        max-width: 100%;
+        height: 100%;
+        width: auto;
+      }
+      //padding-top: 5%;
     }
     .name {
       height: 30px;
       border-bottom: 1px solid #000;
-      padding: 1% 0;
+      padding: 2% 0;
     }
+    .details {
+      font-size: $font-size-20px;
+      font-weight: $font-weight-normal;
+      padding: 0 15px;
+      .current-suggestion {
+        margin-top: 2px;
+        .old-price {
+          width: 130px;
+        }
+        .meta {
+          width: 130px;
+        }
+      }
+      .new-suggestion {
+        margin-top: 3px;
+        .special-col:first-child {
+          //padding-right: 0;
+          //padding-left: 30px;
+          //float: right;
+        }
+        .special-col:last-child {
+          padding-left: 0;
+        }
+        .new-price {
+          border: 1px solid #000;
+          height: 30px;
+          width: 130px;
+          margin-top: 1px;
+        }
+        .button-busket {
+          border: 1px solid #000;
+          //padding-top: 1px;
+          height: 30px;
+          width: 130px;
+          background: #000;
+        }
+      }
+    }
+
   }
+
 }
 
 .front-search {

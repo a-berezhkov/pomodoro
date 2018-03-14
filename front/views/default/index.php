@@ -105,7 +105,7 @@ use yii\helpers\Html;
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="order">
+                <div class="order text-center">
                     <div class="row">
                         <div class="col-md-offset-6 col-md-6">
                             <div class="order-form">

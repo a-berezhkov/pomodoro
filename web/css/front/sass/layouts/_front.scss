@@ -86,12 +86,17 @@
   .order {
     background: #ccc;
     height: 300px;
+    background: url(#{$path-image}/car.png) no-repeat;
+    background-size: 50%;
     .order-form {
+      background: url(#{$path-image}/map.png) no-repeat;
       padding-top: 32%;
+      height: 300px;
       .number {
         height: 50px;
         width: 260px;
         border: 1px solid #000;
+        display: inline-block;
       }
       .button-get-orders {
         margin-top: 4%;

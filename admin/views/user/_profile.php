@@ -40,6 +40,12 @@ use yii\helpers\Html;
 <?= $form->field($profile, 'middlename') ?>
 <?= $form->field($profile, 'phone') ?>
 
+<?= $form->field($model, 'inn') ?>
+
+<?= $form->field($model, 'address') ?>
+
+<?= $form->field($model, 'company_name') ?>
+
 
 <?= $form->field($profile, 'location') ?>
 <?= $form->field($profile, 'gravatar_email') ?>

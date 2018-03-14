@@ -32,24 +32,20 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Действия пользователя', 'options' => ['class' => 'header']],
-                    ['label' => 'Добавить данные', 'icon' => 'plus', 'url' => ['/lk/examination/create'],'visible' =>
-                        Yii::$app->user->can('patient')],
-                    ['label' => 'График исследований', 'icon' => 'area-chart', 'url' => ['/lk/default/graph'],'visible' =>
-                        Yii::$app->user->can('patient')],
-                    ['label' => 'Таблица исследований', 'icon' => 'table', 'url' => ['/lk/examination/index'],
-                    'visible' =>
-                        Yii::$app->user->can('patient')],
 
                     #ДЛЯ менеджера
-                    ['label' => 'Администратор', 'options' => ['class' => 'header'],'visible' =>
+                    ['label' => 'Работа со складом', 'options' => ['class' => 'header'],'visible' =>
                         Yii::$app->user->can('admin')],
-                    ['label' => 'Уаправление складом', 'icon' => 'table', 'url' => ['/admin/store/index'],'visible' =>
+
+                    ['label' => 'Категории товаров', 'icon' => 'th-list', 'url' => ['/admin/categories/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
+                    ['label' => 'Уаправление складом', 'icon' => 'archive', 'url' => ['/admin/store/index'],'visible' =>
                             Yii::$app->user->can('admin')],
-                    ['label' => 'Управление баннерами', 'icon' => 'table', 'url' => ['/admin/partners/index'],'visible' =>
-                        Yii::$app->user->can('admin')],
-                    #ДЛЯ АДМИНА
-                    ['label' => 'Администратор', 'options' => ['class' => 'header'],'visible' =>
+
+                    #Товары
+                    ['label' => 'Работа с сайтом', 'options' => ['class' => 'header']],
+
+                    ['label' => 'Управление баннерами', 'icon' => 'image', 'url' => ['/admin/partners/index'],'visible' =>
                         Yii::$app->user->can('admin')],
                     ['label' => 'Управление пользователями', 'icon' => 'users', 'url' => ['/user/admin'],'visible' =>
                         Yii::$app->user->can('admin')],

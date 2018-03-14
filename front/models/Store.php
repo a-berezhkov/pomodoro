@@ -28,6 +28,7 @@ use yii\db\Expression;
  * @property int $updated_by Последнее изменение записи
  * @property string $created_at Запись создана 
  * @property string $updated_at Запись обновлена
+ * @property float $discount_box_price
  *
  * @property ImageManager $logo
  * @property Categories $category
@@ -74,7 +75,7 @@ class Store extends \yii\db\ActiveRecord
         return [
             [['name', 'category_id'], 'required'],
             [['boxes_count', 'logo_id', 'country_id', 'category_id', 'created_by', 'updated_by'], 'integer'],
-            [['box_weight', 'box_price'], 'number'],
+            [['box_weight', 'box_price','discount_box_price'], 'number'],
             [['desc'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 50],
@@ -108,6 +109,7 @@ class Store extends \yii\db\ActiveRecord
             'updated_by' => Yii::t('app', 'Updated By'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'discount_box_price' => Yii::t('app', 'Discount box price'),
         ];
     }
 

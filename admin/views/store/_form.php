@@ -60,14 +60,17 @@ use app\front\models\Categories;
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
 			<?= $form->field( $model, 'boxes_count' )->textInput() ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
 			<?= $form->field( $model, 'box_weight' )->textInput() ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
 			<?= $form->field( $model, 'box_price' )->textInput( [ 'maxlength' => true ] ) ?>
+        </div>
+        <div class="col-md-3">
+			<?= $form->field( $model, 'discount_box_price' )->textInput( [ 'maxlength' => true ] ) ?>
         </div>
     </div>
     <div class="row">

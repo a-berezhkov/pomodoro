@@ -2,6 +2,7 @@
 
 namespace app\front\controllers;
 
+use app\front\models\Categories;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use app\front\models\fPartners;
@@ -17,7 +18,8 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Categories::find()->all();
+        return $this->render('index',['categories'=>$categories]);
     }
 
     public function actionShow()

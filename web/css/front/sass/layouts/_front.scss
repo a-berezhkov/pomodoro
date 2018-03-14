@@ -1,16 +1,93 @@
 .front-banners {
   .product {
     border: 1px solid #000;
+    overflow: hidden;
+    position: relative;
     &.main {
       height: 400px;
+      .details {
+        background: rgba(255, 255, 255, 0.51);
+        height: 100%;
+        width: 50%;
+        top: 0;
+        padding-top: 12%;
+        border-right: 1px solid #000;
+        .name {
+          font-size: $font-size-36px;
+          color: #000
+        }
+        .price {
+          margin-top: 30px;
+          background: $color-primary;
+          color: #fff;
+          padding: 2%;
+          font-size: $font-size-40px;
+          font-weight: $font-weight-normal;
+          s {
+            opacity: .5;
+          }
+        }
+        .meta {
+          margin-top: 20px;
+          font-size: $font-size-20px;
+          font-weight: normal;
+        }
+      }
     }
     &.sub-main {
       height: 190px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
     &.add {
       height: 190px;
+      .details {
+        bottom: 0;
+        height: 60px;
+        background-color: $color-banner-details;
+        width: 100%;
+        .product-icon {
+          background-color: $color-banner-details-icon;
+          width: 60px;
+          height: 100%;
+          display: inline-block;
+          background-repeat: no-repeat;
+          background-position: 50%;
+          //background-color: ;
+          //content: ' ';
+        }
+        .name {
+          font-size: $font-size-18px;
+          font-weight: $font-weight-normal;
+          color: #fff;
+          display: inline-block;
+          padding: 0 6px;
+          bottom: 22px;
+          position: relative;
+        }
+      }
     }
+    .details {
+      position: absolute;
+    }
+    img {
+      min-height: 100%;
+      min-width: 100%;
+      height: auto;
+      width: auto;
+    }
+    .product-icon-greens {
+      background: url(#{$path-image}/icons/icon-greens.png)
+    }
+    .product-icon-nuts {
+      background: url(#{$path-image}/icons/icon-nuts.png)
+    }
+    .product-icon-berry-froze {
+      background: url(#{$path-image}/icons/icon-berry-froze.png)
+    }
+    .product-icon-peppers {
+      background: url(#{$path-image}/icons/icon-peppers.png)
+    }
+
   }
 }
 
@@ -25,13 +102,60 @@
     .picture {
       height: 130px;
       border-bottom: 1px solid #000;
+      img {
+        max-height: 90%;
+        max-width: 100%;
+        height: 100%;
+        width: auto;
+      }
+      //padding-top: 5%;
     }
     .name {
       height: 30px;
       border-bottom: 1px solid #000;
-      padding: 1% 0;
+      padding: 2% 0;
     }
+    .details {
+      font-size: $font-size-20px;
+      font-weight: $font-weight-normal;
+      padding: 0 15px;
+      .current-suggestion {
+        margin-top: 2px;
+        .old-price {
+          width: 130px;
+        }
+        .meta {
+          width: 130px;
+        }
+      }
+      .new-suggestion {
+        margin-top: 3px;
+        .special-col:first-child {
+          //padding-right: 0;
+          //padding-left: 30px;
+          //float: right;
+        }
+        .special-col:last-child {
+          padding-left: 0;
+        }
+        .new-price {
+          border: 1px solid #000;
+          height: 30px;
+          width: 130px;
+          margin-top: 1px;
+        }
+        .button-busket {
+          border: 1px solid #000;
+          //padding-top: 1px;
+          height: 30px;
+          width: 130px;
+          background: #000;
+        }
+      }
+    }
+
   }
+
 }
 
 .front-search {
@@ -58,7 +182,7 @@
   margin-top: 30px;
   .video {
     height: 300px;
-    background: #ccc;
+    background: url(#{$path-image}/hiw.jpg);
     .message {
       padding-top: 11%;
       .title, .icon {
@@ -86,12 +210,17 @@
   .order {
     background: #ccc;
     height: 300px;
+    background: url(#{$path-image}/car.png) no-repeat;
+    background-size: 50%;
     .order-form {
+      background: url(#{$path-image}/map.png) no-repeat;
       padding-top: 32%;
+      height: 300px;
       .number {
         height: 50px;
         width: 260px;
         border: 1px solid #000;
+        display: inline-block;
       }
       .button-get-orders {
         margin-top: 4%;
@@ -111,6 +240,7 @@
   margin: 20px 0;
   .partner {
     height: 150px;
-    background: #ccc;
+    background: url(#{$path-image}/DHL_Express.png) no-repeat 50%;
+
   }
 }

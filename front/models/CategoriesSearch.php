@@ -5,12 +5,12 @@ namespace app\front\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\front\models\Store;
+use app\admin\models\aCategories;
 
 /**
- * StoreSearch represents the model behind the search form of `app\front\models\Store`.
+ * CategoriesSearch represents the model behind the search form of `app\admin\models\aCategories`.
  */
-class StoreSearch extends Store
+class CategoriesSearch extends aCategories
 {
     /**
      * @inheritdoc
@@ -18,9 +18,8 @@ class StoreSearch extends Store
     public function rules()
     {
         return [
-            [['id', 'boxes_count', 'logo_id', 'country_id', 'category_id', 'created_by', 'updated_by'], 'integer'],
-            [['name', 'desc', 'is_sale', 'is_active', 'created_at', 'updated_at'], 'safe'],
-            [['box_weight', 'box_price','discount_box_price'], 'number'],
+            [['id', 'image_id'], 'integer'],
+            [['name', 'icon'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class StoreSearch extends Store
      */
     public function search($params)
     {
-        $query = Store::find();
+        $query = aCategories::find();
 
         // add conditions that should always apply here
 
@@ -61,23 +60,12 @@ class StoreSearch extends Store
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'boxes_count' => $this->boxes_count,
-            'box_weight' => $this->box_weight,
-            'box_price' => $this->box_price,
-            'logo_id' => $this->logo_id,
-            'country_id' => $this->country_id,
-            'category_id' => $this->category_id,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'discount_box_price' => $this->discount_box_price,
+            'image_id' => $this->image_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'desc', $this->desc])
-            ->andFilterWhere(['like', 'is_sale', $this->is_sale])
-            ->andFilterWhere(['like', 'is_active', $this->is_active]);
+            ->andFilterWhere(['like', 'icon', $this->icon])
+            ->andFilterWhere(['like', 'position', $this->icon]);
 
         return $dataProvider;
     }

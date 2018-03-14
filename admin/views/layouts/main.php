@@ -37,7 +37,7 @@ if (\Yii::$app->user->identity){
     <? $this->registerCssFile('/web/css/site.css'); ?>
     <?php $this->head() ?>
 </head>
-<body class="hold-transition skin-black sidebar-collapse sidebar-mini">
+<body class="hold-transition skin-black  sidebar-mini">
 <?php $this->beginBody() ?>
 <div class="wrapper">
 

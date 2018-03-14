@@ -13,7 +13,7 @@ $config = [
 	'charset'        => 'utf-8',
 	// set source language to be English
 	'sourceLanguage' => 'en-EN',
-	'defaultRoute'   => 'admin',
+	'defaultRoute'   => 'front',
 	'aliases'        => [
 		'@bower' => '@vendor/bower-asset',
 		'@npm'   => '@vendor/npm-asset',
@@ -70,7 +70,7 @@ $config = [
 			'class' => 'yii\caching\FileCache',
 		],
 		'errorHandler' => [
-			'errorAction' => '/admin/views/error',
+			  'errorAction' => 'admin/default/error',
 		],
 		'mailer'       => [
 			'class'            => 'yii\swiftmailer\Mailer',

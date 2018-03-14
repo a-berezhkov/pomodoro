@@ -1,6 +1,7 @@
 <?php
 
 use rmrevin\yii\fontawesome\FA;
+use yii\helpers\Html;
 
 ?>
 
@@ -9,29 +10,42 @@ use rmrevin\yii\fontawesome\FA;
         <div class="row">
             <div class="col-md-8">
                 <div class="product main">
-
+                    <?= Html::img(['/img/products/m-1.png']); ?>
+                    <div class="details">
+                        <div class="name text-center">
+                            Томаты Бакинские
+                        </div>
+                        <div class="price text-center">
+                            <s>7550</s> 6850 ₽
+                        </div>
+                        <div class="meta text-center">
+                            Цена за упаковку
+                        </div>
+                        <button class="btn button-more"></button>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="product sub-main"></div>
-                <div class="product sub-main"></div>
+                <?=
+                /**
+                 * Раздел с категориями на главной
+                 */
+                $this->render('_categories-right',['categories'=>$categories])
+
+                ?>
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="product add"></div>
-            </div>
-            <div class="col-md-3">
-                <div class="product add"></div>
-            </div>
-            <div class="col-md-3">
-                <div class="product add"></div>
-            </div>
-            <div class="col-md-3">
-                <div class="product add"></div>
-            </div>
-        </div>
-    </div>
+
+        <?=
+        /**
+         * Раздел с категориями на главной
+         */
+        $this->render('_categories-bottom',['categories'=>$categories])
+
+        ?>
+
+</div>
     <div class="front-hot">
         <h2 class="title text-center">Горячие предложения</h2>
         <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье
@@ -40,27 +54,73 @@ use rmrevin\yii\fontawesome\FA;
         <div class="row">
             <div class="col-md-3">
                 <div class="suggest">
-                    <div class="picture">
-
+                    <div class="picture text-center">
+                        <?= Html::img(['/img/products/1.png']) ?>
                     </div>
                     <div class="name text-center">
                         Томаты Бакинские
                     </div>
                     <div class="details">
+                        <div class="row current-suggestion">
+                            <div class="col-md-6">
+                                <div class="old-price text-center">
+                                    <s>7640 ₽</s>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <div class="meta">
+                                    29 КГ
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="row new-suggestion">
+                            <div class="col-md-6 special-col text-right">
+                                <div class="new-price text-center">
+                                    <div class="price">6940 ₽</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 special-col">
+                                <button class="btn button-busket">В корзину</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="suggest">
-                    <div class="picture">
-
+                    <div class="picture text-center">
+                        <?= Html::img(['/img/products/2.png']) ?>
                     </div>
                     <div class="name text-center">
                         Огурцы Муромские
                     </div>
                     <div class="details">
+                        <div class="row current-suggestion">
+                            <div class="col-md-6">
+                                <div class="old-price text-center">
+                                    <s>23400 ₽</s>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <div class="meta">
+                                    29 КГ
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="row new-suggestion">
+                            <div class="col-md-6 special-col text-right">
+                                <div class="new-price text-center">
+                                    <div class="price">19600 ₽</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 special-col">
+                                <button class="btn button-busket">В корзину</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,11 +164,12 @@ use rmrevin\yii\fontawesome\FA;
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="order">
+                <div class="order text-center">
                     <div class="row">
                         <div class="col-md-offset-6 col-md-6">
                             <div class="order-form">
-                                <input type="text" class="form-control number" placeholder="Введите номер накладной">
+                                <input type="text" class="form-control number"
+                                       placeholder="Введите номер накладной">
                                 <button class="btn button-get-orders">Отследить</button>
                             </div>
                         </div>

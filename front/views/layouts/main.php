@@ -33,7 +33,7 @@ FrontAsset::register($this);
             <div class="container">
                 <nav class="navbar">
 
-                    <?php $logo = '#'; ?>
+                    <?php $logo = ['/img/brand-logo.png']; ?>
                     <?= Html::a(Html::img($logo), ['default/index/'], ['class' => 'navbar-brand navbar-logo']) ?>
 
                     <?php
@@ -90,7 +90,12 @@ FrontAsset::register($this);
                             <p><?= Html::a('Схема проезда', '#') ?> / <?= Html::a('Информация об ограничениях', '#')?></p>
                         </div>
                     </div>
-                    <div class="col-md-2">2</div>
+                    <div class="col-md-3">
+                        <div class="logo text-center">
+                        <?= Html::img(['/img/logo-footer.png']) ?>
+
+                        </div>
+                    </div>
                     <div class="col-md-3">
                         <div class="call">
                             <div class="text-right"><?= Html::a('8-800-200-34-19', 'tel:8-800-200-34-19', ['class' => 'number']) ?></div>

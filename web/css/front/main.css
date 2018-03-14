@@ -13,8 +13,11 @@ a {
 @media (min-width: 1200px) {
   .container {
     width: 1280px; } }
-button.btn {
-  border-radius: 0; }
+button {
+  text-transform: uppercase;
+  color: #fff; }
+  button.btn {
+    border-radius: 0; }
 
 input.form-control {
   border-radius: 0; }
@@ -30,19 +33,81 @@ footer.footer {
   footer.footer .copyright {
     font-size: 0.75rem;
     font-weight: 500; }
+  footer.footer .logo img {
+    width: 75%; }
   footer.footer .call .number {
     font-size: 1.25rem;
     font-weight: 500; }
 
 .front-banners .product {
-  border: 1px solid #000; }
+  border: 1px solid #000;
+  overflow: hidden;
+  position: relative; }
   .front-banners .product.main {
     height: 400px; }
+    .front-banners .product.main .details {
+      background: rgba(255, 255, 255, 0.51);
+      height: 100%;
+      width: 50%;
+      top: 0;
+      padding-top: 12%;
+      border-right: 1px solid #000; }
+      .front-banners .product.main .details .name {
+        font-size: 2.25rem;
+        color: #000; }
+      .front-banners .product.main .details .price {
+        margin-top: 30px;
+        background: #ff243f;
+        color: #fff;
+        padding: 2%;
+        font-size: 2.5rem;
+        font-weight: 500; }
+        .front-banners .product.main .details .price s {
+          opacity: .5; }
+      .front-banners .product.main .details .meta {
+        margin-top: 20px;
+        font-size: 1.25rem;
+        font-weight: normal; }
   .front-banners .product.sub-main {
     height: 190px;
-    margin-bottom: 25px; }
+    margin-bottom: 20px; }
   .front-banners .product.add {
     height: 190px; }
+    .front-banners .product.add .details {
+      bottom: 0;
+      height: 60px;
+      background-color: rgba(48, 56, 32, 0.8);
+      width: 100%; }
+      .front-banners .product.add .details .product-icon {
+        background-color: #303820;
+        width: 60px;
+        height: 100%;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: 50%; }
+      .front-banners .product.add .details .name {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #fff;
+        display: inline-block;
+        padding: 0 6px;
+        bottom: 22px;
+        position: relative; }
+  .front-banners .product .details {
+    position: absolute; }
+  .front-banners .product img {
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    width: auto; }
+  .front-banners .product .product-icon-greens {
+    background: url(../../img/icons/icon-greens.png); }
+  .front-banners .product .product-icon-nuts {
+    background: url(../../img/icons/icon-nuts.png); }
+  .front-banners .product .product-icon-berry-froze {
+    background: url(../../img/icons/icon-berry-froze.png); }
+  .front-banners .product .product-icon-peppers {
+    background: url(../../img/icons/icon-peppers.png); }
 
 .front-hot .title {
   font-size: 1.75rem;
@@ -53,10 +118,39 @@ footer.footer {
   .front-hot .suggest .picture {
     height: 130px;
     border-bottom: 1px solid #000; }
+    .front-hot .suggest .picture img {
+      max-height: 90%;
+      max-width: 100%;
+      height: 100%;
+      width: auto; }
   .front-hot .suggest .name {
     height: 30px;
     border-bottom: 1px solid #000;
-    padding: 1% 0; }
+    padding: 2% 0; }
+  .front-hot .suggest .details {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 0 15px; }
+    .front-hot .suggest .details .current-suggestion {
+      margin-top: 2px; }
+      .front-hot .suggest .details .current-suggestion .old-price {
+        width: 130px; }
+      .front-hot .suggest .details .current-suggestion .meta {
+        width: 130px; }
+    .front-hot .suggest .details .new-suggestion {
+      margin-top: 3px; }
+      .front-hot .suggest .details .new-suggestion .special-col:last-child {
+        padding-left: 0; }
+      .front-hot .suggest .details .new-suggestion .new-price {
+        border: 1px solid #000;
+        height: 30px;
+        width: 130px;
+        margin-top: 1px; }
+      .front-hot .suggest .details .new-suggestion .button-busket {
+        border: 1px solid #000;
+        height: 30px;
+        width: 130px;
+        background: #000; }
 
 .front-search {
   margin-top: 35px; }
@@ -78,7 +172,7 @@ footer.footer {
   margin-top: 30px; }
   .front-helpdesk .video {
     height: 300px;
-    background: #ccc; }
+    background: url(../../img/hiw.jpg); }
     .front-helpdesk .video .message {
       padding-top: 11%; }
       .front-helpdesk .video .message .title, .front-helpdesk .video .message .icon {
@@ -99,13 +193,18 @@ footer.footer {
           padding: 2% 3.5%; }
   .front-helpdesk .order {
     background: #ccc;
-    height: 300px; }
+    height: 300px;
+    background: url(../../img/car.png) no-repeat;
+    background-size: 50%; }
     .front-helpdesk .order .order-form {
-      padding-top: 32%; }
+      background: url(../../img/map.png) no-repeat;
+      padding-top: 32%;
+      height: 300px; }
       .front-helpdesk .order .order-form .number {
         height: 50px;
         width: 260px;
-        border: 1px solid #000; }
+        border: 1px solid #000;
+        display: inline-block; }
       .front-helpdesk .order .order-form .button-get-orders {
         margin-top: 4%;
         height: 50px;
@@ -120,7 +219,7 @@ footer.footer {
   margin: 20px 0; }
   .front-partners .partner {
     height: 150px;
-    background: #ccc; }
+    background: url(../../img/DHL_Express.png) no-repeat 50%; }
 
 header.header {
   background: #fff; }
@@ -130,12 +229,10 @@ header.header {
       padding: 0px; }
     header.header nav .navbar-brand > img {
       height: 100%;
-      padding: 15px;
       width: auto; }
     header.header nav .navbar-logo {
       width: 260px;
-      height: 74px;
-      background: #ccc; }
+      height: 74px; }
     header.header nav ul.navbar-nav {
       list-style-type: none;
       padding-left: 0;

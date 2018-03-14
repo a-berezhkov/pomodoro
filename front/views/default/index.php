@@ -26,61 +26,26 @@ use yii\helpers\Html;
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="product sub-main">
-                    <?= Html::img(['/img/products/m-2.png']); ?>
-                </div>
-                <div class="product sub-main">
-                    <?= Html::img(['/img/products/m-3.png']); ?>
-                </div>
+                <?=
+                /**
+                 * Раздел с категориями на главной
+                 */
+                $this->render('_categories-right',['categories'=>$categories])
+
+                ?>
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="product add">
-                    <div class="details">
-                        <div class="product-icon product-icon-greens">
-                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
-                        </div>
-                        <div class="name">Зелень</div>
-                    </div>
-                    <?= Html::img(['/img/products/l-1.png']); ?>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="product add">
-                    <div class="details">
-                        <div class="product-icon product-icon-nuts">
-                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
-                        </div>
-                        <div class="name">Орехи</div>
-                    </div>
-                    <?= Html::img(['/img/products/l-2.png']); ?>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="product add">
-                    <div class="details">
-                        <div class="product-icon product-icon-peppers">
-                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
-                        </div>
-                        <div class="name">Овощи заморозка</div>
-                    </div>
-                    <?= Html::img(['/img/products/l-3.png']); ?>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="product add">
-                    <div class="details">
-                        <div class="product-icon product-icon-berry-froze">
-                            <? //= Html::img(['/img/icons/icon-greens.png']); ?>
-                        </div>
-                        <div class="name">Фрукты заморозка</div>
-                    </div>
-                    <?= Html::img(['/img/products/l-4.png']); ?>
-                </div>
-            </div>
-        </div>
-    </div>
+
+        <?=
+        /**
+         * Раздел с категориями на главной
+         */
+        $this->render('_categories-bottom',['categories'=>$categories])
+
+        ?>
+
+</div>
     <div class="front-hot">
         <h2 class="title text-center">Горячие предложения</h2>
         <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье

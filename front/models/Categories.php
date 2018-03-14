@@ -35,7 +35,7 @@ class Categories extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['image_id'], 'integer'],
             [['name'], 'string', 'max' => 50],
-            [['icon'], 'string', 'max' => 255],
+            [['icon','position'], 'string', 'max' => 255],
             [['image_id'], 'exist', 'skipOnError' => true, 'targetClass' => ImageManager::className(), 'targetAttribute' => ['image_id' => 'id']],
         ];
     }
@@ -50,6 +50,7 @@ class Categories extends \yii\db\ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'image_id' => Yii::t('app', 'Image'),
             'icon' => Yii::t('app', 'Icon class'),
+            'position' => Yii::t('app', 'Position'),
         ];
     }
 

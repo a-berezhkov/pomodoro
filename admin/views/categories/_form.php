@@ -19,9 +19,12 @@ use yii\widgets\ActiveForm;
         'cropViewMode' => 1, //crop mode, option info: https://github.com/fengyuanchen/cropper/#viewmode
         'showPreview' => true, //false to hide the preview
         'showDeletePickedImageConfirm' => false, //on true show warning before detach image
+
     ]);?>
 
     <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'position')->dropDownList(['bottom'=>'bottom','right'=>'right']) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

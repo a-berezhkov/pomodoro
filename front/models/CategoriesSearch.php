@@ -64,7 +64,8 @@ class CategoriesSearch extends aCategories
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'icon', $this->icon]);
+            ->andFilterWhere(['like', 'icon', $this->icon])
+            ->andFilterWhere(['like', 'position', $this->icon]);
 
         return $dataProvider;
     }

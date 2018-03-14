@@ -20,7 +20,7 @@ class StoreSearch extends Store
         return [
             [['id', 'boxes_count', 'logo_id', 'country_id', 'category_id', 'created_by', 'updated_by'], 'integer'],
             [['name', 'desc', 'is_sale', 'is_active', 'created_at', 'updated_at'], 'safe'],
-            [['box_weight', 'box_price'], 'number'],
+            [['box_weight', 'box_price','discount_box_price'], 'number'],
         ];
     }
 
@@ -71,6 +71,7 @@ class StoreSearch extends Store
             'updated_by' => $this->updated_by,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'discount_box_price' => $this->discount_box_price,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

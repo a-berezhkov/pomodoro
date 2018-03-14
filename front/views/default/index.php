@@ -10,26 +10,38 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-md-8">
                 <div class="product main">
-                    <?= Html::img(['/img/products/']); ?>
+                    <?= Html::img(['/img/products/m-1.png']); ?>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="product sub-main"></div>
-                <div class="product sub-main"></div>
+                <div class="product sub-main">
+                    <?= Html::img(['/img/products/m-2.png']); ?>
+                </div>
+                <div class="product sub-main">
+                    <?= Html::img(['/img/products/m-3.png']); ?>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
-                <div class="product add"></div>
+                <div class="product add">
+                    <?= Html::img(['/img/products/l-1.png']); ?>
+                </div>
             </div>
             <div class="col-md-3">
-                <div class="product add"></div>
+                <div class="product add">
+                    <?= Html::img(['/img/products/l-2.png']); ?>
+                </div>
             </div>
             <div class="col-md-3">
-                <div class="product add"></div>
+                <div class="product add">
+                    <?= Html::img(['/img/products/l-3.png']); ?>
+                </div>
             </div>
             <div class="col-md-3">
-                <div class="product add"></div>
+                <div class="product add">
+                    <?= Html::img(['/img/products/l-4.png']); ?>
+                </div>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ $config = [
 	'charset'        => 'utf-8',
 	// set source language to be English
 	'sourceLanguage' => 'en-EN',
-	'defaultRoute'   => 'admin',
+	'defaultRoute'   => 'front',
 	'aliases'        => [
 		'@bower' => '@vendor/bower-asset',
 		'@npm'   => '@vendor/npm-asset',

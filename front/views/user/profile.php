@@ -64,6 +64,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     'mask' => '+7 (999)-999-9999',
                 ]) ?>
 
+                <?= $form->field($model, 'inn') ?>
+
+                <?= $form->field($model, 'address') ?>
+
+                <?= $form->field($model, 'company_name') ?>
+
 
 
 

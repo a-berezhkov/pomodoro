@@ -12,10 +12,10 @@ $countPerRow = 4; //Количество колонок в одной строк
 ?>
 
 <? foreach ($categories as $category) : ?>
-    <?= $counterRow % $countPerRow == 0 ? '<div class="row">' : null; ?>
-    <? $counterRow++; ?>
-
     <? if ($category->position == 'bottom'): ?>
+
+        <?= $counterRow % $countPerRow == 0 ? '<div class="row">' : null; ?>
+        <? $counterRow++; ?>
 
         <div class="col-md-3">
             <div class="category category-bottom">
@@ -26,7 +26,9 @@ $countPerRow = 4; //Количество колонок в одной строк
                 <?= Html::img(\Yii::$app->imagemanager->getImagePath($category->image_id, '285', '190', 'inset')); ?>
             </div>
         </div>
+
+        <?= $counterRow % $countPerRow == 0 ? '</div>' : null; ?>
+
     <?php endif; ?>
-    <?= $counterRow % $countPerRow == 0 ? '</div>' : null; ?>
 <?php endforeach; ?>
 

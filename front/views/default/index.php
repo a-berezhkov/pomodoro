@@ -43,6 +43,7 @@ use yii\helpers\Html;
          */
         $this->render('_categories-bottom', ['categories' => $categories])
         ?>
+
     </div>
     <div class="front-hot">
         <h2 class="title text-center">Горячие предложения</h2>

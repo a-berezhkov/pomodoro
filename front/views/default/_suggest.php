@@ -11,55 +11,105 @@ $countPerRow = 4; //Количество колонок в одной строк
 
 $script = <<< JS
     initBadge();
- 
-    $( "button" ).click(function() {
-        console.log($(this).attr('item-id'));
-            var item_id = $(this).attr('item-id');
+   $( "#shopping-basket" ).click(function() {
          $.ajax({
         type: "POST",
-        url: "/web/front/cart/add",
-        data: {
-            id: item_id
-        }
+        url: "/web/front/cart/cart",
+
          }) .done(function( data ) {
-                     setBadgeBasket(data);
+              $( '#cart-stores' ).html(data);
         }).fail(function( jqXHR, textStatus ) {
              alert( "Request failed: " + textStatus );
         });
     });
- 
+   
+    $( "button" ).click(function() {
+             
+         $.ajax({
+        type: "POST",
+        url: "/web/front/cart/add",
+        data: {
+            id: $(this).attr('item-id'),
+            item_name : $(this).attr('item-name'),
+            item_box_price : $(this).attr('item-box_price'),
+            item_box_weight : $(this).attr('item-box_weight'),
+            item_discount_box_price : $(this).attr('item-discount_box_price'),
+            item_image_link : $(this).attr('item-image_link'),
+
+        }
+         }) .done(function( data ) {
+                    setBadgeBasket(data);
+        }).fail(function( jqXHR, textStatus ) {
+             alert( "Request failed: " + textStatus );
+        });
+    });
+    
+    /*
+        Функция отображает значок рядом с корзиной и количесвто товара
+        @var data массив данных из сессии
+        @var data.store товары 
+        @example json data  
+         "store":{  
+                 "1":{  
+                        "data":{  
+                                 "id":"1",
+                                 "item_name":"1",
+                                 "item_box_price":"7640.00",
+                                 "item_box_weight":"20",
+                                 "item_discount_box_price":"6940"
+                                 "item_image_link":"/web/assets/images/fc/fc3297_store--.png"
+                                },
+                         "count":2  // количество товаров
+                        },
+                 "2":{ ... }
+                    }
+                }
+     */
     function setBadgeBasket(data){
-       
+          
+        /*
+            преобразование объекта в массив (необходимо для получения количества элементов)
+         */
           var array = $.map(data.store, function(value, index) {
                 return [value];
             });  
         
          var badge = $('span').is( '#basket-badge' );
-         // Если элемент уже существует 
+         
+         /*
+            если значок badge уже существует на странице,
+            добалвяем купленный отличающийся товар
+            Иначе добавлем элемент badge 
+          */
          if (badge){
-             console.log('Element #basket-badge is found');
-             console.log('count setBadgeBasket = '+array.length);
              $( '#basket-badge' ).html(array.length);
-         } 
-         else 
-         {
-                console.log('Element #basket-badge is not found');
+         }
+         else {
               $( "#shopping-basket a" ).append('<span id="basket-badge" class="label label-primary">'+array.length+'</span>');
-                 console.log('Element #basket-badge is created');
          }
     }
-    
+    /*
+        Функция получает все данные из сессии о товарах в корзине
+        и тображает элемент badge
+     */
     function initBadge(){
-         $.ajax({
+    $.ajax({
         type: "POST",
         url: "/web/front/cart/stores-by-session",
-         }) .done(function( data ) {
+         })
+         .done(function( data ) {
                 setBadgeBasket(data);
         }).fail(function( jqXHR, textStatus ) {
              alert( "Request failed: " + textStatus );
         });
   
     }
+    $(document).ready(function(){
+    //Handles menu drop down
+    $('.dropdown-menu').find('form').click(function (e) {
+        e.stopPropagation();
+    });
+}); 
 JS;
 
 $this->registerJs($script, yii\web\View::POS_READY)
@@ -97,7 +147,17 @@ $this->registerJs($script, yii\web\View::POS_READY)
                         </div>
                     </div>
                     <div class="col-md-6 special-col">
-                        <?= Html::button('В коризину', ['class' => 'btn button-busket', 'item-id' => $suggest->id]) ?>
+                        <?= Html::button('В коризину',
+                            [
+                                    'class' => 'btn button-busket',
+                                    'item-id' => $suggest->id,
+                                    'item-name' => $suggest->name,
+                                    'item-box_price' => $suggest->box_price,
+                                    'item-box_weight' => $suggest->box_weight,
+                                    'item-discount_box_price' => $suggest->discount_box_price,
+                                    'item-image_link' => \Yii::$app->imagemanager->getImagePath($suggest->logo_id, '440', '190', 'inset'),
+                            ])
+                        ?>
 
                     </div>
 

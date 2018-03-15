@@ -57,7 +57,56 @@ FrontAsset::register($this);
                         'items' => [
                             ['label' => '8-800-200-34-19', 'url' => 'tel:8-800-200-34-19'],
                             ['label' => 'Обратный звонок', 'url' => ['#'], 'options' => ['class' => 'menu-item call-button']],
-                            ['label' => FA::i('shopping-basket'), 'url' => ['#'],'options' => ['id' => 'shopping-basket']],
+
+                        ],
+                        'options' => [
+                            'class' => 'navbar-nav navbar-right'
+                        ],
+                        'itemOptions' => [
+                            'class' => 'menu-item'
+                        ],
+                        'encodeLabels' => false,
+                    ]);?>
+
+
+
+
+                    <ul class="navbar-nav navbar-right">
+<!--                        <li id="shopping-basket" class="menu-item">-->
+<!--                            <a href="/web/front/default/#">-->
+<!--                                <i class="fa fa-shopping-basket"></i>-->
+<!--                               </a>-->
+<!--                        </li>-->
+
+                        <li class="dropdown menu-item" id="shopping-basket" >
+                            <a class="dropdown-toggle"  href="/web/front/default/#"  data-toggle="dropdown"> <i class="fa fa-shopping-basket"></i> </a>
+                            <div class="dropdown-menu" style="padding: 30px;" id="cart-stores">
+                                <!--  Сюда плдгружаются данные о товарах ajax -->
+                                <!--  см. Cart Controller и  view _suggest -->
+                            </div>
+                        </li>
+                    </ul>
+
+                    <?
+
+//                    echo Menu::widget([
+//                        'items' => [
+//
+//                            ['label' => FA::i('shopping-basket'), 'url' => ['#'],'options' => ['id' => 'shopping-basket']],
+//
+//                        ],
+//                        'options' => [
+//                            'class' => 'navbar-nav navbar-right'
+//                        ],
+//                        'itemOptions' => [
+//                            'class' => 'menu-item'
+//                        ],
+//                        'encodeLabels' => false,
+//                        'view' => '_menu_cart'
+//                    ]);
+//                    ?>
+                   <?  echo Menu::widget([
+                    'items' => [
                             ['label' => FA::i('search'), 'url' => ['#']],
                             \Yii::$app->user->isGuest ? (
                             ['label' => FA::i('lock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]

@@ -57,7 +57,7 @@ FrontAsset::register($this);
                         'items' => [
                             ['label' => '8-800-200-34-19', 'url' => 'tel:8-800-200-34-19'],
                             ['label' => 'Обратный звонок', 'url' => ['#'], 'options' => ['class' => 'menu-item call-button']],
-                            ['label' => FA::i('shopping-basket'), 'url' => ['#']],
+                            ['label' => FA::i('shopping-basket'), 'url' => ['#'],'options' => ['id' => 'shopping-basket']],
                             ['label' => FA::i('search'), 'url' => ['#']],
                             \Yii::$app->user->isGuest ? (
                             ['label' => FA::i('lock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]

@@ -3,13 +3,69 @@
  * @var $suggests \app\front\models\Store
  * @var $suggest \app\front\models\Store
  */
+
 use yii\helpers\Html;
 
 $counterRow = 0;  //Счетчик для строк
 $countPerRow = 4; //Количество колонок в одной строке
+
+$script = <<< JS
+    initBadge();
+ 
+    $( "button" ).click(function() {
+        console.log($(this).attr('item-id'));
+            var item_id = $(this).attr('item-id');
+         $.ajax({
+        type: "POST",
+        url: "/web/front/cart/add",
+        data: {
+            id: item_id
+        }
+         }) .done(function( data ) {
+                     setBadgeBasket(data);
+        }).fail(function( jqXHR, textStatus ) {
+             alert( "Request failed: " + textStatus );
+        });
+    });
+ 
+    function setBadgeBasket(data){
+       
+          var array = $.map(data.store, function(value, index) {
+                return [value];
+            });  
+        
+         var badge = $('span').is( '#basket-badge' );
+         // Если элемент уже существует 
+         if (badge){
+             console.log('Element #basket-badge is found');
+             console.log('count setBadgeBasket = '+array.length);
+             $( '#basket-badge' ).html(array.length);
+         } 
+         else 
+         {
+                console.log('Element #basket-badge is not found');
+              $( "#shopping-basket a" ).append('<span id="basket-badge" class="label label-primary">'+array.length+'</span>');
+                 console.log('Element #basket-badge is created');
+         }
+    }
+    
+    function initBadge(){
+         $.ajax({
+        type: "POST",
+        url: "/web/front/cart/stores-by-session",
+         }) .done(function( data ) {
+                setBadgeBasket(data);
+        }).fail(function( jqXHR, textStatus ) {
+             alert( "Request failed: " + textStatus );
+        });
+  
+    }
+JS;
+
+$this->registerJs($script, yii\web\View::POS_READY)
 ?>
 
-<? foreach ($suggests as $suggest ) : ?>
+<? foreach ($suggests as $suggest) : ?>
     <?= $counterRow % $countPerRow == 0 ? '<div class="row">' : null; ?>
     <? $counterRow++; ?>
     <div class="col-md-3">
@@ -41,7 +97,8 @@ $countPerRow = 4; //Количество колонок в одной строк
                         </div>
                     </div>
                     <div class="col-md-6 special-col">
-                        <button class="btn button-busket"  item-id="<?=$suggest->id ?>">В корзину</button>
+                        <?= Html::button('В коризину', ['class' => 'btn button-busket', 'item-id' => $suggest->id]) ?>
+
                     </div>
 
                 </div>

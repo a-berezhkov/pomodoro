@@ -26,7 +26,7 @@ FrontAsset::register($this);
     </head>
     <body>
     <?php $this->beginBody() ?>
-
+    <?= (Yii::$app->user->isGuest ? \app\widgets\LoginFormWidget::widget([]) : ''); ?>
     <div class="wrap">
         <header class="header">
 
@@ -59,7 +59,15 @@ FrontAsset::register($this);
                             ['label' => 'Обратный звонок', 'url' => ['#'], 'options' => ['class' => 'menu-item call-button']],
                             ['label' => FA::i('shopping-basket'), 'url' => ['#']],
                             ['label' => FA::i('search'), 'url' => ['#']],
-                            ['label' => FA::i('lock'), 'url' => ['#']],
+                            \Yii::$app->user->isGuest ? (
+                            ['label' => FA::i('lock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]
+                            ) : (
+                            [
+                                'label' => FA::i('user').' '.\Yii::$app->user->identity->username  ,
+                                'url' => \yii\helpers\Url::toRoute(['/user/logout']),
+                                'template' => '<a href="{url}" data-method="post">{label}</a>']
+//
+                            )
                         ],
                         'options' => [
                             'class' => 'navbar-nav navbar-right'
@@ -87,12 +95,13 @@ FrontAsset::register($this);
                     <div class="col-md-3">
                         <div class="copyright">
                             <p>© 2018 / ООО «Синьор Помидор»<br/>Россия, Санкт-Петербург, ул. Салова 34</p>
-                            <p><?= Html::a('Схема проезда', '#') ?> / <?= Html::a('Информация об ограничениях', '#')?></p>
+                            <p><?= Html::a('Схема проезда', '#') ?>
+                                / <?= Html::a('Информация об ограничениях', '#') ?></p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="logo text-center">
-                        <?= Html::img(['/img/logo-footer.png']) ?>
+                            <?= Html::img(['/img/logo-footer.png']) ?>
 
                         </div>
                     </div>

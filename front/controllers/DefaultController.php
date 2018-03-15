@@ -3,6 +3,7 @@
 namespace app\front\controllers;
 
 use app\front\models\Categories;
+use app\front\models\Store;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use app\front\models\fPartners;
@@ -19,12 +20,18 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $categories = Categories::find()->all();
-        return $this->render('index',['categories'=>$categories]);
+        $suggests = Store::find()->where(['is_active' => true, 'is_sale' => true])->all();
+        return $this->render('index',
+            [
+                'categories' => $categories,
+                'suggests' => $suggests
+            ]
+        );
     }
 
     public function actionShow()
     {
         $partners = fPartners::getAll();
-        VarDumper::dump($partners,10,true);
+        VarDumper::dump($partners, 10, true);
     }
 }

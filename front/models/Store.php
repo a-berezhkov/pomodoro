@@ -159,6 +159,6 @@ class Store extends \yii\db\ActiveRecord
 	 */
 	public function getProfile()
 	{
-		return $this->hasOne(Profile::className(), ['user_id' => 'updated_by']);
+		return $this->hasOne(\app\front\models\Profile::className(), ['user_id' => 'updated_by']);
 	}
 }

@@ -3,6 +3,9 @@
 use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Html;
 
+/**
+ * @var   $suggests \app\front\models\Store
+ */
 ?>
 
 <div class="front-default-index">
@@ -50,86 +53,14 @@ use yii\helpers\Html;
         <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье
             представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в соответствии
             с какой-нибудь классической теорией. </p>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="suggest">
-                    <div class="picture text-center">
-                        <?= Html::img(['/img/products/1.png']) ?>
-                    </div>
-                    <div class="name text-center">
-                        Томаты Бакинские
-                    </div>
-                    <div class="details">
-                        <div class="row current-suggestion">
-                            <div class="col-md-6">
-                                <div class="old-price text-center">
-                                    <s>7640 ₽</s>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-center">
-                                <div class="meta">
-                                    29 КГ
-                                </div>
-                            </div>
+        <?=
+        /**
+         * Раздел c товарами
+         * Категории справа
+         */
+        $this->render('_suggest', ['suggests' =>  $suggests])
+        ?>
 
-                        </div>
-                        <div class="row new-suggestion">
-                            <div class="col-md-6 special-col text-right">
-                                <div class="new-price text-center">
-                                    <div class="price">6940 ₽</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 special-col">
-                                <button class="btn button-busket">В корзину</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="suggest">
-                    <div class="picture text-center">
-                        <?= Html::img(['/img/products/2.png']) ?>
-                    </div>
-                    <div class="name text-center">
-                        Огурцы Муромские
-                    </div>
-                    <div class="details">
-                        <div class="row current-suggestion">
-                            <div class="col-md-6">
-                                <div class="old-price text-center">
-                                    <s>23400 ₽</s>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-center">
-                                <div class="meta">
-                                    29 КГ
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row new-suggestion">
-                            <div class="col-md-6 special-col text-right">
-                                <div class="new-price text-center">
-                                    <div class="price">19600 ₽</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 special-col">
-                                <button class="btn button-busket">В корзину</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="suggest"></div>
-            </div>
-            <div class="col-md-3">
-                <div class="suggest"></div>
-            </div>
-        </div>
     </div>
     <div class="front-search">
         <div class="special-row">

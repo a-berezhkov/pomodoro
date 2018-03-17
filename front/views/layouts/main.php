@@ -87,7 +87,7 @@ FrontAsset::register($this);
 <!--                        </li>-->
 
                         <li class="dropdown menu-item" id="shopping-basket" >
-                            <a class="dropdown-toggle"  href="/web/front/default/#"  data-toggle="dropdown"> <i class="fa fa-shopping-basket"></i> </a>
+                            <a class="dropdown-toggle"  href="#"  data-toggle="dropdown"> <i class="fa fa-shopping-basket"></i> </a>
                             <div class="dropdown-menu" style="padding: 30px; display: none; width: 260px;"
                                  id="cart-stores">
                                 <!--  Сюда плдгружаются данные о товарах ajax -->

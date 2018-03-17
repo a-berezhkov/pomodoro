@@ -9,6 +9,14 @@ use yii\widgets\Menu; // Вместо yii\bootstrap\Nav
 use app\assets\FrontAsset;
 use rmrevin\yii\fontawesome\FA;
 
+/*
+ * Разкомментируйте строки для тестирование работы корзины
+ * Уничтожение сессии
+ */
+//$session = \Yii::$app->session;
+//$session->destroy();
+
+
 FrontAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -26,7 +34,7 @@ FrontAsset::register($this);
     </head>
     <body>
     <?php $this->beginBody() ?>
-    <?= (Yii::$app->user->isGuest ? \app\widgets\LoginFormWidget::widget([]) : ''); ?>
+    <?=  \app\widgets\LoginFormWidget::widget([])  ?>
     <div class="wrap">
         <header class="header">
 
@@ -80,7 +88,8 @@ FrontAsset::register($this);
 
                         <li class="dropdown menu-item" id="shopping-basket" >
                             <a class="dropdown-toggle"  href="/web/front/default/#"  data-toggle="dropdown"> <i class="fa fa-shopping-basket"></i> </a>
-                            <div class="dropdown-menu" style="padding: 30px;" id="cart-stores">
+                            <div class="dropdown-menu" style="padding: 30px; display: none; width: 260px;"
+                                 id="cart-stores">
                                 <!--  Сюда плдгружаются данные о товарах ajax -->
                                 <!--  см. Cart Controller и  view _suggest -->
                             </div>
@@ -113,7 +122,7 @@ FrontAsset::register($this);
                             ) : (
                             [
                                 'label' => FA::i('user').' '.\Yii::$app->user->identity->username  ,
-                                'url' => \yii\helpers\Url::toRoute(['/user/logout']),
+                                'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),
                                 'template' => '<a href="{url}" data-method="post">{label}</a>']
 //
                             )

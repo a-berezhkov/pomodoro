@@ -145,7 +145,7 @@ $config = [
 		 */
 		'user'         => [
 			'class'                  => 'dektrium\user\Module',
-			'layout'                 => '@app/admin/views/layouts/main.php',
+			 'layout'                 => '@app/front/views/layouts/main.php',
 			'modelMap'               => [
 				'Profile' => 'app\front\models\Profile',
 			],

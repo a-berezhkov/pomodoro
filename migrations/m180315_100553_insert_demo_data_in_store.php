@@ -15,6 +15,22 @@ class m180315_100553_insert_demo_data_in_store extends Migration
         Yii::$app->db->createCommand('set foreign_key_checks=0')->execute();
         Yii::$app->db->createCommand()->truncateTable('store')->execute();
         Yii::$app->db->createCommand('set foreign_key_checks=1')->execute();
+        $this->delete('ImageManager', ['id'=>[10,11]]);
+        $this->delete('store', ['id'=>[1,12]]);
+        // Зелень
+        $this->insert('ImageManager', [
+            'id' => 10,
+            'filename' => 'Томаты_Бакинские.png',
+            'fileHash' => '2kQ2F12zHeLf462_Se-cg7fuQm4wBIjp',
+            'created' => new \yii\db\Expression('NOW()'),
+        ]);
+
+        $this->insert('ImageManager', [
+            'id' => 11,
+            'filename' => 'Огурцы Муромские.png',
+            'fileHash' => 'DDEeJkzQZhSkyT61ZFS_Us1gdrg7eBTK',
+            'created' => new \yii\db\Expression('NOW()'),
+        ]);
 
         $this->insert('store', [
             'id' => 1,
@@ -61,9 +77,12 @@ class m180315_100553_insert_demo_data_in_store extends Migration
      */
     public function safeDown()
     {
-        echo "m180315_100553_insert_demo_data_in_store cannot be reverted.\n";
+        $this->delete('ImageManager', ['id'=>[10,11]]);
+        echo "ImageManager reverted.\n";
+        $this->delete('store', ['id'=>[1,12]]);
+        echo "store reverted.\n";
 
-        return false;
+        return true;
     }
 
     /*

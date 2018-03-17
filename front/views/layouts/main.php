@@ -42,7 +42,7 @@ FrontAsset::register($this);
                 <nav class="navbar">
 
                     <?php $logo = ['/img/brand-logo.png']; ?>
-                    <?= Html::a(Html::img($logo), ['default/index/'], ['class' => 'navbar-brand navbar-logo']) ?>
+                    <?= Html::a(Html::img($logo), ['/front/default/index/'], ['class' => 'navbar-brand navbar-logo']) ?>
 
                     <?php
                     echo Menu::widget([

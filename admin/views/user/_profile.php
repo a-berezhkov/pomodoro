@@ -40,11 +40,11 @@ use yii\helpers\Html;
 <?= $form->field($profile, 'middlename') ?>
 <?= $form->field($profile, 'phone') ?>
 
-<?= $form->field($model, 'inn') ?>
+<?= $form->field($profile, 'inn') ?>
 
-<?= $form->field($model, 'address') ?>
+<?= $form->field($profile, 'address') ?>
 
-<?= $form->field($model, 'company_name') ?>
+<?= $form->field($profile, 'company_name') ?>
 
 
 <?= $form->field($profile, 'location') ?>

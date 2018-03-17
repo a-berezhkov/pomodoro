@@ -3,13 +3,14 @@
  * @var $suggests \app\front\models\Store
  * @var $suggest \app\front\models\Store
  */
+
 use yii\helpers\Html;
 
 $counterRow = 0;  //Счетчик для строк
 $countPerRow = 4; //Количество колонок в одной строке
-?>
+ ?>
 
-<? foreach ($suggests as $suggest ) : ?>
+<? foreach ($suggests as $suggest) : ?>
     <?= $counterRow % $countPerRow == 0 ? '<div class="row">' : null; ?>
     <? $counterRow++; ?>
     <div class="col-md-3">
@@ -41,7 +42,18 @@ $countPerRow = 4; //Количество колонок в одной строк
                         </div>
                     </div>
                     <div class="col-md-6 special-col">
-                        <button class="btn button-busket"  item-id="<?=$suggest->id ?>">В корзину</button>
+                        <?= Html::button('В коризину',
+                            [
+                                    'class' => 'btn button-busket',
+                                    'item-id' => $suggest->id,
+                                    'item-name' => $suggest->name,
+                                    'item-box_price' => $suggest->box_price,
+                                    'item-box_weight' => $suggest->box_weight,
+                                    'item-discount_box_price' => $suggest->discount_box_price,
+                                    'item-image_link' => \Yii::$app->imagemanager->getImagePath($suggest->logo_id, '440', '190', 'inset'),
+                            ])
+                        ?>
+
                     </div>
 
                 </div>

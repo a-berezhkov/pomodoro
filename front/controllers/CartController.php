@@ -109,7 +109,17 @@ class CartController extends Controller
                 return false;
             }
         } else {
-            return 'Здесь может быть ваша реклама. На самом деле нет. Здесь будет рендер на корзину без ajax.';
+            $items = $_SESSION['store'];
+            return $this->render('cart',['items'=>$items]);
         }
+    }
+
+    /**
+     *
+     */
+    public function actionCheckout(){
+        $items = $_SESSION['store'];
+        return $this->render('checkout',['items'=>$items]);
+
     }
 }

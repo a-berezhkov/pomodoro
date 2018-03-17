@@ -50,7 +50,7 @@ FrontAsset::register($this);
                             ['label' => 'Магазин', 'url' => ['#']],
                             ['label' => 'Доставка', 'url' => ['#']],
                             ['label' => 'Контакты', 'url' => ['#']],
-                            ['label' => 'Личный кабинет', 'url' => ['#']],
+                            ['label' => 'Личный кабинет', 'url' => ['/user/settings/profile']],
                         ],
                         'options' => [
                             'class' => 'navbar-nav navbar-left',

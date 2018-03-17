@@ -103,7 +103,7 @@ class CartController extends Controller
     {
         if (\Yii::$app->request->isAjax) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
-            if ($_SESSION['store']) {
+            if (isset($_SESSION['store'])) {
                 return $this->renderAjax('_menu_drop_cart');
             } else {
                 return false;

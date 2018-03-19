@@ -46,12 +46,12 @@ input.form-control {
       .category.category-right .details .category-icon {
         background-size: 50%;
         margin: 0 auto;
-        margin-top: 30%;
+        margin-top: 35%;
         display: block;
         background-repeat: no-repeat;
         background-position: 50%;
-        width: 80px;
-        height: 80px; }
+        width: 70px;
+        height: 70px; }
         .category.category-right .details .category-icon img {
           height: 100%;
           width: 100%; }

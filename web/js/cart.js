@@ -5,7 +5,8 @@
 $('#shopping-basket' ).click(function() {
 $.ajax({
     type: "POST",
-    url: "/web/front/cart/cart"
+    //url: "/web/front/cart/cart"
+    url: "./front/cart/cart"
 }).done(function (data) {
     if (data !== false) {
         console.log(data);
@@ -18,11 +19,12 @@ $.ajax({
 })
 ;
 
-$("button").click(function () {
+$(".button-busket").click(function () {
 
     $.ajax({
         type: "POST",
-        url: "/web/front/cart/add",
+        url: "./front/cart/add",
+        //url: "/web/front/cart/add",
         data: {
             id: $(this).attr('item-id'),
             item_name: $(this).attr('item-name'),

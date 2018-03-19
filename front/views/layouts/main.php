@@ -77,23 +77,6 @@ FrontAsset::register($this);
                     ]); ?>
 
 
-                    <ul class="navbar-nav navbar-right">
-                        <!--                        <li id="shopping-basket" class="menu-item">-->
-                        <!--                            <a href="/web/front/default/#">-->
-                        <!--                                <i class="fa fa-shopping-basket"></i>-->
-                        <!--                               </a>-->
-                        <!--                        </li>-->
-
-                        <li class="dropdown menu-item" id="shopping-basket">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown"> <i
-                                        class="fa fa-shopping-basket"></i> </a>
-                            <div class="dropdown-menu" style="padding: 30px; display: none; width: 260px;"
-                                 id="cart-stores">
-                                <!--  Сюда плдгружаются данные о товарах ajax -->
-                                <!--  см. Cart Controller и  view _suggest -->
-                            </div>
-                        </li>
-                    </ul>
 
                     <?
 
@@ -115,24 +98,32 @@ FrontAsset::register($this);
                     //                    ?>
                     <? echo Menu::widget([
                         'items' => [
-                            ['label' => FA::i('search'), 'url' => ['#']],
-                            \Yii::$app->user->isGuest ? (
-                            ['label' => FA::i('unlock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]
-                            ) : (
-                            [
-                                'label' => FA::i('lock'),
-                                'url' => \yii\helpers\Url::toRoute(['/user/logout']),
-                                'template' => '<a href="{url}" data-method="post">{label}</a>']
-                            )
-                        ],
-                        'options' => [
-                            'class' => 'navbar-nav navbar-right'
-                        ],
-                        'itemOptions' => [
-                            'class' => 'menu-item'
-                        ],
-                        'encodeLabels' => false,
-                    ]);
+                                [
+                                    'label' => 'test',
+                                    'url' => ['#'],
+                                    'template' => '<a class="dropdown-toggle" href="#" data-toggle="dropdown" href="{url}">{label}</a><div class="dropdown-menu" style="padding: 30px; display: none; width: 260px;"
+                                 id="cart-stores"></div>',
+                                    'options' => ['class' => 'dropdown menu-item', 'id' => 'shopping-basket']
+                                ],
+                                ['label' => FA::i('search'), 'url' => ['#']],
+                                \Yii::$app->user->isGuest ? (
+                                ['label' => FA::i('unlock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]
+                                ) : (
+                                [
+                                    'label' => FA::i('lock'),
+                                    'url' => \yii\helpers\Url::toRoute(['/user/logout']),
+                                    'template' => '<a href="{url}" data-method="post">{label}</a>'
+                                ]
+                                )
+                            ],
+                            'options' => [
+                                'class' => 'navbar-nav navbar-right'
+                            ],
+                            'itemOptions' => [
+                                'class' => 'menu-item'
+                            ],
+                            'encodeLabels' => false,
+                        ]);
                     ?>
                 </nav>
             </div>

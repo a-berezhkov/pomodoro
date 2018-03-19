@@ -101,6 +101,11 @@ input.form-control {
   .category .category-icon-vegetables {
     background: url(../../img/icons/icon-carrot.png); }
 
+.dropdown-menu {
+  display: none;
+  padding: 30px;
+  width: 260px; }
+
 footer.footer {
   background: #000;
   padding: 50px 0;

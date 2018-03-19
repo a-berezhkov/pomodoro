@@ -28,6 +28,7 @@ FrontAsset::register($this);
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic,cyrillic-ext"
               rel="stylesheet">
+
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
@@ -41,17 +42,20 @@ FrontAsset::register($this);
             <div class="container">
                 <nav class="navbar">
 
-                    <?php $logo = ['/img/brand-logo.png']; ?>
-                    <?= Html::a(Html::img($logo), ['/front/default/index/'], ['class' => 'navbar-brand navbar-logo']) ?>
-
                     <?php
+                    $logo = ['/img/brand-logo.png'];
+                    echo Html::a(Html::img($logo), ['/front/default/index/'], ['class' => 'navbar-brand navbar-logo']);
+
+                    // Right side menu
+                    $right_menu_items = [
+                        ['label' => 'Магазин', 'url' => ['#']],
+                        ['label' => 'Доставка', 'url' => ['#']],
+                        ['label' => 'Контакты', 'url' => ['#']],
+                        ['label' => 'Личный кабинет', 'url' => ['/user/settings/profile']],
+                    ];
+
                     echo Menu::widget([
-                        'items' => [
-                            ['label' => 'Магазин', 'url' => ['#']],
-                            ['label' => 'Доставка', 'url' => ['#']],
-                            ['label' => 'Контакты', 'url' => ['#']],
-                            ['label' => 'Личный кабинет', 'url' => ['/user/settings/profile']],
-                        ],
+                        'items' => $right_menu_items,
                         'options' => [
                             'class' => 'navbar-nav navbar-left',
                         ],
@@ -59,14 +63,34 @@ FrontAsset::register($this);
                             'class' => 'menu-item'
                         ],
                     ]);
-                    ?>
-                    <?php
-                    echo Menu::widget([
-                        'items' => [
-                            ['label' => '8-800-200-34-19', 'url' => 'tel:8-800-200-34-19'],
-                            ['label' => 'Обратный звонок', 'url' => ['#'], 'options' => ['class' => 'menu-item call-button']],
 
+                    // Left side menu
+                    $right_menu_items = [
+                        [
+                            'label' => '8-800-200-34-19',
+                            'url' => 'tel:8-800-200-34-19'
                         ],
+                        [
+                            'label' => 'Обратный звонок',
+                            'url' => ['#'],
+                            'options' => ['class' => 'menu-item call-button'],
+                        ],
+                        [
+                            'label' => FA::i('shopping-basket'),
+                            'template' => '<a class="dropdown-toggle" data-toggle="dropdown">{label}</a><div id="cart-stores" class="dropdown-menu"></div>',
+                            'options' => ['class' => 'dropdown menu-item', 'id' => 'shopping-basket']
+                        ],
+                        // Temprorary disable
+                        //['label' => FA::i('search'), 'url' => ['#']],
+                        \Yii::$app->user->isGuest ? (['label' => FA::i('unlock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
+                            'label' => FA::i('lock'),
+                            'url' => \yii\helpers\Url::toRoute(['/user/logout']),
+                            'template' => '<a href="{url}" data-method="post">{label}</a>'
+                        ])
+                    ];
+
+                    echo Menu::widget([
+                        'items' => $right_menu_items,
                         'options' => [
                             'class' => 'navbar-nav navbar-right'
                         ],
@@ -76,55 +100,6 @@ FrontAsset::register($this);
                         'encodeLabels' => false,
                     ]); ?>
 
-
-
-                    <?
-
-                    //                    echo Menu::widget([
-                    //                        'items' => [
-                    //
-                    //                            ['label' => FA::i('shopping-basket'), 'url' => ['#'],'options' => ['id' => 'shopping-basket']],
-                    //
-                    //                        ],
-                    //                        'options' => [
-                    //                            'class' => 'navbar-nav navbar-right'
-                    //                        ],
-                    //                        'itemOptions' => [
-                    //                            'class' => 'menu-item'
-                    //                        ],
-                    //                        'encodeLabels' => false,
-                    //                        'view' => '_menu_cart'
-                    //                    ]);
-                    //                    ?>
-                    <? echo Menu::widget([
-                        'items' => [
-                                [
-                                    'label' => 'test',
-                                    'url' => ['#'],
-                                    'template' => '<a class="dropdown-toggle" href="#" data-toggle="dropdown" href="{url}">{label}</a><div class="dropdown-menu" style="padding: 30px; display: none; width: 260px;"
-                                 id="cart-stores"></div>',
-                                    'options' => ['class' => 'dropdown menu-item', 'id' => 'shopping-basket']
-                                ],
-                                ['label' => FA::i('search'), 'url' => ['#']],
-                                \Yii::$app->user->isGuest ? (
-                                ['label' => FA::i('unlock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]
-                                ) : (
-                                [
-                                    'label' => FA::i('lock'),
-                                    'url' => \yii\helpers\Url::toRoute(['/user/logout']),
-                                    'template' => '<a href="{url}" data-method="post">{label}</a>'
-                                ]
-                                )
-                            ],
-                            'options' => [
-                                'class' => 'navbar-nav navbar-right'
-                            ],
-                            'itemOptions' => [
-                                'class' => 'menu-item'
-                            ],
-                            'encodeLabels' => false,
-                        ]);
-                    ?>
                 </nav>
             </div>
         </header>

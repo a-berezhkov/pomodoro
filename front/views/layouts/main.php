@@ -34,7 +34,7 @@ FrontAsset::register($this);
     </head>
     <body>
     <?php $this->beginBody() ?>
-    <?=  \app\widgets\LoginFormWidget::widget([])  ?>
+    <?= \app\widgets\LoginFormWidget::widget([]) ?>
     <div class="wrap">
         <header class="header">
 
@@ -74,20 +74,19 @@ FrontAsset::register($this);
                             'class' => 'menu-item'
                         ],
                         'encodeLabels' => false,
-                    ]);?>
-
-
+                    ]); ?>
 
 
                     <ul class="navbar-nav navbar-right">
-<!--                        <li id="shopping-basket" class="menu-item">-->
-<!--                            <a href="/web/front/default/#">-->
-<!--                                <i class="fa fa-shopping-basket"></i>-->
-<!--                               </a>-->
-<!--                        </li>-->
+                        <!--                        <li id="shopping-basket" class="menu-item">-->
+                        <!--                            <a href="/web/front/default/#">-->
+                        <!--                                <i class="fa fa-shopping-basket"></i>-->
+                        <!--                               </a>-->
+                        <!--                        </li>-->
 
-                        <li class="dropdown menu-item" id="shopping-basket" >
-                            <a class="dropdown-toggle"  href="#"  data-toggle="dropdown"> <i class="fa fa-shopping-basket"></i> </a>
+                        <li class="dropdown menu-item" id="shopping-basket">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown"> <i
+                                        class="fa fa-shopping-basket"></i> </a>
                             <div class="dropdown-menu" style="padding: 30px; display: none; width: 260px;"
                                  id="cart-stores">
                                 <!--  Сюда плдгружаются данные о товарах ajax -->
@@ -98,33 +97,32 @@ FrontAsset::register($this);
 
                     <?
 
-//                    echo Menu::widget([
-//                        'items' => [
-//
-//                            ['label' => FA::i('shopping-basket'), 'url' => ['#'],'options' => ['id' => 'shopping-basket']],
-//
-//                        ],
-//                        'options' => [
-//                            'class' => 'navbar-nav navbar-right'
-//                        ],
-//                        'itemOptions' => [
-//                            'class' => 'menu-item'
-//                        ],
-//                        'encodeLabels' => false,
-//                        'view' => '_menu_cart'
-//                    ]);
-//                    ?>
-                   <?  echo Menu::widget([
-                    'items' => [
+                    //                    echo Menu::widget([
+                    //                        'items' => [
+                    //
+                    //                            ['label' => FA::i('shopping-basket'), 'url' => ['#'],'options' => ['id' => 'shopping-basket']],
+                    //
+                    //                        ],
+                    //                        'options' => [
+                    //                            'class' => 'navbar-nav navbar-right'
+                    //                        ],
+                    //                        'itemOptions' => [
+                    //                            'class' => 'menu-item'
+                    //                        ],
+                    //                        'encodeLabels' => false,
+                    //                        'view' => '_menu_cart'
+                    //                    ]);
+                    //                    ?>
+                    <? echo Menu::widget([
+                        'items' => [
                             ['label' => FA::i('search'), 'url' => ['#']],
                             \Yii::$app->user->isGuest ? (
-                            ['label' => FA::i('lock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]
+                            ['label' => FA::i('unlock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]
                             ) : (
                             [
-                                'label' => FA::i('user').' '.\Yii::$app->user->identity->username  ,
-                                'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),
+                                'label' => FA::i('lock'),
+                                'url' => \yii\helpers\Url::toRoute(['/user/logout']),
                                 'template' => '<a href="{url}" data-method="post">{label}</a>']
-//
                             )
                         ],
                         'options' => [

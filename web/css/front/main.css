@@ -13,12 +13,6 @@ a {
 @media (min-width: 1200px) {
   .container {
     width: 1280px; } }
-button {
-  text-transform: uppercase;
-  color: #fff; }
-  button.btn {
-    border-radius: 0; }
-
 input.form-control {
   border-radius: 0; }
 
@@ -140,10 +134,89 @@ input.form-control {
   width: 26px;
   height: 18px; }
 
+.modal-open .modal-dialog {
+  margin-top: 100px;
+  width: 700px; }
+  .modal-open .modal-dialog .modal-content {
+    border-radius: 0;
+    padding: 0;
+    background: #000;
+    position: relative; }
+    .modal-open .modal-dialog .modal-content .modal-body {
+      padding: 0; }
+      .modal-open .modal-dialog .modal-content .modal-body .title {
+        display: inline-block;
+        padding-bottom: 1%;
+        margin-top: 4px;
+        font-size: 1.375rem;
+        font-weight: 500;
+        letter-spacing: normal;
+        position: absolute;
+        top: 44px; }
+      .modal-open .modal-dialog .modal-content .modal-body .content {
+        font-size: 14px;
+        font-weight: normal;
+        margin-top: 90px;
+        margin-bottom: 20px;
+        height: 110px; }
+      .modal-open .modal-dialog .modal-content .modal-body .main {
+        background: #fff;
+        padding: 30px; }
+        .modal-open .modal-dialog .modal-content .modal-body .main h1.title {
+          border-bottom: 2px solid #000;
+          margin-bottom: 50px; }
+        .modal-open .modal-dialog .modal-content .modal-body .main input[type="text"], .modal-open .modal-dialog .modal-content .modal-body .main input[type="password"] {
+          border: 1px solid #000;
+          height: 40px; }
+        .modal-open .modal-dialog .modal-content .modal-body .main button {
+          text-transform: none;
+          font-size: 1.125rem;
+          font-weight: 300; }
+      .modal-open .modal-dialog .modal-content .modal-body .sub {
+        min-height: inherit;
+        background: #000;
+        color: #fff;
+        padding: 30px; }
+        .modal-open .modal-dialog .modal-content .modal-body .sub a.button-bordered {
+          text-transform: none;
+          font-size: 1.125rem;
+          font-weight: 300; }
+
+button.btn {
+  border-radius: 0; }
+button.button {
+  text-transform: uppercase;
+  background: #000;
+  color: #fff; }
+button.button-basket {
+  padding: 4px 12px;
+  border: 1px solid #000;
+  height: 30px;
+  width: 130px; }
+button.button-bordered {
+  border: 1px solid #fff; }
+button.button-get-orders {
+  margin-top: 4%;
+  height: 50px;
+  width: 260px;
+  border: 1px solid #000;
+  text-align: center;
+  color: #fff; }
+
+a.btn {
+  border-radius: 0;
+  background: #000;
+  color: #fff; }
+a.button-bordered {
+  border: 1px solid #fff; }
+
 .dropdown-menu {
   display: none;
   padding: 30px;
   width: 260px; }
+
+.modal-backdrop.in {
+  opacity: 0.8; }
 
 footer.footer {
   background: #000;
@@ -243,11 +316,6 @@ footer.footer {
       height: 30px;
       width: 130px;
       margin-top: 1px; }
-    .front-hot .suggest .details .new-suggestion .button-busket {
-      border: 1px solid #000;
-      height: 30px;
-      width: 130px;
-      background: #000; }
 
 .front-search {
   margin-top: 35px; }
@@ -302,15 +370,6 @@ footer.footer {
         width: 260px;
         border: 1px solid #000;
         display: inline-block; }
-      .front-helpdesk .order .order-form .button-get-orders {
-        margin-top: 4%;
-        height: 50px;
-        width: 260px;
-        border: 1px solid #000;
-        background: #000;
-        text-align: center;
-        text-transform: uppercase;
-        color: #fff; }
 
 .front-partners {
   margin: 20px 0; }

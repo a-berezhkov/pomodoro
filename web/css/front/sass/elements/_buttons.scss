@@ -1,0 +1,45 @@
+
+button {
+  &.btn {
+    // reset bootstrap
+    border-radius: 0;
+  }
+  &.button {
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+  }
+  &.button-basket {
+    padding: 4px 12px;
+    border: 1px solid #000;
+    height: 30px;
+    width: 130px;
+  }
+  &.button-bordered {
+    border: 1px solid #fff;
+    //background: #fff;
+    //color: #fff;
+  }
+  &.button-get-orders {
+    margin-top: 4%;
+    height: 50px;
+    width: 260px;
+    border: 1px solid #000;
+    //background: #000;
+    text-align: center;
+    //text-transform: uppercase;
+    color: #fff;
+  }
+}
+
+a {
+  &.btn {
+    // reset bootstrap
+    border-radius: 0;
+    background: #000;
+    color: #fff;
+  }
+  &.button-bordered {
+    border: 1px solid #fff;
+  }
+}

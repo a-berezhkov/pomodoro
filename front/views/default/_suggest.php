@@ -30,8 +30,13 @@ $countPerRow = 4; //Количество колонок в одной строк
                     </div>
                     <div class="col-md-6 special-col">
                         <div class="meta">
+                            <?php
+                            if (($suggest->boxes_count) == 0) $box_color = 'box-icon-red';
+                            else if (($suggest->boxes_count) < 10) $box_color = 'box-icon-yellow';
+                            else $box_color = 'box-icon-green';
+                            ?>
                             <span class="weight"><?= $suggest->box_weight ?></span>
-                            <span class="boxes"><?= $suggest->boxes_count ?></span>
+                            <span class="boxes <?= $box_color; ?>"><?= $suggest->boxes_count ?></span>
                         </div>
                     </div>
 

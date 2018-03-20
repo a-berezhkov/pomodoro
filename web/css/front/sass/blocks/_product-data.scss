@@ -7,7 +7,7 @@
       background-size: 22px 19px;
       width: 22px;
       height: 18px;
-      left: 5px;
+      left: 4px;
       position: relative;
       display: inline-block;
     }
@@ -24,5 +24,22 @@
       position: relative;
       display: inline-block;
     }
+  }
+  .box-icon-green {
+    color: $color-box-green;
+    &:before { background: url(#{$path-image}/icons/box-green.png); }
+  }
+  .box-icon-yellow:before {
+    color: $color-box-yellow;
+    &:before { background: url(#{$path-image}/icons/box-yellow.png); }
+  }
+  .box-icon-red:before {
+    color: $color-box-red;
+    &:before { background: url(#{$path-image}/icons/box-red.png); }
+  }
+  .box-icon-green:before, .box-icon-yellow:before, .box-icon-red:before {
+    background-size: 26px 19px;
+    width: 26px;
+    height: 18px;
   }
 }

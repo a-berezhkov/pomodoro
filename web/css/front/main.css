@@ -109,7 +109,7 @@ input.form-control {
     background-size: 22px 19px;
     width: 22px;
     height: 18px;
-    left: 5px;
+    left: 4px;
     position: relative;
     display: inline-block; }
 .product .boxes, .suggest .boxes {
@@ -123,6 +123,22 @@ input.form-control {
     right: 2px;
     position: relative;
     display: inline-block; }
+.product .box-icon-green, .suggest .box-icon-green {
+  color: #1ea254; }
+  .product .box-icon-green:before, .suggest .box-icon-green:before {
+    background: url(../../img/icons/box-green.png); }
+.product .box-icon-yellow:before, .suggest .box-icon-yellow:before {
+  color: #fda645; }
+  .product .box-icon-yellow:before:before, .suggest .box-icon-yellow:before:before {
+    background: url(../../img/icons/box-yellow.png); }
+.product .box-icon-red:before, .suggest .box-icon-red:before {
+  color: #ff243f; }
+  .product .box-icon-red:before:before, .suggest .box-icon-red:before:before {
+    background: url(../../img/icons/box-red.png); }
+.product .box-icon-green:before, .product .box-icon-yellow:before, .product .box-icon-red:before, .suggest .box-icon-green:before, .suggest .box-icon-yellow:before, .suggest .box-icon-red:before {
+  background-size: 26px 19px;
+  width: 26px;
+  height: 18px; }
 
 .dropdown-menu {
   display: none;

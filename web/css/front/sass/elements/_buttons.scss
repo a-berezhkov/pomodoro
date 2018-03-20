@@ -3,6 +3,10 @@ button {
   &.btn {
     // reset bootstrap
     border-radius: 0;
+    &:hover {
+      color: #fff;
+      background: $color-grey;
+    }
   }
   &.button {
     text-transform: uppercase;
@@ -30,9 +34,6 @@ button {
     //text-transform: uppercase;
     color: #fff;
   }
-  &:hover {
-    background: rgba(32, 32, 32, 0.9);
-  }
 }
 
 a {
@@ -41,6 +42,10 @@ a {
     border-radius: 0;
     background: #000;
     color: #fff;
+    &:hover {
+      background: $color-grey;
+      color: #fff;
+    }
   }
   &.button-bordered {
     border: 1px solid #fff;

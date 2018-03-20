@@ -47,16 +47,23 @@
         }
         .sub {
           min-height: inherit;
-          background: #000;
+          //background: #000;
           color: #fff;
           padding: 30px;
+          .title {
+            width: 75%;
+          }
           a.button-bordered {
             text-transform: none;
             font-size: $font-size-18px;
             font-weight: $font-weight-light;
+            width: 90%;
           }
         }
       }
     }
+  }
+  #reg {
+    display: none;
   }
 }

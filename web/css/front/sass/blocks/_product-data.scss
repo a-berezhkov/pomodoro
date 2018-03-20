@@ -29,11 +29,11 @@
     color: $color-box-green;
     &:before { background: url(#{$path-image}/icons/box-green.png); }
   }
-  .box-icon-yellow:before {
+  .box-icon-yellow {
     color: $color-box-yellow;
     &:before { background: url(#{$path-image}/icons/box-yellow.png); }
   }
-  .box-icon-red:before {
+  .box-icon-red {
     color: $color-box-red;
     &:before { background: url(#{$path-image}/icons/box-red.png); }
   }

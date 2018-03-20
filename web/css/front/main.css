@@ -127,13 +127,13 @@ input.form-control {
   color: #1ea254; }
   .product .box-icon-green:before, .suggest .box-icon-green:before {
     background: url(../../img/icons/box-green.png); }
-.product .box-icon-yellow:before, .suggest .box-icon-yellow:before {
+.product .box-icon-yellow, .suggest .box-icon-yellow {
   color: #fda645; }
-  .product .box-icon-yellow:before:before, .suggest .box-icon-yellow:before:before {
+  .product .box-icon-yellow:before, .suggest .box-icon-yellow:before {
     background: url(../../img/icons/box-yellow.png); }
-.product .box-icon-red:before, .suggest .box-icon-red:before {
+.product .box-icon-red, .suggest .box-icon-red {
   color: #ff243f; }
-  .product .box-icon-red:before:before, .suggest .box-icon-red:before:before {
+  .product .box-icon-red:before, .suggest .box-icon-red:before {
     background: url(../../img/icons/box-red.png); }
 .product .box-icon-green:before, .product .box-icon-yellow:before, .product .box-icon-red:before, .suggest .box-icon-green:before, .suggest .box-icon-yellow:before, .suggest .box-icon-red:before {
   background-size: 26px 19px;

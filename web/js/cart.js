@@ -2,11 +2,14 @@
 /**
  * Функция отображает корзину, если в ней есть товары
  */
+
+// TODO Передавать домашний адрес
+home = 'http://localhost/labin/2018_senior-pomidor/web/front';
+
 $('#shopping-basket' ).click(function() {
 $.ajax({
     type: "POST",
-    //url: "/web/front/cart/cart"
-    url: "./front/cart/cart"
+    url: home + "/cart/cart"
 }).done(function (data) {
     if (data !== false) {
         console.log(data);
@@ -23,8 +26,7 @@ $(".button-busket").click(function () {
 
     $.ajax({
         type: "POST",
-        url: "./front/cart/add",
-        //url: "/web/front/cart/add",
+        url: home + "/cart/add",
         data: {
             id: $(this).attr('item-id'),
             item_name: $(this).attr('item-name'),
@@ -37,7 +39,7 @@ $(".button-busket").click(function () {
     }).done(function (data) {
         setBadgeBasket(data);
     }).fail(function (jqXHR, textStatus) {
-        alert("Request failed: " + textStatus);
+        alert("Request failed: " + textStatus + "<br/>" + this.url);
     });
 });
 

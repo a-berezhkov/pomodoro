@@ -21,7 +21,7 @@ class FrontAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $js = [
-        'js/cart.js'
+        ['js/cart.js']
     ];
     public $css = [
         // more plugin CSS here

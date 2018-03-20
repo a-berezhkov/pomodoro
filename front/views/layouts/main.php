@@ -38,7 +38,6 @@ FrontAsset::register($this);
     <?= \app\widgets\LoginFormWidget::widget([]) ?>
     <div class="wrap">
         <header class="header">
-
             <div class="container">
                 <nav class="navbar">
 

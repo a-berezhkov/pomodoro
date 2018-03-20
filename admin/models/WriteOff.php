@@ -2,15 +2,14 @@
 
 namespace app\admin\models;
 
+use Yii;
 use app\front\models\Profile;
 use app\front\models\Store;
-use Yii;
-use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "write_off".
  *
- * @property string $id
+ * @property int $id
  * @property int $id_store
  * @property int $count_box
  * @property double $count_weight
@@ -18,9 +17,11 @@ use yii\helpers\VarDumper;
  * @property int $out
  * @property string $created_at
  * @property string $updated_at
+ * @property int $created_by
+ * @property int $updated_by
  *
- * @property Profile[] $profiles
- * @property Profile[] $profiles0
+ * @property Profile $updatedBy
+ * @property Profile $createdBy
  * @property Store $store
  */
 class WriteOff extends \yii\db\ActiveRecord
@@ -39,15 +40,12 @@ class WriteOff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
-            [['id_store', 'count_box'], 'integer'],
+            [['id_store', 'count_box', 'created_by', 'updated_by'], 'integer'],
             [['count_weight'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
-            [['id'], 'string', 'max' => 255],
             [['in', 'out'], 'string', 'max' => 1],
-            [['created_at'], 'unique'],
-            [['updated_at'], 'unique'],
-            [['id'], 'unique'],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['updated_by' => 'user_id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['created_by' => 'user_id']],
             [['id_store'], 'exist', 'skipOnError' => true, 'targetClass' => Store::className(), 'targetAttribute' => ['id_store' => 'id']],
         ];
     }
@@ -58,32 +56,33 @@ class WriteOff extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'id_store' => Yii::t('app', 'Id Store'),
-            'count_box' => Yii::t('app', 'Count Box'),
-            'count_weight' => Yii::t('app', 'Count Weight'),
-            'in' => Yii::t('app', 'In'),
-            'out' => Yii::t('app', 'Out'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'id' => \Yii::t('app', 'ID'),
+            'id_store' => \Yii::t('app', 'Id Store'),
+            'count_box' => \Yii::t('app', 'Count Box'),
+            'count_weight' => \Yii::t('app', 'Count Weight'),
+            'in' => \Yii::t('app', 'In'),
+            'out' => \Yii::t('app', 'Out'),
+            'created_at' => \Yii::t('app', 'Created At'),
+            'updated_at' => \Yii::t('app', 'Updated At'),
+            'created_by' => \Yii::t('app', 'Created By'),
+            'updated_by' => \Yii::t('app', 'Updated By'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProfiles()
+    public function getUpdatedBy()
     {
-        return $this->hasMany(Profile::className(), ['created_at' => 'created_at']);
+        return $this->hasOne(Profile::className(), ['user_id' => 'updated_by']);
     }
-
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProfiles0()
+    public function getCreatedBy()
     {
-        return $this->hasMany(Profile::className(), ['created_by' => 'updated_at']);
+        return $this->hasOne(Profile::className(), ['user_id' => 'created_by']);
     }
 
     /**
@@ -92,17 +91,5 @@ class WriteOff extends \yii\db\ActiveRecord
     public function getStore()
     {
         return $this->hasOne(Store::className(), ['id' => 'id_store']);
-    }
-
-    //метод не дает списать больше товара чем есть на складе
-    public function validateBoxCount()
-    {
-        $store = Store::find()->asArray()->all();
-        VarDumper::dump($store,10,true);
-        if($this->count_box < $store[($this->id)-1]['boxes_count'])
-        {
-            return true;
-        }
-        else return false;
     }
 }

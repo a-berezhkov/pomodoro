@@ -90,7 +90,7 @@ CustomModal::begin([
             </div>
 
             <div class="form-group text-right">
-                <?= Html::submitButton(Yii::t('user', 'Sign up'), ['class' => 'btn button button-action']) ?>
+                <?= Html::submitButton('Регистрация', ['class' => 'btn button button-action']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

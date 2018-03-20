@@ -147,7 +147,8 @@ $config = [
 			'class'                  => 'dektrium\user\Module',
 			 'layout'                 => '@app/front/views/layouts/main.php',
 			'modelMap'               => [
-				'Profile' => 'app\front\models\Profile',
+				'Profile' => 'app\front\models\user\Profile',
+                'RegistrationForm' => 'app\front\models\user\RegistrationForm',
 			],
 			'enableUnconfirmedLogin' => true,
 			'confirmWithin'          => 21600,

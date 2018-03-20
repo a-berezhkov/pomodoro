@@ -202,6 +202,8 @@ button.button-get-orders {
   border: 1px solid #000;
   text-align: center;
   color: #fff; }
+button:hover {
+  background: rgba(32, 32, 32, 0.9); }
 
 a.btn {
   border-radius: 0;

@@ -30,3 +30,5 @@ tests/_output/*
 tests/_support/_generated
 
 config/db.php
+
+web/css/front/main.css.map

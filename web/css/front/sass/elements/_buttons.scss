@@ -30,6 +30,9 @@ button {
     //text-transform: uppercase;
     color: #fff;
   }
+  &:hover {
+    background: rgba(32, 32, 32, 0.9);
+  }
 }
 
 a {

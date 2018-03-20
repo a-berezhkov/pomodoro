@@ -61,10 +61,9 @@ CustomModal::begin([
         </div>
 
         <div class="col-md-4 sub">
-            <h2 class="title">Вы у нас в первый раз?</h2>
+            <h2 class="title">Вход</h2>
             <div class="content">
-                <p>Зарегистрируйтесь на нашем сайте и получите уникальную возможность делать оптовые закупки для своей
-                    компании.</p>
+                <p>А может Вы уже зарегистрировались на нашем портале? Тогда смелее нажимайте на кнопку «войти».</p>
             </div>
             <? echo Html::a('Регистрация', null, ['class' => 'btn button-bordered', 'name' => 'Registration-button', 'id' => 'registration']); ?>
         </div>
@@ -72,7 +71,7 @@ CustomModal::begin([
     </div>
     <!------------------------------------Регситрация -------------------------------------------------------------->
     <div id="reg" style="display: none">
-        <div class="col-md-8">
+        <div class="col-md-8 main">
 
             <?php $form = ActiveForm::begin([
                 'id' => 'registration-form',
@@ -92,8 +91,8 @@ CustomModal::begin([
             <?php ActiveForm::end(); ?>
         </div>
 
-        <div class="col-md-4" style="background: black;">
-            <? echo Html::a('Authorization', null, ['class' => 'btn btn-primary', 'name' => 'Registration-button', 'id' => 'authorization']); ?>
+        <div class="col-md-4 sub">
+            <? echo Html::a('Войти', null, ['class' => 'btn btn-primary', 'name' => 'Registration-button', 'id' => 'authorization']); ?>
         </div>
     </div>
 

@@ -1,0 +1,28 @@
+.product {
+  .weight {
+    margin: 0 5px;
+    &:after {
+      content: " ";
+      background: url(#{$path-image}/icons/weight.png);
+      background-size: 22px 19px;
+      width: 22px;
+      height: 18px;
+      left: 5px;
+      position: relative;
+      display: inline-block;
+    }
+  }
+  .boxes {
+    margin: 0 5px;
+    &:before {
+      content: " ";
+      background: url(#{$path-image}/icons/box.png);
+      background-size: 26px 19px;
+      width: 26px;
+      height: 18px;
+      right: 2px;
+      position: relative;
+      display: inline-block;
+    }
+  }
+}

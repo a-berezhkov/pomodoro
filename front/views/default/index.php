@@ -21,10 +21,14 @@ use yii\helpers\Html;
                         <div class="price text-center">
                             <s>7550</s> 6850 ₽
                         </div>
-                        <div class="meta text-center">
+                        <div class="description text-center">
                             Цена за упаковку
+                            <div class="meta">
+                                <span class="weight">25</span>
+                                <span class="boxes">12</span>
+                            </div>
                         </div>
-                        <button class="btn button-more"></button>
+                        <button class="btn button-more">Подробнее</button>
                     </div>
                 </div>
             </div>

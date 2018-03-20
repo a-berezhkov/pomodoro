@@ -23,20 +23,21 @@ $countPerRow = 4; //Количество колонок в одной строк
             </div>
             <div class="details">
                 <div class="row current-suggestion">
-                    <div class="col-md-6">
+                    <div class="col-md-6 special-col">
                         <div class="old-price text-center">
                             <s><?= $suggest->box_price ?></s>
                         </div>
                     </div>
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-6 special-col">
                         <div class="meta">
-                            <?= $suggest->box_weight ?> КГ
+                            <span class="weight"><?= $suggest->box_weight ?></span>
+                            <span class="boxes"><?= $suggest->boxes_count ?></span>
                         </div>
                     </div>
 
                 </div>
                 <div class="row new-suggestion">
-                    <div class="col-md-6 special-col text-right">
+                    <div class="col-md-6 special-col">
                         <div class="new-price text-center">
                             <div class="price"><?= $suggest->discount_box_price ?> ₽</div>
                         </div>

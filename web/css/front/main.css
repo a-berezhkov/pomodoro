@@ -101,9 +101,9 @@ input.form-control {
   .category .category-icon-vegetables {
     background: url(../../img/icons/icon-carrot.png); }
 
-.product .weight {
+.product .weight, .suggest .weight {
   margin: 0 5px; }
-  .product .weight:after {
+  .product .weight:after, .suggest .weight:after {
     content: " ";
     background: url(../../img/icons/weight.png);
     background-size: 22px 19px;
@@ -112,9 +112,9 @@ input.form-control {
     left: 5px;
     position: relative;
     display: inline-block; }
-.product .boxes {
+.product .boxes, .suggest .boxes {
   margin: 0 5px; }
-  .product .boxes:before {
+  .product .boxes:before, .suggest .boxes:before {
     content: " ";
     background: url(../../img/icons/box.png);
     background-size: 26px 19px;
@@ -218,20 +218,20 @@ footer.footer {
         width: 130px; }
       .front-hot .suggest .details .current-suggestion .meta {
         width: 130px; }
-    .front-hot .suggest .details .new-suggestion {
+    .front-hot .suggest .details .current-suggestion, .front-hot .suggest .details .new-suggestion {
       margin-top: 3px; }
-      .front-hot .suggest .details .new-suggestion .special-col:last-child {
+      .front-hot .suggest .details .current-suggestion .special-col:last-child, .front-hot .suggest .details .new-suggestion .special-col:last-child {
         padding-left: 0; }
-      .front-hot .suggest .details .new-suggestion .new-price {
-        border: 1px solid #000;
-        height: 30px;
-        width: 130px;
-        margin-top: 1px; }
-      .front-hot .suggest .details .new-suggestion .button-busket {
-        border: 1px solid #000;
-        height: 30px;
-        width: 130px;
-        background: #000; }
+    .front-hot .suggest .details .new-suggestion .new-price {
+      border: 1px solid #000;
+      height: 30px;
+      width: 130px;
+      margin-top: 1px; }
+    .front-hot .suggest .details .new-suggestion .button-busket {
+      border: 1px solid #000;
+      height: 30px;
+      width: 130px;
+      background: #000; }
 
 .front-search {
   margin-top: 35px; }

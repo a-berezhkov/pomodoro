@@ -93,4 +93,16 @@ class WriteOff extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Store::className(), ['id' => 'id_store']);
     }
+
+    //метод не дает списать больше товара чем есть на складе
+    public function validateBoxCount()
+    {
+        $store = Store::find()->asArray()->all();
+        VarDumper::dump($store,10,true);
+        if($this->count_box < $store[($this->id)-1]['boxes_count'])
+        {
+            return true;
+        }
+        else return false;
+    }
 }

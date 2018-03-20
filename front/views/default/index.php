@@ -28,7 +28,7 @@ use yii\helpers\Html;
                                 <span class="boxes">12</span>
                             </div>
                         </div>
-                        <button class="btn button-more">Подробнее</button>
+                        <button class="btn button button-more">Подробнее</button>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ use yii\helpers\Html;
                             <div class="order-form">
                                 <input type="text" class="form-control number"
                                        placeholder="Введите номер накладной">
-                                <button class="btn button-get-orders">Отследить</button>
+                                <button class="btn button button-get-orders">Отследить</button>
                             </div>
                         </div>
                     </div>

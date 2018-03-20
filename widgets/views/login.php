@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii\bootstrap\Modal;
+//use yii\bootstrap\Modal;
+use app\widgets\CustomModal;
 
 $script = <<< JS
     $( "#registration" ).click(function() {
@@ -22,39 +23,50 @@ $this->registerJs($script, yii\web\View::POS_READY)
 /**
  * Auth
  */
-Modal::begin([
-    'headerOptions' => ['style' => 'display:none;'],
+CustomModal::begin([
+    //'header' => null,
     'id' => 'login-modal',
-    'class' => '',
+    //'class' => '',
 ]);
 ?>
-<div class="row">
+<div class="row equal">
     <!------------------------------------Авторизация -------------------------------------------------------------->
     <div id="auth">
-        <div class="col-md-8">
+        <div class="col-md-8 main">
+
+            <h1 class="title">Вход</h1>
+
+            <div class="content">
             <?php $form = ActiveForm::begin([
                 'id' => 'login-form',
                 'enableAjaxValidation' => true,
                 'action' => ['/user/login']
 
             ]);
-            echo $form->field($model, 'login')->textInput();
-            echo $form->field($model, 'password')->passwordInput();
-            echo $form->field($model, 'rememberMe')->checkbox();
             ?>
+                <?php
+            echo $form->field($model, 'login')->textInput(['placeholder' => $model->getAttributeLabel('login')])->label(false);
+            echo $form->field($model, 'password')->passwordInput(['placeholder' => $model->getAttributeLabel('password')])->label(false);
+            ?>
+            </div>
 
-            <div class="form-group">
+            <div class="form-group text-right">
                 <?= Html::submitButton(
-                    Yii::t('user', 'Sign in'),
-                    ['class' => 'btn btn-primary btn-block', 'tabindex' => '4']
+                    'Войти',
+                    ['class' => 'btn button button-enter', 'tabindex' => '4']
                 ) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
         </div>
 
-        <div class="col-md-4" style="background: black;  ">
-            <? echo Html::a('Registration', null, ['class' => 'btn btn-primary', 'name' => 'Registration-button', 'id' => 'registration']); ?>
+        <div class="col-md-4 sub">
+            <h2 class="title">Вы у нас в первый раз?</h2>
+            <div class="content">
+                <p>Зарегистрируйтесь на нашем сайте и получите уникальную возможность делать оптовые закупки для своей
+                    компании.</p>
+            </div>
+            <? echo Html::a('Регистрация', null, ['class' => 'btn button-bordered', 'name' => 'Registration-button', 'id' => 'registration']); ?>
         </div>
 
     </div>
@@ -86,5 +98,5 @@ Modal::begin([
     </div>
 
 </div>
-<? Modal::end(); ?>
+<? CustomModal::end(); ?>
 

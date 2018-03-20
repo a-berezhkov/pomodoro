@@ -50,7 +50,7 @@ $countPerRow = 4; //Количество колонок в одной строк
                     <div class="col-md-6 special-col">
                         <?= Html::button('В коризину',
                             [
-                                    'class' => 'btn button-busket',
+                                    'class' => 'btn button button-basket',
                                     'item-id' => $suggest->id,
                                     'item-name' => $suggest->name,
                                     'item-box_price' => $suggest->box_price,

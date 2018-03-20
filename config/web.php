@@ -169,6 +169,15 @@ $config = [
 		],
 		'admin'        => [
 			'class' => 'app\admin\Admin',
+            'as access' => [
+                             'class' => 'yii\filters\AccessControl',
+                             'rules' => [
+                                 [
+                                     'allow' => true,
+                                     'roles' => ['@'] // all auth users
+                                 ],
+                             ]
+            ],
 		],
 		'gridview'     => [
 			'class' => '\kartik\grid\Module',

@@ -32,4 +32,9 @@ class DefaultController extends Controller
     public function actionError(){
         return $this->render('error');
     }
+
+    public function actionDashboard()
+    {
+        return $this->render('dashboard');
+    }
 }

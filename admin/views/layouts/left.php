@@ -47,6 +47,8 @@
 
                     ['label' => 'Управление баннерами', 'icon' => 'image', 'url' => ['/admin/partners/index'],'visible' =>
                         Yii::$app->user->can('admin')],
+                    ['label' => Yii::t('app','Managing slides'), 'icon' => 'camera-retro', 'url' => ['/admin/slider/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
                     ['label' => 'Управление пользователями', 'icon' => 'users', 'url' => ['/user/admin'],'visible' =>
                         Yii::$app->user->can('admin')],
                     Yii::$app->user->isGuest ?

@@ -4,12 +4,12 @@
  */
 
 // TODO Передавать домашний адрес
-home = window.location.pathname;
+home = window.location.hostname;
 
 $('#shopping-basket' ).click(function() {
 $.ajax({
     type: "POST",
-    url: home + "/cart/cart"
+    url: home+"/web/front/cart/cart"
 }).done(function (data) {
     if (data !== false) {
         console.log(data);
@@ -22,11 +22,11 @@ $.ajax({
 })
 ;
 
-$(".button-busket").click(function () {
+$(".button-basket").click(function () {
 
     $.ajax({
         type: "POST",
-        url: home + "/cart/add",
+        url: home+'/web/front/cart/add',
         data: {
             id: $(this).attr('item-id'),
             item_name: $(this).attr('item-name'),

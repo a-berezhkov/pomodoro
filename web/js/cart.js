@@ -4,7 +4,7 @@
  */
 
 // TODO Передавать домашний адрес
-home = 'http://localhost/labin/2018_senior-pomidor/web/front';
+home = window.location.pathname;
 
 $('#shopping-basket' ).click(function() {
 $.ajax({

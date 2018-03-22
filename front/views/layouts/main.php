@@ -50,7 +50,11 @@ FrontAsset::register($this);
                         ['label' => 'Магазин', 'url' => ['#']],
                         ['label' => 'Доставка', 'url' => ['#']],
                         ['label' => 'Контакты', 'url' => ['#']],
-                        ['label' => 'Личный кабинет', 'url' => ['/user/settings/profile']],
+                        \Yii::$app->user->isGuest ? (['label' => 'Личный кабинет', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
+                            'label' => 'Личный кабинет',
+                            'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),
+                            'template' => '<a href="{url}" data-method="post">{label}</a>'
+                        ])
                     ];
 
                     echo Menu::widget([

@@ -4,6 +4,7 @@ namespace app\front\controllers;
 
 use app\front\models\Categories;
 use app\front\models\Store;
+use app\front\models\StoreSearch;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use app\front\models\fPartners;
@@ -42,7 +43,20 @@ class DefaultController extends Controller
      */
     public function actionSingleStoreView($id){
         $storeItem = Store::findOne(['id'=>$id]);
-        return $this->render('view-store-item',['item'=>$storeItem]);
+        $searchModel = new StoreSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $dataProvider->pagination =  [
+            'pageSize' => 4,
+        ];
+
+        return $this->render('view-store-item',[
+            'item'=>$storeItem,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionShop(){
 
     }
 }

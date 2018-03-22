@@ -36,6 +36,7 @@ $(".button-basket").click(function () {
             item_box_weight: $(this).attr('item-box_weight'),
             item_discount_box_price: $(this).attr('item-discount_box_price'),
             item_image_link: $(this).attr('item-image_link'),
+            is_sale: $(this).attr('item-is_sale')
 
         }
     }).done(function (data) {

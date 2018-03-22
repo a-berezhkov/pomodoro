@@ -65,7 +65,7 @@ class SliderController extends Controller
     public function actionCreate()
     {
         $model = new aSlider();
-
+        $model->order = aSlider::find()->select('`order`')->max('`order`');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

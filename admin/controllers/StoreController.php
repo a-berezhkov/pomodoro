@@ -8,6 +8,7 @@ use app\front\models\StoreSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 //test comment
 //test comment by Ziablik
@@ -125,5 +126,15 @@ class StoreController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    /**
+     * @param $id
+     * @return Store
+     * @throws NotFoundHttpException
+     */
+    public function actionGetAjaxItem($id){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        return $this->findModel($id);
     }
 }

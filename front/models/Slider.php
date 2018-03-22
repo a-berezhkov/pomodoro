@@ -35,7 +35,7 @@ class Slider extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title','image_id'], 'required'],
             [['image_id', 'order', 'store_id'], 'integer'],
             [['title', 'desc', 'button_url'], 'string', 'max' => 255],
             [['image_id'], 'exist', 'skipOnError' => true, 'targetClass' => ImageManager::className(), 'targetAttribute' => ['image_id' => 'id']],

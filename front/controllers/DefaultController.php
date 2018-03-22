@@ -34,4 +34,15 @@ class DefaultController extends Controller
         $partners = fPartners::getAll();
         VarDumper::dump($partners, 10, true);
     }
+
+    /**
+     * Действие просмотра одного товара
+     * @param $id
+     * @return string
+     */
+    public function actionSingleStoreView($id){
+        $storeItem = Store::findOne(['id'=>$id]);
+        return $this->render('view-store-item',['item'=>$storeItem]);
+
+    }
 }

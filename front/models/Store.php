@@ -2,7 +2,7 @@
 
 namespace app\front\models;
 
-use app\models\Profile;
+use app\front\models\user\Profile;
 use app\front\models\User;
 use noam148\imagemanager\models\ImageManager;
 use Yii;
@@ -159,6 +159,6 @@ class Store extends \yii\db\ActiveRecord
 	 */
 	public function getProfile()
 	{
-		return $this->hasOne(\app\front\models\Profile::className(), ['user_id' => 'updated_by']);
+		return $this->hasOne(Profile::className(), ['user_id' => 'updated_by']);
 	}
 }

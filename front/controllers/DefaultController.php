@@ -4,6 +4,7 @@ namespace app\front\controllers;
 
 use app\front\models\Categories;
 use app\front\models\Store;
+use app\front\models\StoreSearch;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use app\front\models\fPartners;
@@ -33,5 +34,42 @@ class DefaultController extends Controller
     {
         $partners = fPartners::getAll();
         VarDumper::dump($partners, 10, true);
+    }
+
+    /**
+     * Действие просмотра одного товара
+     * @param $id
+     * @return string
+     */
+    public function actionSingleStoreView($id){
+        $storeItem = Store::findOne(['id'=>$id]);
+        $searchModel = new StoreSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $dataProvider->pagination =  [
+            'pageSize' => 4,
+        ];
+
+        return $this->render('view-store-item',[
+            'item'=>$storeItem,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionShop(){
+        $searchModel = new StoreSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $hotDataProvider = $dataProvider;
+        $hotDataProvider->pagination =  [
+            'pageSize' => 4,
+        ];
+        $hotDataProvider->query->where(['is_sale'=>true]);
+
+        return $this->render('shop',[
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'hotDataProvider' => $hotDataProvider,
+        ]);
+
     }
 }

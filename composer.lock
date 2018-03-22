@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "499bb5ac55d89cc7bb878df0e79ce235",
+    "content-hash": "751fe373df6ddcb5d454917a9405d27d",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -2157,6 +2157,46 @@
             "time": "2017-01-06T23:35:14+00:00"
         },
         {
+            "name": "mranger/yii2-load-more-pager",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MrAnger/yii2-load-more-pager.git",
+                "reference": "d9a968b9fd2d832cc989fc6bfcc2e4abe4cc16e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MrAnger/yii2-load-more-pager/zipball/d9a968b9fd2d832cc989fc6bfcc2e4abe4cc16e0",
+                "reference": "d9a968b9fd2d832cc989fc6bfcc2e4abe4cc16e0",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "mranger\\load_more_pager\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "MrAnger",
+                    "email": "slava.sharapov1992@gmail.com"
+                }
+            ],
+            "description": "Yii2 widget pagination looking like it is \"Load more\" button.",
+            "keywords": [
+                "button",
+                "load more",
+                "pagination",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-11-02T16:59:45+00:00"
+        },
+        {
             "name": "noam148/yii2-image-manager",
             "version": "1.2.9",
             "source": {
@@ -2305,16 +2345,16 @@
         },
         {
             "name": "studio-42/elfinder",
-            "version": "2.1.33",
+            "version": "2.1.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "2d3a31f70e3c817417913ab54035717f26e3efce"
+                "reference": "e81438beb745bf1171bc6f01843265da9ba37756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/2d3a31f70e3c817417913ab54035717f26e3efce",
-                "reference": "2d3a31f70e3c817417913ab54035717f26e3efce",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/e81438beb745bf1171bc6f01843265da9ba37756",
+                "reference": "e81438beb745bf1171bc6f01843265da9ba37756",
                 "shasum": ""
             },
             "require": {
@@ -2359,7 +2399,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2018-03-14T08:59:23+00:00"
+            "time": "2018-03-18T05:59:56+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3039,16 +3079,16 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "7.0.4",
+            "version": "7.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "635b5b94fe1ec153dcae74f3aa6b24b02891d1c4"
+                "reference": "42c8fdbf301ee36f6b58cb154972f9148fdcb7d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/635b5b94fe1ec153dcae74f3aa6b24b02891d1c4",
-                "reference": "635b5b94fe1ec153dcae74f3aa6b24b02891d1c4",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/42c8fdbf301ee36f6b58cb154972f9148fdcb7d4",
+                "reference": "42c8fdbf301ee36f6b58cb154972f9148fdcb7d4",
                 "shasum": ""
             },
             "require": {
@@ -3078,7 +3118,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-03-13T02:44:28+00:00"
+            "time": "2018-03-16T10:18:33+00:00"
         },
         {
             "name": "codeception/specify",

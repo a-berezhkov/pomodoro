@@ -49,7 +49,7 @@ use yii\helpers\Html;
 
             <div class="col-md-8">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <?= $this->render('_slider'); ?>
+                    <?= $this->render('slider/_slider'); ?>
                 </div>
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>

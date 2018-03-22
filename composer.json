@@ -26,7 +26,8 @@
         "kartik-v/yii2-widgets": "*",
         "2amigos/yii2-chartjs-widget": "~2.0",
         "noam148/yii2-image-manager": "*",
-        "mihaildev/yii2-elfinder": "*"
+        "mihaildev/yii2-elfinder": "*",
+        "mranger/yii2-load-more-pager": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

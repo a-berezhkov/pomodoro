@@ -57,6 +57,8 @@ $countPerRow = 4; //Количество колонок в одной строк
                                     'item-box_weight' => $suggest->box_weight,
                                     'item-discount_box_price' => $suggest->discount_box_price,
                                     'item-image_link' => \Yii::$app->imagemanager->getImagePath($suggest->logo_id, '440', '190', 'inset'),
+                                    'item-is_sale' => $suggest->is_sale,
+
                             ])
                         ?>
 

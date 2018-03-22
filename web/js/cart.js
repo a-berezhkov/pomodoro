@@ -1,24 +1,26 @@
-
 /**
  * Функция отображает корзину, если в ней есть товары
  */
 
 // TODO Передавать домашний адрес
-home = window.location.hostname;
+//var home = window.location.host;
+//console.log(home);
 
-$('#shopping-basket' ).click(function() {
-$.ajax({
-    type: "POST",
-    url: home+"/web/front/cart/cart"
-}).done(function (data) {
-    if (data !== false) {
-        console.log(data);
-        $('#cart-stores').show().html(data);
-    }
+$('#shopping-basket').click(function () {
+    $.ajax({
+        type: "POST",
+        url: "/web/front/cart/cart"
+    }).done(function (data) {
+        if (data !== false) {
+            console.log(data);
+            $('#cart-stores').html(data);
+        } else {
+            $('#cart-stores').html('В коризне пока пусто =(. Но здесь могла бы быть ваша реклама');
+        }
 
-}).fail(function (jqXHR, textStatus) {
-    alert("Request failed: " + textStatus);
-});
+    }).fail(function (jqXHR, textStatus) {
+            console.log('Не удалось получить информацию о корзине от сервера =(')
+    });
 })
 ;
 
@@ -26,7 +28,7 @@ $(".button-basket").click(function () {
 
     $.ajax({
         type: "POST",
-        url: home+'/web/front/cart/add',
+        url: '/web/front/cart/add',
         data: {
             id: $(this).attr('item-id'),
             item_name: $(this).attr('item-name'),
@@ -34,6 +36,7 @@ $(".button-basket").click(function () {
             item_box_weight: $(this).attr('item-box_weight'),
             item_discount_box_price: $(this).attr('item-discount_box_price'),
             item_image_link: $(this).attr('item-image_link'),
+            is_sale: $(this).attr('item-is_sale')
 
         }
     }).done(function (data) {

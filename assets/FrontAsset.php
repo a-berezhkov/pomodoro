@@ -31,7 +31,9 @@ class FrontAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'rmrevin\yii\fontawesome\AssetBundle'
+        'rmrevin\yii\fontawesome\AssetBundle',
+        'yii\bootstrap\BootstrapPluginAsset',
+
         //'yii\web\YiiAsset',
     ];
 }

@@ -57,6 +57,19 @@ class DefaultController extends Controller
     }
 
     public function actionShop(){
+        $searchModel = new StoreSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $hotDataProvider = $dataProvider;
+        $hotDataProvider->pagination =  [
+            'pageSize' => 4,
+        ];
+        $hotDataProvider->query->where(['is_sale'=>true]);
+
+        return $this->render('shop',[
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'hotDataProvider' => $hotDataProvider,
+        ]);
 
     }
 }

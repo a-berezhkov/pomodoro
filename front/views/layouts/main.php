@@ -47,7 +47,7 @@ FrontAsset::register($this);
 
                     // Right side menu
                     $right_menu_items = [
-                        ['label' => 'Магазин', 'url' => ['#']],
+                        ['label' => 'Магазин', 'url' => ['/front/default/shop']],
                         ['label' => 'Доставка', 'url' => ['#']],
                         ['label' => 'Контакты', 'url' => ['#']],
                         \Yii::$app->user->isGuest ? (['label' => 'Личный кабинет', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([

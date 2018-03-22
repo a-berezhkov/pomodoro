@@ -21,12 +21,12 @@ $user = Yii::$app->user->identity;
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">
-            <?= Html::img($user->profile->getAvatarUrl(48), [
-                'class' => 'img-rounded',
-                'alt' => $user->username,
-                'width'=>48,
-                'height'=>48,
-            ]) ?>
+<!--            --><?//= Html::img($user->profile->getAvatarUrl(48), [
+//                'class' => 'img-rounded',
+//                'alt' => $user->username,
+//                'width'=>48,
+//                'height'=>48,
+//            ]) ?>
             <?= $user->username ?>
         </h3>
     </div>

@@ -110,9 +110,13 @@ class CartController extends Controller
             }
         } else {
             $items = $_SESSION['store'];
-            return $this->render('cart',['items'=>$items]);
+            return $this->render('/user/cart',['items'=>$items]);
         }
     }
+    public function actionDelivery(){
+        return $this->render('/user/delivery',['items'=>$items]);
+    }
+
 
     /**
      *

@@ -3,11 +3,12 @@
 namespace app\front\controllers;
 
 use app\front\models\Categories;
+use app\front\models\fPartners;
 use app\front\models\Store;
 use app\front\models\StoreSearch;
+use yii\data\ActiveDataProvider;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
-use app\front\models\fPartners;
 
 /**
  * Default controller for the `front` module
@@ -21,11 +22,11 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $categories = Categories::find()->all();
-        $suggests = Store::find()->where(['is_active' => true, 'is_sale' => true])->all();
+        $suggests   = Store::find()->where(['is_active' => true, 'is_sale' => true])->all();
         return $this->render('index',
             [
                 'categories' => $categories,
-                'suggests' => $suggests
+                'suggests'   => $suggests,
             ]
         );
     }
@@ -41,34 +42,41 @@ class DefaultController extends Controller
      * @param $id
      * @return string
      */
-    public function actionSingleStoreView($id){
-        $storeItem = Store::findOne(['id'=>$id]);
-        $searchModel = new StoreSearch();
-        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-        $dataProvider->pagination =  [
+    public function actionSingleStoreView($id)
+    {
+        $storeItem                = Store::findOne(['id' => $id]);
+        $searchModel              = new StoreSearch();
+        $dataProvider             = $searchModel->search(\Yii::$app->request->queryParams);
+        $dataProvider->pagination = [
             'pageSize' => 4,
         ];
 
-        return $this->render('view-store-item',[
-            'item'=>$storeItem,
-            'searchModel' => $searchModel,
+        return $this->render('view-store-item', [
+            'item'         => $storeItem,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
-    public function actionShop(){
-        $searchModel = new StoreSearch();
+    public function actionShop()
+    {
+        $searchModel  = new StoreSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-        $hotDataProvider = $dataProvider;
-        $hotDataProvider->pagination =  [
-            'pageSize' => 4,
-        ];
-        $hotDataProvider->query->where(['is_sale'=>true]);
 
-        return $this->render('shop',[
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'hotDataProvider' => $hotDataProvider,
+
+        $hotDataProvider = new ActiveDataProvider(
+            [
+                'query'      => Store::find()->where(['is_sale' => true]),
+                'pagination' => [
+                    'pageSize' => 4,
+                ],
+            ]
+        );
+
+        return $this->render('shop', [
+            'searchModel'     => $searchModel,
+            'dataProvider'    => $dataProvider,
+            'hotDataProvider' => $dataProvider,
         ]);
 
     }

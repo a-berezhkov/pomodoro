@@ -66,9 +66,10 @@ use yii\widgets\ListView;
 
             </div>
         </div>
+        <? \yii\widgets\Pjax::begin() ?>
         <div class="row">
             <div class="col-md-4">
-
+                    <?// \yii\helpers\VarDumper::dump($dataProvider->query->all(),10,true) ?>
                 <?= $this->render('store/_shop_search', ['model' => $searchModel]);  ?>
             </div>
             <div class="col-md-4">
@@ -77,5 +78,6 @@ use yii\widgets\ListView;
 
                     'itemView' => 'store/_shop_items',
                 ]); ?>
-            </div>
-        </div>
+                </div>
+          </div>
+<? \yii\widgets\Pjax::end() ?>

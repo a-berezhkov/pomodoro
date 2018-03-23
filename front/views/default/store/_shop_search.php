@@ -33,8 +33,17 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'logo_id') ?>
 
     <?php // echo $form->field($model, 'country_id') ?>
+    <?
+    $categories = \app\front\models\Categories::find()->all();
+    foreach ($categories as $category) {
+        echo Html::a($category->name,\yii\helpers\Url::to(['/front/default/shop', 'StoreSearch[category_id]'=>
+        $category->id]),['name'=>'StoreSearch[category_id]',
+                                                                         'value'=>$category->id,'onclick' => '$( "form" ).submit();' ]);
+    }
 
-    <?php // echo $form->field($model, 'category_id') ?>
+
+    ?>
+
 
     <?php // echo $form->field($model, 'is_sale') ?>
 

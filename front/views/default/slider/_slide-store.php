@@ -26,7 +26,8 @@ use yii\helpers\Url;
             </div>
         </div>
         <!-- TODO  изменить button на href  -->
-        <button href="<?= Url::toRoute(['/front/default/single-store-view', 'id' => $slide->store->id]) ?>"
+        <button  onclick="location.href='<?= Url::toRoute(['/front/default/single-store-view', 'id' =>
+            $slide->store->id]) ?>';"
                 class="btn button button-more">Подробнее
         </button>
     </div>

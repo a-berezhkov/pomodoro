@@ -1,0 +1,31 @@
+#cart-stores {
+  margin-top: 20px;
+  border: 1px solid #000;
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: -19px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 18px 19px 18px;
+    border-color: transparent transparent #ffffff transparent;
+    z-index: 9999;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: 23px;
+    top: -21px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 21px 20px;
+    border-color: transparent transparent #000000 transparent;
+    z-index: 1;
+  }
+}
+

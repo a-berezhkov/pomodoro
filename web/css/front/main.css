@@ -236,6 +236,32 @@ a.button-bordered {
   left: -6px;
   font-size: 0.6875rem; }
 
+#cart-stores {
+  margin-top: 20px;
+  border: 1px solid #000; }
+  #cart-stores:before {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: -19px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 18px 19px 18px;
+    border-color: transparent transparent #ffffff transparent;
+    z-index: 9999; }
+  #cart-stores:after {
+    content: "";
+    position: absolute;
+    right: 23px;
+    top: -21px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 21px 20px;
+    border-color: transparent transparent #000000 transparent;
+    z-index: 1; }
+
 footer.footer {
   background: #000;
   padding: 50px 0;
@@ -426,5 +452,3 @@ header.header {
 
 header {
   background: #fff; }
-
-/*# sourceMappingURL=main.css.map */

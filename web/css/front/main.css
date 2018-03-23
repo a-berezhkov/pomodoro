@@ -20,6 +20,9 @@ h2.section-title {
   font-size: 1.75rem;
   font-weight: 500; }
 
+.page {
+  margin-bottom: 2%; }
+
 .category {
   overflow: hidden;
   position: relative; }
@@ -472,11 +475,9 @@ footer.footer {
         border: 1px solid #000;
         display: inline-block; }
 
-.front-partners {
-  margin: 20px 0; }
-  .front-partners .partner {
-    height: 150px;
-    background: url(../../img/DHL_Express.png) no-repeat 50%; }
+.front-partners .partner {
+  height: 150px;
+  background: url(../../img/DHL_Express.png) no-repeat 50%; }
 
 header.header {
   background: #fff; }
@@ -507,17 +508,15 @@ header.header {
           text-transform: uppercase;
           font-size: 0.75rem; }
 
-.shop .welcome {
+.page-shop .welcome {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../img/hiw.jpg);
   height: 400px;
   padding: 30px;
   color: #fff;
   font-size: 0.875rem;
   font-weight: 500; }
-  .shop .welcome h1.title {
+  .page-shop .welcome h1.title {
     margin-top: 0; }
 
 header {
   background: #fff; }
-
-/*# sourceMappingURL=main.css.map */

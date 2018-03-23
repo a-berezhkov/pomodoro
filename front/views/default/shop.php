@@ -4,7 +4,7 @@ use yii\widgets\ListView;
 
 ?>
 
-<div class="shop">
+<div class="page page-shop">
     <div class="banners">
         <div class="row">
             <div class="col-md-4">
@@ -49,17 +49,18 @@ use yii\widgets\ListView;
 
         <? \yii\widgets\Pjax::begin() ?>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <? // \yii\helpers\VarDumper::dump($dataProvider->query->all(),10,true) ?>
                 <?= $this->render('store/_shop_search', ['model' => $searchModel]); ?>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-9">
                 <div class="row">
                     <?= ListView::widget([
                         'dataProvider' => $dataProvider,
 
                         'itemView' => 'store/_shop_items',
-                        'itemOptions' => ['class' => 'col-md-3']
+                        'itemOptions' => ['class' => 'col-md-4'],
+                        'options' => ['class' => 'products-grid']
                     ]); ?>
                 </div>
             </div>

@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 ?>
 
-<div class="front-default-index">
+<div class="page page-index">
     <div class="banners">
         <div class="row">
 

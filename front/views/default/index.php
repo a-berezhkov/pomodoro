@@ -47,8 +47,8 @@ use yii\helpers\Html;
         ?>
 
     </div>
-    <div class="front-hot">
-        <h2 class="title text-center">Горячие предложения</h2>
+    <div class="products-grid">
+        <h2 class="section-title text-center">Горячие предложения</h2>
         <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В
             статье
             представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в

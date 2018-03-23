@@ -29,31 +29,24 @@ use yii\widgets\ListView;
                 <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
-                </a>a
+                </a>
             </div>
         </div>
     </div>
 
 
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-8">
+    <div class="products-grid">
+        <h2 class="section-title text-center">Горячие предложения</h2>
+        <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в соответствии с какой-нибудь классической теорией. </p>
 
-        </div>
+        <?= $this->render('store/recommendation', ['dataProvider' => $hotDataProvider]) ?>
 
-        <div class="row">
-            <div class="col-md-12">
-                Горячие предложения
-                <?= $this->render('store/recommendation', ['dataProvider' => $hotDataProvider]) ?>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                Основной ассортимент
+    </div>
 
-            </div>
-        </div>
+    <div class="assortment">
+        <h2 class="section-title text-center">Основной ассортимент</h2>
+        <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в соответствии с какой-нибудь классической теорией. </p>
+
         <? \yii\widgets\Pjax::begin() ?>
         <div class="row">
             <div class="col-md-4">
@@ -71,8 +64,9 @@ use yii\widgets\ListView;
                 </div>
             </div>
         </div>
+
+        <? \yii\widgets\Pjax::end() ?>
+
+
     </div>
 </div>
-<? \yii\widgets\Pjax::end() ?>
-
-

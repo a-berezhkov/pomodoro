@@ -62,7 +62,7 @@ class DefaultController extends Controller
     {
         $searchModel  = new StoreSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-        $dataProvider->query->where(['is_sale' => false]);
+        $dataProvider->query->andWhere(['is_sale' => false]);
 
 
 

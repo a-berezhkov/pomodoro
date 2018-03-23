@@ -115,6 +115,7 @@ class CartController extends Controller
         }
     }
     public function actionDelivery(){
+        isset($_SESSION['store']) ? $items = $_SESSION['store'] : $items= [];
         return $this->render('/user/delivery',['items'=>$items]);
     }
 

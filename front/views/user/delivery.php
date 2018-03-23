@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-9">
         <div class="row">
             <div class="col-md-12">
-                <?= $this->render('_top_menu',['delivery'=>'active', ]) ?>
+                <?= $this->render('_top_menu',['delivery'=>'active','cart'=>'active' ]) ?>
             </div>
         </div>
         <?  ActiveForm::begin() ?>

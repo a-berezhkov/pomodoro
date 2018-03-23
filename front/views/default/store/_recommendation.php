@@ -49,6 +49,7 @@ use yii\helpers\Html;
                             'item-box_weight' => $model->box_weight,
                             'item-discount_box_price' => $model->discount_box_price,
                             'item-image_link' => \Yii::$app->imagemanager->getImagePath($model->logo_id, '440', '190', 'inset'),
+                            'item-is_sale' => $model->is_sale,
                         ])
                     ?>
 

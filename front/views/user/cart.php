@@ -61,9 +61,11 @@ $items == NULL ? $items = [] : $items;
                 </div>
             <?php endif; ?>
         <? endforeach ?>
-        Промежуьлчный итог: <?= $summaDiscount = $item['data']['item_discount_box_price'] * $item['count'] ?>
+        <? if (isset($item)) : ?>
+        Промежуточнный итог: <?= $summaDiscount = $item['data']['item_discount_box_price'] * $item['count'] ?>
         Количество упаковок: <?= $countDiscountBox ?>
         Общий вес (нетто): <?= $countDiscountWeight ?>
+        <? endif; ?>
         <h2>Стандартные товары</h2>
         <? foreach ($items as $item) : ?>
             <? $countBox += $item['count']; ?>
@@ -79,7 +81,7 @@ $items == NULL ? $items = [] : $items;
                             <?= Html::img($item['data']['item_image_link']); ?>
                         </div>
                         <div class="col-md-3">
-                            <?= $item['data']['name'] ?>
+                            <?= $item['data']['item_name'] ?>
                         </div>
                         <div class="col-md-2">
                             <?= $item['count'] ?>

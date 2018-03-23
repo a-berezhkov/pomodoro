@@ -27,7 +27,7 @@ $user = Yii::$app->user->identity;
 //                'width'=>48,
 //                'height'=>48,
 //            ]) ?>
-            <?= $user->username ?>
+            <?// $user->username ?>
         </h3>
     </div>
     <div class="panel-body">

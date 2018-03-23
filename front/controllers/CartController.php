@@ -109,7 +109,8 @@ class CartController extends Controller
                 return false;
             }
         } else {
-            $items = $_SESSION['store'];
+            isset($_SESSION['store']) ? $items = $_SESSION['store'] : $items= [];
+
             return $this->render('/user/cart',['items'=>$items]);
         }
     }

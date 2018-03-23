@@ -45,7 +45,7 @@ $items == NULL ? $items = [] : $items;
                             <?= Html::img($item['data']['item_image_link']); ?>
                         </div>
                         <div class="col-md-3">
-                            <?= $item['data']['name'] ?>
+                            <?= $item['data']['item_name'] ?>
                         </div>
                         <div class="col-md-2">
                             <?= $item['count']; ?>

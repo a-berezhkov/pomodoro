@@ -4,6 +4,7 @@
  */
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 $this->title                   = Yii::t('user', 'Delivery');
 $this->params['breadcrumbs'][] = $this->title;
@@ -21,6 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('_top_menu',['delivery'=>'active', ]) ?>
             </div>
         </div>
+        <?  ActiveForm::begin() ?>
+
+        <? ActiveForm::end() ?>
 
 
         <?= Html::a('Оформить',['/front/cart/delivery'],['class'=>' btn btn-primary','disabled' => true]) ?>

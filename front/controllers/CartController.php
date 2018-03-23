@@ -62,10 +62,10 @@ class CartController extends Controller
 
 
                 // Если товар уже есть в сесии увеличиваем его количствео на 1
-                if (isset($_SESSION['store'][$id_store])) {
+                if (isset($_SESSION['store'][$id_store]['count'])) {
                     $_SESSION['store'][$id_store]['count']++;
                 } else {
-                    $_SESSION['store'][$id_store]['count'] = 0;
+                    $_SESSION['store'][$id_store]['count'] = 1;
                 }
 
                 $session->close();

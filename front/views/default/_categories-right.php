@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * @var $category \app\front\models\Categories
@@ -10,7 +11,7 @@ use yii\helpers\Html;
 
 <? foreach ($categories as $category) : ?>
     <? if ($category->position == 'right'): ?>
-
+    <a href ="<?= Url::to(['/front/default/shop','StoreSearch[category_id]'=>$category->id])?>">
         <div class="category category-right">
             <div class="details">
                 <div class="category-icon <?= $category->icon ?>"></div>
@@ -18,6 +19,6 @@ use yii\helpers\Html;
             </div>
             <?= Html::img(\Yii::$app->imagemanager->getImagePath($category->image_id, '440', '190', 'inset')); ?>
         </div>
-
+    </a>
     <?php endif; ?>
 <?php endforeach; ?>

@@ -77,7 +77,7 @@ class DefaultController extends Controller
         return $this->render('shop', [
             'searchModel'     => $searchModel,
             'dataProvider'    => $dataProvider,
-            'hotDataProvider' => $dataProvider,
+            'hotDataProvider' => $hotDataProvider,
         ]);
 
     }

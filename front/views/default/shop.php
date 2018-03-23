@@ -72,12 +72,15 @@ use yii\widgets\ListView;
                     <?// \yii\helpers\VarDumper::dump($dataProvider->query->all(),10,true) ?>
                 <?= $this->render('store/_shop_search', ['model' => $searchModel]);  ?>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
+                <div class="row">
                 <?= ListView::widget([
                     'dataProvider' => $dataProvider,
 
                     'itemView' => 'store/_shop_items',
+                    'itemOptions' => ['class'=>'col-md-3']
                 ]); ?>
+                </div>
                 </div>
           </div>
 <? \yii\widgets\Pjax::end() ?>

@@ -64,6 +64,7 @@ class DefaultController extends Controller
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
 
+
         $hotDataProvider = new ActiveDataProvider(
             [
                 'query'      => Store::find()->where(['is_sale' => true]),

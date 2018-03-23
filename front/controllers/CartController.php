@@ -9,6 +9,7 @@
 namespace app\front\controllers;
 
 
+use app\front\models\Orders;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -115,8 +116,8 @@ class CartController extends Controller
         }
     }
     public function actionDelivery(){
-        isset($_SESSION['store']) ? $items = $_SESSION['store'] : $items= [];
-        return $this->render('/user/delivery',['items'=>$items]);
+        $model = new Orders();
+        return $this->render('/user/delivery',['model'=>$model]);
     }
 
 

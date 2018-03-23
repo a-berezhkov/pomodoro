@@ -13,6 +13,7 @@ use Yii;
  * @property string $address_house Дом
  * @property string $address_housing Корпус
  * @property string $address_office
+ * @property string $address_phone
  * @property string $delivery_date Дата доставки
  * @property string $delivery_interval Интервал доставки
  * @property int $delivery_status
@@ -20,6 +21,7 @@ use Yii;
  * @property string $created_by
  * @property int $dropping
  * @property string $dropping_at
+ * @property string $unique_code
  *
  * @property OrdersStatus $deliveryStatus
  * @property OrdersHasCart[] $ordersHasCarts
@@ -44,7 +46,10 @@ class Orders extends \yii\db\ActiveRecord
             [['delivery_date', 'created_at', 'created_by', 'dropping_at'], 'safe'],
             [['delivery_status'], 'integer'],
             [['address_city', 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval'], 'string', 'max' => 255],
+            [['address_phone'], 'string', 'max' => 20],
             [['dropping'], 'string', 'max' => 1],
+            [['unique_code'], 'string', 'max' => 50],
+            [['unique_code'], 'unique'],
             [['delivery_status'], 'exist', 'skipOnError' => true, 'targetClass' => OrdersStatus::className(), 'targetAttribute' => ['delivery_status' => 'id']],
         ];
     }
@@ -61,6 +66,7 @@ class Orders extends \yii\db\ActiveRecord
             'address_house' => 'Address House',
             'address_housing' => 'Address Housing',
             'address_office' => 'Address Office',
+            'address_phone' => 'Address Phone',
             'delivery_date' => 'Delivery Date',
             'delivery_interval' => 'Delivery Interval',
             'delivery_status' => 'Delivery Status',
@@ -68,6 +74,7 @@ class Orders extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
             'dropping' => 'Dropping',
             'dropping_at' => 'Dropping At',
+            'unique_code' => 'Unique Code',
         ];
     }
 

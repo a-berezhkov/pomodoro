@@ -38,7 +38,8 @@ $this->registerJs($script, yii\web\View::POS_READY);
         <div class="col-md-6">
 
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'title')->hiddenInput(['id' => 'aslider-title-hidden'])->label(false) ?>
+            <?= $form->field($model, 'title')->hiddenInput(['id' => 'aslider-title-hidden'])->label(false)->error
+            (false) ?>
 
             <?= $form->field($model, 'image_id')->widget(\noam148\imagemanager\components\ImageManagerInputWidget::className(), [
                 'aspectRatio'                  => (16 / 9), //set the aspect ratio

@@ -31,13 +31,14 @@ use yii\helpers\Url;
                     </div>
                     <div class="item-box_price">
                         <?= $price ?>
+                        ₽
                     </div>
                     <div class="item-count">
-                        <?= Yii::t('app','Amount: ') ?>
+                        <?= Yii::t('app','Количество: ') ?>
                         <?= $item['count'] ?>
                     </div>
                     <div class="item-box_weigh">
-                        <?= Yii::t('app','Weight of packing: ') ?>
+                        <?= Yii::t('app','Вес упаковки: ') ?>
                         <?= $item['data']['item_box_weight'] ?>
                     </div>
                     <div class="item-summa">
@@ -47,16 +48,16 @@ use yii\helpers\Url;
             </div>
             <hr>
         <? endforeach; ?>
-        <div id="cart-total">
-            <?= Yii::t('app','Grand total: ') ?>
+        <div id="cart-total" class="cart-total text-center">
+            <?= Yii::t('app','Общий итог: ') ?>
             <?= $total ?>
         </div>
         <?= Html::a(Yii::t('app', 'Cart'), Url::toRoute('/front/cart/cart/'), [
-            'class' => '',
+            'class' => 'btn button',
             'id'    => 'item-checkout',
         ]) ?>
         <?= Html::a(Yii::t('app', 'Checkout'), Url::toRoute('/front/cart/checkout/'), [
-            'class' => '',
+            'class' => 'btn button button-inverse',
             'id'    => 'item-checkout',
         ]) ?>
     <? endif; ?>

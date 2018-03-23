@@ -186,6 +186,73 @@ input.form-control {
 .modal-open #reg {
   display: none; }
 
+.carousel-control.right, .carousel-control.left {
+  background-image: none; }
+
+.carousel-control {
+  color: #0f0f0f; }
+
+.glyphicon-chevron-right, .glyphicon-chevron-left {
+  color: white;
+  background: black;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid white; }
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
+  width: auto;
+  height: auto; }
+
+.carousel-control .glyphicon-chevron-right {
+  right: 25%; }
+
+.carousel-control .glyphicon-chevron-left {
+  left: 25%; }
+
+.banners .product {
+  border: 1px solid #000;
+  overflow: hidden;
+  position: relative; }
+  .banners .product.main {
+    height: 400px; }
+    .banners .product.main .details {
+      background: rgba(255, 255, 255, 0.51);
+      height: 100%;
+      width: 50%;
+      top: 0;
+      padding-top: 8%;
+      border-right: 1px solid #000;
+      text-align: center; }
+      .banners .product.main .details .name {
+        font-size: 2.25rem;
+        color: #000; }
+      .banners .product.main .details .price {
+        margin-top: 20px;
+        background: #ff243f;
+        color: #fff;
+        padding: 2%;
+        font-size: 2.5rem;
+        font-weight: 500; }
+        .banners .product.main .details .price s {
+          opacity: .5; }
+      .banners .product.main .details .description {
+        margin-top: 20px;
+        font-size: 1.25rem;
+        font-weight: normal; }
+      .banners .product.main .details button {
+        margin-top: 20px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 10px 40px;
+        background: #000; }
+  .banners .product .details {
+    position: absolute; }
+  .banners .product img {
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    width: auto; }
+
 button.btn {
   border-radius: 0; }
   button.btn:hover {
@@ -311,50 +378,6 @@ footer.footer {
   footer.footer .call .number {
     font-size: 1.25rem;
     font-weight: 500; }
-
-.front-banners .product {
-  border: 1px solid #000;
-  overflow: hidden;
-  position: relative; }
-  .front-banners .product.main {
-    height: 400px; }
-    .front-banners .product.main .details {
-      background: rgba(255, 255, 255, 0.51);
-      height: 100%;
-      width: 50%;
-      top: 0;
-      padding-top: 8%;
-      border-right: 1px solid #000;
-      text-align: center; }
-      .front-banners .product.main .details .name {
-        font-size: 2.25rem;
-        color: #000; }
-      .front-banners .product.main .details .price {
-        margin-top: 20px;
-        background: #ff243f;
-        color: #fff;
-        padding: 2%;
-        font-size: 2.5rem;
-        font-weight: 500; }
-        .front-banners .product.main .details .price s {
-          opacity: .5; }
-      .front-banners .product.main .details .description {
-        margin-top: 20px;
-        font-size: 1.25rem;
-        font-weight: normal; }
-      .front-banners .product.main .details button {
-        margin-top: 20px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        padding: 10px 40px;
-        background: #000; }
-  .front-banners .product .details {
-    position: absolute; }
-  .front-banners .product img {
-    min-height: 100%;
-    min-width: 100%;
-    height: auto;
-    width: auto; }
 
 .front-hot .title {
   font-size: 1.75rem;
@@ -483,7 +506,15 @@ header.header {
           text-transform: uppercase;
           font-size: 0.75rem; }
 
+.shop .welcome {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../img/hiw.jpg);
+  height: 400px;
+  padding: 30px;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500; }
+  .shop .welcome h1.title {
+    margin-top: 0; }
+
 header {
   background: #fff; }
-
-/*# sourceMappingURL=main.css.map */

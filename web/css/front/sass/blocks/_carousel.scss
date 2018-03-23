@@ -1,0 +1,30 @@
+.carousel-control.right, .carousel-control.left {
+  background-image: none;
+}
+
+.carousel-control {
+  color: #0f0f0f;
+}
+
+.glyphicon-chevron-right, .glyphicon-chevron-left {
+  ///
+  color: white;
+  background: black;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid white;
+}
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
+  //
+  width: auto;
+  height: auto;
+}
+
+.carousel-control .glyphicon-chevron-right {
+  right: 25%;
+}
+
+.carousel-control .glyphicon-chevron-left {
+  left: 25%;
+}

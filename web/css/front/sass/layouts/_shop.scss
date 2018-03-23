@@ -1,0 +1,14 @@
+.shop {
+  .welcome {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(#{$path-image}/hiw.jpg);
+    height: 400px;
+    padding: 30px;
+    color: #fff;
+    font-size: $font-size-14px;
+    font-weight: $font-weight-normal;
+    h1.title {
+      margin-top: 0;
+    }
+  }
+}
+

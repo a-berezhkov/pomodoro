@@ -8,43 +8,9 @@ use yii\helpers\Html;
  */
 
 ?>
-<!-- TODO перенести в SCSS стили для слайдера -->
-<style>
 
-    .carousel-control.right, .carousel-control.left {
-        background-image: none;
-    }
-
-    .carousel-control {
-        color: #0f0f0f ;
-    }
-
-    .front-banners .glyphicon-chevron-right,.front-banners .glyphicon-chevron-left   {
-        /* Фон значков и цвет*/
-        color: white;
-        background: black;
-        border-radius: 50%;
-        padding: 5px;
-        border: 2px solid white;
-    }
-
-    .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
-        /*Что бы значки были круглыми */
-        width: auto;
-        height: auto;
-    }
-
-    .carousel-control .glyphicon-chevron-right {
-        right: 25%;
-    }
-    .carousel-control .glyphicon-chevron-left {
-        left: 25%;
-    }
-
-
-</style>
 <div class="front-default-index">
-    <div class="front-banners">
+    <div class="banners">
         <div class="row">
 
             <div class="col-md-8">

@@ -16,6 +16,7 @@ $('#aslider-title, #aslider-desc').change(function () {
      * и делаем поле aslider-desc неактивным
      */
     $('#aslider-desc-hidden').val($('#aslider-desc').val());
+    $('#aslider-title-hidden').val($('#aslider-title').val());
 
     /**
      * Делам поле select неактивным, так как товара с таким именем 

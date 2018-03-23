@@ -16,8 +16,8 @@ class m180323_000504_update_categories_icons_data extends Migration
         $this->update('categories', ['icon' => 'category-icon-brown category-icon-nuts'], ['id' => '2']);
         $this->update('categories', ['icon' => 'category-icon-blue category-icon-vegetables-froze'], ['id' => '3']);
         $this->update('categories', ['icon' => 'category-icon-blue category-icon-fruits-froze'], ['id' => '4']);
-        $this->update('categories', ['icon' => 'category-icon-red category-icon-vegetables'], ['id' => '6']);
-        $this->update('categories', ['icon' => 'category-icon-yellow category-icon-fruits'], ['id' => '7']);
+        $this->update('categories', ['icon' => 'category-icon-red category-icon-vegetables'], ['id' => '5']);
+        $this->update('categories', ['icon' => 'category-icon-yellow category-icon-fruits'], ['id' => '6']);
     }
 
     /**

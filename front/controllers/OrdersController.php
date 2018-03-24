@@ -57,6 +57,7 @@ class OrdersController extends Controller
                     $modelOrdersHasCart->order_id = $model->id;
                     if ($modelOrdersHasCart->save()) {
                         $store = Store::itemSell($id, $count); // списываем товар со склада
+                        $_SESSION['store'] = NULL;
                     }
                 }
             }

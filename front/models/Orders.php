@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "orders".
  *
  * @property int $id
- * @property string $address_city Город
  * @property string $address_street Улица
  * @property string $address_house Дом
  * @property string $address_housing Корпус
@@ -22,6 +21,7 @@ use Yii;
  * @property int $dropping
  * @property string $dropping_at
  * @property string $unique_code
+ * @property string $comment
  *
  * @property OrdersStatus $deliveryStatus
  * @property OrdersHasCart[] $ordersHasCarts
@@ -43,7 +43,7 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             [['address_city', 'address_street', 'address_house', 'delivery_date', 'delivery_interval'], 'required'],
-            [['delivery_date', 'created_at', 'created_by', 'dropping_at'], 'safe'],
+            [['delivery_date', 'created_at', 'created_by', 'dropping_at','comment'], 'safe'],
             [['delivery_status'], 'integer'],
             [['address_city', 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval'], 'string', 'max' => 255],
             [['address_phone'], 'string', 'max' => 20],
@@ -75,6 +75,7 @@ class Orders extends \yii\db\ActiveRecord
             'dropping' => 'Dropping',
             'dropping_at' => 'Dropping At',
             'unique_code' => 'Unique Code',
+            'comment' => 'Comment',
         ];
     }
 

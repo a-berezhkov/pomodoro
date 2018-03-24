@@ -79,7 +79,7 @@ class Store extends \yii\db\ActiveRecord
             [['desc'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 50],
-            [['is_sale', 'is_active'], 'string', 'max' => 1],
+            [['is_sale', 'is_active'], 'boolean'],
             [['logo_id'], 'exist', 'skipOnError' => true, 'targetClass' => ImageManager::className(), 'targetAttribute' => ['logo_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Countries::className(), 'targetAttribute' => ['country_id' => 'id']],
@@ -161,4 +161,21 @@ class Store extends \yii\db\ActiveRecord
 	{
 		return $this->hasOne(Profile::className(), ['user_id' => 'updated_by']);
 	}
+
+    /**
+     * @param $id
+     * @param $count
+     * @return bool|null|static
+     */
+	public static function itemSell($id, $count){
+	   $model =  self::findOne(['id'=>$id]);
+	   $model->boxes_count = $model->boxes_count-$count;
+	   if ($model->save()){
+	       return $model;
+       }
+       else {
+	       return $model->errors;
+       }
+
+}
 }

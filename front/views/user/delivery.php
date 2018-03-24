@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\JsExpression;
 use kartik\select2\Select2;
+use yii\helpers\Url;
 
 $this->title                   = Yii::t('user', 'Delivery');
 $this->params['breadcrumbs'][] = $this->title;
@@ -37,31 +38,24 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
                 <?= Html::a('Вставить из профиля','#',['class'=>'btn button']) ?>
             </div>
         </div>
-        <? $form = ActiveForm::begin() ?>
+        <? $form = ActiveForm::begin([
+                'action' => Url::toRoute('/front/orders/create'),
+                 'method' => 'post'
+        ]) ?>
 
         <div class="row">
             <div class="col-md-6">
-                <?= $form->field($model, 'address_street')->widget(Select2::classname(), [
+                <?= $form->field($model, 'address_street')->hiddenInput(['id'=>'address-street'])->label(false) ?>
+                <?= $form->field($model, 'google_id')->widget(Select2::classname(), [
                     // 'initValueText' => $someDesc, // set the initial display text
                     'options'       => [
-                        'placeholder' => Yii::t('app', 'Search for a direction ...'),
-                        'id'          => 'id-tmpName',
+                        'id'          => 'igoogle_id',
                     ],
                     'pluginEvents'  => [
                         'select2:select' => "function() { 
-		  		      $.ajax({
-                                url: 'https://maps.googleapis.com/maps/api/geocode/json',
-                                type: 'get',
-                                // $(this).val()
-                                data: {place_id: $(this).val(), key:'$API_KEY' , types: 'locality' },
-                                success: function (data) {
-                                    if(data['status']=='OK'){
-                                        $('#input-lat').val(data.results[0].geometry.location['lat']  ); // Добавляем значение в поле 
-                                        $('#input-lng').val(data.results[0].geometry.location['lng']  ); // Добавляем значение в поле 
-                                    }
-                                }
-                     });
-		    }",
+                            $('#address-street').val($(this).text());
+         
+		            }",
                     ],
                     'pluginOptions' => [
                         'allowClear'         => true,
@@ -70,7 +64,7 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
                             'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
                         ],
                         'ajax'               => [
-                            'url'      => \yii\helpers\Url::to(['/front/api/get-address-by-google-maps']),
+                            'url'      => Url::to(['/front/api/get-address-by-google-maps']),
                             'dataType' => 'json',
                             'data'     => new JsExpression('function(params) { return {q:params.term}; }'),
                         ],
@@ -78,7 +72,7 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
                         'templateResult'     => new JsExpression('function(direction) { return direction.text; }'),
                         'templateSelection'  => new JsExpression('function (direction) { return direction.text; }'),
                     ],
-                ]); ?>
+                ])->label('Address '); ?>
             </div>
             <div class="col-md-2">
                 <?= $form->field($model, 'address_house')->textInput(['maxlength' => true]) ?>

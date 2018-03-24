@@ -2,7 +2,11 @@
 
 namespace app\front\models;
 
+use app\front\models\user\Profile;
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "cart".
@@ -36,14 +40,35 @@ class Cart extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            [
+                'class'              => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value'              => new Expression('NOW()'),
+            ],
+            [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'profile_id',
+                'updatedByAttribute' => 'profile_id',
+
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
             [['id_store', 'count', 'profile_id', 'updated_by'], 'integer'],
-            [['count', 'sum', 'is_sale', 'profile_id', 'created_at', 'updated_at'], 'required'],
+            [['count', 'sum', 'is_sale'], 'required'],
             [['sum'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
-            [['is_sale', 'confirm'], 'string', 'max' => 1],
+            [['is_sale', 'confirm'], 'boolean'],
             [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['profile_id' => 'user_id']],
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['updated_by' => 'user_id']],
             [['id_store'], 'exist', 'skipOnError' => true, 'targetClass' => Store::className(), 'targetAttribute' => ['id_store' => 'id']],

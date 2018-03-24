@@ -16,6 +16,7 @@ class m180323_102107_fix_table_orders extends  Migration
         if (!isset($table->columns['comment'])) {
             $this->addColumn('orders', 'comment', $this->text());
         }
+        $this->addColumn('orders', 'google_id', $this->string(255));
 
 
     }
@@ -25,8 +26,18 @@ class m180323_102107_fix_table_orders extends  Migration
      */
     public function safeDown()
     {
-        $this->addColumn('orders', 'address_city', $this->string(255));
-        $this->dropColumn('orders', 'comment');
+        $table = Yii::$app->db->schema->getTableSchema('orders');
+        if (!isset($table->columns['address_city'])) {
+            $this->addColumn('orders', 'address_city', $this->string(255));
+        }
+        if (isset($table->columns['comment'])) {
+            $this->dropColumn('orders', 'comment');
+        }
+
+        if (isset($table->columns['google_id'])) {
+            $this->dropColumn('orders', 'google_id');
+        }
+
     }
 
 }

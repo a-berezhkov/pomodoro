@@ -22,6 +22,7 @@ use Yii;
  * @property string $dropping_at
  * @property string $unique_code
  * @property string $comment
+ * @property string $google_id
  *
  * @property OrdersStatus $deliveryStatus
  * @property OrdersHasCart[] $ordersHasCarts
@@ -45,7 +46,7 @@ class Orders extends \yii\db\ActiveRecord
             [['address_city', 'address_street', 'address_house', 'delivery_date', 'delivery_interval'], 'required'],
             [['delivery_date', 'created_at', 'created_by', 'dropping_at','comment'], 'safe'],
             [['delivery_status'], 'integer'],
-            [['address_city', 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval'], 'string', 'max' => 255],
+            [['address_city', 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval','google_id'], 'string', 'max' => 255],
             [['address_phone'], 'string', 'max' => 20],
             [['dropping'], 'string', 'max' => 1],
             [['unique_code'], 'string', 'max' => 50],
@@ -76,6 +77,7 @@ class Orders extends \yii\db\ActiveRecord
             'dropping_at' => 'Dropping At',
             'unique_code' => 'Unique Code',
             'comment' => 'Comment',
+            'google_id' => 'Google id',
         ];
     }
 

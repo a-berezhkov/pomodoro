@@ -19,7 +19,10 @@ class Front extends \yii\base\Module
     public function init()
     {
         parent::init();
+        /**
+         * Переписана страница ошибки
+         */
+        \Yii::$app->errorHandler->errorAction = '/front/default/error';
 
-        // custom initialization code goes here
     }
 }

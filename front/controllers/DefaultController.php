@@ -82,4 +82,11 @@ class DefaultController extends Controller
         ]);
 
     }
+
+    /**
+     * @return string
+     */
+    public function actionError(){
+        return $this->render('error');
+    }
 }

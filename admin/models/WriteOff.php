@@ -3,8 +3,12 @@
 namespace app\admin\models;
 
 use Yii;
-use app\front\models\Profile;
+use app\front\models\user\Profile;
 use app\front\models\Store;
+use yii\helpers\VarDumper;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the model class for table "write_off".
@@ -32,6 +36,24 @@ class WriteOff extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'write_off';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class'              => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value'              => new Expression('NOW()'),
+            ],
+            [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => 'updated_by',
+
+            ],
+        ];
     }
 
     /**
@@ -91,5 +113,25 @@ class WriteOff extends \yii\db\ActiveRecord
     public function getStore()
     {
         return $this->hasOne(Store::className(), ['id' => 'id_store']);
+    }
+
+    //проверка существования нужного колличества коробок
+    public function validateBoxCount()
+    {
+        $storeBox = Store::find()->where(['id' => $this->id_store])->one();
+        if($this->count_box > $storeBox->boxes_count)
+        {
+            return false;
+        }
+        else return true;
+    }
+
+    public function saveParams()
+    {
+        $store = Store::find()->where(['id' => $this->id_store])->one();
+        $this->count_weight = $this->count_box * $store->box_weight;
+        $store->boxes_count = $store->boxes_count - $this->count_box;
+        $this->save();
+        $store->save();
     }
 }

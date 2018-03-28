@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
+use app\admin\models\WriteOff;
 
 //test comment
 //test comment by Ziablik
@@ -38,10 +39,31 @@ class StoreController extends Controller
      */
     public function actionIndex()
     {
+        $model = new WriteOff();
         $searchModel = new StoreSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if($model->load(Yii::$app->request->post()))
+        {
+            if($model->validateBoxCount())
+            {
+                $model->saveParams();
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Goods written off'));
+                return $this->refresh();
+            }
+            else
+            {
+                Yii::$app->session->setFlash('error', Yii::t('app', 'In store not enough boxes'));
+                return $this->render('index', [
+                    'model' => $model,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                ]);
+            }
+        }
+
 
         return $this->render('index', [
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

@@ -42,6 +42,9 @@
                     ['label' => 'Уаправление складом', 'icon' => 'archive', 'url' => ['/admin/store/index'],'visible' =>
                             Yii::$app->user->can('admin')],
 
+                    ['label' => 'Списания и добавления', 'icon' => 'minus', 'url' => ['/admin/write-off/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
+
                     #Товары
                     ['label' => 'Работа с сайтом', 'options' => ['class' => 'header']],
 

@@ -49,7 +49,7 @@ FrontAsset::register($this);
                     $right_menu_items = [
                         ['label' => 'Магазин', 'url' => ['/front/default/shop']],
                         ['label' => 'Доставка', 'url' => ['#']],
-                        ['label' => 'Контакты', 'url' => ['#']],
+                        ['label' => 'Контакты', 'url' => ['/front/default/contacts']],
                         \Yii::$app->user->isGuest ? (['label' => 'Личный кабинет', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
                             'label' => 'Личный кабинет',
                             'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),

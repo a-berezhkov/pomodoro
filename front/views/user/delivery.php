@@ -91,7 +91,19 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
         </div>
         <div class="row">
             <div class="col-md-4">
-                <?= $form->field($model, 'delivery_date')->textInput(['maxlength' => true]) ?>
+                <?=   \kartik\widgets\DatePicker::widget([
+                'attribute' => 'delivery_date',
+                'model' => $model,
+                'type' => \kartik\widgets\DatePicker::TYPE_INLINE,
+                'value' => date("Y-m-d"),
+                'pluginOptions' => [
+                'format' => 'yyyy-mm-d'
+                ],
+                'options' => [
+                // you can hide the input by setting the following
+                 'class' => 'hide'
+                ]
+                ]); ?>
             </div>
             <div class="col-md-2">
                 <?= $form->field($model, 'delivery_interval')->dropDownList(['8-13' => '8-13', '14-19' => '14-19']) ?>

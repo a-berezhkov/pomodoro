@@ -25,4 +25,5 @@
             </div>
         </div>
     </div>
+    <?= \yii\helpers\Html::a('Оформить',['/front/cart/delivery'],['class'=>' btn btn-primary']) ?>
 </div>

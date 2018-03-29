@@ -44,10 +44,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div>
 		<?= Html::a( Yii::t( 'app', 'Create Store' ), [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
-    </div>
+
     <?php
         Modal::begin([
-            'header' => Yii::t('app', '<h2>Write-off goods</h2>'),
+            'header' => '<h2>'.Yii::t('app', 'Write-off goods').'</h2>',
             'toggleButton' => [
                 'label' => Yii::t('app', 'Write-off goods'),
                 'tag' => 'button',
@@ -55,13 +55,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ])
     ?>
+
     <div class="wrtie-off-cretae">
         <?= $this->render('_write-off', [
                 'model' => $model
         ]) ?>
     </div>
     <?php Modal::end(); ?>
-
+    </div>
 	<?= GridView::widget( [
 		'dataProvider' => $dataProvider,
 		'filterModel'  => $searchModel,

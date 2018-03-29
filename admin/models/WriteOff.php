@@ -64,6 +64,7 @@ class WriteOff extends \yii\db\ActiveRecord
         return [
             [['id_store', 'count_box', 'created_by', 'updated_by'], 'integer'],
             [['count_weight'], 'number'],
+            [['count_box'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['in', 'out'], 'string', 'max' => 1],
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['updated_by' => 'user_id']],
@@ -130,7 +131,12 @@ class WriteOff extends \yii\db\ActiveRecord
     {
         $store = Store::find()->where(['id' => $this->id_store])->one();
         $this->count_weight = $this->count_box * $store->box_weight;
-        $store->boxes_count = $store->boxes_count - $this->count_box;
+        if ($this->in == true){
+            $store->boxes_count = $store->boxes_count + $this->count_box;
+        }
+        elseif ($this->out== true) {
+            $store->boxes_count = $store->boxes_count - $this->count_box;
+        }
         $this->save();
         $store->save();
     }

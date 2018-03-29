@@ -45,6 +45,16 @@
                     ['label' => 'Списания и добавления', 'icon' => 'minus', 'url' => ['/admin/write-off/index'],'visible' =>
                         Yii::$app->user->can('admin')],
 
+                    #Заказы
+                    ['label' => 'Заказы', 'options' => ['class' => 'header'],'visible' =>
+                        Yii::$app->user->can('admin')],
+
+                    ['label' => 'Все заказы', 'icon' => 'th-list', 'url' => ['/admin/orders/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
+
+
+
+
                     #Товары
                     ['label' => 'Работа с сайтом', 'options' => ['class' => 'header']],
 

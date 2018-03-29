@@ -3,6 +3,9 @@
 namespace app\front\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "orders".
@@ -35,6 +38,27 @@ class Orders extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'orders';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class'              => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => false,
+                'value'              => new Expression('NOW()'),
+            ],
+            [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => false,
+
+            ],
+        ];
     }
 
     /**

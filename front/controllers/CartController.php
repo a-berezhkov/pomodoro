@@ -86,7 +86,7 @@ class CartController extends Controller
         \Yii::$app->response->format = Response::FORMAT_JSON;
         if (\Yii::$app->request->isAjax) {
 
-            $session                     = \Yii::$app->session;
+            $session = \Yii::$app->session;
             return $session;
         } else {
 
@@ -110,23 +110,36 @@ class CartController extends Controller
                 return false;
             }
         } else {
-            isset($_SESSION['store']) ? $items = $_SESSION['store'] : $items= [];
+            isset($_SESSION['store']) ? $items = $_SESSION['store'] : $items = [];
 
-            return $this->render('/user/cart',['items'=>$items]);
+            return $this->render('/user/cart', ['items' => $items]);
         }
     }
-    public function actionDelivery(){
-        $model = new Orders();
-        return $this->render('/user/delivery',['model'=>$model]);
-    }
-
 
     /**
-     *
+     * @return string
      */
-    public function actionCheckout(){
-        $items = $_SESSION['store'];
-        return $this->render('checkout',['items'=>$items]);
+    public function actionDelivery()
+    {
+        $model = new Orders();
+        return $this->render('/user/delivery', ['model' => $model]);
+    }
 
+    /***
+     * @return string
+     */
+    public function actionCheckout()
+    {
+        $items = $_SESSION['store'];
+        return $this->render('checkout', ['items' => $items]);
+
+    }
+
+    /**
+     * @return string
+     */
+    public function actionPayment()
+    {
+        return $this->render('/user/payment');
     }
 }

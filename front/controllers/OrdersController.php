@@ -8,9 +8,8 @@ use app\front\models\Cart;
 use app\front\models\Orders;
 use app\front\models\OrdersHasCart;
 use app\front\models\Store;
-use yii\helpers\VarDumper;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
-use yii\web\View;
 
 class OrdersController extends Controller
 {
@@ -34,42 +33,55 @@ class OrdersController extends Controller
 
 
             foreach ($storeItems as $item) {
-                $cart = new Cart();
+                $cart               = new Cart();
                 $modelOrdersHasCart = new OrdersHasCart();
                 /**
                  * @var $id Store id
                  * @var $count Store items
                  */
-                $id = $item['data']['id'];
+                $id    = $item['data']['id'];
                 $count = $item['count'];
                 // Аттребуты Cart()
                 $cart->id_store = $id;
-                $cart->count = $count;
-                $cart->sum = $count * ($item['item_discount_box_price'] ? $item['item_discount_box_price'] : $item['item_box_price']);
-                $cart->confirm = false;
-                $cart->is_sale = $item['item_discount_box_price'] ? true : false;
+                $cart->count    = $count;
+                $cart->sum      = $count * ($item['item_discount_box_price'] ? $item['item_discount_box_price'] : $item['item_box_price']);
+                $cart->confirm  = false;
+                $cart->is_sale  = $item['item_discount_box_price'] ? true : false;
 
                 if ($cart->save()) {
                     /**
                      * Сохраняем связь много-ко-многим
                      */
-                    $modelOrdersHasCart->cart_id = $cart->id;
+                    $modelOrdersHasCart->cart_id  = $cart->id;
                     $modelOrdersHasCart->order_id = $model->id;
                     if ($modelOrdersHasCart->save()) {
-                        $store = Store::itemSell($id, $count); // списываем товар со склада
+                        $store             = Store::itemSell($id, $count); // списываем товар со склада
                         $_SESSION['store'] = NULL;
                     }
                 }
             }
-            return $this->redirect(['payment']);
+            return $this->redirect(['/front/cart/payment']);
 
         }
         ///   todo something
 
     }
 
-    public function actionPayment()
+
+    /**
+     * @return string
+     */
+    public function actionUserOrders()
     {
-        return $this->render('/user/payment');
+        $userId     = \Yii::$app->user->id;
+        $userOrders = new ActiveDataProvider([
+            'query'      => Orders::find()->andWhere(['created_by' => $userId]),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+        return $this->render('/user/orders',['userOrders'=>$userOrders]);
+
     }
+
 }

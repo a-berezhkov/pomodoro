@@ -10,6 +10,7 @@ namespace app\front\controllers;
 
 
 use app\front\models\Orders;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -64,9 +65,9 @@ class CartController extends Controller
 
                 // Если товар уже есть в сесии увеличиваем его количствео на 1
                 if (isset($_SESSION['store'][$id_store]['count'])) {
-                    $_SESSION['store'][$id_store]['count']++;
+                    $_SESSION['store'][$id_store]['count'] += \Yii::$app->request->post('count');
                 } else {
-                    $_SESSION['store'][$id_store]['count'] = 1;
+                    $_SESSION['store'][$id_store]['count'] = \Yii::$app->request->post('count');
                 }
 
                 $session->close();

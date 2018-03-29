@@ -25,6 +25,8 @@ $('#shopping-basket').click(function () {
 ;
 
 $(".button-basket").click(function () {
+    var id = $(this).attr('item-id');
+    $(this).fadeOut(300).delay(200).fadeIn(400);
 
     $.ajax({
         type: "POST",
@@ -36,11 +38,14 @@ $(".button-basket").click(function () {
             item_box_weight: $(this).attr('item-box_weight'),
             item_discount_box_price: $(this).attr('item-discount_box_price'),
             item_image_link: $(this).attr('item-image_link'),
-            is_sale: $(this).attr('item-is_sale')
+            is_sale: $(this).attr('item-is_sale'),
+            count: $('#count_box_'+$(this).attr('item-id')).val()
 
         }
     }).done(function (data) {
         setBadgeBasket(data);
+
+        $('#count_box_'+id).val(1);
     }).fail(function (jqXHR, textStatus) {
         alert("Request failed: " + textStatus + "<br/>" + this.url);
     });

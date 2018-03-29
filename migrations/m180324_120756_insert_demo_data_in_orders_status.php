@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Class m180315_101258_insert_demo_data_in_countries
  */
-class m180324_120754_insert_demo_data_in_orders_status  extends Migration
+class m180324_120756_insert_demo_data_in_orders_status  extends Migration
 {
     /**
      * {@inheritdoc}

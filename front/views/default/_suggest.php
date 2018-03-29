@@ -35,8 +35,11 @@ $countPerRow = 4; //Количество колонок в одной строк
                             else if (($suggest->boxes_count) < 15) $box_color = 'box-icon-yellow';
                             else $box_color = 'box-icon-green';
                             ?>
+                            <input type="number" name="count_box" value="1" min="1" max="100" step="1" style="
+                            width: 50px;    font-size: 1.25rem;">
                             <span class="weight"><?= $suggest->box_weight ?></span>
-                            <span class="boxes <?= $box_color; ?>"><?= $suggest->boxes_count ?></span>
+<!--                            <span class="boxes --><?//= $box_color; ?><!--">--><?//= $suggest->boxes_count ?><!--</span>-->
+
                         </div>
                     </div>
 

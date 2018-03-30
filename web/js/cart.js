@@ -6,80 +6,110 @@
 //var home = window.location.host;
 //console.log(home);
 
-$('#shopping-basket').click(function () {
-    $.ajax({
-        type: "POST",
-        url: "/web/front/cart/cart"
-    }).done(function (data) {
-        if (data !== false) {
-            console.log(data);
-            $('#cart-stores').html(data);
-        } else {
-            $('#cart-stores').html('В коризне пока пусто =(. Но здесь могла бы быть ваша реклама');
-        }
-
-    }).fail(function (jqXHR, textStatus) {
-            console.log('Не удалось получить информацию о корзине от сервера =(')
-    });
-})
-;
-
-$(".button-basket").click(function () {
-    var id = $(this).attr('item-id');
-    $(this).fadeOut(300).delay(200).fadeIn(400);
-
-    $.ajax({
-        type: "POST",
-        url: '/web/front/cart/add',
-        data: {
-            id: $(this).attr('item-id'),
-            item_name: $(this).attr('item-name'),
-            item_box_price: $(this).attr('item-box_price'),
-            item_box_weight: $(this).attr('item-box_weight'),
-            item_discount_box_price: $(this).attr('item-discount_box_price'),
-            item_image_link: $(this).attr('item-image_link'),
-            is_sale: $(this).attr('item-is_sale'),
-            count: $('#count_box_'+$(this).attr('item-id')).val()
-
-        }
-    }).done(function (data) {
-        setBadgeBasket(data);
-
-        $('#count_box_'+id).val(1);
-    }).fail(function (jqXHR, textStatus) {
-        alert("Request failed: " + textStatus + "<br/>" + this.url);
-    });
-});
-
-/*
-    Функция отображает значок рядом с корзиной и количесвто товара
-    @var data массив данных из сессии
-    @var data.store товары
-    @example json data
-     "store":{
-             "1":{
-                    "data":{
-                             "id":"1",
-                             "item_name":"1",
-                             "item_box_price":"7640.00",
-                             "item_box_weight":"20",
-                             "item_discount_box_price":"6940"
-                             "item_image_link":"/web/assets/images/fc/fc3297_store--.png"
-                            },
-                     "count":2  // количество товаров
-                    },
-             "2":{ ... }
-                }
-            }
+/**
+ *
+ *
+ * @constructor
  */
-function setBadgeBasket(data) {
+function EventListeners() {
+    $('#shopping-basket').click(ShowBasket);
+    $(".button-basket").click(addToBasket);
+    $("#cart-basket").click(goToCart);
+
+}
+
+function goToCart() {
+    var items = [];
+    for (var item in localStorage) {
+        item = JSON.parse(localStorage.getItem(item));
+        if (item !== null) {
+            items.push(item);
+        }
+    }
+   $.post( "/web/front/cart/cart", { data: items } );
+    $.ajax({
+        method: "POST",
+        url: "/web/front/cart/cart",
+        data: {data :items},
+        async: false
+
+    })
+        .done(function (msg) {
+            console.log("yes!");
+            location.href='/web/front/cart/cart/'
+        })
+        .fail(function (msg) {
+            console.log("No!");
+        })
+    ;
+
+}
+
+function ShowBasket() {
+    var total = 0;
+    var cart = document.getElementById('cart-stores');
+    var div = document.createElement('div');
+
+    div.id = "cart-drop"; //Добавлеям элемент dev с классом row
+    cart.innerHTML = ''; //Очищаем все внутри элемнета cart-stores
+    for (var item in localStorage) {
+        item = JSON.parse(localStorage.getItem(item));
+        if (item !== null) { //так как в localStorage еще есть методы
+            total = total + parseInt(item.count_box) * parseInt(item.item_box_price);
+            div.innerHTML = div.innerHTML +
+                ' <div class="row">' +
+                '<div class="col-md-5"><img src="' + item.item_image_link + '"' +
+                '  width="100" height="70" alt=""></a></div>' +
+                '<div class="col-md-7"><div class="item-name">' + item.item_name + '</div>' +
+                '<div class="item-box_price">' + item.item_box_price + '</div>' +
+                '<div class="item-count"> Количество:' + item.count_box + '</div>' +
+                '<div class="item-box_weigh">Вес упаковки: ' + item.item_box_weight + '</div>' +
+                '<div class="item-summa">Итого : ' + item.count_box * item.item_box_price + '</div>' +
+                '</div><hr>';
+        }
+    }
+    div.innerHTML = div.innerHTML +
+        '<div id="cart-total" class="cart-total text-center"> Общий итог: ' + total + ' </div>' +
+        '<button  id="cart-basket" class="btn button"   >Корзина</button>' +
+        '<button id="item-checkout" class="btn button button-inverse"> Оформить заказ</button> </form>'
+    ;
+    cart.appendChild(div);
+    $("#cart-basket").click(goToCart);
+
+}
+
+function addToBasket() {
+    var id = $(this).attr('item-id');
+    var count_box = parseInt($('#count_box_' + $(this).attr('item-id')).val());
+
+    if (localStorage.getItem('item-' + id)) {
+        var unSerializeStore = JSON.parse(localStorage.getItem('item-' + id));
+        count_box = unSerializeStore.count_box + count_box;
+    }
+
+    var store = {
+        id: $(this).attr('item-id'),
+        item_name: $(this).attr('item-name'),
+        item_box_price: $(this).attr('item-box_price'),
+        item_box_weight: $(this).attr('item-box_weight'),
+        item_discount_box_price: $(this).attr('item-discount_box_price'),
+        item_image_link: $(this).attr('item-image_link'),
+        is_sale: $(this).attr('item-is_sale'),
+        count_box: count_box
+    };
+    var serialStore = JSON.stringify(store);
+
+    localStorage.setItem('item-' + id, serialStore);
+
+    $(this).fadeOut(300).delay(200).fadeIn(400);
+    setBadgeBasket();
+}
+
+function setBadgeBasket() {
 
     /*
         преобразование объекта в массив (необходимо для получения количества элементов)
      */
-    var array = $.map(data.store, function (value, index) {
-        return [value];
-    });
 
     var badge = $('span').is('#basket-badge');
 
@@ -89,10 +119,10 @@ function setBadgeBasket(data) {
        Иначе добавлем элемент badge
      */
     if (badge) {
-        $('#basket-badge').html(array.length);
+        $('#basket-badge').html(localStorage.length);
     }
-    else if (array.length !== 0) {
-        $("#shopping-basket a").append('<span id="basket-badge" class="label label-primary">' + array.length + '</span>');
+    else if (localStorage.length !== 0) {
+        $("#shopping-basket a").append('<span id="basket-badge" class="label label-primary">' + localStorage.length + '</span>');
     }
 }
 
@@ -117,6 +147,7 @@ function initBadge() {
 
 $(document).ready(function () {
     initBadge();
+    EventListeners();
     //Handles menu drop down
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation(); //https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation

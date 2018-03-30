@@ -15,6 +15,7 @@ $countBox            = 0;
 $summa               = 0;
 $countWeight         = 0;
 $items == NULL ? $items = [] : $items;
+
 ?>
 
 
@@ -33,28 +34,29 @@ $items == NULL ? $items = [] : $items;
         <h2>Горячие предложения </h2>
         <? foreach ($items as $item) : ?>
             <!--        Горячие предложения -->
-            <? if ($item['data']['is_sale'] == 1) : ?>
-                <? $countDiscountBox += $item['count']; ?>
-                <? $countDiscountWeight += $item['count'] * $item['data']['item_box_weight']; ?>
+            <? if ($item['is_sale'] == 1) : ?>
+                <? $countDiscountBox += $item['count_box']; ?>
+                <? $countDiscountWeight += $item['count_box'] * $item['item_box_weight']; ?>
+                <? $summaDiscount += $item['item_discount_box_price']  ?>
                 <div class="row">
                     <div class="picture text-center">
                         <div class="col-md-1">
                             <?= \rmrevin\yii\fontawesome\FA::icon('trash') ?>
                         </div>
                         <div class="col-md-2">
-                            <?= Html::img($item['data']['item_image_link']); ?>
+                            <?= Html::img($item['item_image_link']); ?>
                         </div>
                         <div class="col-md-3">
-                            <?= $item['data']['item_name'] ?>
+                            <?= $item['item_name'] ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $item['count']; ?>
+                            <?= $item['count_box']; ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $item['data']['item_box_weight'] ?>
+                            <?= $item['item_box_weight'] ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $item['data']['item_discount_box_price'] ?>
+                            <?= $item['item_discount_box_price'] ?>
 
                         </div>
                     </div>
@@ -62,35 +64,37 @@ $items == NULL ? $items = [] : $items;
             <?php endif; ?>
         <? endforeach ?>
         <? if (isset($item)) : ?>
-        Промежуточнный итог: <?= $summaDiscount = $item['data']['item_discount_box_price'] * $item['count'] ?>
+        Промежуточнный итог: <?= $summaDiscount ?>
         Количество упаковок: <?= $countDiscountBox ?>
         Общий вес (нетто): <?= $countDiscountWeight ?>
         <? endif; ?>
         <h2>Стандартные товары</h2>
         <? foreach ($items as $item) : ?>
-            <? $countBox += $item['count']; ?>
-            <? $countWeight += $item['count'] * $item['data']['item_box_weight']; ?>
+
             <!--        Горячие предложения -->
-            <? if ($item['data']['is_sale'] == 0) : ?>
+            <? if ($item['is_sale'] == 0) : ?>
+                <? $countBox += $item['count_box']; ?>
+                <? $countWeight += $item['count_box'] * $item['item_box_weight']; ?>
+                <? $summa += $item['item_box_price']  ?>
                 <div class="row">
                     <div class="picture text-center">
                         <div class="col-md-1">
                             <?= \rmrevin\yii\fontawesome\FA::icon('trash') ?>
                         </div>
                         <div class="col-md-2">
-                            <?= Html::img($item['data']['item_image_link']); ?>
+                            <?= Html::img($item['item_image_link']); ?>
                         </div>
                         <div class="col-md-3">
-                            <?= $item['data']['item_name'] ?>
+                            <?= $item['item_name'] ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $item['count'] ?>
+                            <?= $item['count_box'] ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $item['data']['item_box_weight'] ?>
+                            <?= $item['item_box_weight'] ?>
                         </div>
                         <div class="col-md-2">
-                            <?= $item['data']['item_box_price'] ?>
+                            <?= $item['item_box_price'] ?>
 
                         </div>
                     </div>

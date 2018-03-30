@@ -134,16 +134,16 @@ class CartController extends Controller
     public function actionCart()
     {
         if (\Yii::$app->request->isAjax) {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            if (isset($_SESSION['store'])) {
-                return $this->renderAjax('_menu_drop_cart');
-            } else {
-                return false;
-            }
+          if ($_POST['data']){
+              $_SESSION['store'] = $_POST['data'];
+              return true;
+          } else {
+              return false;
+          }
         } else {
             isset($_SESSION['store']) ? $items = $_SESSION['store'] : $items = [];
 
-            return $this->render('/user/cart', ['items' => $items]);
+          return $this->render('/user/cart', ['items' => $items]);
         }
     }
 

@@ -15,7 +15,7 @@ class UserMenu extends \dektrium\user\widgets\UserMenu{
         $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
         $addFields =  [
             ['label' => Yii::t('app', 'Orders'), 'url' => ['/front/orders/user-orders']],
-            ['label' => Yii::t('app', 'Cart'), 'url' => ['/front/cart/cart']],
+            ['label' => Yii::t('app', 'Cart'), 'url' => ['/front/cart/cart'],'options' =>['id'=>'cart-basket' ]],
 
         ];
         $this->items = array_merge($this->items,$addFields);

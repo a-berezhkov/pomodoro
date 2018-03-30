@@ -23,7 +23,9 @@ use yii\helpers\Url;
             ?>
             <div class="row">
                 <div class="col-md-5">
+                    <div class="item-img">
                     <?= Html::img($item['data']['item_image_link'], ['width' => '100px', 'height' => '70px']) ?>
+                    </div>
                 </div>
                 <div class="col-md-7">
                     <div class="item-name">

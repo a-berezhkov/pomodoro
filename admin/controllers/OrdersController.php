@@ -3,20 +3,16 @@
 namespace app\admin\controllers;
 
 use Yii;
-use app\front\models\Store;
-use app\front\models\StoreSearch;
+use app\admin\models\aOrders;
+use app\admin\models\aOrdersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\Response;
-use app\admin\models\WriteOff;
 
-//test comment
-//test comment by Ziablik
 /**
- * StoreController implements the CRUD actions for Store model.
+ * OrdersController implements the CRUD actions for aOrders model.
  */
-class StoreController extends Controller
+class OrdersController extends Controller
 {
     /**
      * @inheritdoc
@@ -34,43 +30,22 @@ class StoreController extends Controller
     }
 
     /**
-     * Lists all Store models.
+     * Lists all aOrders models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $model = new WriteOff();
-        $searchModel = new StoreSearch();
+        $searchModel = new aOrdersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if($model->load(Yii::$app->request->post()))
-        {
-            if($model->validateBoxCount())
-            {
-                $model->saveParams();
-                Yii::$app->session->setFlash('success', Yii::t('app', 'Goods written off'));
-                return $this->refresh();
-            }
-            else
-            {
-                Yii::$app->session->setFlash('error', Yii::t('app', 'In store not enough boxes'));
-                return $this->render('index', [
-                    'model' => $model,
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
-                ]);
-            }
-        }
-
 
         return $this->render('index', [
-            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Store model.
+     * Displays a single aOrders model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -83,13 +58,13 @@ class StoreController extends Controller
     }
 
     /**
-     * Creates a new Store model.
+     * Creates a new aOrders model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Store();
+        $model = new aOrders();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -101,7 +76,7 @@ class StoreController extends Controller
     }
 
     /**
-     * Updates an existing Store model.
+     * Updates an existing aOrders model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -121,7 +96,7 @@ class StoreController extends Controller
     }
 
     /**
-     * Deletes an existing Store model.
+     * Deletes an existing aOrders model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -135,28 +110,18 @@ class StoreController extends Controller
     }
 
     /**
-     * Finds the Store model based on its primary key value.
+     * Finds the aOrders model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Store the loaded model
+     * @return aOrders the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Store::findOne($id)) !== null) {
+        if (($model = aOrders::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-    }
-
-    /**
-     * @param $id
-     * @return Store
-     * @throws NotFoundHttpException
-     */
-    public function actionGetAjaxItem($id){
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        return $this->findModel($id);
     }
 }

@@ -26,8 +26,12 @@ use yii\helpers\Html;
                             else if (($model->boxes_count) < 15) $box_color = 'box-icon-yellow';
                             else $box_color = 'box-icon-green';
                             ?>
+                            <input id="count_box_<?=$model->id?>" type="number" name="count_box"
+                                   value="1" min="1" max="100"
+                                   step="1" style="
+                            width: 50px;    font-size: 1.25rem;">
                             <span class="weight"><?= $model->box_weight ?></span>
-                            <span class="boxes <?= $box_color; ?>"><?= $model->boxes_count ?></span>
+<!--                            <span class="boxes --><?//= $box_color; ?><!--">--><?//= $model->boxes_count ?><!--</span>-->
                         </div>
                     </div>
 

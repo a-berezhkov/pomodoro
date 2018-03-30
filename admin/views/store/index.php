@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use app\front\models\Countries;
 use app\front\models\Categories;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\front\models\StoreSearch */
@@ -14,16 +15,54 @@ use app\front\models\Categories;
 $this->title                   = Yii::t( 'app', 'Stores' );
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php if(Yii::$app->session->hasFlash('success')) :?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <?php echo Yii::$app->session->getFlash('success') ;?>
+    </div>
+<?php endif;?>
+
+<?php if(Yii::$app->session->hasFlash('error')) :?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <?php echo Yii::$app->session->getFlash('success') ;?>
+    </div>
+<?php endif;?>
+
 <div class="store-index">
 
     <h1><?= Html::encode( $this->title ) ?></h1>
 	<?php Pjax::begin(); ?>
 	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
+    <div>
 		<?= Html::a( Yii::t( 'app', 'Create Store' ), [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
-    </p>
 
+    <?php
+        Modal::begin([
+            'header' => '<h2>'.Yii::t('app', 'Write-off goods').'</h2>',
+            'toggleButton' => [
+                'label' => Yii::t('app', 'Write-off goods'),
+                'tag' => 'button',
+                'class' => 'btn btn-success'
+            ],
+        ])
+    ?>
+
+    <div class="wrtie-off-cretae">
+        <?= $this->render('_write-off', [
+                'model' => $model
+        ]) ?>
+    </div>
+    <?php Modal::end(); ?>
+    </div>
 	<?= GridView::widget( [
 		'dataProvider' => $dataProvider,
 		'filterModel'  => $searchModel,

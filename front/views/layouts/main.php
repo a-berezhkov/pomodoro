@@ -18,6 +18,22 @@ use rmrevin\yii\fontawesome\FA;
 
 
 FrontAsset::register($this);
+
+//начало многосточной строки, можно использовать любые кавычки
+$script = <<< JS
+  (function ($) {
+  $('.spinner .btn:first-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+  });
+  $('.spinner .btn:last-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+  });
+})(jQuery);
+JS;
+//маркер конца строки, обязательно сразу, без пробелов и табуляции
+$this->registerJs($script, yii\web\View::POS_READY);
+
+
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -32,6 +48,43 @@ FrontAsset::register($this);
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+        <style>
+            .spinner {
+                width: 100px;
+            }
+            .spinner input {
+                text-align: right;
+            }
+            .input-group-btn-vertical {
+                position: relative;
+                white-space: nowrap;
+                width: 1%;
+                vertical-align: middle;
+                display: table-cell;
+            }
+            .input-group-btn-vertical > .btn {
+                display: block;
+                float: none;
+                width: 100%;
+                max-width: 100%;
+                padding: 8px;
+                margin-left: -1px;
+                position: relative;
+                border-radius: 0;
+            }
+            .input-group-btn-vertical > .btn:first-child {
+                border-top-right-radius: 4px;
+            }
+            .input-group-btn-vertical > .btn:last-child {
+                margin-top: -2px;
+                border-bottom-right-radius: 4px;
+            }
+            .input-group-btn-vertical i{
+                position: absolute;
+                top: 0;
+                left: 4px;
+            }
+        </style>
     </head>
     <body>
     <?php $this->beginBody() ?>
@@ -49,7 +102,7 @@ FrontAsset::register($this);
                     $right_menu_items = [
                         ['label' => 'Магазин', 'url' => ['/front/default/shop']],
                         ['label' => 'Доставка', 'url' => ['#']],
-                        ['label' => 'Контакты', 'url' => ['#']],
+                        ['label' => 'Контакты', 'url' => ['/front/default/contacts']],
                         \Yii::$app->user->isGuest ? (['label' => 'Личный кабинет', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
                             'label' => 'Личный кабинет',
                             'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),

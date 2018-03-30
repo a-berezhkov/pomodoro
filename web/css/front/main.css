@@ -22,6 +22,19 @@ h2.section-title {
 
 .page {
   margin-bottom: 2%; }
+  .page h1.title {
+    display: inline-block;
+    font-size: 1.375rem;
+    border-bottom: 2px solid #000;
+    margin-bottom: 3%; }
+  .page h2.title {
+    display: inline-block;
+    font-size: 1.375rem;
+    border-bottom: 2px solid #000;
+    margin-bottom: 3%; }
+  .page .form input.form-control, .page .form textarea.form-control {
+    border: 1px solid #000;
+    border-radius: 0; }
 
 .category {
   overflow: hidden;
@@ -518,5 +531,31 @@ header.header {
   .page-shop .welcome h1.title {
     margin-top: 0; }
 
+.page-contacts .connections .call {
+  display: inline-block;
+  font-size: 1.5rem; }
+  .page-contacts .connections .call .call-icon {
+    color: #fff;
+    background: #000;
+    width: 35px;
+    border-radius: 50px;
+    display: inline-block;
+    height: 35px;
+    text-align: center;
+    padding: 6px;
+    margin-right: 10px;
+    font-size: 18px; }
+.page-contacts .connections .back {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 12px;
+  font-size: 12px; }
+.page-contacts .form {
+  padding: 15px 35px; }
+  .page-contacts .form.bordered {
+    border: 1px solid #000; }
+
 header {
   background: #fff; }
+
+/*# sourceMappingURL=main.css.map */

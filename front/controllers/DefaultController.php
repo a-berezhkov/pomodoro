@@ -83,6 +83,12 @@ class DefaultController extends Controller
 
     }
 
+    public function actionContacts()
+    {
+        return $this->render('contacts', [
+        ]);
+    }
+
     /**
      * @return string
      */

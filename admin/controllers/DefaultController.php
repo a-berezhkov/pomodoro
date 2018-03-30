@@ -37,4 +37,8 @@ class DefaultController extends Controller
     {
         return $this->render('dashboard');
     }
+
+    public function actionIndex(){
+        return $this->render('index');
+    }
 }

@@ -15,7 +15,7 @@ $countBox            = 0;
 $summa               = 0;
 $countWeight         = 0;
 $items == NULL ? $items = [] : $items;
-
+$this->registerJsFile('/web//js/front/cart.js',  ['position' => yii\web\View::POS_END]);
 ?>
 
 
@@ -38,7 +38,9 @@ $items == NULL ? $items = [] : $items;
                 <? $countDiscountBox += $item['count_box']; ?>
                 <? $countDiscountWeight += $item['count_box'] * $item['item_box_weight']; ?>
                 <? $summaDiscount += $item['item_discount_box_price']  ?>
+        <div id="hot">
                 <div class="row">
+
                     <div class="picture text-center">
                         <div class="col-md-1">
                             <?= \rmrevin\yii\fontawesome\FA::icon('trash') ?>
@@ -61,6 +63,7 @@ $items == NULL ? $items = [] : $items;
                         </div>
                     </div>
                 </div>
+        </div>
             <?php endif; ?>
         <? endforeach ?>
         <? if (isset($item)) : ?>

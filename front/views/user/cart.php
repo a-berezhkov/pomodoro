@@ -24,50 +24,58 @@ $this->registerJsFile('/web//js/front/cart.js', ['position' => yii\web\View::POS
         </div>
 
         <h2>Горячие предложения </h2>
-        <div id="hot">
-            <div class="row">
-                <div class="col-md-1">
-                </div>
-                <div class="col-md-2">
-                    Фотография
-                </div>
-                <div class="col-md-3">
-                    Наименование
-                </div>
-                <div class="col-md-2">
-                    Количество
-                </div>
-                <div class="col-md-2">
-                    Вес
-                </div>
-                <div class="col-md-2">
-                    Цена
-                </div>
-
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+                Фотография
+            </div>
+            <div class="col-md-2">
+                Наименование
+            </div>
+            <div class="col-md-1">
+                Количество
+            </div>
+            <div class="col-md-1">
+                Вес 1 шт
+            </div>
+            <div class="col-md-1">
+                Вес всего
+            </div>
+            <div class="col-md-2">
+                Цена
+            </div>
+            <div class="col-md-2">
+                Сумма
             </div>
         </div>
-        <h2>Стандартные товары</h2>
-        <div id="ordinary">
-            <div class="row">
+        <div id="hot">
 
-                <div class="col-md-1">
-                </div>
-                <div class="col-md-2">
-                    Фотография
-                </div>
-                <div class="col-md-3">
-                    Наименование
-                </div>
-                <div class="col-md-2">
-                    Количество
-                </div>
-                <div class="col-md-2">
-                    Вес
-                </div>
-                <div class="col-md-2">
-                    Цена
-                </div>
+
+        </div>
+        <h2>Стандартные товары</h2>
+        <div class="row">
+
+            <div class="col-md-1">
             </div>
+            <div class="col-md-2">
+                Фотография
+            </div>
+            <div class="col-md-3">
+                Наименование
+            </div>
+            <div class="col-md-2">
+                Количество
+            </div>
+            <div class="col-md-2">
+                Вес
+            </div>
+            <div class="col-md-2">
+                Цена
+            </div>
+        </div>
+        <div id="ordinary">
+
         </div>
 
         <div id="total">

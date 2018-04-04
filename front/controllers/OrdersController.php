@@ -9,6 +9,7 @@ use app\front\models\Orders;
 use app\front\models\OrdersHasCart;
 use app\front\models\Store;
 use yii\data\ActiveDataProvider;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class OrdersController extends Controller
@@ -27,40 +28,42 @@ class OrdersController extends Controller
     {
         $model = new Orders();
         if ($model->load(\Yii::$app->request->post())) {
-            $storeItems = $_SESSION['store'];
 
-            $model->save();
-
-
-            foreach ($storeItems as $item) {
-                $cart               = new Cart();
-                $modelOrdersHasCart = new OrdersHasCart();
-                /**
-                 * @var $id Store id
-                 * @var $count Store items
-                 */
-                $id    = $item['data']['id'];
-                $count = $item['count'];
-                // Аттребуты Cart()
-                $cart->id_store = $id;
-                $cart->count    = $count;
-                $cart->sum      = $count * ($item['item_discount_box_price'] ? $item['item_discount_box_price'] : $item['item_box_price']);
-                $cart->confirm  = false;
-                $cart->is_sale  = $item['item_discount_box_price'] ? true : false;
-
-                if ($cart->save()) {
-                    /**
-                     * Сохраняем связь много-ко-многим
-                     */
-                    $modelOrdersHasCart->cart_id  = $cart->id;
-                    $modelOrdersHasCart->order_id = $model->id;
-                    if ($modelOrdersHasCart->save()) {
-                        $store             = Store::itemSell($id, $count); // списываем товар со склада
-                        $_SESSION['store'] = NULL;
-                    }
-                }
-            }
-            return $this->redirect(['/front/cart/payment']);
+            VarDumper::dump(\Yii::$app->request->post(),10,true);
+//            $storeItems = $_SESSION['store'];
+//
+//            $model->save();
+//
+//
+//            foreach ($storeItems as $item) {
+//                $cart               = new Cart();
+//                $modelOrdersHasCart = new OrdersHasCart();
+//                /**
+//                 * @var $id Store id
+//                 * @var $count Store items
+//                 */
+//                $id    = $item['data']['id'];
+//                $count = $item['count'];
+//                // Аттребуты Cart()
+//                $cart->id_store = $id;
+//                $cart->count    = $count;
+//                $cart->sum      = $count * ($item['item_discount_box_price'] ? $item['item_discount_box_price'] : $item['item_box_price']);
+//                $cart->confirm  = false;
+//                $cart->is_sale  = $item['item_discount_box_price'] ? true : false;
+//
+//                if ($cart->save()) {
+//                    /**
+//                     * Сохраняем связь много-ко-многим
+//                     */
+//                    $modelOrdersHasCart->cart_id  = $cart->id;
+//                    $modelOrdersHasCart->order_id = $model->id;
+//                    if ($modelOrdersHasCart->save()) {
+//                        $store             = Store::itemSell($id, $count); // списываем товар со склада
+//                        $_SESSION['store'] = NULL;
+//                    }
+//                }
+//            }
+//            return $this->redirect(['/front/cart/payment']);
 
         }
         ///   todo something

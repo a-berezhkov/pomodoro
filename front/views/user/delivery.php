@@ -14,6 +14,8 @@ use yii\helpers\Url;
 $this->title                   = Yii::t('user', 'Delivery');
 $this->params['breadcrumbs'][] = $this->title;
 $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
+
+$this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 
@@ -35,7 +37,7 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
                 </p>
         </div>
             <div class="col-md-4">
-                <?= Html::a('Вставить из профиля','#',['class'=>'btn button']) ?>
+                <?= Html::a('Вставить из профиля','#',['class'=>'btn button','id'=>'paste-from-profile']) ?>
             </div>
         </div>
         <? $form = ActiveForm::begin([
@@ -45,12 +47,13 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
 
         <div class="row">
             <div class="col-md-6">
-                <?= $form->field($model, 'address_street')->hiddenInput(['id'=>'address-street'])->label(false) ?>
+                <?= $form->field($model, 'address_street')->textInput(['id'=>'address-street','value'=>Yii::$app->user->identity->profile->address]) ?>
+
                 <?= $form->field($model, 'google_id')->widget(Select2::classname(), [
-                    // 'initValueText' => $someDesc, // set the initial display text
-                    'options'       => [
-                        'id'          => 'igoogle_id',
-                    ],
+                    'initValueText' => \yii\helpers\ArrayHelper::map(\app\front\models\user\Profile::find()->where(['user_id'=>1])->all(),'address','address'),
+//                    'options'       => [
+//                        'id'          => 'google_id',
+//                    ],
                     'pluginEvents'  => [
                         'select2:select' => "function() { 
                             $('#address-street').val($(this).text());

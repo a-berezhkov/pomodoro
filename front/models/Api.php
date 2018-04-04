@@ -19,8 +19,9 @@ class Api
      */
     public static function getPlacesByGoogleMap($q)
     {
+        $q = str_replace(' ', '+', $q);
         $API_KEY  = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
-        $url      = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' . $q . '&language=ru&&key=' . $API_KEY;
+        $url      = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input='.$q.'&language=ru&&key=' . $API_KEY;
         $response = file_get_contents($url);
         $obj      = json_decode($response);
         foreach ($obj->predictions as $ob) {

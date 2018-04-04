@@ -64,4 +64,7 @@ a {
     color: #000;
     border: 1px solid #000;
   }
+  &.button-rounded {
+    border-radius: 20%;
+  }
 }

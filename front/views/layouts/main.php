@@ -45,6 +45,9 @@ $this->registerJs($script, yii\web\View::POS_READY);
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic,cyrillic-ext"
               rel="stylesheet">
 
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
@@ -129,7 +132,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                         [
                             'label' => 'Обратный звонок',
                             'url' => ['#'],
-                            'options' => ['class' => 'menu-item call-button'],
+                            'options' => ['class' => 'menu-item call-button button button-rounded'],
                         ],
                         [
                             'label' => FA::i('shopping-basket'),

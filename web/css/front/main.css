@@ -2,7 +2,7 @@ html {
   font-size: 16px; }
 
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Open Sans', sans-serif; }
 
 a {
   color: #000; }
@@ -352,6 +352,8 @@ a.button-inverse {
   background: #fff;
   color: #000;
   border: 1px solid #000; }
+a.button-rounded {
+  border-radius: 20%; }
 
 .dropdown-menu {
   display: none;
@@ -507,7 +509,7 @@ header.header {
     header.header nav ul.navbar-nav {
       list-style-type: none;
       padding-left: 0;
-      margin: 15px 0; }
+      margin: 15px 0 15px 25px; }
       header.header nav ul.navbar-nav li.menu-item a {
         font-size: 1rem;
         font-weight: 500;
@@ -515,11 +517,14 @@ header.header {
         display: block;
         padding: 12px 15px; }
       header.header nav ul.navbar-nav li.menu-item.call-button {
-        background: #000; }
+        background: #000;
+        border-radius: 50px; }
         header.header nav ul.navbar-nav li.menu-item.call-button a {
           color: #fff;
           text-transform: uppercase;
           font-size: 0.75rem; }
+      header.header nav ul.navbar-nav li.menu-item.active a {
+        color: #ff243f; }
 
 .page-shop .welcome {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../img/hiw.jpg);

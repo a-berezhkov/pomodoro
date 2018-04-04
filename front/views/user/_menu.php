@@ -18,19 +18,7 @@ use app\widgets\UserMenu;
 
 $user = Yii::$app->user->identity;
 ?>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-<!--            --><?//= Html::img($user->profile->getAvatarUrl(48), [
-//                'class' => 'img-rounded',
-//                'alt' => $user->username,
-//                'width'=>48,
-//                'height'=>48,
-//            ]) ?>
-            <?// $user->username ?>
-        </h3>
-    </div>
-    <div class="panel-body">
-        <?= UserMenu::widget() ?>
-    </div>
-</div>
+
+<?= UserMenu::widget() ?>
+
+<p>Великая задача страницы контактов на сайте — соединить компанию с миром людей. Клиенты, партнёры, контрагенты, соискатели, СМИ — вот неполный перечень тех, кто может зайти на сайт в поисках нужной информации.</p>

@@ -1,0 +1,41 @@
+.sidebar {
+  ul.menu {
+    list-style-type: none;
+    padding: 0;
+    li {
+      //height: 50px;
+      padding: 4px 0px 8px;
+      width: 285px;
+      border: 1px solid #000000;
+      margin-bottom: 1.5%;
+      position: relative;
+      font-size: $font-size-24px;
+      &:before {
+        position: absolute;
+        border-right: 1px solid #000;
+        top: 0px;
+        width: 50px;
+        height: 100%;
+        padding: 12px 12px;
+      }
+      a {
+        padding: 0 60px;
+        font-size: $font-size-16px;
+        width: 100%;
+        display: inline-block;
+        &:before {
+        }
+      }
+      &:hover, &.active {
+        background: #000;
+        color: #fff;
+        a {
+          color: #fff;
+        }
+        &:before {
+          border-right: 1px solid #fff;
+        }
+      }
+    }
+  }
+}

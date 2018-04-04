@@ -10,3 +10,4 @@ use yii\helpers\Url;
 ($delivery) ? false : true]) ?>
 <?= Html::a('Выбор оплаты',Url::toRoute('/front/cart/payment'),['class'=>'','disabled' => true]) ?>
 <?= Html::a('Подтверждение','',['class'=>'','disabled' => true]) ?>
+

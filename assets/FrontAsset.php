@@ -25,7 +25,8 @@ class FrontAsset extends AssetBundle
     ];
     public $css = [
         // more plugin CSS here
-        'css/front/main.css'
+        'css/front/main.css',
+        'fonts/pomidoro-icon/styles.css'
     ];
 
     public $depends = [

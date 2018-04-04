@@ -1,0 +1,33 @@
+.page-cart {
+  ul.navbar {
+    padding: 0;
+    margin: 0;
+    li.menu-item {
+      margin-right: 6%;
+      font-size: $font-size-22px;
+      &.active {
+        border-bottom: 2px solid #000;
+        margin-bottom: 3%;
+        //border-bottom: 1px;
+      }
+    }
+  }
+  .section-name {
+    font-size: $font-size-18px;
+  }
+  .heading {
+    background: #000;
+    color: #fff;
+  }
+  table.table-products {
+    padding: 2% 0;
+    //border-bottom: 1px solid #000;
+    tbody {
+      border-bottom: 2px solid #000 !important;
+
+      td {
+        vertical-align: middle;
+      }
+    }
+  }
+}

@@ -36,6 +36,12 @@ h2.section-title {
     border: 1px solid #000;
     border-radius: 0; }
 
+ul.navbar {
+  list-style-type: none; }
+  ul.navbar.nav-horizontal li {
+    display: inline-block;
+    margin-right: 3%; }
+
 .category {
   overflow: hidden;
   position: relative; }
@@ -597,6 +603,27 @@ header.header {
     font-size: 1.375rem;
     font-weight: 500;
     letter-spacing: normal; }
+
+.page-cart ul.navbar {
+  padding: 0;
+  margin: 0; }
+  .page-cart ul.navbar li.menu-item {
+    margin-right: 6%;
+    font-size: 1.375rem; }
+    .page-cart ul.navbar li.menu-item.active {
+      border-bottom: 2px solid #000;
+      margin-bottom: 3%; }
+.page-cart .section-name {
+  font-size: 1.125rem; }
+.page-cart .heading {
+  background: #000;
+  color: #fff; }
+.page-cart table.table-products {
+  padding: 2% 0; }
+  .page-cart table.table-products tbody {
+    border-bottom: 2px solid #000 !important; }
+    .page-cart table.table-products tbody td {
+      vertical-align: middle; }
 
 header {
   background: #fff; }

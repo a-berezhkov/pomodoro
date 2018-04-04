@@ -168,8 +168,8 @@ function showItems() {
     // начало создания вставки
     //==================================HOT Items ===============================================//
     var hot = document.getElementById('hot');
-    var hot_div = document.createElement('div');
-    hot_div.className = "row";
+    var hot_div = document.createElement('table');
+    hot_div.className = "table table-products";
     for (var item_name in localStorage) {
         item = JSON.parse(localStorage.getItem(item_name));
         if (item !== null) {
@@ -180,19 +180,22 @@ function showItems() {
                 discountTotalPrice = discountTotalPrice + (item.item_discount_box_price * item.count_box);
                 // создание элемента для вставки
                 hot_div.innerHTML = hot_div.innerHTML +
-                    '<div class="row">' +
-                    '<div class="col-md-1"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></div>' +
-                    '<div class="col-md-2"><img src="' + item.item_image_link + '"' +
+                    //'<table class="">' +
+                    '<tr>' +
+                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></div>' +
+                    '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></div>' +
-                    '<div class="col-md-2">' + item.item_name + '</div>' +
-                    '<div class="col-md-1">' +
+                    '<td class="col-md-1 text-center">' + item.item_name + '</div>' +
+                    '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
-                    '                                   step="1"></div>' +
-                    '<div class="col-md-1 box_weight">' + item.item_box_weight + '</div>' +
-                    '<div class="col-md-1 item-total-weight">' + (item.item_box_weight * item.count_box) + '</div>' +
-                    '<div class="col-md-2" id="price">' + item.item_discount_box_price + '</div>' +
-                    '<div class="col-md-2 total-price"  > ' + (item.item_discount_box_price * item.count_box) + '</div>' +
-                    '</div>';
+                    '                                   step="1"></td>' +
+                    '<td class="col-md-1 box_weight text-center">' + item.item_box_weight + '</td>' +
+                    '<td class="col-md-1 item-total-weight text-center">' + (item.item_box_weight * item.count_box) + '</td>' +
+                    '<td class="col-md-2 text-center" id="price">' + item.item_box_price + '</td>' +
+                    '<td class="col-md-2 total-price text-center"  > ' + (item.item_box_price * item.count_box) + '</td>' +
+                    //'';
+                    '</tr>';
+                    //'</table>';
             }
         }
     }
@@ -222,7 +225,7 @@ function showItems() {
                 ordinaryTotalPrice = ordinaryTotalPrice + parseInt(item.item_box_price * item.count_box);
                 // создание элемента для вставки
                 ordinary_div.innerHTML = ordinary_div.innerHTML +
-                    '<div class="row">' +
+                    // '<div class="row">' +
                     '<div class="col-md-1"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></div>' +
                     '<div class="col-md-2"><img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></div>' +
@@ -234,7 +237,8 @@ function showItems() {
                     '<div class="col-md-1 item-total-weight">' + (item.item_box_weight * item.count_box) + '</div>' +
                     '<div class="col-md-2" id="price">' + item.item_box_price + '</div>' +
                     '<div class="col-md-2 total-price"  > ' + (item.item_box_price * item.count_box) + '</div>' +
-                    '</div>';
+                    '';
+                    //'</div>';
             }
         }
     }

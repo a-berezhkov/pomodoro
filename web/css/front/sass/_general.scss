@@ -51,3 +51,13 @@ h2.section-title {
     }
   }
 }
+
+ul.navbar {
+  list-style-type: none;
+  &.nav-horizontal {
+    li {
+      display: inline-block;
+      margin-right: 3%;
+    }
+  }
+}

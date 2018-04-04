@@ -20,7 +20,6 @@ use kartik\date\DatePicker;
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
  * @var dektrium\user\models\Profile $model
-
  */
 
 $this->title = Yii::t('user', 'Profile settings');
@@ -29,24 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
 
-<div class="row">
-    <div class="col-md-3">
-        <?= $this->render('_menu') ?>
-    </div>
-    <div class="col-md-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <?= Html::encode($this->title) ?>
-            </div>
+<div class="page">
+    <div class="row">
+        <div class="col-md-3">
+            <?= $this->render('_menu') ?>
+        </div>
+        <div class="col-md-9">
+            <div class="form bordered">
 
-            <div class="panel-body">
+                <h2 class="title">Информация</h2>
+
                 <?php $form = ActiveForm::begin([
                     'id' => 'profile-form',
-                    'options' => ['class' => 'form-horizontal'],
-                    'fieldConfig' => [
-                        'template' => "{label}\n<div class=\"col-lg-9\">{input}</div>\n<div class=\"col-sm-offset-3 col-lg-9\">{error}\n{hint}</div>",
-                        'labelOptions' => ['class' => 'col-lg-3 control-label'],
-                    ],
+                    'options' => ['class' => ''],
+
                     'enableAjaxValidation' => true,
                     'enableClientValidation' => false,
                     'validateOnBlur' => false,
@@ -54,21 +49,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <!------------------------------------------user photo --------------------------------------------------------------------->
 
-                <?= $form->field($model, 'surname') ?>
+                <?= $form->field($model, 'surname')->label(false) ?>
 
-                <?= $form->field($model, 'name') ?>
+                <?= $form->field($model, 'name')->label(false) ?>
 
-                <?= $form->field($model, 'middlename') ?>
+                <?= $form->field($model, 'middlename')->label(false) ?>
 
                 <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
                     'mask' => '+7 (999)-999-9999',
-                ]) ?>
+                ])->label(false) ?>
 
-                <?= $form->field($model, 'inn') ?>
+                <?= $form->field($model, 'inn')->label(false) ?>
 
-                <?= $form->field($model, 'address') ?>
+                <?= $form->field($model, 'address')->label(false) ?>
 
-                <?= $form->field($model, 'company_name') ?>
+                <?= $form->field($model, 'company_name')->label(false) ?>
 
 
 
@@ -78,18 +73,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <? // $form->field($model, 'location') ?>
 
 
-<!---->
-<!--                --><?//= $form
-//                    ->field($model, 'gravatar_email')
-//                    ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
+                <!---->
+                <!--                --><? //= $form
+                //                    ->field($model, 'gravatar_email')
+                //                    ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
 
 
+                <div class="form-group text-right">
+                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn button button-action']) ?>
 
-                <div class="form-group">
-                    <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
-                        <br>
-                    </div>
                 </div>
 
                 <?php ActiveForm::end(); ?>

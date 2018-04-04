@@ -24,41 +24,35 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
 
-<div class="row">
-    <div class="col-md-3">
-        <?= $this->render('_menu') ?>
-    </div>
-    <div class="col-md-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?= Html::encode($this->title) ?></h3>
-            </div>
-            <div class="panel-body">
+<div class="page">
+    <div class="row">
+        <div class="col-md-3">
+            <?= $this->render('_menu') ?>
+        </div>
+        <div class="col-md-9">
+            <div class="form bordered">
+
+                <h2 class="title">Настройки</h2>
                 <?php $form = ActiveForm::begin([
                     'id' => 'account-form',
-                    'options' => ['class' => 'form-horizontal'],
-                    'fieldConfig' => [
-                        'template' => "{label}\n<div class=\"col-lg-9\">{input}</div>\n<div class=\"col-sm-offset-3 col-lg-9\">{error}\n{hint}</div>",
-                        'labelOptions' => ['class' => 'col-lg-3 control-label'],
-                    ],
+                    'options' => ['class' => ''],
                     'enableAjaxValidation' => true,
                     'enableClientValidation' => false,
                 ]); ?>
 
-                <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'email')->label(false) ?>
 
-                <?= $form->field($model, 'username') ?>
+                <?= $form->field($model, 'username')->label(false) ?>
 
-                <?= $form->field($model, 'new_password')->passwordInput() ?>
+                <?= $form->field($model, 'new_password')->passwordInput(['placeholder' => 'Новый пароль'])->label(false) ?>
 
                 <hr/>
 
-                <?= $form->field($model, 'current_password')->passwordInput() ?>
+                <?= $form->field($model, 'current_password')->passwordInput(['placeholder' => 'Текущий пароль'])->label(false) ?>
 
-                <div class="form-group">
-                    <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
-                    </div>
+                <div class="form-group text-right">
+                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn button button-action']) ?><br>
+
                 </div>
 
                 <?php ActiveForm::end(); ?>

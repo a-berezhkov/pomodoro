@@ -192,15 +192,20 @@ function showItems() {
                     '<div class="col-md-1 item-total-weight">' + (item.item_box_weight * item.count_box) + '</div>' +
                     '<div class="col-md-2" id="price">' + item.item_discount_box_price + '</div>' +
                     '<div class="col-md-2 total-price"  > ' + (item.item_discount_box_price * item.count_box) + '</div>' +
-                    '</div><hr>';
+                    '</div>';
             }
         }
     }
+    if (discountCountBox !== 0){
+        hot_div.innerHTML = hot_div.innerHTML +
+            '<div>Промежуточнный итог: <div id="discount-total-price">' + discountTotalPrice + '</div></div>' +
+            '<div>Количество упаковок: <div id="discount-count-box">' + discountCountBox + '</div></div>' +
+            '<div>Общий вес (нетто): <div id="discount-weight">' + discountWeight + ' </div>';
+    } else {
+        hot_div.innerHTML = hot_div.innerHTML +
+            '<div>Пока тут ничего нет(</div>';
+    }
 
-    hot_div.innerHTML = hot_div.innerHTML +
-        '<div>Промежуточнный итог: <div id="discount-total-price">' + discountTotalPrice + '</div></div>' +
-        '<div>Количество упаковок: <div id="discount-count-box">' + discountCountBox + '</div></div>' +
-        '<div>Общий вес (нетто): <div id="discount-weight">' + discountWeight + ' </div>';
     hot.appendChild(hot_div);
     //==================================End HOT Items ===============================================//
     //==================================Ordinary Items ==============================================//
@@ -228,21 +233,30 @@ function showItems() {
                     '<div class="col-md-1 box_weight">' + item.item_box_weight + '</div>' +
                     '<div class="col-md-1 item-total-weight">' + (item.item_box_weight * item.count_box) + '</div>' +
                     '<div class="col-md-2" id="price">' + item.item_box_price + '</div>' +
-                    '<div class="col-md-2 total-price"  > ' + (item.item_discount_box_price * item.count_box) + '</div>' +
-                    '</div><hr>';
+                    '<div class="col-md-2 total-price"  > ' + (item.item_box_price * item.count_box) + '</div>' +
+                    '</div>';
             }
         }
     }
-    ordinary_div.innerHTML = ordinary_div.innerHTML +
-        '<div>Промежуточнный итог: <div id="ordinary-total-price">' + ordinaryTotalPrice + '</div></div>' +
-        '<div>Количество упаковок: <div id="ordinary-count-box">' + ordinaryCountBox + '</div></div>' +
-        '<div>Общий вес (нетто): <div id="ordinary-weight">' + ordinaryWeight + ' </div></div>';
+    if (ordinaryCountBox !== 0) {
+        ordinary_div.innerHTML = ordinary_div.innerHTML +
+            '<div>Промежуточнный итог: <div id="ordinary-total-price">' + ordinaryTotalPrice + '</div></div>' +
+            '<div>Количество упаковок: <div id="ordinary-count-box">' + ordinaryCountBox + '</div></div>' +
+            '<div>Общий вес (нетто): <div id="ordinary-weight">' + ordinaryWeight + ' </div></div>';
+    }
+    else {
+        ordinary_div.innerHTML = ordinary_div.innerHTML +
+            '<div>Пока тут ничего нет(</div>';
+    }
     ordinary.appendChild(ordinary_div);
     //==================================END Ordinary Items ===========================================//
     var total = document.getElementById('total');
-    total.innerHTML =
-        '<div>Итог: <div id="total-price">' + (ordinaryTotalPrice + discountTotalPrice) + '</div></div>' +
-        '<div>Количество упаковок: <div id="total-count">' + (ordinaryCountBox + discountCountBox) + '</div></div>' +
-        '<div>Общий вес (нетто): <div id="total-weight">' + (ordinaryWeight + discountWeight) + ' </div></div>';
-    // todo plus items by values
+    if ((ordinaryTotalPrice !== 0) && (discountTotalPrice !== 0)){
+        total.innerHTML =
+            '<div>Итог: <div id="total-price">' + (ordinaryTotalPrice + discountTotalPrice) + '</div></div>' +
+            '<div>Количество упаковок: <div id="total-count">' + (ordinaryCountBox + discountCountBox) + '</div></div>' +
+            '<div>Общий вес (нетто): <div id="total-weight">' + (ordinaryWeight + discountWeight) + ' </div></div>';
+
+    }
+
 }

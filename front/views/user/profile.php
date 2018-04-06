@@ -54,11 +54,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <!------------------------------------------user photo --------------------------------------------------------------------->
 
-                <?= $form->field($model, 'surname') ?>
+                <? $form->field($model, 'surname') ?>
 
-                <?= $form->field($model, 'name') ?>
+                <? $form->field($model, 'name') ?>
 
-                <?= $form->field($model, 'middlename') ?>
+                <? $form->field($model, 'middlename') ?>
 
                 <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
                     'mask' => '+7 (999)-999-9999',
@@ -66,9 +66,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'inn') ?>
 
-                <?= $form->field($model, 'address') ?>
-
                 <?= $form->field($model, 'company_name') ?>
+
+                <?= $form->field($model, 'address_city') ?>
+
+                <?= $form->field($model, 'address_street') ?>
+
+                <?= $form->field($model, 'address_house') ?>
+
+                <?= $form->field($model, 'address_housing') ?>
+
+                <?= $form->field($model, 'address_office') ?>
 
 
 

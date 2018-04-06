@@ -67,7 +67,7 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'address_street', 'address_house', 'delivery_date', 'delivery_interval'], 'required'],
+            [['delivery_date', 'delivery_interval'], 'required'],
             [['delivery_date', 'created_at', 'created_by', 'dropping_at','comment'], 'safe'],
             [['delivery_status'], 'integer'],
             [[ 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval','google_id'], 'string', 'max' => 255],

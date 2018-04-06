@@ -1,8 +1,16 @@
 $(document).ready(function () {
     console.log("fsdfs");
     $('#paste-from-profile').click(function () {
+        $("#static-input-address").show();
+        $("#dynamic-input-address").hide();
         autocompleteProfile();
     });
+    $(".input-address").click(function () {
+        showAddressForm();
+    });
+
+    $("#cart").val(JSON.stringify(localStorage));
+
 
 });
 
@@ -19,8 +27,8 @@ function autocompleteProfile(){
             console.log($("#google_id"));
             $("#orders-address_phone").val(data.phone);
 
-            $("#orders-google_id").select2("data", {id: 1, text: 2});
-             console.log( $("#orders-google_id"));
+        // $("#orders-google_id").select2("data", {id: 1, text: 2});
+          //   console.log( $("#orders-google_id"));
 
             //$(".select2-container").text("fsdfsd");
            // $("#select").select2("val", "CA");
@@ -32,5 +40,15 @@ function autocompleteProfile(){
 }
 
 function saveDileveryProfile(){
+
+}
+
+function showAddressForm(){
+
+        $("#static-input-address").toggle(function () {
+        });
+        $("#dynamic-input-address").toggle(function () {
+        });
+
 
 }

@@ -1,19 +1,19 @@
 <?php
 
-
+declare(strict_types=1);
 namespace app\front\controllers;
 
 
-use app\front\models\Cart;
-use app\front\models\Orders;
-use app\front\models\OrdersHasCart;
-use app\front\models\Store;
+
+use app\front\models\{OrdersHasCart,Store,Orders,Cart};
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class OrdersController extends Controller
 {
+
     /**
      * Метод формирвоания заказа
      * Получает данные товаров в корзине из сессии $_SESSION['store']
@@ -24,46 +24,49 @@ class OrdersController extends Controller
      *
      * @return \yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate(): object
     {
         $model = new Orders();
         if ($model->load(\Yii::$app->request->post())) {
 
-            VarDumper::dump(\Yii::$app->request->post(),10,true);
-//            $storeItems = $_SESSION['store'];
-//
-//            $model->save();
-//
-//
-//            foreach ($storeItems as $item) {
-//                $cart               = new Cart();
-//                $modelOrdersHasCart = new OrdersHasCart();
-//                /**
-//                 * @var $id Store id
-//                 * @var $count Store items
-//                 */
-//                $id    = $item['data']['id'];
-//                $count = $item['count'];
-//                // Аттребуты Cart()
-//                $cart->id_store = $id;
-//                $cart->count    = $count;
-//                $cart->sum      = $count * ($item['item_discount_box_price'] ? $item['item_discount_box_price'] : $item['item_box_price']);
-//                $cart->confirm  = false;
-//                $cart->is_sale  = $item['item_discount_box_price'] ? true : false;
-//
-//                if ($cart->save()) {
-//                    /**
-//                     * Сохраняем связь много-ко-многим
-//                     */
-//                    $modelOrdersHasCart->cart_id  = $cart->id;
-//                    $modelOrdersHasCart->order_id = $model->id;
-//                    if ($modelOrdersHasCart->save()) {
-//                        $store             = Store::itemSell($id, $count); // списываем товар со склада
-//                        $_SESSION['store'] = NULL;
-//                    }
-//                }
-//            }
-//            return $this->redirect(['/front/cart/payment']);
+            $unDecodedCartItems = Json::decode(\Yii::$app->request->post('cart-items'));
+            foreach ($unDecodedCartItems as $key => $unDecodedCartItem) {
+                $unDecodedCartItems[$key] = Json::decode($unDecodedCartItem);
+            }
+
+
+            $model->save();
+            VarDumper::dump($model->errors,10,true);
+            foreach ($unDecodedCartItems as $item) {
+                VarDumper::dump($item,10,true);
+                $cart               = new Cart();
+                $modelOrdersHasCart = new OrdersHasCart();
+                /**
+                 * @var $id Store id
+                 * @var $count Store items
+                 */
+                  $id    = $item['id'];
+                  $count = $item['count_box'];
+                // Аттребуты Cart()
+                $cart->id_store = $id;
+                $cart->count    = $count;
+                $cart->sum      = $count * ($item['item_discount_box_price'] ? $item['item_discount_box_price'] : $item['item_box_price']);
+                $cart->confirm  = false;
+                $cart->is_sale  = $item['item_discount_box_price'] ? true : false;
+
+                if ($cart->save()) {
+                    /**
+                     * Сохраняем связь много-ко-многим
+                     */
+                    $modelOrdersHasCart->cart_id  = $cart->id;
+                    $modelOrdersHasCart->order_id = $model->id;
+                    if ($modelOrdersHasCart->save()) {
+                        $store             = Store::itemSell($id, $count); // списываем товар со склада
+
+                    }
+                }
+            }
+            //  return $this->redirect(['/front/cart/payment']);
 
         }
         ///   todo something

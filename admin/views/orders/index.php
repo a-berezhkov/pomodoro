@@ -51,6 +51,18 @@ $this->params['breadcrumbs'][] = $this->title;
             //'google_id',
 
             ['class' => 'yii\grid\ActionColumn'],
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                'controller' => 'info',
+                'template' => '{view}',
+                'buttons' => [
+                    'view' => function ($url,$model) {
+                        return Html::a(
+                            '<span class="glyphicon glyphicon-screenshot"></span>',
+                            $url);
+                    },
+                    ]
+            ]
         ],
     ]); ?>
     <?php Pjax::end(); ?>

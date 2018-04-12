@@ -73,7 +73,7 @@ class Orders extends \yii\db\ActiveRecord
             [['delivery_status'], 'integer'],
             [['address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval', 'google_id', 'payment'], 'string', 'max' => 255],
             [['address_phone'], 'string', 'max' => 20],
-            [['dropping'], 'string', 'max' => 1],
+            [['dropping'], 'boolean'],
             [['unique_code'], 'string', 'max' => 50],
             [['unique_code'], 'unique'],
             [['delivery_status'], 'exist', 'skipOnError' => true, 'targetClass' => OrdersStatus::className(), 'targetAttribute' => ['delivery_status' => 'id']],

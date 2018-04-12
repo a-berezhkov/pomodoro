@@ -27,7 +27,7 @@ use yii\grid\GridView;
                         //   'address_housing',
                         //  'address_office',
                         //'address_phone',
-                        'delivery_date',
+                        'delivery_date:date',
                         'delivery_interval',
 
                         [

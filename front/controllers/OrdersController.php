@@ -9,7 +9,9 @@ use app\front\models\{
     OrdersHasCart, Store, Orders, Cart
 };
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 
@@ -110,6 +112,20 @@ class OrdersController extends Controller
                                            ['unique_code'=>$code]
         ])->one();
         return $this->render('/default/order-view',['model'=>$model]);
+    }
+
+    public function actionDropOrder($id){
+        $model = Orders::findOne(['id'=>$id]);
+        $model->dropping = true;
+        $model->delivery_status = 6;
+        $model->dropping_at = new Expression('NOW()');
+        if($model->save()){
+            \Yii::$app->session->setFlash('success', 'Заказ ', $model->id , ' отменен');
+            return $this->redirect(Url::toRoute('/front/orders/user-orders'));
+        }
+        else {
+            VarDumper::dump($model->errors);
+        }
     }
 
 }

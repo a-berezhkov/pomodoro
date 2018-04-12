@@ -134,6 +134,14 @@ class Orders extends \yii\db\ActiveRecord
     }
 
     /**
+     * Метод вовзращает все товары из заказа
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCarts(){
+        return $this->hasMany(Cart::className(), ['id' => 'cart_id'])
+                    ->viaTable('orders_has_cart', ['order_id' => 'id']);
+    }
+    /**
      * @param int $length
      * @return string
      */

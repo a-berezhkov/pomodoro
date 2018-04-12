@@ -39,7 +39,19 @@ use yii\grid\GridView;
                         //'created_by',
                         //'dropping',
                         //'dropping_at',
-                        'unique_code',
+
+                        [
+                                'attribute' => 'unique_code',
+                                'value' => function($data){
+                                return \yii\helpers\Html::a(
+                                        $data->unique_code,
+                                        [
+                                                '/front/orders/view-order',
+                                                'code'=> $data->unique_code
+                                        ]);
+                                },
+                                'format' =>'html'
+                        ]
                         //'comment:ntext',
                         //'google_id',
 

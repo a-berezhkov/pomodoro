@@ -48,10 +48,10 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             [
-                'class'              => TimestampBehavior::className(),
+                'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => false,
-                'value'              => new Expression('NOW()'),
+                'value' => new Expression('NOW()'),
             ],
             [
                 'class' => BlameableBehavior::className(),
@@ -69,14 +69,25 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             [['delivery_date', 'delivery_interval'], 'required'],
-            [['delivery_date', 'created_at', 'created_by', 'dropping_at','comment'], 'safe'],
+            [['created_at', 'created_by', 'dropping_at', 'comment'], 'safe'],
             [['delivery_status'], 'integer'],
-            [[ 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval','google_id','payment'], 'string', 'max' => 255],
+            [['address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval', 'google_id', 'payment'], 'string', 'max' => 255],
             [['address_phone'], 'string', 'max' => 20],
             [['dropping'], 'string', 'max' => 1],
             [['unique_code'], 'string', 'max' => 50],
             [['unique_code'], 'unique'],
             [['delivery_status'], 'exist', 'skipOnError' => true, 'targetClass' => OrdersStatus::className(), 'targetAttribute' => ['delivery_status' => 'id']],
+            ['google_id', 'required', 'when' => function ($model) {
+                return $model->address_street == '';
+            }, 'whenClient' => 'function (attribute, value) {
+        return $("#orders-address_street").val() == "";
+    }', 'message' => 'Заполните поле Адрес с помощью автоматического подбора либо укажите вручную'],
+
+            ['address_street', 'required', 'when' => function ($model) {
+                return $model->google_id == '';
+            }, 'whenClient' => 'function (attribute, value) {
+        return $("#orders-google_id").val() == "";
+    }', 'message' => 'Заполните поле Адрес с помощью автоматического подбора либо укажите вручную']
         ];
     }
 
@@ -126,7 +137,8 @@ class Orders extends \yii\db\ActiveRecord
      * @param int $length
      * @return string
      */
-    static function generateUniqueCode(int $length = 10) : string {
+    static function generateUniqueCode(int $length = 10): string
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';

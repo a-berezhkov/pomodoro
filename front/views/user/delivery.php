@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
 
 $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+
 ?>
 
 
@@ -44,7 +45,8 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
         </div>
         <? $form = ActiveForm::begin([
             'action' => Url::toRoute('/front/orders/create'),
-            'method' => 'post'
+            'method' => 'post',
+
         ]) ?>
         <div id="dynamic-input-address">
             <div class="row">
@@ -118,19 +120,20 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
     </div>
     <div class="row">
         <div class="col-md-4">
-            <?= \kartik\widgets\DatePicker::widget([
-                'attribute' => 'delivery_date',
-                'model' => $model,
+            <?= $form->field($model, 'delivery_date')->widget(\kartik\widgets\DatePicker::classname(), [
                 'type' => \kartik\widgets\DatePicker::TYPE_INLINE,
-                'value' => date("Y-m-d"),
+
+               // 'value' => date("Y-m-d", strtotime('+2 days')),
                 'pluginOptions' => [
-                    'format' => 'yyyy-mm-d'
+                    'format' => 'yyyy-mm-d',
+                    'todayHighlight' => true,
+
                 ],
                 'options' => [
                     // you can hide the input by setting the following
                     'class' => 'hide'
                 ]
-            ]); ?>
+            ]) ; ?>
         </div>
         <div class="col-md-2">
             <?= $form->field($model, 'delivery_interval')->dropDownList(['8-13' => '8-13', '14-19' => '14-19']) ?>
@@ -144,12 +147,12 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
         </div>
 
         <?= Html::hiddenInput('cart-items', null, ['id'=>'cart']) ?>
-        <? ActiveForm::end() ?>
+
 
         <?= Html::submitButton('Сохранить адрес доставки и продолжить', ['class' => 'btn btn-success']) ?>
     </div>
 
-
+        <? ActiveForm::end() ?>
 </div>
 </div>
 </div>

@@ -104,21 +104,15 @@ class CartController extends Controller
     /**
      * @return string
      */
-    public function actionPayment($id = null, $Orders = null)
+    public function actionPayment($id)
     {
-        if ($id == null) {
-            \Yii::$app->session->setFlash('danger', 'Вы не указали адрес доставки');
-            $model = new Orders();
-            return $this->render('/user/delivery', ['model' => $model]);
-        }
+
         $model = Orders::findOne(['id' => $id]);
 
         if (\Yii::$app->request->post('payment')) {
             $model->payment = \Yii::$app->request->post('payment');
             $model->save();
-            return $this->render('/user/confirm', [
-                'model' => $model
-            ]);
+            return $this->redirect(['confirm','id'=>$id]);
         } else {
             return $this->render('/user/payment', [
                 'model' => $model
@@ -126,5 +120,16 @@ class CartController extends Controller
 
         }
 
+    }
+
+    public function actionConfirm($id){
+        if (\Yii::$app->request->post()) {
+            $model = Orders::findOne(['id' => $id]);
+            // TODO save confirm is true
+            // TODO show order and items
+
+        }
+
+        return $this->render('/user/confirm');
     }
 }

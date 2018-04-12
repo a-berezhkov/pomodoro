@@ -74,14 +74,14 @@ class CartController extends Controller
     public function actionCart()
     {
         if (\Yii::$app->request->isAjax) {
-          if ($_POST['data']){
-              $_SESSION['store'] = $_POST['data'];
-              return true;
-          } else {
-              return false;
-          }
+            if ($_POST['data']) {
+                $_SESSION['store'] = $_POST['data'];
+                return true;
+            } else {
+                return false;
+            }
         } else {
-          return $this->render('/user/cart');
+            return $this->render('/user/cart');
         }
     }
 
@@ -107,8 +107,22 @@ class CartController extends Controller
     /**
      * @return string
      */
-    public function actionPayment()
+    public function actionPayment($id, $Orders = null)
     {
-        return $this->render('/user/payment');
+        $model = Orders::findOne(['id' => $id]);
+
+        if (\Yii::$app->request->post('payment')) {
+            $model->payment = \Yii::$app->request->post('payment');
+            $model->save();
+            return $this->render('/user/confirm', [
+                'model' => $model
+            ]);
+        } else {
+            return $this->render('/user/payment', [
+                'model' => $model
+            ]);
+
+        }
+
     }
 }

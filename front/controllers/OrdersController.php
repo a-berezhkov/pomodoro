@@ -24,7 +24,7 @@ class OrdersController extends Controller
      *
      * @return \yii\web\Response
      */
-    public function actionCreate(): object
+    public function actionCreate()
     {
         $model = new Orders();
         if ($model->load(\Yii::$app->request->post())) {
@@ -35,9 +35,9 @@ class OrdersController extends Controller
             }
 
             $model->save();
-            VarDumper::dump($model->errors,10,true);
+
             foreach ($unDecodedCartItems as $item) {
-                VarDumper::dump($item,10,true);
+
                 $cart               = new Cart();
                 $modelOrdersHasCart = new OrdersHasCart();
                 /**
@@ -65,7 +65,7 @@ class OrdersController extends Controller
                     }
                 }
             }
-            //  return $this->redirect(['/front/cart/payment']);
+         return $this->redirect(['/front/cart/payment','id'=>$model->id]);
 
         }
         ///   todo something

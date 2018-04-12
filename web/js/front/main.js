@@ -15,6 +15,9 @@ function EventListeners() {
     $('#shopping-basket').click(ShowBasket);
     $(".button-basket").click(addToBasket);
     $("#cart-basket").click(goToCart);
+    $("#item-checkout").click(function () {
+        location.href='/web/front/cart/delivery';
+    });
 
 }
 
@@ -75,7 +78,9 @@ function ShowBasket() {
     ;
     cart.appendChild(div);
     $("#cart-basket").click(goToCart);
-
+    $("#item-checkout").click(function () {
+        location.href='/web//front/cart/delivery';
+    });
 }
 
 function addToBasket() {

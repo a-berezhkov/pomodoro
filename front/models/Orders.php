@@ -26,6 +26,7 @@ use yii\db\Expression;
  * @property string $unique_code
  * @property string $comment
  * @property string $google_id
+ * @property string $payment
  *
  * @property OrdersStatus $deliveryStatus
  * @property OrdersHasCart[] $ordersHasCarts

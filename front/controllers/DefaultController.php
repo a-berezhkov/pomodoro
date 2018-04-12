@@ -95,4 +95,13 @@ class DefaultController extends Controller
     public function actionError(){
         return $this->render('error');
     }
+
+    /**
+     * @param $q
+     */
+    public function actionSearchItems($q){
+        $items = Store::find()->where(['like', 'name', $q])->all();
+        return $this->render('/default/search-result',['items'=>$items]);
+
+    }
 }

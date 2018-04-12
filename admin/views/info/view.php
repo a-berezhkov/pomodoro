@@ -16,16 +16,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-            'id',
-//            'orders.orders_status.name',
             'cart.profile.name',
+            'cart.store.name',
             'cart.count',
             'cart.sum',
-            'cart.id',
-            'cart_id',
-//            'orders.id',
-            'order_id',
-
+            [
+                'attribute' => 'delivery_status',
+                'value' => 'order.deliveryStatus.name'
+],
+            'order.created_at'
         ]
     ]); ?>
 

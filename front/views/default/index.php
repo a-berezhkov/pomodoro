@@ -1,7 +1,6 @@
 <?php
 
 use rmrevin\yii\fontawesome\FA;
-use yii\helpers\Html;
 
 /**
  * @var   $suggests \app\front\models\Store
@@ -67,11 +66,25 @@ use yii\helpers\Html;
         <div class="special-row">
             <div class="col-md-12">
                 <div class="search-panel">
+                    <? \yii\bootstrap\ActiveForm::begin([
+                        'action'  => \yii\helpers\Url::to(['/front/default/search-items']),
+                        'method'  => 'get',
+                        'options' => [
+                            'class' => '',
+                            'id'    => 'search-form',
+                        ],
+
+                    ]) ?>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
+                        <?= \yii\helpers\Html::input('text', 'q', null, [
+                            'class'       => 'form-control',
+                            'placeholder' => 'Введите название товара',
+                        ]) ?>
+
                         <span class="input-group-btn"><button class="btn button-search"
-                                                              type="button">Найти</button></span>
+                                                              type="submit">Найти</button></span>
                     </div><!-- /input-group -->
+                    <? \yii\bootstrap\ActiveForm::end() ?>
                 </div>
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
@@ -98,11 +111,20 @@ use yii\helpers\Html;
                 <div class="order text-center">
                     <div class="row">
                         <div class="col-md-offset-6 col-md-6">
-                            <div class="order-form">
-                                <input type="text" class="form-control number"
-                                       placeholder="Введите номер накладной">
-                                <button class="btn button button-get-orders">Отследить</button>
-                            </div>
+                            <? \yii\bootstrap\ActiveForm::begin([
+                                'action'  => \yii\helpers\Url::to(['/front/orders/view-order']),
+                                'method'  => 'get',
+                                'options' => [
+                                    'class' => 'order-form',
+                                ],
+                            ]) ?>
+                            <?= \yii\helpers\Html::input('string', 'code', null, [
+                                'class'       => 'form-control number',
+                                'placeholder' => 'Введите номер накладной',
+                            ]) ?>
+
+                            <button class="btn button button-get-orders">Отследить</button>
+                            <? \yii\bootstrap\ActiveForm::end() ?>
                         </div>
                     </div>
                 </div>

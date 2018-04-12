@@ -20,6 +20,15 @@ window.onload = function () {
     $("#ordinary .count_box").change(function () {
         updateItem($(this), '#ordinary');
     });
+
+    if (localStorage.length === 0){
+        console.log(localStorage.length);
+        $("#btn-checkout").attr('disabled',true);
+        $("#btn-checkout").attr('href',"#");
+    } else {
+        $("#btn-checkout").prop('disabled', false);
+    }
+
 };
 
 /**
@@ -39,7 +48,7 @@ function updateItem(class_count_box, parent_id) {
     /**
      * Обнволения суммы  и сумарного веса каждого товара
      */
-    var parentRow = class_count_box.closest(".row");
+    var parentRow = class_count_box.closest("tr");
     var countInputVal = parseInt(parentRow.find(".count_box").val());
     //Рачитаваем суммарный вес
     var boxWeight = parseInt(parentRow.find(".box_weight").text());
@@ -119,7 +128,8 @@ function deleteItem() {
             localStorage.removeItem(item);
             $(this).parent().parent().hide("slow", function () {
                 var element = $(this);
-                var parent_element = element.parent().parent().attr('id');
+                var parent_element = element.parent().parent().parent().attr('id');
+                console.log(parent_element);
                 $(this).remove();
                 var count_box = element.find(".count_box").val();
                 var item_total_weight = element.find(".item-total-weight").text();
@@ -177,7 +187,7 @@ function showItems() {
                 // Расчет показателей
                 discountCountBox = (discountCountBox + parseInt(item.count_box));
                 discountWeight = discountWeight + (item.item_box_weight * item.count_box);
-                discountTotalPrice = discountTotalPrice + (item.item_discount_box_price * item.count_box);
+                discountTotalPrice = discountTotalPrice + (parseInt(item.item_discount_box_price) * item.count_box);
                 // создание элемента для вставки
                 hot_div.innerHTML = hot_div.innerHTML +
                     //'<table class="">' +
@@ -191,8 +201,8 @@ function showItems() {
                     '                                   step="1"></td>' +
                     '<td class="col-md-1 box_weight text-center">' + item.item_box_weight + '</td>' +
                     '<td class="col-md-1 item-total-weight text-center">' + (item.item_box_weight * item.count_box) + '</td>' +
-                    '<td class="col-md-2 text-center" id="price">' + item.item_box_price + '</td>' +
-                    '<td class="col-md-2 total-price text-center"  > ' + (item.item_box_price * item.count_box) + '</td>' +
+                    '<td class="col-md-2 text-center" id="price">' + item.item_discount_box_price + '</td>' +
+                    '<td class="col-md-2 total-price text-center" > ' + (item.item_discount_box_price * item.count_box) + '</td>' +
                     //'';
                     '</tr>';
                     //'</table>';
@@ -213,8 +223,8 @@ function showItems() {
     //==================================End HOT Items ===============================================//
     //==================================Ordinary Items ==============================================//
     var ordinary = document.getElementById('ordinary');
-    var ordinary_div = document.createElement('div');
-    ordinary_div.className = "row";
+    var ordinary_div = document.createElement('table');
+    ordinary_div.className = "table table-products";
     for (var item_name in localStorage) {
         item = JSON.parse(localStorage.getItem(item_name));
         if (item !== null) {
@@ -226,17 +236,18 @@ function showItems() {
                 // создание элемента для вставки
                 ordinary_div.innerHTML = ordinary_div.innerHTML +
                     // '<div class="row">' +
-                    '<div class="col-md-1"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></div>' +
-                    '<div class="col-md-2"><img src="' + item.item_image_link + '"' +
+                    '<tr>' +
+                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></div>' +
+                    '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></div>' +
-                    '<div class="col-md-2">' + item.item_name + '</div>' +
-                    '<div class="col-md-1">' +
+                    '<td class="col-md-1 text-center">' + item.item_name + '</div>' +
+                    '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></div>' +
-                    '<div class="col-md-1 box_weight">' + item.item_box_weight + '</div>' +
-                    '<div class="col-md-1 item-total-weight">' + (item.item_box_weight * item.count_box) + '</div>' +
-                    '<div class="col-md-2" id="price">' + item.item_box_price + '</div>' +
-                    '<div class="col-md-2 total-price"  > ' + (item.item_box_price * item.count_box) + '</div>' +
+                    '<td class="col-md-1 box_weight text-center">' + item.item_box_weight + '</div>' +
+                    '<td class="col-md-1 item-total-weight text-center">' + (item.item_box_weight * item.count_box) + '</div>' +
+                    '<td class="col-md-2 text-center" id="price">' + item.item_box_price + '</div>' +
+                    '<td class="col-md-2 total-price text-center" > ' + (item.item_box_price * item.count_box) + '</div>' +
                     '';
                     //'</div>';
             }
@@ -255,7 +266,7 @@ function showItems() {
     ordinary.appendChild(ordinary_div);
     //==================================END Ordinary Items ===========================================//
     var total = document.getElementById('total');
-    if ((ordinaryTotalPrice !== 0) && (discountTotalPrice !== 0)){
+    if ((ordinaryTotalPrice !== 0) || (discountTotalPrice !== 0)){
         total.innerHTML =
             '<div>Итог: <div id="total-price">' + (ordinaryTotalPrice + discountTotalPrice) + '</div></div>' +
             '<div>Количество упаковок: <div id="total-count">' + (ordinaryCountBox + discountCountBox) + '</div></div>' +

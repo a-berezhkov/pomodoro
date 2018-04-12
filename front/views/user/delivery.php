@@ -16,14 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
 $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
 
 $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+
 ?>
 
 
+<div class="page page-cart"> <!-- TODO change class page-cart to page-delivery ----->
 <div class="row">
     <div class="col-md-3">
         <?= $this->render('_menu') ?>
     </div>
     <div class="col-md-9">
+        <?= \app\widgets\Alert::widget() ?>
         <div class="row">
             <div class="col-md-12">
                 <?= $this->render('_top_menu', ['delivery' => 'active', 'cart' => 'active']) ?>
@@ -42,7 +45,8 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
         </div>
         <? $form = ActiveForm::begin([
             'action' => Url::toRoute('/front/orders/create'),
-            'method' => 'post'
+            'method' => 'post',
+
         ]) ?>
         <div id="dynamic-input-address">
             <div class="row">
@@ -116,22 +120,23 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
     </div>
     <div class="row">
         <div class="col-md-4">
-            <?= \kartik\widgets\DatePicker::widget([
-                'attribute' => 'delivery_date',
-                'model' => $model,
+            <?= $form->field($model, 'delivery_date')->widget(\kartik\widgets\DatePicker::classname(), [
                 'type' => \kartik\widgets\DatePicker::TYPE_INLINE,
-                'value' => date("Y-m-d"),
+
+               // 'value' => date("Y-m-d", strtotime('+2 days')),
                 'pluginOptions' => [
-                    'format' => 'yyyy-mm-d'
+                    'format' => 'yyyy-mm-d',
+                    'todayHighlight' => true,
+
                 ],
                 'options' => [
                     // you can hide the input by setting the following
                     'class' => 'hide'
                 ]
-            ]); ?>
+            ]) ; ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'delivery_interval')->dropDownList(['8-13' => '8-13', '14-19' => '14-19']) ?>
+            <?= $form->field($model, 'delivery_interval')->radioList(['8-13' => '8-13', '14-19' => '14-19']) ?>
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'comment')->textarea() ?>
@@ -142,12 +147,13 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
         </div>
 
         <?= Html::hiddenInput('cart-items', null, ['id'=>'cart']) ?>
-        <? ActiveForm::end() ?>
 
-        <?= Html::submitButton(Yii::t('app', 'Next'), ['class' => 'btn btn-success']) ?>
+
+        <?= Html::submitButton('Сохранить адрес доставки и продолжить', ['class' => 'btn btn-success']) ?>
     </div>
 
-
+        <? ActiveForm::end() ?>
+</div>
 </div>
 </div>
 

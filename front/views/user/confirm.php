@@ -7,7 +7,7 @@ use yii\helpers\Url;
 <?php $form =  ActiveForm::begin([
     'id' => 'payment-form',
     'options' => ['class' => 'form-horizontal'],
-    'action' => Url::to(['/front/cart/payment','id'=>$model->id]),
+    'action' => Url::to(['/front/orders/user-orders']),
     'method' => 'post'
 
 ]); ?>

@@ -192,10 +192,9 @@ function showItems() {
                 hot_div.innerHTML = hot_div.innerHTML +
                     //'<table class="">' +
                     '<tr>' +
-                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></td>' +
-                    '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
+                    '<td class="col-md-2 text-center"><i class="fa fa-trash" data-item="\' + item_name + \'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></td>' +
-                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
+                    '<td class="col-md-2 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></td>' +
@@ -237,10 +236,10 @@ function showItems() {
                 ordinary_div.innerHTML = ordinary_div.innerHTML +
                     // '<div class="row">' +
                     '<tr>' +
-                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></td>' +
-                    '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
+                    //'<td class="col-md-1 text-center"></td>' +
+                    '<td class="col-md-2 text-center"><i class="fa fa-trash" data-item="\' + item_name + \'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></td>' +
-                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
+                    '<td class="col-md-2 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></td>' +

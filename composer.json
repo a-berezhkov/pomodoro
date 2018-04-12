@@ -28,7 +28,8 @@
         "noam148/yii2-image-manager": "*",
         "mihaildev/yii2-elfinder": "*",
         "bizley/migration": "*",
-        "mranger/yii2-load-more-pager": "*"
+        "mranger/yii2-load-more-pager": "*",
+        "kartik-v/yii2-slider": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -45,6 +45,7 @@ class InfoController extends Controller
             ->innerJoin('cart', 'cart.id=cart_id')
             ->innerJoin('profile', 'profile.user_id=cart.profile_id')
             ->innerJoin('orders_status', 'orders_status.id=orders.delivery_status')
+            ->innerJoin('store', 'store.id=cart.id_store')
             ->where('cart.profile_id='.$profile_id);
         $profile_name = Profile::find()->asArray()->where('user_id='.$profile_id)->one()['name'];
         $dataProvider = new ActiveDataProvider([

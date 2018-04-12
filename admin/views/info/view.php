@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="info-view">
 
-    <h1><?= $profile_name ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
 
     <?= GridView::widget([
@@ -17,10 +17,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
             'id',
-            'id_store',
-            'count',
-            'sum',
-            'is_sale'
+//            'orders.orders_status.name',
+            'cart.profile.name',
+            'cart.count',
+            'cart.sum',
+            'cart.id',
+            'cart_id',
+//            'orders.id',
+            'order_id',
+
         ]
     ]); ?>
 

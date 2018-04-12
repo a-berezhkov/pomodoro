@@ -98,4 +98,18 @@ class OrdersController extends Controller
 
     }
 
+    /**
+     * Функция возвращает объект заказа
+     * @param int|null $id
+     * @param string|null $code
+     * @return string
+     */
+    public function actionViewOrder(int $id=null,string $code = null){
+        $model = Orders::find()->andWhere(['or',
+                                           ['id'=>$id],
+                                           ['unique_code'=>$code]
+        ])->one();
+        return $this->render('/default/order-view',['model'=>$model]);
+    }
+
 }

@@ -136,7 +136,7 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
             ]) ; ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'delivery_interval')->dropDownList(['8-13' => '8-13', '14-19' => '14-19']) ?>
+            <?= $form->field($model, 'delivery_interval')->radioList(['8-13' => '8-13', '14-19' => '14-19']) ?>
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'comment')->textarea() ?>

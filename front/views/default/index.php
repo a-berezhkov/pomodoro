@@ -1,7 +1,6 @@
 <?php
 
 use rmrevin\yii\fontawesome\FA;
-use yii\helpers\Html;
 
 /**
  * @var   $suggests \app\front\models\Store
@@ -98,11 +97,20 @@ use yii\helpers\Html;
                 <div class="order text-center">
                     <div class="row">
                         <div class="col-md-offset-6 col-md-6">
-                            <div class="order-form">
-                                <input type="text" class="form-control number"
-                                       placeholder="Введите номер накладной">
+                            <? \yii\bootstrap\ActiveForm::begin([
+                                    'action' => \yii\helpers\Url::to(['/front/orders/view-order']),
+                                    'method' => 'get',
+                                'options' => [
+                                    'class' => 'order-form',
+                                ],
+                            ]) ?>
+                                <?= \yii\helpers\Html::input('string','q', null,[
+                                        'class' => 'form-control number',
+                                        'placeholder'=>'Введите номер накладной'
+                                        ]) ?>
+
                                 <button class="btn button button-get-orders">Отследить</button>
-                            </div>
+                          <? \yii\bootstrap\ActiveForm::end() ?>
                         </div>
                     </div>
                 </div>

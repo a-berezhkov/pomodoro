@@ -47,23 +47,23 @@ $this->registerJsFile('@web/js/front/cart.js', ['position' => yii\web\View::POS_
                 <div id="hot"></div>
 
                 <h2 class="section-name">«Стандартные товары»</h2>
-                <div class="row">
+                <div class="row heading">
 
-                    <div class="col-md-1">
+                    <div class="col-md-1 text-center">
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 text-center">
                         Фотография
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 text-center">
                         Наименование
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 text-center">
                         Количество
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 text-center">
                         Вес
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 text-center">
                         Цена
                     </div>
                 </div>

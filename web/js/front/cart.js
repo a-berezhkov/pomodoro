@@ -192,10 +192,10 @@ function showItems() {
                 hot_div.innerHTML = hot_div.innerHTML +
                     //'<table class="">' +
                     '<tr>' +
-                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></div>' +
+                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></td>' +
                     '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
-                    '  width="100" height="70" alt=""></a></div>' +
-                    '<td class="col-md-1 text-center">' + item.item_name + '</div>' +
+                    '  width="100" height="70" alt=""></a></td>' +
+                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></td>' +
@@ -237,18 +237,18 @@ function showItems() {
                 ordinary_div.innerHTML = ordinary_div.innerHTML +
                     // '<div class="row">' +
                     '<tr>' +
-                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></div>' +
+                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></td>' +
                     '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
-                    '  width="100" height="70" alt=""></a></div>' +
-                    '<td class="col-md-1 text-center">' + item.item_name + '</div>' +
+                    '  width="100" height="70" alt=""></a></td>' +
+                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
-                    '                                   step="1"></div>' +
-                    '<td class="col-md-1 box_weight text-center">' + item.item_box_weight + '</div>' +
-                    '<td class="col-md-1 item-total-weight text-center">' + (item.item_box_weight * item.count_box) + '</div>' +
-                    '<td class="col-md-2 text-center" id="price">' + item.item_box_price + '</div>' +
-                    '<td class="col-md-2 total-price text-center" > ' + (item.item_box_price * item.count_box) + '</div>' +
-                    '';
+                    '                                   step="1"></td>' +
+                    '<td class="col-md-1 box_weight text-center">' + item.item_box_weight + '</td>' +
+                    '<td class="col-md-1 item-total-weight text-center">' + (item.item_box_weight * item.count_box) + '</td>' +
+                    '<td class="col-md-2 text-center" id="price">' + item.item_box_price + '</td>' +
+                    '<td class="col-md-2 total-price text-center" > ' + (item.item_box_price * item.count_box) + '</td>' +
+                    '</tr>';
                     //'</div>';
             }
         }

@@ -64,4 +64,46 @@ class OrdersHasCart extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Orders::className(), ['id' => 'order_id']);
     }
+
+    public static function sum($profile_id)
+    {
+        $query = OrdersHasCart::find()
+            ->innerJoin('orders', 'orders.id=order_id')
+            ->innerJoin('cart', 'cart.id=cart_id')
+            ->innerJoin('profile', 'profile.user_id=cart.profile_id')
+            ->innerJoin('orders_status', 'orders_status.id=orders.delivery_status')
+            ->innerJoin('store', 'store.id=cart.id_store')
+            ->where('cart.profile_id='.$profile_id);
+        $summ = 0;
+        $cart_list = $query
+            ->asArray()
+            ->select('cart.sum')
+            ->all();
+        foreach ($cart_list as $item)
+        {
+            $summ = $summ + $item['sum'];
+        }
+        return $summ;
+    }
+
+    public static function sumWithDate($profile_id,$model)
+    {
+        $query = OrdersHasCart::find()
+            ->innerJoin('orders', 'orders.id=order_id')
+            ->innerJoin('cart', 'cart.id=cart_id')
+            ->innerJoin('profile', 'profile.user_id=cart.profile_id')
+            ->innerJoin('orders_status', 'orders_status.id=orders.delivery_status')
+            ->innerJoin('store', 'store.id=cart.id_store')
+            ->where("cart.profile_id=".$profile_id." and orders.created_at BETWEEN '".$model['doDate']."' and '".$model['toDate']."'");
+        $summ = 0;
+        $cart_list = $query
+            ->asArray()
+            ->select('cart.sum')
+            ->all();
+        foreach ($cart_list as $item)
+        {
+            $summ = $summ + $item['sum'];
+        }
+        return $summ;
+    }
 }

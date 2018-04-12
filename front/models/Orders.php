@@ -119,4 +119,18 @@ class Orders extends \yii\db\ActiveRecord
     {
         return $this->hasMany(OrdersHasCart::className(), ['order_id' => 'id']);
     }
+
+    /**
+     * @param int $length
+     * @return string
+     */
+    static function generateUniqueCode(int $length = 10) : string {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 }

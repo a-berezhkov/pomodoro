@@ -28,12 +28,11 @@ class OrdersController extends Controller
     {
         $model = new Orders();
         if ($model->load(\Yii::$app->request->post())) {
-
+            $model->unique_code = Orders::generateUniqueCode(10);
             $unDecodedCartItems = Json::decode(\Yii::$app->request->post('cart-items'));
             foreach ($unDecodedCartItems as $key => $unDecodedCartItem) {
                 $unDecodedCartItems[$key] = Json::decode($unDecodedCartItem);
             }
-
 
             $model->save();
             VarDumper::dump($model->errors,10,true);

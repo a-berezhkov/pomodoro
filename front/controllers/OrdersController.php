@@ -64,13 +64,13 @@ class OrdersController extends Controller
                     if ($modelOrdersHasCart->save()) {
                         $store = Store::itemSell($id, $count); // списываем товар со склада
 
-                        return $this->redirect(['/front/cart/payment', 'id' => $model->id]);
+
 
                     }
                 }
             }
 
-
+            return $this->redirect(['/front/cart/payment', 'id' => $model->id]);
         }
         return $this->render(['/front/cart/delivery', 'model' => $model ]);
 

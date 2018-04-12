@@ -62,8 +62,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'inn') ?>
 
-                <?= $form->field($model, 'address') ?>
-
                 <?= $form->field($model, 'company_name') ?>
 
                 <?= $form->field($model, 'address_city') ?>
@@ -91,11 +89,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-                <div class="form-group">
-                    <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
-                        <br>
-                    </div>
+                <div class="form-group text-right">
+                    <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn button button-action']) ?>
+
                 </div>
 
                 <?php ActiveForm::end(); ?>

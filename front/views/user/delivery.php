@@ -11,9 +11,11 @@ use yii\web\JsExpression;
 use kartik\select2\Select2;
 use yii\helpers\Url;
 
-$this->title                   = Yii::t('user', 'Delivery');
+$this->title = Yii::t('user', 'Delivery');
 $this->params['breadcrumbs'][] = $this->title;
 $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
+
+$this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 
@@ -33,46 +35,66 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
                 <p>
                     (Доставка в пределах КАД осуществляется беслатно)
                 </p>
-        </div>
+            </div>
             <div class="col-md-4">
-                <?= Html::a('Вставить из профиля','#',['class'=>'btn button']) ?>
+                <?= Html::a('Вставить из профиля', '#', ['class' => 'btn button', 'id' => 'paste-from-profile']) ?>
             </div>
         </div>
         <? $form = ActiveForm::begin([
-                'action' => Url::toRoute('/front/orders/create'),
-                 'method' => 'post'
+            'action' => Url::toRoute('/front/orders/create'),
+            'method' => 'post'
         ]) ?>
+        <div id="dynamic-input-address">
+            <div class="row">
 
-        <div class="row">
-            <div class="col-md-6">
-                <?= $form->field($model, 'address_street')->hiddenInput(['id'=>'address-street'])->label(false) ?>
+                <div class="col-md-4 .col-md-offset-4">
+                    <?= Html::a('Заполнить адрес вручную', '#', ['class' => 'input-address']) ?>
+                </div>
+            </div>
+        <div class="row" >
+            <div class="col-md-12">
                 <?= $form->field($model, 'google_id')->widget(Select2::classname(), [
-                    // 'initValueText' => $someDesc, // set the initial display text
-                    'options'       => [
-                        'id'          => 'igoogle_id',
-                    ],
-                    'pluginEvents'  => [
+                    //    'initValueText' => \yii\helpers\ArrayHelper::map(\app\front\models\user\Profile::find()->where(['user_id'=>1])->all(),'address','address'),
+//                    'options'       => [
+//                        'id'          => 'google_id',
+//                    ],
+                    'pluginEvents' => [
                         'select2:select' => "function() { 
                             $('#address-street').val($(this).text());
          
 		            }",
                     ],
                     'pluginOptions' => [
-                        'allowClear'         => true,
+                        'allowClear' => true,
                         'minimumInputLength' => 3,
-                        'language'           => [
+                        'language' => [
                             'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
                         ],
-                        'ajax'               => [
-                            'url'      => Url::to(['/front/api/get-address-by-google-maps']),
+                        'ajax' => [
+                            'url' => Url::to(['/front/api/get-address-by-google-maps']),
                             'dataType' => 'json',
-                            'data'     => new JsExpression('function(params) { return {q:params.term}; }'),
+                            'data' => new JsExpression('function(params) { return {q:params.term}; }'),
                         ],
-                        'escapeMarkup'       => new JsExpression('function (markup) { return markup; }'),
-                        'templateResult'     => new JsExpression('function(direction) { return direction.text; }'),
-                        'templateSelection'  => new JsExpression('function (direction) { return direction.text; }'),
+                        'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                        'templateResult' => new JsExpression('function(direction) { return direction.text; }'),
+                        'templateSelection' => new JsExpression('function (direction) { return direction.text; }'),
                     ],
                 ])->label('Address '); ?>
+            </div>
+        </div>
+        </div>
+        <div id="static-input-address" style="display: none;">
+            <div class="row">
+
+                <div class="col-md-4 .col-md-offset-4">
+                    <?= Html::a('Заполнить вдрес автоматически', '#', [ 'class' => 'input-address']) ?>
+                </div>
+            </div>
+            <div class="row" >
+            <div class="col-md-6">
+                <?= $form->field($model, 'address_street')->textInput() ?>
+
+
             </div>
             <div class="col-md-2">
                 <?= $form->field($model, 'address_house')->textInput(['maxlength' => true]) ?>
@@ -86,43 +108,46 @@ $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
         </div>
         <div class="row">
             <div class="col-md-12">
-                <?= $form->field($model, 'address_phone')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'address_phone')->widget(yii\widgets\MaskedInput::class, [
+                    'mask' => '+7 (999)-999-9999',
+                ]) ?>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <?=   \kartik\widgets\DatePicker::widget([
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <?= \kartik\widgets\DatePicker::widget([
                 'attribute' => 'delivery_date',
                 'model' => $model,
                 'type' => \kartik\widgets\DatePicker::TYPE_INLINE,
                 'value' => date("Y-m-d"),
                 'pluginOptions' => [
-                'format' => 'yyyy-mm-d'
+                    'format' => 'yyyy-mm-d'
                 ],
                 'options' => [
-                // you can hide the input by setting the following
-                 'class' => 'hide'
+                    // you can hide the input by setting the following
+                    'class' => 'hide'
                 ]
-                ]); ?>
-            </div>
-            <div class="col-md-2">
-                <?= $form->field($model, 'delivery_interval')->dropDownList(['8-13' => '8-13', '14-19' => '14-19']) ?>
-            </div>
-            <div class="col-md-6">
-                <?= $form->field($model, 'comment')->textarea()?>
-            </div>
+            ]); ?>
         </div>
-        <div class="row">
-            <div class="form-group">
-            </div>
-
-
-            <? ActiveForm::end() ?>
-
-            <?= Html::submitButton(Yii::t('app', 'Next'), ['class' => 'btn btn-success']) ?>
+        <div class="col-md-2">
+            <?= $form->field($model, 'delivery_interval')->dropDownList(['8-13' => '8-13', '14-19' => '14-19']) ?>
         </div>
-
-
+        <div class="col-md-6">
+            <?= $form->field($model, 'comment')->textarea() ?>
+        </div>
     </div>
+    <div class="row">
+        <div class="form-group">
+        </div>
+
+        <?= Html::hiddenInput('cart-items', null, ['id'=>'cart']) ?>
+        <? ActiveForm::end() ?>
+
+        <?= Html::submitButton(Yii::t('app', 'Next'), ['class' => 'btn btn-success']) ?>
+    </div>
+
+
+</div>
 </div>
 

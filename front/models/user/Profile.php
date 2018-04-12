@@ -25,8 +25,12 @@ class Profile extends \dektrium\user\models\Profile
             'middlename' => ['middlename', 'string', 'max' => 255],
             'phone' => ['phone', 'string', 'max' => 100],
             'inn' => ['inn', 'integer', 'max' => 11],
-            'address' => ['address', 'string', 'max' => 255],
-            'company_name' => ['company_name', 'string', 'max' => 255]
+            'company_name' => ['company_name', 'string', 'max' => 255],
+            'address_city' => ['address_city', 'string', 'max' => 255],
+            'address_street' => ['address_street', 'string', 'max' => 255],
+            'address_house' => ['address_house', 'integer'],
+            'address_housing' => ['address_housing', 'string', 'max' => 10],
+            'address_office' => ['address_office', 'string', 'max' => 10],
 
 
         ];
@@ -44,10 +48,15 @@ class Profile extends \dektrium\user\models\Profile
         $newattributeLabels = [
             'surname' => \Yii::t('profile', 'surname'),
             'middlename' => \Yii::t('profile', 'middlename'),
-            'birth_date' => \Yii::t('profile', 'birth date'),
-            'inn' => \Yii::t('profile', 'inn'),
-            'address' => \Yii::t('profile', 'address'),
-            'company_name' => \Yii::t('profile', 'company_name'),
+            'birth_date' => 'Дата рождения',
+            'inn' => 'ИНН',
+            'company_name' => 'Название компании',
+
+            'address_city' => 'Город',
+            'address_street' => 'Улица',
+            'address_house' => 'Дом',
+            'address_housing' => 'Строение',
+            'address_office' => 'Офис (квартира)',
         ];
         return array_merge($attributeLabels, $newattributeLabels);
     }

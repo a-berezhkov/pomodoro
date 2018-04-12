@@ -1,18 +1,19 @@
 <?php
 
-
+declare(strict_types=1);
 namespace app\front\controllers;
 
 
-use app\front\models\Cart;
-use app\front\models\Orders;
-use app\front\models\OrdersHasCart;
-use app\front\models\Store;
+
+use app\front\models\{OrdersHasCart,Store,Orders,Cart};
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class OrdersController extends Controller
 {
+
     /**
      * Метод формирвоания заказа
      * Получает данные товаров в корзине из сессии $_SESSION['store']
@@ -27,20 +28,24 @@ class OrdersController extends Controller
     {
         $model = new Orders();
         if ($model->load(\Yii::$app->request->post())) {
-            $storeItems = $_SESSION['store'];
+            $model->unique_code = Orders::generateUniqueCode(10);
+            $unDecodedCartItems = Json::decode(\Yii::$app->request->post('cart-items'));
+            foreach ($unDecodedCartItems as $key => $unDecodedCartItem) {
+                $unDecodedCartItems[$key] = Json::decode($unDecodedCartItem);
+            }
 
             $model->save();
 
+            foreach ($unDecodedCartItems as $item) {
 
-            foreach ($storeItems as $item) {
                 $cart               = new Cart();
                 $modelOrdersHasCart = new OrdersHasCart();
                 /**
                  * @var $id Store id
                  * @var $count Store items
                  */
-                $id    = $item['data']['id'];
-                $count = $item['count'];
+                  $id    = $item['id'];
+                  $count = $item['count_box'];
                 // Аттребуты Cart()
                 $cart->id_store = $id;
                 $cart->count    = $count;
@@ -56,11 +61,11 @@ class OrdersController extends Controller
                     $modelOrdersHasCart->order_id = $model->id;
                     if ($modelOrdersHasCart->save()) {
                         $store             = Store::itemSell($id, $count); // списываем товар со склада
-                        $_SESSION['store'] = NULL;
+
                     }
                 }
             }
-            return $this->redirect(['/front/cart/payment']);
+         return $this->redirect(['/front/cart/payment','id'=>$model->id]);
 
         }
         ///   todo something

@@ -2,6 +2,7 @@
 
 namespace app\front\models;
 
+use app\front\models\user\Profile;
 use yii\db\Query;
 
 class User extends \dektrium\user\models\User
@@ -26,5 +27,9 @@ class User extends \dektrium\user\models\User
             }
         }
         return $finalResult;
+    }
+
+    function getProfile(){
+        return $this->hasOne(Profile::className(),['id'=>'user_id']);
     }
 }

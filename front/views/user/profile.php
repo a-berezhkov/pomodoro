@@ -20,6 +20,7 @@ use kartik\date\DatePicker;
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
  * @var dektrium\user\models\Profile $model
+
  */
 
 $this->title = Yii::t('user', 'Profile settings');
@@ -49,21 +50,31 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <!------------------------------------------user photo --------------------------------------------------------------------->
 
-                <?= $form->field($model, 'surname')->label(false) ?>
+                <?= $form->field($model, 'surname') ?>
 
-                <?= $form->field($model, 'name')->label(false) ?>
+                <?= $form->field($model, 'name') ?>
 
-                <?= $form->field($model, 'middlename')->label(false) ?>
+                <?= $form->field($model, 'middlename') ?>
 
                 <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
                     'mask' => '+7 (999)-999-9999',
-                ])->label(false) ?>
+                ]) ?>
 
-                <?= $form->field($model, 'inn')->label(false) ?>
+                <?= $form->field($model, 'inn') ?>
 
-                <?= $form->field($model, 'address')->label(false) ?>
+                <?= $form->field($model, 'address') ?>
 
-                <?= $form->field($model, 'company_name')->label(false) ?>
+                <?= $form->field($model, 'company_name') ?>
+
+                <?= $form->field($model, 'address_city') ?>
+
+                <?= $form->field($model, 'address_street') ?>
+
+                <?= $form->field($model, 'address_house') ?>
+
+                <?= $form->field($model, 'address_housing') ?>
+
+                <?= $form->field($model, 'address_office') ?>
 
 
 
@@ -79,9 +90,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 //                    ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
 
 
-                <div class="form-group text-right">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn button button-action']) ?>
 
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-9">
+                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
+                        <br>
+                    </div>
                 </div>
 
                 <?php ActiveForm::end(); ?>

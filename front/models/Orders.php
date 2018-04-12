@@ -26,6 +26,7 @@ use yii\db\Expression;
  * @property string $unique_code
  * @property string $comment
  * @property string $google_id
+ * @property string $payment
  *
  * @property OrdersStatus $deliveryStatus
  * @property OrdersHasCart[] $ordersHasCarts
@@ -67,10 +68,10 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'address_street', 'address_house', 'delivery_date', 'delivery_interval'], 'required'],
+            [['delivery_date', 'delivery_interval'], 'required'],
             [['delivery_date', 'created_at', 'created_by', 'dropping_at','comment'], 'safe'],
             [['delivery_status'], 'integer'],
-            [[ 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval','google_id'], 'string', 'max' => 255],
+            [[ 'address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval','google_id','payment'], 'string', 'max' => 255],
             [['address_phone'], 'string', 'max' => 20],
             [['dropping'], 'string', 'max' => 1],
             [['unique_code'], 'string', 'max' => 50],
@@ -86,21 +87,22 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'address_street' => 'Address Street',
-            'address_house' => 'Address House',
-            'address_housing' => 'Address Housing',
-            'address_office' => 'Address Office',
-            'address_phone' => 'Address Phone',
-            'delivery_date' => 'Delivery Date',
-            'delivery_interval' => 'Delivery Interval',
-            'delivery_status' => 'Delivery Status',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'dropping' => 'Dropping',
-            'dropping_at' => 'Dropping At',
-            'unique_code' => 'Unique Code',
-            'comment' => 'Comment',
+            'address_street' => 'Улица',
+            'address_house' => 'Дом',
+            'address_housing' => 'Строение',
+            'address_office' => 'Офис/квартира',
+            'address_phone' => 'Телефон',
+            'delivery_date' => 'Дата доставки',
+            'delivery_interval' => 'Интервал доставки',
+            'delivery_status' => 'Статус заказа',
+            'created_at' => 'Запись добавлена',
+            'created_by' => 'Автор записи',
+            'dropping' => 'Отказ',
+            'dropping_at' => 'Время отказа',
+            'unique_code' => 'Унникальный код',
+            'comment' => 'Комментарий',
             'google_id' => 'Google id',
+            'Payment' => 'Метод оплаты',
         ];
     }
 
@@ -118,5 +120,19 @@ class Orders extends \yii\db\ActiveRecord
     public function getOrdersHasCarts()
     {
         return $this->hasMany(OrdersHasCart::className(), ['order_id' => 'id']);
+    }
+
+    /**
+     * @param int $length
+     * @return string
+     */
+    static function generateUniqueCode(int $length = 10) : string {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

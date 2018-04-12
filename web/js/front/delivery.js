@@ -26,6 +26,10 @@ function autocompleteProfile(){
             console.log(data);
             console.log($("#google_id"));
             $("#orders-address_phone").val(data.phone);
+            $("#orders-address_street").val(data.address_city+','+data.address_street);
+            $("#orders-address_house").val(data.address_house);
+            $("#orders-address_housing").val(data.address_housing);
+            $("#orders-address_office").val(data.address_office);
 
         // $("#orders-google_id").select2("data", {id: 1, text: 2});
           //   console.log( $("#orders-google_id"));

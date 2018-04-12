@@ -17,6 +17,13 @@ use yii\web\Response;
 
 class CartController extends Controller
 {
+    public $session;
+
+    public function init()
+    {
+        $this->session = \Yii::$app->session;
+        $this->session->open();
+    }
 
     /**
      * @inheritdoc
@@ -73,42 +80,37 @@ class CartController extends Controller
      */
     public function actionCart()
     {
-        if (\Yii::$app->request->isAjax) {
-            if ($_POST['data']) {
-                $_SESSION['store'] = $_POST['data'];
-                return true;
-            } else {
-                return false;
-            }
+        $_SESSION['cart'] = false;
+        return $this->render('/user/cart');
+
+    }
+
+    /**
+     * @return string
+     */
+    public function actionDelivery($orderId = null)
+    {
+        if ($orderId) {
+            $model = Orders::findOne(['id' => $orderId]);
+            return $this->render('/user/delivery', ['model' => $model]);
         } else {
-            return $this->render('/user/cart');
+            $model = new Orders();
+            return $this->render('/user/delivery', ['model' => $model]);
         }
+
     }
+
 
     /**
      * @return string
      */
-    public function actionDelivery()
+    public function actionPayment($id = null, $Orders = null)
     {
-        $model = new Orders();
-        return $this->render('/user/delivery', ['model' => $model]);
-    }
-
-    /***
-     * @return string
-     */
-    public function actionCheckout()
-    {
-        $items = $_SESSION['store'];
-        return $this->render('checkout', ['items' => $items]);
-
-    }
-
-    /**
-     * @return string
-     */
-    public function actionPayment($id, $Orders = null)
-    {
+        if ($id == null) {
+            \Yii::$app->session->setFlash('danger', 'Вы не указали адрес доставки');
+            $model = new Orders();
+            return $this->render('/user/delivery', ['model' => $model]);
+        }
         $model = Orders::findOne(['id' => $id]);
 
         if (\Yii::$app->request->post('payment')) {

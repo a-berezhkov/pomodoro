@@ -74,7 +74,7 @@ $this->registerJsFile('@web/js/front/cart.js', ['position' => yii\web\View::POS_
 
                 </div>
 
-                <?= Html::a('Оформить', ['/front/cart/delivery'], ['class' => ' btn btn-primary']) ?>
+                <?= Html::a('Оформить', \yii\helpers\Url::toRoute(['/front/cart/delivery','fromCart'=>true]), ['id'=>'btn-checkout', 'class' => ' btn btn-primary']) ?>
             </div>
         </div>
     </div>

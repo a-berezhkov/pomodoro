@@ -62,6 +62,11 @@ class OrdersController extends Controller
                     if ($modelOrdersHasCart->save()) {
                         $store             = Store::itemSell($id, $count); // списываем товар со склада
 
+
+                        $session = \Yii::$app->session;
+                        $session->open();
+                        $_SESSION['delivery'] = $model->id; //флаг, что у нас уже есть заказ
+
                     }
                 }
             }

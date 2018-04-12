@@ -14,8 +14,8 @@ use yii\widgets\Menu;
 
 <?php
 $menu_items = [
-    ['label' => 'Ваша корзина', 'url' => ['/front/cart/cart']],
-    ['label' => 'Доставка', 'url' => ['/front/cart/delivery']],
+    ['label' => 'Ваша корзина', 'url' => ['/front/cart/cart'],'template'=> '<a href="#">{label}</a>',],
+    ['label' => 'Доставка', 'url' => ['/front/cart/delivery'],'template'=> '<a href="#">{label}</a>',],
     ['label' => 'Выбор оплаты', 'url' => ['/front/cart/payment']],
     ['label' => 'Подтверждение', 'url' => ['#']],
 ];

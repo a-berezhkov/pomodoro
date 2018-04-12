@@ -19,11 +19,13 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
 ?>
 
 
+<div class="page page-cart"> <!-- TODO change class page-cart to page-delivery ----->
 <div class="row">
     <div class="col-md-3">
         <?= $this->render('_menu') ?>
     </div>
     <div class="col-md-9">
+        <?= \app\widgets\Alert::widget() ?>
         <div class="row">
             <div class="col-md-12">
                 <?= $this->render('_top_menu', ['delivery' => 'active', 'cart' => 'active']) ?>
@@ -144,10 +146,11 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
         <?= Html::hiddenInput('cart-items', null, ['id'=>'cart']) ?>
         <? ActiveForm::end() ?>
 
-        <?= Html::submitButton(Yii::t('app', 'Next'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить адрес доставки и продолжить', ['class' => 'btn btn-success']) ?>
     </div>
 
 
+</div>
 </div>
 </div>
 

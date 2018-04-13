@@ -22,12 +22,21 @@
   table.table-products {
     padding: 2% 0;
     //border-bottom: 1px solid #000;
+    &.table-heading {
+      margin-bottom: 0 !important;
+    }
     tbody {
       border-bottom: 2px solid #000 !important;
 
       td {
         vertical-align: middle;
       }
+    }
+  }
+  .total {
+    font-size: $font-size-18px;
+    &.super-total {
+      font-size: 150%;
     }
   }
 }

@@ -44,7 +44,7 @@ $this->registerJsFile('@web/js/front/cart.js', ['position' => yii\web\View::POS_
 <!--                    </div>-->
 <!--                </div>-->
 
-                <table class="table">
+                <table class="table table-products table-heading">
                     <tr class="row heading">
                         <td class="col-md-4 text-center">
                             Наименование
@@ -69,7 +69,7 @@ $this->registerJsFile('@web/js/front/cart.js', ['position' => yii\web\View::POS_
                 </div>
 
                 <h2 class="section-name">«Стандартные товары»</h2>
-                <table class="table">
+                <table class="table table-products table-heading">
                     <tr class="row heading">
                         <td class="col-md-4 text-center">
                             Наименование

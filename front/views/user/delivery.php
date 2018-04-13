@@ -86,7 +86,7 @@ $this->registerJsFile('/web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
                                 'templateResult' => new JsExpression('function(direction) { return direction.text; }'),
                                 'templateSelection' => new JsExpression('function (direction) { return direction.text; }'),
                             ],
-                        ])->label('Address '); ?>
+                        ])->label(false); ?>
                     </div>
                 </div>
             </div>

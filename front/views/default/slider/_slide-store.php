@@ -10,7 +10,7 @@ use yii\helpers\Url;
 <div class="product main">
     <!--    Если фото нет, ищем берем его из товара -->
     <? $slide->image_id ? $image = $slide->image_id : $image->$slide->store->logo_id ?>
-    <?= Html::img(\Yii::$app->imagemanager->getImagePath($image, '440', '190', 'inset')); ?>
+    <?= Html::img(\Yii::$app->imagemanager->getImagePath($image, '740', '400', 'inset')); ?>
     <div class="details">
         <div class="name text-center">
             <?= $slide->title ?>

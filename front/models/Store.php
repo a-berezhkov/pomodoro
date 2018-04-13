@@ -99,22 +99,22 @@ class Store extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'boxes_count' => Yii::t('app', 'Boxes Count'),
-            'box_weight' => Yii::t('app', 'Box Weight'),
-            'box_price' => Yii::t('app', 'Box Price'),
-            'desc' => Yii::t('app', 'Desc'),
-            'logo_id' => Yii::t('app', 'Logo ID'),
-            'country_id' => Yii::t('app', 'Country ID'),
-            'category_id' => Yii::t('app', 'Category ID'),
-            'is_sale' => Yii::t('app', 'Is Sale'),
-            'is_active' => Yii::t('app', 'Is Active'),
-            'created_by' => Yii::t('app', 'Created By'),
-            'updated_by' => Yii::t('app', 'Updated By'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'discount_box_price' => Yii::t('app', 'Discount box price'),
-            'minPrice' => Yii::t('app', 'minPrice'),
+            'name' => 'Наименование',
+            'boxes_count' =>  'Количество',
+            'box_weight' => 'Вес коробки',
+            'box_price' => 'Цена',
+            'desc' => 'Описание',
+            'logo_id' => 'Картинка',
+            'country_id' => 'Страна',
+            'category_id' => 'Категория',
+            'is_sale' => 'Распродажа',
+            'is_active' => 'Опубликовано',
+            'created_by' => 'Создал',
+            'updated_by' => 'Обновил',
+            'created_at' => 'Время создания',
+            'updated_at' => 'Время обновления',
+            'discount_box_price' => 'Дисконтная цена',
+
         ];
     }
 

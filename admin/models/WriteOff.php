@@ -80,15 +80,15 @@ class WriteOff extends \yii\db\ActiveRecord
     {
         return [
             'id' => \Yii::t('app', 'ID'),
-            'id_store' => \Yii::t('app', 'Id Store'),
-            'count_box' => \Yii::t('app', 'Count Box'),
-            'count_weight' => \Yii::t('app', 'Count Weight'),
-            'in' => \Yii::t('app', 'In'),
-            'out' => \Yii::t('app', 'Out'),
-            'created_at' => \Yii::t('app', 'Created At'),
-            'updated_at' => \Yii::t('app', 'Updated At'),
-            'created_by' => \Yii::t('app', 'Created By'),
-            'updated_by' => \Yii::t('app', 'Updated By'),
+            'id_store' => 'Наименование товара',
+            'count_box' => 'Количество',
+            'count_weight' => 'Вес',
+            'in' => 'Это поступление товара',
+            'out' => 'Это списание товара',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
+            'created_by' => 'Создал',
+            'updated_by' => 'Обновил',
         ];
     }
 

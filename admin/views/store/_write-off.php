@@ -13,7 +13,7 @@ use app\admin\models\aStore;
     <?= $form->field($model, 'id_store')->widget(Select2::classname(), [
     'data' => ArrayHelper::map(aStore::find()->all(),'id','name'),
     'language' => 'ru',
-    'options' => ['placeholder' => 'Select a item'],
+    'options' => ['placeholder' => 'Выберите товар ....'],
     'pluginOptions' => [
         'allowClear' => true
     ],

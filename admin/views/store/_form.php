@@ -42,7 +42,7 @@ use app\front\models\Categories;
 			<?= $form->field( $model, 'country_id' )->widget( Select2::classname(), [
 				'data'          => ArrayHelper::map( Countries::find()->all(), 'id', 'name' ),
 				'language'      => 'ru',
-				'options'       => [ 'placeholder' => 'Select a country ...' ],
+				'options'       => [ 'placeholder' => 'Выбрать страну.... ' ],
 				'pluginOptions' => [
 					'allowClear' => true
 				],
@@ -52,7 +52,7 @@ use app\front\models\Categories;
 			<?= $form->field( $model, 'category_id' )->widget( Select2::classname(), [
 				'data'          => ArrayHelper::map( Categories::find()->all(), 'id', 'name' ),
 				'language'      => 'ru',
-				'options'       => [ 'placeholder' => 'Select a category ...' ],
+				'options'       => [ 'placeholder' => 'Выбрать категорию.... ' ],
 				'pluginOptions' => [
 					'allowClear' => true
 				],

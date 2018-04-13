@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\front\models\Store */
 
-$this->title = Yii::t('app', 'Create Store');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Stores'), 'url' => ['index']];
+$this->title = 'Добавить товар';
+$this->params['breadcrumbs'][] = ['label' => 'Склад', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="store-create">

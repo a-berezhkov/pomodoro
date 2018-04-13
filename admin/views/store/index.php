@@ -12,7 +12,7 @@ use yii\bootstrap\Modal;
 /* @var $searchModel app\front\models\StoreSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title                   = Yii::t( 'app', 'Stores' );
+$this->title                   =  'Склад';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -43,13 +43,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <div>
-		<?= Html::a( Yii::t( 'app', 'Create Store' ), [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
+		<?= Html::a('Добавить наименование', [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
 
     <?php
         Modal::begin([
-            'header' => '<h2>'.Yii::t('app', 'Write-off goods').'</h2>',
+            'header' => '<h2>Списание/добавление</h2>',
             'toggleButton' => [
-                'label' => Yii::t('app', 'Write-off goods'),
+                'label' => Yii::t('app', 'Списать/добавить количество'),
                 'tag' => 'button',
                 'class' => 'btn btn-success'
             ],
@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					'attribute' => 'country_id',
 					'value'     => '',
 					'data'      => ArrayHelper::map( Countries::find()->all(), 'id', 'name' ),
-					'options'   => [ 'multiple' => false, 'placeholder' => 'Select country ...' ]
+					'options'   => [ 'multiple' => false, 'placeholder' => 'Выбрать страну ... ' ]
 				] )
 			],
 			[
@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					'attribute' => 'category_id',
 					'value'     => '',
 					'data'      => ArrayHelper::map( Categories::find()->all(), 'id', 'name' ),
-					'options'   => [ 'multiple' => false, 'placeholder' => 'Select category ...' ]
+					'options'   => [ 'multiple' => false, 'placeholder' => 'Выбрать категорию....' ]
 				] )
 			],
 

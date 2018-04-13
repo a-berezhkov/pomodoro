@@ -52,8 +52,25 @@ use yii\helpers\Url;
             ]
         );
     }
+    $maxPrice = (int)\app\front\models\Store::find()->max('box_price');
+    $minPrice = (int) \app\front\models\Store::find()->min('box_price');
 
+    echo '<b class="badge">'.$minPrice.'</b> ' . \kartik\slider\Slider::widget([
+            'name'=>'price',
+             'value'=> $priceString,
+            'sliderColor'=> \kartik\slider\Slider::TYPE_GREY,
+            'pluginOptions'=>[
 
+                'min'=> $minPrice,
+                'max'=>$maxPrice  ,
+                'step'=>1,
+                'range'=>true
+            ],
+            'pluginEvents' => [
+                    "slideStop" => "function() { $('form').submit() }",
+            ],
+        ]) . ' <b class="badge">'.$maxPrice.'</b>';
+    echo $priceString;
     ?>
 
 

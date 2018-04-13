@@ -16,7 +16,7 @@ use yii\widgets\ListView;
         <div class="row">
             <div class="col-md-3">
                 <? // \yii\helpers\VarDumper::dump($dataProvider->query->all(),10,true) ?>
-                <?= $this->render('store/_shop_search', ['model' => $searchModel]); ?>
+                <?= $this->render('store/_shop_search', ['model' => $searchModel,'priceString'=>$priceString]); ?>
             </div>
             <div class="col-md-9">
                 <div class="row">

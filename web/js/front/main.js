@@ -29,10 +29,10 @@ function goToCart() {
             items.push(item);
         }
     }
-   $.post( "/web/front/cart/cart", { data: items } );
+   $.post( "/labin/2018_senior-pomidor/web/front/cart/cart", { data: items } );
     $.ajax({
         method: "POST",
-        url: "/web/front/cart/cart",
+        url: "/labin/2018_senior-pomidor/web/front/cart/cart",
         data: {data :items},
         async: false
 
@@ -138,7 +138,7 @@ function setBadgeBasket() {
 function initBadge() {
     $.ajax({
         type: "POST",
-        url: "/web/front/cart/stores-by-session"
+        url: "/labin/2018_senior-pomidor/web/front/cart/stores-by-session"
 
     })
         .done(function (data) {

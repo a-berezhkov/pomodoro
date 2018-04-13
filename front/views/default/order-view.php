@@ -28,27 +28,29 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="form bordered">
                 <h2 class="section-name">«Горячие предложения»</h2>
-                <div class="row heading">
-                    <div class="col-md-4 text-center">
-                        Наименование
-                    </div>
-
-                    <div class="col-md-2 text-center">
-                        Количество
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Вес шт/всего
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Цена
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Сумма
-                    </div>
-                </div>
 
                     <div id="hot">
+
                         <table class="table table-products">
+                            <tr class="row heading">
+                                <td class="col-md-4 text-center">
+                                    Наименование
+                                </td>
+
+                                <td class="col-md-2 text-center">
+                                    Количество
+                                </td>
+                                <td class="col-md-2 text-center">
+                                    Вес шт/всего
+                                </td>
+                                <td class="col-md-2 text-center">
+                                    Цена
+                                </td>
+                                <td class="col-md-2 text-center">
+                                    Сумма
+                                </td>
+                            </tr>
+
                             <? foreach ($model->carts as $cart) : ?>
                                 <? if ($cart->is_sale == true) : ?>
                                     <tr>

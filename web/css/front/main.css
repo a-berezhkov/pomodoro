@@ -620,10 +620,16 @@ header.header {
   color: #fff; }
 .page-cart table.table-products {
   padding: 2% 0; }
+  .page-cart table.table-products.table-heading {
+    margin-bottom: 0 !important; }
   .page-cart table.table-products tbody {
     border-bottom: 2px solid #000 !important; }
     .page-cart table.table-products tbody td {
       vertical-align: middle; }
+.page-cart .total {
+  font-size: 1.125rem; }
+  .page-cart .total.super-total {
+    font-size: 150%; }
 
 header {
   background: #fff; }

@@ -25,49 +25,70 @@ $this->registerJsFile('@web/js/front/cart.js', ['position' => yii\web\View::POS_
                 </div>
 
                 <h2 class="section-name">«Горячие предложения»</h2>
-                <div class="row heading">
-                    <div class="col-md-4 text-center">
-                        Наименование
-                    </div>
+<!--                <div class="row heading">-->
+<!--                    <div class="col-md-4 text-center">-->
+<!--                        Наименование-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="col-md-2 text-center">-->
+<!--                        Количество-->
+<!--                    </div>-->
+<!--                    <div class="col-md-2 text-center">-->
+<!--                        Вес шт/всего-->
+<!--                    </div>-->
+<!--                    <div class="col-md-2 text-center">-->
+<!--                        Цена-->
+<!--                    </div>-->
+<!--                    <div class="col-md-2 text-center">-->
+<!--                        Сумма-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                    <div class="col-md-2 text-center">
-                        Количество
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Вес шт/всего
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Цена
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Сумма
-                    </div>
+                <table class="table table-products table-heading">
+                    <tr class="row heading">
+                        <td class="col-md-4 text-center">
+                            Наименование
+                        </td>
+
+                        <td class="col-md-2 text-center">
+                            Количество
+                        </td>
+                        <td class="col-md-2 text-center">
+                            Вес шт/всего
+                        </td>
+                        <td class="col-md-2 text-center">
+                            Цена
+                        </td>
+                        <td class="col-md-2 text-center">
+                            Сумма
+                        </td>
+                    </tr>
+                </table>
+                <div id="hot">
+
                 </div>
-
-                <div id="hot"></div>
 
                 <h2 class="section-name">«Стандартные товары»</h2>
-                <div class="row heading">
+                <table class="table table-products table-heading">
+                    <tr class="row heading">
+                        <td class="col-md-4 text-center">
+                            Наименование
+                        </td>
 
-                    <div class="col-md-1 text-center">
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Фотография
-                    </div>
-                    <div class="col-md-3 text-center">
-                        Наименование
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Количество
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Вес
-                    </div>
-                    <div class="col-md-2 text-center">
-                        Цена
-                    </div>
-                </div>
-
+                        <td class="col-md-2 text-center">
+                            Количество
+                        </td>
+                        <td class="col-md-2 text-center">
+                            Вес шт/всего
+                        </td>
+                        <td class="col-md-2 text-center">
+                            Цена
+                        </td>
+                        <td class="col-md-2 text-center">
+                            Сумма
+                        </td>
+                    </tr>
+                </table>
                 <div id="ordinary"></div>
 
                 <div id="total">

@@ -192,10 +192,9 @@ function showItems() {
                 hot_div.innerHTML = hot_div.innerHTML +
                     //'<table class="">' +
                     '<tr>' +
-                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></td>' +
-                    '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
+                    '<td class="col-md-2 text-center"><i class="fa fa-trash" data-item="\' + item_name + \'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></td>' +
-                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
+                    '<td class="col-md-2 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></td>' +
@@ -209,17 +208,22 @@ function showItems() {
             }
         }
     }
-    if (discountCountBox !== 0){
-        hot_div.innerHTML = hot_div.innerHTML +
-            '<div>Промежуточнный итог: <div id="discount-total-price">' + discountTotalPrice + '</div></div>' +
-            '<div>Количество упаковок: <div id="discount-count-box">' + discountCountBox + '</div></div>' +
-            '<div>Общий вес (нетто): <div id="discount-weight">' + discountWeight + ' </div>';
+
+    var hot_total = document.createElement('div');
+    if (discountCountBox !== 0) {
+        hot_total.innerHTML +=
+            '<div class="total text-right">' +
+            '<div>Промежуточнный итог: <span id="discount-total-price">' + discountTotalPrice + '</span></div>' +
+            '<div>Количество упаковок: <span id="discount-count-box">' + discountCountBox + '</span></div>' +
+            '<div>Общий вес (нетто): <span id="discount-weight">' + discountWeight + ' </span>' +
+            '</div>';
     } else {
-        hot_div.innerHTML = hot_div.innerHTML +
+        hot_total.innerHTML +=
             '<div>Пока тут ничего нет(</div>';
     }
 
     hot.appendChild(hot_div);
+    hot.appendChild(hot_total);
     //==================================End HOT Items ===============================================//
     //==================================Ordinary Items ==============================================//
     var ordinary = document.getElementById('ordinary');
@@ -237,10 +241,10 @@ function showItems() {
                 ordinary_div.innerHTML = ordinary_div.innerHTML +
                     // '<div class="row">' +
                     '<tr>' +
-                    '<td class="col-md-1 text-center"><i class="fa fa-trash" data-item="' + item_name + '" aria-hidden="true"></i></td>' +
-                    '<td class="col-md-2 text-center"><img src="' + item.item_image_link + '"' +
+                    //'<td class="col-md-1 text-center"></td>' +
+                    '<td class="col-md-2 text-center"><i class="fa fa-trash" data-item="\' + item_name + \'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></td>' +
-                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
+                    '<td class="col-md-2 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></td>' +
@@ -253,24 +257,32 @@ function showItems() {
             }
         }
     }
+
+    var ordinary_total = document.createElement('div');
     if (ordinaryCountBox !== 0) {
-        ordinary_div.innerHTML = ordinary_div.innerHTML +
-            '<div>Промежуточнный итог: <div id="ordinary-total-price">' + ordinaryTotalPrice + '</div></div>' +
-            '<div>Количество упаковок: <div id="ordinary-count-box">' + ordinaryCountBox + '</div></div>' +
-            '<div>Общий вес (нетто): <div id="ordinary-weight">' + ordinaryWeight + ' </div></div>';
+        ordinary_total.innerHTML +=
+            '<div class="total text-right">' +
+            '<div>Промежуточнный итог: <span id="ordinary-total-price">' + ordinaryTotalPrice + '</span></div>' +
+            '<div>Количество упаковок: <span id="ordinary-count-box">' + ordinaryCountBox + '</span></div>' +
+            '<div>Общий вес (нетто): <span id="ordinary-weight">' + ordinaryWeight + ' </span>' +
+            '</div>';
+    } else {
+        ordinary_total.innerHTML += '<div>Пока тут ничего нет(</div>';
     }
-    else {
-        ordinary_div.innerHTML = ordinary_div.innerHTML +
-            '<div>Пока тут ничего нет(</div>';
-    }
+
+
     ordinary.appendChild(ordinary_div);
+    ordinary.appendChild(ordinary_total);
     //==================================END Ordinary Items ===========================================//
     var total = document.getElementById('total');
     if ((ordinaryTotalPrice !== 0) || (discountTotalPrice !== 0)){
         total.innerHTML =
-            '<div>Итог: <div id="total-price">' + (ordinaryTotalPrice + discountTotalPrice) + '</div></div>' +
-            '<div>Количество упаковок: <div id="total-count">' + (ordinaryCountBox + discountCountBox) + '</div></div>' +
-            '<div>Общий вес (нетто): <div id="total-weight">' + (ordinaryWeight + discountWeight) + ' </div></div>';
+            '<hr/>' +
+            '<div class="total super-total text-right">' +
+            '<div>Итог: <span id="total-price">' + (ordinaryTotalPrice + discountTotalPrice) + '</span></div>' +
+            '<div>Количество упаковок: <span id="total-count">' + (ordinaryCountBox + discountCountBox) + '</span></div>' +
+            '<div>Общий вес (нетто): <span id="total-weight">' + (ordinaryWeight + discountWeight) + ' </span></div>' +
+            '</div>';
 
     }
 

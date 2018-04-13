@@ -79,13 +79,13 @@ function updateItem(class_count_box, parent_id) {
  */
 function updateTotals() {
     // Hot total
-    var discount_total_price = parseInt($("#discount-total-price").text());
-    var discount_count_box = parseInt($("#discount-count-box").text());
-    var discount_weight = parseInt($("#discount-weight").text());
+    var discount_total_price = $("#discount-total-price").text() ? parseInt($("#discount-total-price").text()) : 0;
+    var discount_count_box = $("#discount-count-box").text() ? parseInt($("#discount-count-box").text()) : 0;
+    var discount_weight = $("#discount-weight").text() ? parseInt($("#discount-weight").text()) : 0;
     //ordinary total
-    var ordinary_total_price = parseInt($("#ordinary-total-price").text());
-    var ordinary_count_box = parseInt($("#ordinary-count-box").text());
-    var ordinary_weight = parseInt($("#ordinary-weight").text());
+    var ordinary_total_price = $("#ordinary-total-price").text() ?  parseInt($("#ordinary-total-price").text()) : 0;
+    var ordinary_count_box = $("#ordinary-count-box").text() ? parseInt($("#ordinary-count-box").text()) : 0;
+    var ordinary_weight = $("#ordinary-weight").text() ? parseInt($("#ordinary-weight").text()) : 0;
     // total
     $("#total-price").text(discount_total_price + ordinary_total_price);
     $("#total-count").text(discount_count_box + ordinary_count_box);

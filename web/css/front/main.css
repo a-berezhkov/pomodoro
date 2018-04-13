@@ -455,6 +455,16 @@ a.button-rounded {
 .dropdown-menu {
   padding: 10px; }
 
+.select2-container--krajee .select2-selection--single,
+.select2-selection.select2-selection--single {
+  border: 1px solid #000;
+  border-radius: 0; }
+
+.select2-dropdown.select2-dropdown--below {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000; }
+
 footer.footer {
   background: #000;
   padding: 50px 0;
@@ -626,6 +636,19 @@ header.header {
     border-bottom: 2px solid #000 !important; }
     .page-cart table.table-products tbody td {
       vertical-align: middle; }
+.page-cart .datepicker {
+  z-index: 1151 !important;
+  border: 1px solid #000;
+  border-radius: 0;
+  padding: 5%; }
+  .page-cart .datepicker.datepicker-inline {
+    width: 100%; }
+  .page-cart .datepicker table {
+    margin: 0 auto; }
+  .page-cart .datepicker td.active {
+    background: #ff243f !important; }
+  .page-cart .datepicker td.today {
+    background: rgba(255, 36, 63, 0.5); }
 .page-cart .total {
   font-size: 1.125rem; }
   .page-cart .total.super-total {

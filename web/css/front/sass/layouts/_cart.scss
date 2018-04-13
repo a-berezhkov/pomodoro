@@ -33,6 +33,24 @@
       }
     }
   }
+  .datepicker {
+    z-index: 1151 !important;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 5%;
+    &.datepicker-inline {
+      width: 100%;
+    }
+    table {
+      margin: 0 auto;
+    }
+    td.active {
+      background: $color-primary !important;
+    }
+    td.today {
+      background: rgba(255, 36, 63, 0.5);
+    }
+  }
   .total {
     font-size: $font-size-18px;
     &.super-total {

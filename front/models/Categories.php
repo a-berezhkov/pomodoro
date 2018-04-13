@@ -47,10 +47,10 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'image_id' => Yii::t('app', 'Image'),
-            'icon' => Yii::t('app', 'Icon class'),
-            'position' => Yii::t('app', 'Position'),
+            'name' => 'Наименование',
+            'image_id' => 'Картинка',
+            'icon' => 'Класс иконки',
+            'position' => 'Позиция',
         ];
     }
 

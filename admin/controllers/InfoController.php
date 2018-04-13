@@ -15,6 +15,7 @@ use app\front\models\user\Profile;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use app\front\models\Cart;
@@ -37,8 +38,19 @@ class InfoController extends Controller
             ],
         ];
     }
+    public function actionView($id){
+        $model = OrdersHasCart::find()->select('cart_id')->where(['order_id'=>$id])->asArray()->all();
+        $cartIds = ArrayHelper::getColumn($model,'cart_id');
+        $cartsQuery = Cart::find()->where(['id'=>$cartIds]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $cartsQuery
+        ]);
+        return $this->render('view',[
+            'dataProvider' => $dataProvider,
+        ]);
 
-    public function actionView($id)
+    }
+    public function actionView1($id)
     {
         $model = new DateForm();
         $cart_id = OrdersHasCart::find()->asArray()->where('order_id='.$id)->one()['cart_id'];

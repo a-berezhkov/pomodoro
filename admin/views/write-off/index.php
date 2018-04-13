@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\admin\models\WriteOffSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Write Offs');
+$this->title =  'Списания и добавления';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="write-off-index">

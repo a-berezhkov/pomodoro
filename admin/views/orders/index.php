@@ -1,15 +1,16 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\Pjax;
-use yii\helpers\ArrayHelper;
 use app\admin\models\aOrdersStatus;
+use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\admin\models\aOrdersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'A Orders');
+$this->title                   = 'Заказы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="a-orders-index">
@@ -18,30 +19,27 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create A Orders'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
+        'filterModel'  => $searchModel,
+        'columns'      => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-         // 'address_street',
-          //  'address_house',
-         //   'address_housing',
-          //  'address_office',
+            // 'address_street',
+            //  'address_house',
+            //   'address_housing',
+            //  'address_office',
             //'address_phone',
-             'delivery_date',
+            'delivery_date',
             'delivery_interval',
 
             [
-                 'attribute' =>  'delivery_status',
-                 'value' => 'deliveryStatus.name',
-                 'filter' => ArrayHelper::map(aOrdersStatus::find()->asArray()->all(), 'id', 'name'),
-],
+                'attribute' => 'delivery_status',
+                'value'     => 'deliveryStatus.name',
+                'filter'    => ArrayHelper::map(aOrdersStatus::find()->asArray()->all(), 'id', 'name'),
+            ],
             //'created_at',
             //'created_by',
             //'dropping',
@@ -50,19 +48,20 @@ $this->params['breadcrumbs'][] = $this->title;
             //'comment:ntext',
             //'google_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
             [
-                    'class' => 'yii\grid\ActionColumn',
-                'controller' => 'info',
-                'template' => '{view}',
-                'buttons' => [
-                    'view' => function ($url,$model) {
+                'class'      => 'yii\grid\ActionColumn',
+
+                'template'   => '{view}{update}{cart}',
+                'buttons'    => [
+                    'cart' => function ($url, $model) {
                         return Html::a(
                             '<span class="glyphicon glyphicon-screenshot"></span>',
-                            $url);
+                            \yii\helpers\Url::to(['/admin/info/view','id'=>$model->id]));
                     },
-                    ]
-            ]
+
+
+                ],
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

@@ -60,16 +60,20 @@ class DefaultController extends Controller
 
     public function actionShop()
     {
-        $priceString = \Yii::$app->request->queryParams['price'];
-        $prices = explode(",",$priceString);
-        $minPrice = (int) $prices[0];
-        $maxPrice = (int) $prices[1];
+
+
         $searchModel  = new StoreSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-
+        if (isset(\Yii::$app->request->queryParams['price'])){
+            $priceString = \Yii::$app->request->queryParams['price'];
+            $prices = explode(",",$priceString);
+            $minPrice = (int) $prices[0];
+            $maxPrice = (int) $prices[1];
+            $dataProvider->query->andFilterWhere(['>=', 'box_price',$minPrice])
+                                  ->andFilterWhere(['<', 'box_price', $maxPrice ]);
+        }
         $dataProvider->query->andWhere(['is_sale' => false])
-            ->andFilterWhere(['>=', 'box_price',$minPrice])
-            ->andFilterWhere(['<', 'box_price', $maxPrice ]);
+          ;
 
 
 
@@ -86,7 +90,7 @@ class DefaultController extends Controller
             'searchModel'     => $searchModel,
             'dataProvider'    => $dataProvider,
             'hotDataProvider' => $hotDataProvider,
-            'priceString'=> (string) $priceString
+            'priceString'=>   isset($priceString) ? $priceString : null
         ]);
 
     }

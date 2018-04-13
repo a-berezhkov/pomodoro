@@ -53,9 +53,10 @@ class OrdersController extends Controller
                 // Аттребуты Cart()
                 $cart->id_store = $id;
                 $cart->count = $count;
-                $cart->sum = $count * ($item['item_discount_box_price'] ? $item['item_discount_box_price'] : $item['item_box_price']);
+                $cart->sum = $count * (isset($item['item_discount_box_price']) ? $item['item_discount_box_price'] :
+                    $item['item_box_price']);
                 $cart->confirm = false;
-                $cart->is_sale =   ($item['item_discount_box_price']=='1') ? true : false;
+                $cart->is_sale =   ($item['is_sale']=='1') ? true : false;
 
                 if ($cart->save()) {
                     /**
@@ -74,7 +75,8 @@ class OrdersController extends Controller
 
             return $this->redirect(['/front/cart/payment', 'id' => $model->id]);
         }
-        return $this->render(['/front/cart/delivery', 'model' => $model ]);
+
+       return $this->render(['/front/cart/delivery', 'model' => $model ]);
 
     }
 

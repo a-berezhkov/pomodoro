@@ -15,9 +15,9 @@ use yii\helpers\Html;
             <div class="details">
                 <div class="row current-suggestion">
                     <div class="col-md-6 special-col">
-                        <div class="old-price text-center">
-                            <s><?= $model->box_price ?></s>
-                        </div>
+<!--                        <div class="old-price text-center">-->
+<!--                            <s>--><?//= $model->box_price ?><!--</s>-->
+<!--                        </div>-->
                     </div>
                     <div class="col-md-6 special-col">
                         <div class="meta">
@@ -39,7 +39,7 @@ use yii\helpers\Html;
                 <div class="row new-suggestion">
                     <div class="col-md-6 special-col">
                         <div class="new-price text-center">
-                            <div class="price"><?= $model->discount_box_price ?> ₽</div>
+                            <div class="price"><?= $model->box_price ?> ₽</div>
                         </div>
                     </div>
                     <div class="col-md-6 special-col">

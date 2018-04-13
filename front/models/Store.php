@@ -29,6 +29,8 @@ use yii\db\Expression;
  * @property string $created_at Запись создана 
  * @property string $updated_at Запись обновлена
  * @property float $discount_box_price
+ * @property int $maxPrice
+ * @property int $minPrice
  *
  * @property ImageManager $logo
  * @property Categories $category
@@ -39,6 +41,8 @@ use yii\db\Expression;
  */
 class Store extends \yii\db\ActiveRecord
 {
+    public $maxPrice;
+    public $minPrice;
     /**
      * @inheritdoc
      */
@@ -77,7 +81,7 @@ class Store extends \yii\db\ActiveRecord
             [['boxes_count', 'logo_id', 'country_id', 'category_id', 'created_by', 'updated_by'], 'integer'],
             [['box_weight', 'box_price','discount_box_price'], 'number'],
             [['desc'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at','maxPrice','minPrice'], 'safe'],
             [['name'], 'string', 'max' => 50],
             [['is_sale', 'is_active'], 'boolean'],
             [['logo_id'], 'exist', 'skipOnError' => true, 'targetClass' => ImageManager::className(), 'targetAttribute' => ['logo_id' => 'id']],
@@ -110,6 +114,7 @@ class Store extends \yii\db\ActiveRecord
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'discount_box_price' => Yii::t('app', 'Discount box price'),
+            'minPrice' => Yii::t('app', 'minPrice'),
         ];
     }
 

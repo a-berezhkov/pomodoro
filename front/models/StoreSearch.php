@@ -19,7 +19,7 @@ class StoreSearch extends Store
     {
         return [
             [['id', 'boxes_count', 'logo_id', 'country_id', 'category_id', 'created_by', 'updated_by'], 'integer'],
-            [['name', 'desc', 'is_sale', 'is_active', 'created_at', 'updated_at'], 'safe'],
+            [['name', 'desc', 'is_sale', 'is_active', 'created_at', 'updated_at','maxPrice','minPrice'], 'safe'],
             [['box_weight', 'box_price','discount_box_price'], 'number'],
         ];
     }
@@ -52,6 +52,8 @@ class StoreSearch extends Store
 
         $this->load($params);
 
+
+
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -77,8 +79,8 @@ class StoreSearch extends Store
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'desc', $this->desc])
             ->andFilterWhere(['like', 'is_sale', $this->is_sale])
-            ->andFilterWhere(['like', 'is_active', $this->is_active]);
-
+            ->andFilterWhere(['like', 'is_active', $this->is_active])
+        ;
         return $dataProvider;
     }
 }

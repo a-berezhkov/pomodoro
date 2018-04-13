@@ -37,7 +37,7 @@ $this->registerJsFile('@web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <h2 class="section-name ">Адрес доставки</h2>
+                        <h2 class="section-name">Адрес доставки</h2>
                         <p>
                             (Доставка в пределах КАД осуществляется беслатно)
                         </p>

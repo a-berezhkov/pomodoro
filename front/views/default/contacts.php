@@ -4,6 +4,10 @@ use rmrevin\yii\fontawesome\FA;
 
 ?>
 
+<?php
+$this->title =  'Контакты';
+?>
+
 
 <div class="page page-contacts">
 
@@ -15,10 +19,10 @@ use rmrevin\yii\fontawesome\FA;
                 контактной информации.</p>
             <div class="connections">
                 <div class="call">
-                    <span class="call-icon"><?= FA::i('phone'); ?></span> 8-800-200-34-19
+                    <span class="call-icon"><?= FA::i('phone'); ?></span> 8-812-921-16-06
                 </div>
                 <div class="back">
-                    <a href="" class="btn">Обратный звонок</a>
+                    <a href="" class="btn button-rounded">Обратный звонок</a>
                 </div>
             </div>
             <h2 class="title">Как нас найти</h2>

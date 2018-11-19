@@ -39,7 +39,7 @@ class OrdersController extends Controller
             }
 
             $model->save();
-
+            $sum_order = 0;
             foreach ($unDecodedCartItems as $item) {
 
                 $cart = new Cart();
@@ -57,7 +57,7 @@ class OrdersController extends Controller
                     $item['item_box_price']);
                 $cart->confirm = false;
                 $cart->is_sale =   ($item['is_sale']=='1') ? true : false;
-
+                $sum_order += $cart->sum;
                 if ($cart->save()) {
                     /**
                      * Сохраняем связь много-ко-многим
@@ -72,7 +72,8 @@ class OrdersController extends Controller
                     }
                 }
             }
-
+            $model->sum_order = $sum_order;
+            $model->save();
             return $this->redirect(['/front/cart/payment', 'id' => $model->id]);
         }
 

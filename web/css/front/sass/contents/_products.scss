@@ -1,7 +1,25 @@
 .products-grid {
+  .row {
+    @media #{$media-phone-width} {
+      .col-xs-6:nth-child(even) {
+        //background: #ccc;
+        padding-left: 5px;
+      }
+      .col-xs-6:nth-child(odd) {
+        //background: red;
+        padding-right: 5px;
+      }
+    }
+  }
   .suggest {
     border: 1px solid #000;
     height: 240px;
+
+    margin-bottom: 30px;
+    @media #{$media-phone-width} {
+      height: auto;
+      margin-bottom: 10px;
+    }
     .picture {
       height: 130px;
       border-bottom: 1px solid #000;
@@ -20,36 +38,143 @@
     }
     .details {
       font-size: $font-size-20px;
-      font-weight: $font-weight-normal;
+      font-weight: $font-weight-light;
       padding: 0 15px;
       .current-suggestion {
-        margin-top: 2px;
+        margin-top: 4px;
+        margin-bottom: 4px;
         .old-price {
-          width: 130px;
+          input[type="number"] {
+            border-color: #000;
+            width: 50px;
+          }
+          @media #{$media-phone-width}  {
+            text-align: center;
+            margin-bottom: 4px;
+            .box-plus, .box-minus {
+              background: #000;
+              color: #fff;
+              width: 16px;
+              text-align: center;
+              line-height: 1;
+              border: 1px solid #fff;
+            }
+
+          }
+          .col-xs-6:nth-child(odd) {
+            padding-right: 5px;
+            @media #{$media-phone-width} {
+              padding-left: 5px;
+            }
+          }
+          .col-xs-6:nth-child(even) {
+            padding-left: 5px;
+            padding-right: 5px;
+            @media #{$media-phone-width} {
+            }
+          }
+          text-align: left;
+          .count {
+            display: inline-block;
+            .box-plus, .box-minus, input[type="number"] {
+              display: inline-block;
+            }
+            .box-plus, .box-minus {
+              background: #000;
+              color: #fff;
+              width: 16px;
+              text-align: center;
+              line-height: 1;
+              border: 1px solid #fff;
+            }
+            input[type="number"] {
+              border-color: #000;
+              text-align: center;
+              height: 32px;
+              width: 50px;
+              //font-size: $font-size-14px;
+              @media #{$media-phone-width} {
+                width: 30px !important;
+              }
+            }
+          }
+          .weight {
+            margin: 2px 0;
+            display: inline-block;
+          }
         }
         .meta {
-          width: 130px;
+          .new-price {
+            height: 32px;
+            width: 100%;
+            color: #fff;
+            background: #ff243e;
+          }
+
+        }
+
+      }
+      .col-price {
+        @media #{$media-phone-width} {
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        .new-price {
+          height: 32px;
+          width: 100%;
+          margin-top: 4px;
+          //margin-top: 1px;
+          color: #fff;
+          background: #ff243e;
         }
       }
+
+      .col-cart {
+        @media #{$media-phone-width} {
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+
+      .col-price, .col-cart {
+        margin-bottom: 4px;
+      }
+
+      .new-suggestion {
+        margin-bottom: 8px;
+      }
+
       .current-suggestion, .new-suggestion {
-        margin-top: 3px;
+        margin-top: 4px;
         .special-col:first-child {
+          padding-right: 0;
+          @media #{$media-phone-width} {
+            padding-right: 15px;
+          }
           //padding-right: 0;
           //padding-left: 30px;
           //float: right;
         }
         .special-col:last-child {
           padding-left: 0;
+          @media #{$media-phone-width} {
+            padding-left: 15px;
+          }
         }
       }
-      .new-suggestion {
+      .price-suggestion {
+        margin: 4px 0;
         .new-price {
-          border: 1px solid #000;
-          height: 30px;
-          width: 130px;
-          margin-top: 1px;
+          background: $color-primary;
+          color: #fff;
         }
+      }
 
+      .price-suggestion, .new-suggestion {
+        .col-xs-12 {
+          padding-right: 5px;
+          padding-left: 5px;
+        }
       }
     }
 

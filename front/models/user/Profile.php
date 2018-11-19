@@ -24,7 +24,8 @@ class Profile extends \dektrium\user\models\Profile
             'surname' => ['surname', 'string', 'max' => 255],
             'middlename' => ['middlename', 'string', 'max' => 255],
             'phone' => ['phone', 'string', 'max' => 100],
-            'inn' => ['inn', 'integer', 'max' => 11],
+            'inn' => ['inn', 'integer'],
+            'kpp' => ['kpp', 'string', 'max' => 20],
             'company_name' => ['company_name', 'string', 'max' => 255],
             'address_city' => ['address_city', 'string', 'max' => 255],
             'address_street' => ['address_street', 'string', 'max' => 255],
@@ -50,6 +51,7 @@ class Profile extends \dektrium\user\models\Profile
             'middlename' => \Yii::t('profile', 'middlename'),
             'birth_date' => 'Дата рождения',
             'inn' => 'ИНН',
+            'kpp' => 'КПП',
             'company_name' => 'Название компании',
 
             'address_city' => 'Город',

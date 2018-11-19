@@ -39,10 +39,10 @@ class fPartners extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => \Yii::t('app', 'Title of partners'),
-            'image_id' => \Yii::t('app', 'Image of partners'),
-            'url' => \Yii::t('app', 'Url of partners'),
+            'id' => 'Идентификатор',
+            'title' => 'Название',
+            'image_id' => 'Картинка',
+            'url' => 'Ссылка',
         ];
     }
 

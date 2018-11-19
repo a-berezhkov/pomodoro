@@ -29,7 +29,8 @@
         "mihaildev/yii2-elfinder": "*",
         "bizley/migration": "*",
         "mranger/yii2-load-more-pager": "*",
-        "kartik-v/yii2-slider": "*"
+        "kartik-v/yii2-slider": "*",
+        "kartik-v/yii2-editable": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -1,0 +1,203 @@
+.store-search {
+  .banner {
+    height: 160px;
+    overflow: hidden;
+
+    background: url(#{$path-image}/store.png);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    //background: url('');
+    //position: relative;
+
+    .title {
+      //position: absolute;
+      color: #fff;
+      font-size: $font-size-24px;
+
+    }
+  }
+
+  .slider {
+    .slider-track {
+      height: 7px !important;
+    }
+    .slider-selection {
+      background: #000 !important;
+    }
+    .slider-handle {
+      background: #000;
+      margin-top: -7px !important;
+    }
+  }
+
+  .store-categories {
+    .radio {
+
+      height: 50px;
+      label {
+
+        border: 1px solid #000;
+        width: 100%;
+        padding-left: 0;
+        display: block;
+        vertical-align: middle;
+        font-size: $font-size-16px;
+        height: 50px;
+
+        .category-icon {
+          width: 50px;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 50%;
+
+          display: inline-block;
+
+          border-right: 1px solid #000;
+
+          &.category-icon-green,
+          &.category-icon-brown,
+          &.category-icon-blue,
+          &.category-icon-yellow,
+          &.category-icon-red {
+            //background-color: #fff;
+            color: #000;
+            //-ms-filter: gray saturate(0%) brightness(70%) contrast(1000%);
+            //filter: gray saturate(0%) brightness(70%) contrast(1000%);
+            //-ms-filter: grayscale(100%);
+            filter: grayscale(100%);
+            //: gray saturate(0%) brightness(70%) contrast(1000%);
+            //filter: grayscale(100%);
+            //filter: gray saturate(0%) brightness(70%) contrast(1000%);
+          }
+        }
+
+        .name {
+          display: inline-block;
+          vertical-align: top;
+          padding: 14px 4px;
+        }
+        input {
+          //background: #ccc;
+          //width: 100%;
+          display: none;
+        }
+        &.active {
+          //background: #000;
+          color: #fff;
+          .category-icon {
+            border-right: 1px solid #fff;
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position: 50%;
+          }
+          &.category-hot {
+            background-color: $color-primary;
+            border-color: $color-primary;
+          }
+          &.category-icon-green {
+            background: $color-category-green;
+            border-color: $color-category-green;
+          }
+          &.category-icon-brown {
+            background: $color-category-brown;
+            border-color: $color-category-brown;
+          }
+          &.category-icon-blue {
+            background: $color-category-blue;
+            border-color: $color-category-blue;
+          }
+          &.category-icon-yellow {
+            background: $color-category-yellow;
+            border-color: $color-category-yellow;
+          }
+          &.category-icon-red {
+            background: $color-category-orange;
+            border-color: $color-category-orange;
+          }
+        }
+      }
+    }
+
+    .category-icon {
+      &.category-icon-hot {
+        background: url(#{$path-image}/icons/icon-hot_b.png)
+      }
+      &.category-icon-greens {
+        background: url(#{$path-image}/icons/icon-greens_b.png)
+      }
+      &.category-icon-nuts {
+        background: url(#{$path-image}/icons/icon-nuts_b.png)
+      }
+      //.category-icon-peppers { background: url(#{$path-image}/icons/icon-peppers.png) }
+      &.category-icon-fruits {
+        background: url(#{$path-image}/icons/icon-grapes_b.png);
+      }
+      &.category-icon-fruits-froze {
+        background: url(#{$path-image}/icons/icon-berry-froze_b.png);
+      }
+      &.category-icon-vegetables-froze {
+        background: url(#{$path-image}/icons/icon-vegetable-froze_b.png)
+      }
+      &.category-icon-vegetables {
+        background: url(#{$path-image}/icons/icon-carrot_b.png)
+      }
+    }
+
+    .active {
+      .category-icon {
+        &.category-icon-hot {
+          background: url(#{$path-image}/icons/icon-hot.png)
+        }
+        &.category-icon-greens {
+          background: url(#{$path-image}/icons/icon-greens.png)
+        }
+        &.category-icon-nuts {
+          background: url(#{$path-image}/icons/icon-nuts.png)
+        }
+        //.category-icon-peppers { background: url(#{$path-image}/icons/icon-peppers.png) }
+        &.category-icon-fruits {
+          background: url(#{$path-image}/icons/icon-grapes.png);
+        }
+        &.category-icon-fruits-froze {
+          background: url(#{$path-image}/icons/icon-berry-froze.png);
+        }
+        &.category-icon-vegetables-froze {
+          background: url(#{$path-image}/icons/icon-vegetable-froze.png)
+        }
+        &.category-icon-vegetables {
+          background: url(#{$path-image}/icons/icon-carrot.png)
+        }
+      }
+    }
+
+  }
+
+  #w1-slider {
+    width: 100%;
+    display: block;
+    margin: 10% auto;
+    .slider-track {
+      width: 94%;
+      &:before {
+        left: 0;
+      }
+      &:after {
+        margin-right: 0;
+        margin-left: 0;
+        //right: 0;
+        left: 100%;
+      }
+      .slider-selection {
+        width: 101%;
+        //left: 5% !important;
+      }
+      .slider-handle {
+        margin-left: 0;
+      }
+    }
+  }
+
+}

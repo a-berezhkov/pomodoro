@@ -1,21 +1,40 @@
 .banners {
+  .row {
+    margin-left: -20px;
+    margin-right: -20px;
+    .col-md-8,
+    .col-md-4,
+    .col-md-3 {
+      padding-left: 10px;
+    }
+  }
   .product {
     border: 1px solid #000;
     overflow: hidden;
     position: relative;
     &.main {
       height: 400px;
+      @media #{$media-phone-width} {
+        height: 300px;
+      }
       .details {
         background: rgba(255, 255, 255, 0.51);
         height: 100%;
         width: 50%;
+        @media #{$media-phone-width} {
+          width: 75%;
+        }
         top: 0;
         padding-top: 8%;
         border-right: 1px solid #000;
         text-align: center;
         .name {
           font-size: $font-size-36px;
-          color: #000
+          color: #000;
+          @media #{$media-phone-width} {
+            font-size: $font-size-20px;
+            line-height: 23px;
+          }
         }
         .price {
           margin-top: 20px;
@@ -24,6 +43,10 @@
           padding: 2%;
           font-size: $font-size-40px;
           font-weight: $font-weight-normal;
+          @media #{$media-phone-width} {
+            font-size: $font-size-28px;
+            line-height: 33px;
+          }
           s {
             opacity: .5;
           }

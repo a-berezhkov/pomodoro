@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
 
-<div class="page">
+<div class="page page-personal">
     <div class="row">
         <div class="col-md-3">
             <?= $this->render('_menu') ?>

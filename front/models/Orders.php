@@ -2,6 +2,7 @@
 
 namespace app\front\models;
 
+use app\front\models\user\Profile;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -27,9 +28,11 @@ use yii\db\Expression;
  * @property string $comment
  * @property string $google_id
  * @property string $payment
+ * @property int $sum_order
  *
  * @property OrdersStatus $deliveryStatus
  * @property OrdersHasCart[] $ordersHasCarts
+ * @property Profile[] $profile
  */
 class Orders extends \yii\db\ActiveRecord
 {
@@ -70,7 +73,7 @@ class Orders extends \yii\db\ActiveRecord
         return [
             [['delivery_date', 'delivery_interval'], 'required'],
             [['created_at', 'created_by', 'dropping_at', 'comment'], 'safe'],
-            [['delivery_status'], 'integer'],
+            [['delivery_status','sum_order'], 'integer'],
             [['address_street', 'address_house', 'address_housing', 'address_office', 'delivery_interval', 'google_id', 'payment'], 'string', 'max' => 255],
             [['address_phone'], 'string', 'max' => 20],
             [['dropping'], 'boolean'],
@@ -154,5 +157,13 @@ class Orders extends \yii\db\ActiveRecord
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['user_id' => 'created_by']);
     }
 }

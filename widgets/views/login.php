@@ -53,7 +53,7 @@ CustomModal::begin([
             <div class="form-group text-right">
                 <?= Html::submitButton(
                     'Войти',
-                    ['class' => 'btn button button-action', 'tabindex' => '4']
+                    ['class' => 'btn button button-action button-primary', 'tabindex' => '4']
                 ) ?>
             </div>
 
@@ -90,7 +90,7 @@ CustomModal::begin([
             </div>
 
             <div class="form-group text-right">
-                <?= Html::submitButton('Регистрация', ['class' => 'btn button button-action']) ?>
+                <?= Html::submitButton('Регистрация', ['class' => 'btn button button-action button-primary']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

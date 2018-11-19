@@ -2,6 +2,9 @@
 
   .form {
     padding: 15px 35px;
+    @media #{$media-phone-width} {
+      padding: 15px;
+    }
     &.bordered {
       border: 1px solid #000;
     }
@@ -12,6 +15,20 @@
       font-size: $font-size-22px;
       font-weight: $font-weight-normal;
       letter-spacing: normal;
+    }
+  }
+
+  &.page-personal {
+    .row {
+      margin-left: -10px;
+      margin-right: -10px;
+      .col-md-9,
+      .col-md-8,
+      .col-md-4,
+      .col-md-3 {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
   }
 }

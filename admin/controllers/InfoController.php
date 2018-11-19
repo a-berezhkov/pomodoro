@@ -10,6 +10,7 @@ namespace app\admin\controllers;
 
 
 use app\admin\models\DateForm;
+use app\front\models\Orders;
 use app\front\models\OrdersHasCart;
 use app\front\models\user\Profile;
 use yii\data\ActiveDataProvider;
@@ -39,14 +40,17 @@ class InfoController extends Controller
         ];
     }
     public function actionView($id){
+        $modelOrder = Orders::findOne(['id'=>$id]);
         $model = OrdersHasCart::find()->select('cart_id')->where(['order_id'=>$id])->asArray()->all();
         $cartIds = ArrayHelper::getColumn($model,'cart_id');
         $cartsQuery = Cart::find()->where(['id'=>$cartIds]);
         $dataProvider = new ActiveDataProvider([
             'query' => $cartsQuery
         ]);
+
         return $this->render('view',[
             'dataProvider' => $dataProvider,
+            'model'=>$modelOrder
         ]);
 
     }

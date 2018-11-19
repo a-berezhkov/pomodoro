@@ -2,8 +2,18 @@ html {
   font-size: 16px;
 }
 
+html, body {
+  height: 100%;
+}
+
+//body {
+//  font-family: 'Helvetica', sans-serif;
+//  font-weight: 500;
+//
+//}
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: $font-weight-light;
 }
 
 a {
@@ -20,6 +30,13 @@ a {
   }
 }
 
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -200px;
+  padding: 0 0 200px;
+}
+
 input.form-control {
   border-radius: 0;
 }
@@ -29,8 +46,26 @@ h2.section-title {
   font-weight: $font-weight-normal;
 }
 
+input[type="text"]:focus,
+.form-control {
+  box-shadow: none !important;
+  border-color: inherit !important;
+}
+
+.has-error .help-block {
+  color: $color-primary;
+}
+
 .page {
   margin-bottom: 2%;
+  h1 {
+    font-size: $font-size-28px;
+    line-height: 33px;
+  }
+  h2 {
+    font-size: $font-size-20px;
+    line-height: 23px;
+  }
   h1.title {
     display: inline-block;
     font-size: $font-size-22px;
@@ -43,7 +78,9 @@ h2.section-title {
     border-bottom: 2px solid #000;
     margin-bottom: 3%
   }
-
+  p {
+    font-size: $font-size-14px;
+  }
   .form {
     input.form-control, textarea.form-control {
       border: 1px solid #000;

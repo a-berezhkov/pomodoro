@@ -26,9 +26,9 @@ ListView::widget([
 
             'class'               => 'mranger\load_more_pager\LoadMorePager',
             'id'                  => 'card_paginator',
-            'buttonText'          => Yii::t('app', 'Find more'), // Текст на кнопке пагинации
+            'buttonText'          => Yii::t('app', 'ПОКАЗАТЬ БОЛЬШЕ'), // Текст на кнопке пагинации
             // 'template'            => '<div class="col col-2 offset-5 "><div class="button round button-theme ">{button}</div></div>', // Шаблон вывода кнопки пагинации
-            'template'            => ' <div class="text-center" style="margin: auto">{button}</div> ',
+            'template'            => ' <div class="text-center" style="margin: 15px auto; padding: 10px;">{button}</div> ',
             // 'template' => ' <div class="text-center">{button}</div> ',
             'contentSelector'     => '#suggest-items', // Селектор контента
             'contentItemSelector' => '.col-md-3:not(.even)', // Селектор эллементов контента

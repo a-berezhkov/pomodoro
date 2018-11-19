@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * @var $slide \app\front\models\Slider
  **/
@@ -7,7 +7,7 @@ use yii\helpers\Html;
 ?>
 <div class="item">
     <div class="product main">
-        <?= Html::img(\Yii::$app->imagemanager->getImagePath($slide->image_id, '440', '190', 'inset')); ?>
+        <?= Html::img(\Yii::$app->imagemanager->getImagePath($slide->image_id, '740', '480', 'inset')); ?>
         <div class="details">
             <div class="name text-center">
                 <?= $slide->title ?>

@@ -2,12 +2,12 @@
 
 namespace app\admin\controllers;
 
-use Yii;
 use app\admin\models\aOrders;
 use app\admin\models\aOrdersSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * OrdersController implements the CRUD actions for aOrders model.
@@ -21,7 +21,7 @@ class OrdersController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class'   => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -35,13 +35,15 @@ class OrdersController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new aOrdersSearch();
+
+        $searchModel  = new aOrdersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+
     }
 
     /**
@@ -106,5 +108,25 @@ class OrdersController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    public function actionEditField()
+    {
+        if (isset($_POST['hasEditable'])) {
+            $index                       = $_POST['editableIndex'];
+            $attr                        = $_POST['editableAttribute'];
+            $model                       = aOrders::findOne(['id' => $_POST['editableKey']]);
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->delivery_status = $_POST['aOrders'][$index][$attr];
+
+            if ($model->save()) {
+                $value = $model->deliveryStatus->name;
+
+                return ['output' => $value, 'message' => ''];
+            } else {
+                return ['output' => '', 'message' => $model->errors];
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ $countPerRow = 4; //Количество колонок в одной строк
         <?= $counterRow % $countPerRow == 0 ? '<div class="row">' : null; ?>
         <? $counterRow++; ?>
 
-        <div class="col-md-3">
+        <div class="col-md-3 hidden-xs">
             <a href="<?= Url::to(['/front/default/shop', 'StoreSearch[category_id]' => $category->id]) ?>">
                 <div class="category category-bottom">
                     <div class="details">

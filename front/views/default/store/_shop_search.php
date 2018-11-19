@@ -1,96 +1,109 @@
 <?php
 
-use yii\helpers\Html;
+use kartik\slider\Slider;
 use yii\widgets\ActiveForm;
-use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\front\models\StoreSearch */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form ActiveForm */
+/* @var $priceString string */
+/* @var $categories  array \app\front\models\Categories */
+
 ?>
 
 <div class="store-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['/front/default/shop'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
 
-    <? //= $form->field($model, 'id') ?>
+    <div class="categories">
 
-    <? //= $form->field($model, 'name') ?>
 
-    <? //= $form->field($model, 'boxes_count') ?>
+        <div class="phone-categories visible-xs-block">
 
-    <? //= $form->field($model, 'box_weight') ?>
+            <div class="banner">
+                <div class="title">Интернет-магазин</div>
+            </div>
 
-    <? //= $form->field($model, 'box_price') ?>
 
-    <?php // echo $form->field($model, 'desc') ?>
+        </div>
 
-    <?php // echo $form->field($model, 'logo_id') ?>
+        <h2 class="section-title hidden-xs">Категории</h2>
 
-    <?php // echo $form->field($model, 'country_id') ?>
-    <?
-    // TODO - стоит во вью так делать?
+        <div class="store-categories">
 
-    $categories = \app\front\models\Categories::find()->all();
 
-    foreach ($categories as $category) {
-        // TODO по какой то причине если не авторизован то при нажатии на категории обновляет страницу
-        echo Html::a(
-            $category->name,
-            Url::to(['/front/default/shop', 'StoreSearch[category_id]' => $category->id]),
-            [
-                'name' => 'StoreSearch[category_id]',
-                'value' => $category->id,
-                'onclick' => '$( "form" ).submit();',
-                'class' => 'btn btn-block button button-inverse'
-            ]
-        );
-    }
-    $maxPrice = (int)\app\front\models\Store::find()->max('box_price');
-    $minPrice = (int) \app\front\models\Store::find()->min('box_price');
+            <!------- Сайл / не сейл ------------------------------------->
+            <!---   Реальное значение поля, колторое передается в поисковой запрос ----->
+            <input type="radio" id="real-field-is-sale" name="StoreSearch[is_sale]" value="1"
+                   onclick=" $( 'form' ).submit();" hidden>
 
-    echo '<b class="badge">'.$minPrice.'</b> ' . \kartik\slider\Slider::widget([
-            'name'=>'price',
-             'value'=> $priceString,
-            'sliderColor'=> \kartik\slider\Slider::TYPE_GREY,
-            'pluginOptions'=>[
+            <!---  Фейковое значение поля, благодаря которому, работует radio выбор ----->
+            <div class="radio category">
+                <label class="category-hot">
+                    <div class="category-icon category-icon-hot"></div>
+                    <div class="name">Горячие предложения</div>
+                    <input type="radio" id="fake-field-is-sale" name="StoreSearch[category_id]" value="" onclick="
+            $('#real-field-is-sale').attr('checked','checked');
+            //console.log('#real-field-is-sale = '+ $('#real-field-is-sale').attr('checked'));
+            $( 'form' ).submit();"
+                        <?= (isset($_GET['StoreSearch']['category_id']) && $_GET['StoreSearch']['category_id'] == '') ? 'checked' : null ?> >
+                </label>
+            </div>
 
-                'min'=> $minPrice,
-                'max'=>$maxPrice  ,
-                'step'=>1,
-                'range'=>true
-            ],
-            'pluginEvents' => [
+            <!------- END Сайл / не сейл ------------------------------------->
+            <? foreach ($categories as $category) : ?>
+
+                <div class="radio category">
+                    <label class="<?= $category['icon'] ?>">
+                        <div class="category-icon <?= $category['icon'] ?>"></div>
+                        <div class="name"><?= $category['name'] ?></div>
+                        <input type="radio" name="StoreSearch[category_id]"
+                               value="<?= $category['id'] ?>"
+                               onclick="$( 'form' ).submit();" <?= (isset($_GET['StoreSearch']['category_id']) && $_GET['StoreSearch']['category_id'] == $category['id']) ? 'checked' : null ?>>
+
+                    </label>
+                </div>
+
+            <? endforeach; ?>
+            <script>
+                $("input:checked").parent().addClass("active");
+            </script>
+
+        </div>
+
+        <div class="hidden-xs">
+
+            <h2 class="section-title">Фильтр по цене</h2>
+
+            <!--    TODO Перенести -->
+
+
+            <?php
+
+            echo Slider::widget([
+
+                'name' => 'price',
+                'value' => $priceString,
+                'sliderColor' => \kartik\slider\Slider::TYPE_GREY,
+                'pluginOptions' => [
+                    //whether to show the tooltip on drag, hide the tooltip, or always show the tooltip.
+                    // Accepts: 'show', 'hide', or 'always'
+                    'tooltip' => 'show',
+                    'tooltip_split' => true, // Раздельные значение для каждой точки
+                    'min' => $minPrice,
+                    'max' => $maxPrice,
+                    'step' => 1,
+                    'range' => true,
+
+                ],
+                'pluginEvents' => [
                     "slideStop" => "function() { $('form').submit() }",
-            ],
-        ]) . ' <b class="badge">'.$maxPrice.'</b>';
-    echo $priceString;
-    ?>
+                ],
+            ]);
 
+            ?>
+        </div>
 
-    <?php // echo $form->field($model, 'is_sale') ?>
-
-    <?php // echo $form->field($model, 'is_active') ?>
-
-    <?php // echo $form->field($model, 'created_by') ?>
-
-    <?php // echo $form->field($model, 'updated_by') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <div class="form-group">
-        <? //= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <? //= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
 
 </div>

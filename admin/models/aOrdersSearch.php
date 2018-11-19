@@ -60,9 +60,9 @@ class aOrdersSearch extends aOrders
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'delivery_date' => $this->delivery_date,
+
             'delivery_status' => $this->delivery_status,
-            'created_at' => $this->created_at,
+
             'created_by' => $this->created_by,
             'dropping_at' => $this->dropping_at,
         ]);
@@ -76,6 +76,8 @@ class aOrdersSearch extends aOrders
             ->andFilterWhere(['like', 'dropping', $this->dropping])
             ->andFilterWhere(['like', 'unique_code', $this->unique_code])
             ->andFilterWhere(['like', 'comment', $this->comment])
+            ->andFilterWhere(['like', 'created_at', $this->created_at])
+            ->andFilterWhere(['like', 'delivery_date', $this->delivery_date])
             ->andFilterWhere(['like', 'google_id', $this->google_id]);
 
         return $dataProvider;

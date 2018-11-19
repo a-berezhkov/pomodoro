@@ -22,7 +22,7 @@ $font-weight-normal: 500;
 $font-weight-bold: 700;
 
 // colors
-$color-primary: #ff243f;
+$color-primary: #FF243F;
 $color-banner-details: rgba(48, 56, 32, 0.8);
 $color-banner-details-icon: rgba(48, 56, 32, 1);
 $color-grey: #161616;
@@ -32,8 +32,24 @@ $color-category-blue: #0098c2;
 $color-category-brown: #79573a;
 $color-category-yellow: #ddb30c;
 $color-category-yellow: #ddb30c;
+$color-category-orange: #FF5724;
 
 $color-box-green: #1ea254;
 $color-box-yellow: #fda645;
 $color-box-red: $color-primary;
 
+// media-queries
+$media-phone-width: "only screen and (max-width : 768px)";
+
+// mixins
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}

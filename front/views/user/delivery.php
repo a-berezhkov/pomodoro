@@ -11,7 +11,8 @@ use yii\web\JsExpression;
 use kartik\select2\Select2;
 use yii\helpers\Url;
 
-$this->title = Yii::t('user', 'Delivery');
+$this->title = 'Доставка';
+//$this->title = Yii::t('user', 'Delivery');
 $this->params['breadcrumbs'][] = $this->title;
 $API_KEY = \Yii::$app->params['API_GOOGLE_MAP_KEY'];
 
@@ -20,7 +21,8 @@ $this->registerJsFile('@web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
 ?>
 
 
-<div class="page page-cart page-delivery"> <!-- TODO change class page-cart to page-delivery ----->
+
+<div class="page page-personal page-cart page-delivery"> <!-- TODO change class page-cart to page-delivery ----->
     <div class="row">
         <div class="col-md-3">
             <?= $this->render('_menu') ?>
@@ -51,52 +53,52 @@ $this->registerJsFile('@web/js/front/delivery.js', ['depends' => [\yii\web\Jquer
                     'method' => 'post',
 
                 ]) ?>
-                <div id="dynamic-input-address">
+<!--                <div id="dynamic-input-address">-->
+<!--                    <div class="row">-->
+<!---->
+<!--                        <div class="col-md-4 .col-md-offset-4">-->
+<!--                            --><?//= Html::a('Заполнить адрес вручную', '#', ['class' => 'input-address']) ?>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-12">-->
+<!--                            --><?//= $form->field($model, 'google_id')->widget(Select2::classname(), [
+//                                //    'initValueText' => \yii\helpers\ArrayHelper::map(\app\front\models\user\Profile::find()->where(['user_id'=>1])->all(),'address','address'),
+////                    'options'       => [
+////                        'id'          => 'google_id',
+////                    ],
+//                                'pluginEvents' => [
+//                                    'select2:select' => "function() {
+//                            $('#address-street').val($(this).text());
+//
+//		            }",
+//                                ],
+//                                'pluginOptions' => [
+//                                    'allowClear' => true,
+//                                    'minimumInputLength' => 3,
+//                                    'language' => [
+//                                        'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
+//                                    ],
+//                                    'ajax' => [
+//                                        'url' => Url::to(['/front/api/get-address-by-google-maps']),
+//                                        'dataType' => 'json',
+//                                        'data' => new JsExpression('function(params) { return {q:params.term}; }'),
+//                                    ],
+//                                    'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+//                                    'templateResult' => new JsExpression('function(direction) { return direction.text; }'),
+//                                    'templateSelection' => new JsExpression('function (direction) { return direction.text; }'),
+//                                ],
+//                            ])->label(false); ?>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div id="static-input-address">
                     <div class="row">
 
                         <div class="col-md-4 .col-md-offset-4">
-                            <?= Html::a('Заполнить адрес вручную', '#', ['class' => 'input-address']) ?>
+                            <?// Html::a('Заполнить вдрес автоматически', '#', ['class' => 'input-address']) ?>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?= $form->field($model, 'google_id')->widget(Select2::classname(), [
-                                //    'initValueText' => \yii\helpers\ArrayHelper::map(\app\front\models\user\Profile::find()->where(['user_id'=>1])->all(),'address','address'),
-//                    'options'       => [
-//                        'id'          => 'google_id',
-//                    ],
-                                'pluginEvents' => [
-                                    'select2:select' => "function() { 
-                            $('#address-street').val($(this).text());
-         
-		            }",
-                                ],
-                                'pluginOptions' => [
-                                    'allowClear' => true,
-                                    'minimumInputLength' => 3,
-                                    'language' => [
-                                        'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
-                                    ],
-                                    'ajax' => [
-                                        'url' => Url::to(['/front/api/get-address-by-google-maps']),
-                                        'dataType' => 'json',
-                                        'data' => new JsExpression('function(params) { return {q:params.term}; }'),
-                                    ],
-                                    'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-                                    'templateResult' => new JsExpression('function(direction) { return direction.text; }'),
-                                    'templateSelection' => new JsExpression('function (direction) { return direction.text; }'),
-                                ],
-                            ])->label(false); ?>
-                        </div>
-                    </div>
                 </div>
-                <div id="static-input-address" style="display: none;">
-                    <div class="row">
-
-                        <div class="col-md-4 .col-md-offset-4">
-                            <?= Html::a('Заполнить вдрес автоматически', '#', ['class' => 'input-address']) ?>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <?= $form->field($model, 'address_street')->textInput() ?>

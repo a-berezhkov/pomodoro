@@ -49,13 +49,13 @@ class Slider extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'image_id' => Yii::t('app', 'Image ID'),
-            'desc' => Yii::t('app', 'Desc'),
-            'button_url' => Yii::t('app', 'Button Url'),
-            'order' => Yii::t('app', 'Order'),
-            'store_id' => Yii::t('app', 'Store ID'),
+            'id' => 'Идентификатор',
+            'title' => 'Название',
+            'image_id' => 'Картинка',
+            'desc' => 'Описнаие',
+            'button_url' => 'Адрес ссылки ',
+            'order' => 'Порядок',
+            'store_id' => 'Товар',
         ];
     }
 

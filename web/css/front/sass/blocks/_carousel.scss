@@ -23,8 +23,15 @@
 
 .carousel-control .glyphicon-chevron-right {
   right: 25%;
+  @media #{$media-phone-width} {
+    right: 50%;
+  }
 }
 
 .carousel-control .glyphicon-chevron-left {
   left: 25%;
+  @media #{$media-phone-width} {
+    left: 50%;
+  }
 }
+

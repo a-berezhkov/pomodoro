@@ -1,13 +1,58 @@
+.categories-phone {
+  margin-top: 2%;
+  .banner {
+    height: 160px;
+    overflow: hidden;
+
+    background: url(#{$path-image}/store.png);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    //background: url('');
+    //position: relative;
+
+    .title {
+      //position: absolute;
+      color: #fff;
+      font-size: $font-size-24px;
+
+    }
+  }
+  .category {
+    border: 1px solid #fff;
+  }
+  &.special-category-row {
+    margin-left: -2px;
+    margin-right: -2px;
+    .col-xs-6 {
+      padding-left: 2px;
+      padding-right: 2px;
+      margin-bottom: 3px;
+    }
+  }
+}
+
 .category {
   //border: 1px solid #000;
   overflow: hidden;
   position: relative;
   .category-icon {
-    &.category-icon-green { background-color: $color-category-green }
-    &.category-icon-brown { background-color: $color-category-brown }
-    &.category-icon-blue { background-color: $color-category-blue }
-    &.category-icon-yellow { background-color: $color-category-yellow }
-    &.category-icon-red { background-color: $color-primary }
+    &.category-icon-green {
+      background-color: $color-category-green
+    }
+    &.category-icon-brown {
+      background-color: $color-category-brown
+    }
+    &.category-icon-blue {
+      background-color: $color-category-blue
+    }
+    &.category-icon-yellow {
+      background-color: $color-category-yellow
+    }
+    &.category-icon-red {
+      background-color: $color-category-orange
+    }
   }
   &.category-right {
     height: 190px;
@@ -36,19 +81,23 @@
       }
       .name {
         font-size: $font-size-18px;
-        font-weight: $font-weight-normal;
+        font-weight: $font-weight-light;
         color: #fff;
         margin-top: 4%;
       }
     }
   }
+  //.shop-category,
   &.category-bottom {
-    height: 190px;
+    height: 120px;
     .details {
       bottom: 0;
       height: 60px;
       background-color: $color-banner-details;
       width: 100%;
+      @media #{$media-phone-width} {
+        height: 300px;
+      }
       .category-icon {
         //background-color: $color-banner-details-icon;
         width: 60px;
@@ -56,17 +105,72 @@
         display: inline-block;
         background-repeat: no-repeat;
         background-position: 50%;
+        background-size: 50%;
         //background-color: ;
         //content: ' ';
       }
       .name {
         font-size: $font-size-18px;
-        font-weight: $font-weight-normal;
+        font-weight: $font-weight-light;
         color: #fff;
         display: inline-block;
         padding: 0 6px;
         bottom: 22px;
         position: relative;
+      }
+    }
+  }
+  &.category-phone {
+    //height: 40px;
+
+    height: 100px;
+    //background: #ccc;
+    //&.category-bg {
+    //  &.category-icon-green {
+    //    background-color: $color-category-green
+    //  }
+    //  &.category-icon-brown {
+    //    background-color: $color-category-brown
+    //  }
+    //  &.category-icon-blue {
+    //    background-color: $color-category-blue
+    //  }
+    //  &.category-icon-yellow {
+    //    background-color: $color-category-yellow
+    //  }
+    //  &.category-icon-red {
+    //    background-color: $color-primary
+    //  }
+    //}
+    .details {
+      color: #fff;
+      //height: 100%;
+      //background-color: rgba(48, 56, 32, 0.8);
+      background-color: rgba(0,0,0,0.6);
+      margin: 28px 0;
+      width: 100%;
+      height: 40px;
+      //padding: 6px;
+      .category-icon {
+        width: 40px;
+        height: 100%;
+        //display: inline-block;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: 60%;
+        vertical-align: middle;
+        display: inline-block;
+      }
+      .name {
+        font-size: $font-size-14px;
+        //font-size: 1.125rem;
+        font-weight: $font-weight-light;
+        color: #fff;
+        //display: inline-block;
+        padding: 0 6px;
+        //bottom: 22px;
+        //position: relative;
+        display: inline-block;
       }
     }
   }
@@ -79,11 +183,35 @@
     height: auto;
     width: auto;
   }
-  .category-icon-greens { background: url(#{$path-image}/icons/icon-greens.png) }
-  .category-icon-nuts { background: url(#{$path-image}/icons/icon-nuts.png) }
+  .category-icon-greens {
+    background: url(#{$path-image}/icons/icon-greens.png)
+  }
+  .category-icon-nuts {
+    background: url(#{$path-image}/icons/icon-nuts.png)
+  }
   //.category-icon-peppers { background: url(#{$path-image}/icons/icon-peppers.png) }
-  .category-icon-fruits { background: url(#{$path-image}/icons/icon-grapes.png) }
-  .category-icon-fruits-froze { background: url(#{$path-image}/icons/icon-berry-froze.png) }
-  .category-icon-vegetables-froze { background: url(#{$path-image}/icons/icon-vegetable-froze.png) }
-  .category-icon-vegetables { background: url(#{$path-image}/icons/icon-carrot.png) }
+  .category-icon-fruits {
+    background: url(#{$path-image}/icons/icon-grapes.png)
+  }
+  .category-icon-fruits-froze {
+    background: url(#{$path-image}/icons/icon-berry-froze.png)
+  }
+  .category-icon-vegetables-froze {
+    background: url(#{$path-image}/icons/icon-vegetable-froze.png)
+  }
+  .category-icon-vegetables {
+    background: url(#{$path-image}/icons/icon-carrot.png)
+  }
+
+}
+
+.categories-phone {
+  .col-xs-6:nth-child(even) {
+    //background: #0000cc;
+    padding-right: 0;
+  }
+  .col-xs-6:nth-child(odd) {
+    padding-left: 0;
+    //background: #c4c4c4;
+  }
 }

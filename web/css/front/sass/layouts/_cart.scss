@@ -18,6 +18,9 @@
   .heading {
     background: #000;
     color: #fff;
+    &::before, &::after {
+      display: none
+    }
   }
   table.table-products {
     padding: 2% 0;
@@ -27,9 +30,40 @@
     }
     tbody {
       border-bottom: 2px solid #000 !important;
-
-      td {
-        vertical-align: middle;
+      tr {
+        td {
+          vertical-align: middle;
+          .fa-trash {
+            background: $color-primary;
+            padding: 9px;
+            width: 33px;
+            height: 33px;
+            border-radius: 50px;
+            display: inline-block;
+            color: #fff;
+            margin-right: 2%;
+          }
+          img {
+            display: inline-block;
+          }
+          .count_box {
+            //border: 1px solid #000;
+            border-color: #000;
+          }
+          .box_weight {
+            &:after {
+              content: '';
+              //background: url(../../img/);
+              background: url(#{$path-image}/icons/weight.png);
+              background-size: 22px 19px;
+              width: 22px;
+              height: 18px;
+              left: 4px;
+              position: relative;
+              display: inline-block;
+            }
+          }
+        }
       }
     }
   }

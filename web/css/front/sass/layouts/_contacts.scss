@@ -21,6 +21,15 @@
       vertical-align: top;
       margin-left: 12px;
       font-size: 12px;
+      @media #{$media-phone-width} {
+        margin-left: 0;
+      }
+    }
+    .call, .back {
+      @media #{$media-phone-width} {
+        // margin-left: 0;
+        margin-bottom: 5px;
+      }
     }
   }
 }

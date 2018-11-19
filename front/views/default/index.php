@@ -8,11 +8,26 @@ use rmrevin\yii\fontawesome\FA;
 
 ?>
 
+<?php
+
+$this->title = 'Синьор Помидор';
+
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => 'Синьор Помидор',
+]);
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => 'Синьор Помидор - доставка свежих фруктов и овощей до вашего магазина',
+]);
+
+?>
+
 <div class="page page-index">
-    <div class="banners">
+    <div class="banners hidden-xs">
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-xs-12 col-md-8">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <?= $this->render('slider/_slider'); ?>
                 </div>
@@ -46,9 +61,22 @@ use rmrevin\yii\fontawesome\FA;
         ?>
 
     </div>
+    <div class="categories-phone row visible-xs-block">
+        <div class="col-xs-12">
+            <div class="banner">
+                <div class="title">Горячие предложения</div>
+            </div>
+        </div>
+        <?=
+        /**
+         * Для мобильного
+         */
+        $this->render('_categories-phone', ['categories' => $categories])
+        ?>
+    </div>
     <div class="products-grid">
         <h2 class="section-title text-center">Горячие предложения</h2>
-        <p class="text-center">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В
+        <p class="text-center hidden-xs">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В
             статье
             представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в
             соответствии
@@ -64,62 +92,67 @@ use rmrevin\yii\fontawesome\FA;
     </div>
     <div class="front-search">
         <div class="special-row">
-            <div class="col-md-12">
-                <div class="search-panel">
-                    <? \yii\bootstrap\ActiveForm::begin([
-                        'action'  => \yii\helpers\Url::to(['/front/default/search-items']),
-                        'method'  => 'get',
-                        'options' => [
-                            'class' => '',
-                            'id'    => 'search-form',
-                        ],
+            <div class="search-panel">
+                <? \yii\bootstrap\ActiveForm::begin([
+                    'action' => \yii\helpers\Url::to(['/front/default/shop']),
+                    'method' => 'get',
+                    'options' => [
+                        'class' => '',
+                        'id' => 'search-form',
+                    ],
 
+                ]) ?>
+                <div class="input-group">
+                    <?= \yii\helpers\Html::input('text', 'StoreSearch[name]', null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'Введите название товара',
                     ]) ?>
-                    <div class="input-group">
-                        <?= \yii\helpers\Html::input('text', 'q', null, [
-                            'class'       => 'form-control',
-                            'placeholder' => 'Введите название товара',
-                        ]) ?>
 
-                        <span class="input-group-btn"><button class="btn button-search"
-                                                              type="submit">Найти</button></span>
-                    </div><!-- /input-group -->
-                    <? \yii\bootstrap\ActiveForm::end() ?>
-                </div>
-            </div><!-- /.col-lg-6 -->
+                    <span class="input-group-btn"><button class="btn button-search"
+                                                          type="submit">Найти</button></span>
+                </div><!-- /input-group -->
+                <? \yii\bootstrap\ActiveForm::end() ?>
+            </div>
+
         </div><!-- /.row -->
     </div>
     <div class="front-helpdesk">
         <div class="row">
-            <div class="col-md-6">
-                <div class="video">
-                    <div class="message">
-                        <div class="title text-center">Как тут все работает?</div>
-                        <div class="icon text-center">
-                            <a href="#">
-                                <div class="play-icon">
-                                    <?= FA::i('play'); ?>
-                                </div>
-                            </a>
-                        </div>
+            <div class="col-md-6" >
+            <div  style="background:black;z-index:-1 ;">
+                    <div class="video" style="width:100%;opacity:0.8;">
 
-                        <div class="title text-center">Посмотрите обучающее видео</div>
+                        <div class="message"   ">
+                            <div class="title text-center">Как тут все работает?</div>
+                            <div class="icon text-center">
+                                <a href="http://signorpomidor.ru/web/img/presentation.pdf">
+                                    <div class="play-icon">
+                                        <?= FA::i('file-pdf-o'); ?>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="title text-center">Посмотрите нашу презентацию</div>
+                        </div>
                     </div>
-                </div>
             </div>
+            </div>
+
             <div class="col-md-6">
                 <div class="order text-center">
                     <div class="row">
                         <div class="col-md-offset-6 col-md-6">
                             <? \yii\bootstrap\ActiveForm::begin([
-                                'action'  => \yii\helpers\Url::to(['/front/orders/view-order']),
-                                'method'  => 'get',
+                                'action' => \yii\helpers\Url::to(['/front/orders/view-order']),
+                                'method' => 'get',
                                 'options' => [
                                     'class' => 'order-form',
                                 ],
                             ]) ?>
+
+
                             <?= \yii\helpers\Html::input('string', 'code', null, [
-                                'class'       => 'form-control number',
+                                'class' => 'form-control number',
                                 'placeholder' => 'Введите номер накладной',
                             ]) ?>
 
@@ -133,24 +166,24 @@ use rmrevin\yii\fontawesome\FA;
     </div>
     <div class="front-partners">
         <div class="row">
-            <div class="col-md-2">
-                <div class="partner"></div>
-            </div>
-            <div class="col-md-2">
-                <div class="partner"></div>
-            </div>
-            <div class="col-md-2">
-                <div class="partner"></div>
-            </div>
-            <div class="col-md-2">
-                <div class="partner"></div>
-            </div>
-            <div class="col-md-2">
-                <div class="partner"></div>
-            </div>
-            <div class="col-md-2">
-                <div class="partner"></div>
-            </div>
+            <!--            <div class="col-xs-4 col-md-2">-->
+            <!--                <div class="partner"></div>-->
+            <!--            </div>-->
+            <!--            <div class="col-xs-4 col-md-2">-->
+            <!--                <div class="partner"></div>-->
+            <!--            </div>-->
+            <!--            <div class="col-xs-4 col-md-2">-->
+            <!--                <div class="partner"></div>-->
+            <!--            </div>-->
+            <!--            <div class="col-xs-4 col-md-2">-->
+            <!--                <div class="partner"></div>-->
+            <!--            </div>-->
+            <!--            <div class="col-xs-4 col-md-2">-->
+            <!--                <div class="partner"></div>-->
+            <!--            </div>-->
+            <!--            <div class="col-xs-4 col-md-2">-->
+            <!--                <div class="partner"></div>-->
+            <!--            </div>-->
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ use yii\helpers\Html;
 use yii\widgets\Menu; // Вместо yii\bootstrap\Nav
 use app\assets\FrontAsset;
 use rmrevin\yii\fontawesome\FA;
+use yii\bootstrap\Nav;
 
 /*
  * Разкомментируйте строки для тестирование работы корзины
@@ -42,52 +43,29 @@ $this->registerJs($script, yii\web\View::POS_READY);
         <meta charset="<?= Yii::$app->charset ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic,cyrillic-ext"
               rel="stylesheet">
 
-        <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&amp;subset=cyrillic,cyrillic-ext"
+              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800&amp;subset=cyrillic,cyrillic-ext"
+              rel="stylesheet">
+
+        <link rel="apple-touch-icon" sizes="76x76" href="<?=  \Yii::getAlias('@web') ?>/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?=  \Yii::getAlias('@web') ?>/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?=  \Yii::getAlias('@web') ?>/favicon/favicon-16x16.png">
+        <link rel="manifest" href="<?=  \Yii::getAlias('@web') ?>/favicon/site.webmanifest">
+        <link rel="mask-icon" href="<?=  \Yii::getAlias('@web') ?>/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
 
         <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
+        <title><?= Yii::$app->params['site_title'] . ' | ' . Html::encode($this->title) ?></title>
         <?php $this->head() ?>
-        <style>
-            .spinner {
-                width: 100px;
-            }
-            .spinner input {
-                text-align: right;
-            }
-            .input-group-btn-vertical {
-                position: relative;
-                white-space: nowrap;
-                width: 1%;
-                vertical-align: middle;
-                display: table-cell;
-            }
-            .input-group-btn-vertical > .btn {
-                display: block;
-                float: none;
-                width: 100%;
-                max-width: 100%;
-                padding: 8px;
-                margin-left: -1px;
-                position: relative;
-                border-radius: 0;
-            }
-            .input-group-btn-vertical > .btn:first-child {
-                border-top-right-radius: 4px;
-            }
-            .input-group-btn-vertical > .btn:last-child {
-                margin-top: -2px;
-                border-bottom-right-radius: 4px;
-            }
-            .input-group-btn-vertical i{
-                position: absolute;
-                top: 0;
-                left: 4px;
-            }
-        </style>
+
     </head>
     <body>
     <?php $this->beginBody() ?>
@@ -97,6 +75,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
             <div class="container">
                 <nav class="navbar">
 
+
                     <?php
                     $logo = ['/img/brand-logo.png'];
                     echo Html::a(Html::img($logo), ['/front/default/index/'], ['class' => 'navbar-brand navbar-logo']);
@@ -104,19 +83,21 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     // Right side menu
                     $right_menu_items = [
                         ['label' => 'Магазин', 'url' => ['/front/default/shop']],
-                        ['label' => 'Доставка', 'url' => ['#']],
+                        ['label' => 'Доставка', 'url' => ['/front/default/about']],
                         ['label' => 'Контакты', 'url' => ['/front/default/contacts']],
-                        \Yii::$app->user->isGuest ? (['label' => 'Личный кабинет', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
+                        \Yii::$app->user->isGuest ? (['label' => 'Войти', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
                             'label' => 'Личный кабинет',
                             'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),
                             'template' => '<a href="{url}" data-method="post">{label}</a>'
-                        ])
+                        ]),
+                        !\Yii::$app->user->isGuest ? (['label' => 'Выйти',    'url' => \yii\helpers\Url::toRoute(['/user/logout']), 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) :  null
                     ];
 
                     echo Menu::widget([
                         'items' => $right_menu_items,
                         'options' => [
-                            'class' => 'navbar-nav navbar-left',
+                            //'id' => 'w0-collapse',
+                            'class' => 'navbar-nav navbar-left hidden-xs',
                         ],
                         'itemOptions' => [
                             'class' => 'menu-item'
@@ -126,8 +107,8 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     // Left side menu
                     $right_menu_items = [
                         [
-                            'label' => '8-800-200-34-19',
-                            'url' => 'tel:8-800-200-34-19'
+                            'label' => '+7 (999) 207-97-21',
+                            'url' => '+7 (999) 207-97-21'
                         ],
                         [
                             'label' => 'Обратный звонок',
@@ -135,23 +116,29 @@ $this->registerJs($script, yii\web\View::POS_READY);
                             'options' => ['class' => 'menu-item call-button button button-rounded'],
                         ],
                         [
-                            'label' => FA::i('shopping-basket'),
+                            'label' => '<i class="icon icon-icon-cart"></i>',
                             'template' => '<a class="dropdown-toggle" data-toggle="dropdown">{label}</a><div id="cart-stores" class="dropdown-menu"></div>',
-                            'options' => ['class' => 'dropdown menu-item', 'id' => 'shopping-basket']
+                            'options' => ['class' => 'dropdown menu-item icon', 'id' => 'shopping-basket']
                         ],
                         // Temprorary disable
                         //['label' => FA::i('search'), 'url' => ['#']],
-                        \Yii::$app->user->isGuest ? (['label' => FA::i('unlock'), 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
-                            'label' => FA::i('lock'),
-                            'url' => \yii\helpers\Url::toRoute(['/user/logout']),
-                            'template' => '<a href="{url}" data-method="post">{label}</a>'
-                        ])
+                        \Yii::$app->user->isGuest ? ([
+                            'label' => '<i class="icon icon-logout"></i>',
+                            'url' => '#',
+                            'options' => ['class' => 'menu-item icon icon-bg-black', 'data-toggle' => 'modal', 'data-target' => '#login-modal']]) :
+                            ([
+                                'label' => '<i class="icon icon-login"></i>',
+                                'url' => \yii\helpers\Url::toRoute(['/user/logout']),
+                                'options' => ['class' => 'menu-item icon icon-bg-green'],
+                                'template' => '<a href="{url}" data-method="post">{label}</a>',
+                            ])
                     ];
 
                     echo Menu::widget([
                         'items' => $right_menu_items,
                         'options' => [
-                            'class' => 'navbar-nav navbar-right'
+                            'class' => 'navbar-nav navbar-right hidden-xs',
+                            //'id' => 'w0-collapse',
                         ],
                         'itemOptions' => [
                             'class' => 'menu-item'
@@ -159,8 +146,63 @@ $this->registerJs($script, yii\web\View::POS_READY);
                         'encodeLabels' => false,
                     ]); ?>
 
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#phone-menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+
                 </nav>
             </div>
+
+
+            <div id="phone-menu" class="collapse">
+                <div class="inner">
+
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#phone-menu">
+                        <i class="icon-cancel"></i>
+                    </button>
+
+                    <?php
+                    $phone_menu_items = [
+                        ['label' => 'Главная', 'url' => ['/front/default/']],
+                        ['label' => 'Магазин', 'url' => ['/front/default/shop']],
+                        ['label' => 'Доставка', 'url' => ['/front/default/about']],
+                        ['label' => 'Контакты', 'url' => ['/front/default/contacts']],
+                        ['label' => 'Личный кабинет', 'url' => \yii\helpers\Url::toRoute(['/user/settings/profile'])],
+                        ['label' => 'Корзина', 'url' => ['/front/cart/cart']],
+                    ];
+
+                    echo Menu::widget([
+                        'items' => $phone_menu_items,
+                        'options' => [
+                            'class' => 'navbar-nav',
+                            //'id' => 'w0-collapse',
+                        ],
+                        'itemOptions' => [
+                            'class' => 'menu-item'
+                        ],
+                        'encodeLabels' => false,
+                    ]); ?>
+
+
+
+                    <div class="search">
+                        <input type="text" class="form-control" placeholder="Введите поисковый запрос">
+                        <button class="btn btn-block button-primary">Найти</button>
+                    </div>
+
+                    <div class="bottom text-center">
+                        <div class="phone"><a href="tel:+7 (999) 207-97-21">+7 (999) 207-97-21</a></div>
+                        <div class="back"><a href="">Обратный звонок</a></div>
+                    </div>
+                </div>
+            </div>
+
+
         </header>
 
         <main class="main">
@@ -169,38 +211,47 @@ $this->registerJs($script, yii\web\View::POS_READY);
             </div>
         </main>
 
-        <footer class="footer">
+        <?php
+        if (Yii::$app->controller->action->id == 'contacts' || Yii::$app->controller->action->id == 'about'):
+            ?>
+            <div id="location" style="height: 500px;"></div>
+        <?php endif; ?>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="copyright">
-                            <p>© 2018 / ООО «Синьор Помидор»<br/>Россия, Санкт-Петербург, ул. Салова 34</p>
-                            <p><?= Html::a('Схема проезда', '#') ?>
-                                / <?= Html::a('Информация об ограничениях', '#') ?></p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="logo text-center">
-                            <?= Html::img(['/img/logo-footer.png']) ?>
+    </div>
 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="call">
-                            <div class="text-right"><?= Html::a('8-800-200-34-19', 'tel:8-800-200-34-19', ['class' => 'number']) ?></div>
-                            <div class="text-right"><?= Html::a('Обратный звонок', '#', ['class' => 'back']) ?></div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="social">
 
-                        </div>
+
+    <footer class="footer">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <div class="copyright">
+                        <p>© 2018 / ООО «Синьор Помидор»<br/>Россия, Санкт-Петербург, ул. Софийская, 60</p>
+                        <p><?= Html::a('Схема проезда', '#') ?>
+                            / <?= Html::a('Информация об ограничениях', '#') ?></p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 hidden-xs">
+                    <div class="logo text-center">
+                        <?= Html::img(['/img/logo-footer.png']) ?>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="call">
+                        <div class="pull-left phone-icon"><?= Html::img(['/img/icons/extra-phone.png']) ?></div>
+                        <div class="text-right"><?= Html::a('8-812-921-16-06', 'tel:8-812-921-16-06', ['class' => 'number']) ?></div>
+                        <div class="text-right"><?= Html::a('Обратный звонок', '#', ['class' => 'back']) ?></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="social">
+
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <?php $this->endBody() ?>
     </body>

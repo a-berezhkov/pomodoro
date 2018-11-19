@@ -18,10 +18,10 @@ class UserMenu extends \dektrium\user\widgets\UserMenu
 
         $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
         $newFields = [
-            ['label' => 'Профиль', 'url' => ['/user/settings/profile'], 'options' => ['data-icon' => 'd']],
-            ['label' => 'Настройки', 'url' => ['/user/settings/account'], 'options' => ['data-icon' => 'a']],
-            ['label' => 'Корзина', 'url' => ['/front/cart/cart'], 'options' => ['id' => 'cart-basket', 'data-icon' => 'b']],
-            ['label' => 'История заказов', 'url' => ['/front/orders/user-orders'], 'options' => ['data-icon' => 'c']],
+            ['label' => 'Профиль', 'url' => ['/user/settings/profile'], 'options' => ['data-icon' => 'b']],
+            ['label' => 'Настройки', 'url' => ['/user/settings/account'], 'options' => ['data-icon' => 'c']],
+            ['label' => 'Корзина', 'url' => ['/front/cart/cart'], 'options' => ['id' => 'cart-basket', 'data-icon' => 'm']],
+            ['label' => 'История заказов', 'url' => ['/front/orders/user-orders'], 'options' => ['data-icon' => 'a']],
 
         ];
         $this->items = $newFields;

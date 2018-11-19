@@ -6,7 +6,7 @@ use app\front\models\Categories;
 use app\front\models\fPartners;
 use app\front\models\Store;
 use app\front\models\StoreSearch;
-use yii\data\ActiveDataProvider;
+use yii\data\Sort;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 
@@ -22,7 +22,10 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $categories = Categories::find()->all();
-        $suggests   = Store::find()->where(['is_active' => true, 'is_sale' => true])->all();
+        $suggests   = Store::find()
+                           ->where(['is_active' => true, 'is_sale' => true])
+                           ->orderBy(['created_at' => SORT_DESC])
+                           ->all();
         return $this->render('index',
             [
                 'categories' => $categories,
@@ -60,41 +63,72 @@ class DefaultController extends Controller
 
     public function actionShop()
     {
+        $sort = new Sort([
+            'attributes' => [
+                'box_price_up'   => [
+                    'asc'   => ['box_price' => SORT_DESC],
+                    'desc'  => ['box_price' => SORT_DESC],
+                    'label' => '₽ +',
+                ],
+                'box_price_down' => [
+                    'asc'   => ['box_price' => SORT_ASC],
+                    'desc'  => ['box_price' => SORT_ASC],
+                    'label' => '₽ -',
+                ],
+                'name_up'        => [
+                    'asc'   => ['name' => SORT_ASC],
+                    'desc'  => ['name' => SORT_ASC],
+                    'label' => 'А-Я',
+                ],
+                'name_down'      => [
+                    'asc'   => ['name' => SORT_DESC],
+                    'desc'  => ['name' => SORT_DESC],
+                    'label' => 'Я-А',
+
+                ],
+            ],
+        ]);
 
 
         $searchModel  = new StoreSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-        if (isset(\Yii::$app->request->queryParams['price'])){
+
+        // Если получена цена от слайлера
+        if (isset(\Yii::$app->request->queryParams['price'])) {
             $priceString = \Yii::$app->request->queryParams['price'];
-            $prices = explode(",",$priceString);
-            $minPrice = (int) $prices[0];
-            $maxPrice = (int) $prices[1];
-            $dataProvider->query->andFilterWhere(['>=', 'box_price',$minPrice])
-                                  ->andFilterWhere(['<', 'box_price', $maxPrice ]);
+            $prices      = explode(",", $priceString); // парсим строку
+            $minPrice    = (int)$prices[0];
+            $maxPrice    = (int)$prices[1];
+            // Добавлем условия поиска
+            $dataProvider->query->andFilterWhere(['>=', 'box_price', $minPrice])
+                                ->andFilterWhere(['<=', 'box_price', $maxPrice]);
         }
-        $dataProvider->query->andWhere(['is_sale' => false])
-          ;
+       // $dataProvider->query->andWhere(['is_sale' => false]);
+        $dataProvider->query->orderBy($sort->orders);
 
-
-
-        $hotDataProvider = new ActiveDataProvider(
-            [
-                'query'      => Store::find()->where(['is_sale' => true]),
-                'pagination' => [
-                    'pageSize' => 4,
-                ],
-            ]
-        );
-
-        return $this->render('shop', [
-            'searchModel'     => $searchModel,
-            'dataProvider'    => $dataProvider,
-            'hotDataProvider' => $hotDataProvider,
-            'priceString'=>   isset($priceString) ? $priceString : null
+        $categories = Categories::find()->asArray()->all();
+        // Максимальная цена и минимальная цена для слайдера
+        $maxPrice = (int)Store::find()
+                             // ->where(['is_sale' => false])
+                              ->max('box_price');
+        $minPrice = (int)Store::find()
+                             // ->where(['is_sale' => false])
+                              ->min('box_price');
+        return $this->render('store/shop', [
+            'searchModel'  => $searchModel,
+            'dataProvider' => $dataProvider,
+            'priceString'  => isset($priceString) ? $priceString : 0,
+            'categories'   => $categories,
+            'sort'         => $sort,
+            'maxPrice'     => $maxPrice,
+            'minPrice'     => $minPrice,
         ]);
 
     }
 
+    /**
+     * @return string
+     */
     public function actionContacts()
     {
         return $this->render('contacts', [
@@ -104,16 +138,27 @@ class DefaultController extends Controller
     /**
      * @return string
      */
-    public function actionError(){
+    public function actionError()
+    {
         return $this->render('error');
     }
 
     /**
      * @param $q
      */
-    public function actionSearchItems($q){
+    public function actionSearchItems($q)
+    {
         $items = Store::find()->where(['like', 'name', $q])->all();
-        return $this->render('/default/search-result',['items'=>$items]);
+        return $this->render('/default/search-result', ['items' => $items]);
 
+    }
+
+    /**
+     * @return string
+     */
+    public function actionAbout()
+    {
+        return $this->render('about', [
+        ]);
     }
 }

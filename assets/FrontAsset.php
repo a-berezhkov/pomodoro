@@ -8,6 +8,7 @@
 namespace app\assets;
 
 use yii\web\AssetBundle;
+use Yii;
 
 /**
  * Main application asset bundle.
@@ -21,12 +22,16 @@ class FrontAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $js = [
-        ['js/front/main.js']
+        'js/front/main.min.js',
+        'js/front/location.js',
+        // TODO передать ключ параметром
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyA1K2I3aWBkvWkzriMdNeJkBFDi318pPaw&callback=initMap',
     ];
     public $css = [
         // more plugin CSS here
         'css/front/main.css',
-        'fonts/pomidoro-icon/styles.css'
+        //'fonts/pomidoro-icon/styles.css',
+        'fonts/pomidoro-main/styles.css'
     ];
 
     public $depends = [

@@ -1,4 +1,10 @@
 .page-shop {
+
+  .section-title {
+    font-size: $font-size-22px;
+    height: 30px;
+  }
+
   .welcome {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(#{$path-image}/hiw.jpg);
     height: 400px;
@@ -10,5 +16,28 @@
       margin-top: 0;
     }
   }
+
+  .summary {
+    display: none;
+  }
+
+  .shop-sortable {
+    position: absolute;
+    right: 0;
+    top:0;
+    display: block;
+    word-wrap: normal;
+
+    .asc, .desc {
+      background: #000;
+      display: inline-block;
+      width: 40px;
+      text-align: center;
+
+      padding: 1%;
+      color: #fff;
+    }
+  }
+
 }
 

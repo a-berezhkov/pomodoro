@@ -6,7 +6,10 @@
     .modal-content {
       border-radius: 0;
       padding: 0;
-      background: #000;
+      background: url(#{$path-image}/pomi.png);
+      background-repeat: no-repeat;
+      background-position: 108% 112%;
+      background-color: #000;
       position: relative;
       .modal-body {
         padding: 0;
@@ -24,7 +27,8 @@
           font-size: 14px;
           font-weight: normal;
           margin-top: 90px;
-          margin-bottom: 20px;
+          margin-bottom: 60px;
+          //margin-bottom: 20px;
           height:110px;
         }
         .main {

@@ -17,9 +17,10 @@ window.onload = function () {
     $("#hot .count_box").change(function () {
         updateItem($(this), '#hot');
     });
+
     $("#ordinary .count_box").change(function () {
-        updateItem($(this), '#ordinary');
-    });
+        ;   updateItem($(this), '#ordinary');
+    })
 
     if (localStorage.length === 0){
         console.log(localStorage.length);
@@ -128,8 +129,9 @@ function deleteItem() {
             localStorage.removeItem(item);
             $(this).parent().parent().hide("slow", function () {
                 var element = $(this);
-                var parent_element = element.parent().parent().parent().attr('id');
-                console.log(parent_element);
+                var parent_element = element.parent().parent().parent().parent().attr('id');
+                //console.log(element);
+              ///  console.log(parent_element);
                 $(this).remove();
                 var count_box = element.find(".count_box").val();
                 var item_total_weight = element.find(".item-total-weight").text();
@@ -177,9 +179,20 @@ function showItems() {
     var ordinaryTotalPrice = 0;
     // начало создания вставки
     //==================================HOT Items ===============================================//
+    var hot_table = document.getElementById('hot_table');
     var hot = document.getElementById('hot');
     var hot_div = document.createElement('table');
     hot_div.className = "table table-products";
+    hot_div.innerHTML =
+        '<tr class="heading">' +
+        '<td class="text-center">Наименование</td>' +
+        '<td class="text-center"></td>' +
+        '<td class="text-center">Количесвто</td>' +
+        '<td class="text-center">Вес шт.</td>' +
+        '<td class="text-center">Вес всего (кг)</td>' +
+        '<td class="text-center">Цена</td>' +
+        '<td class="text-center">Сумма</td>' +
+        '</tr>';
     for (var item_name in localStorage) {
         item = JSON.parse(localStorage.getItem(item_name));
         if (item !== null) {
@@ -192,19 +205,19 @@ function showItems() {
                 hot_div.innerHTML = hot_div.innerHTML +
                     //'<table class="">' +
                     '<tr>' +
-                    '<td class="col-md-2 text-center"><i class="fa fa-trash" data-item="\' + item_name + \'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
+                    '<td class="col-md-3 text-center"><i class="fa fa-trash" data-item="'+item_name+'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></td>' +
-                    '<td class="col-md-2 text-center">' + item.item_name + '</td>' +
+                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></td>' +
                     '<td class="col-md-1 box_weight text-center">' + item.item_box_weight + '</td>' +
                     '<td class="col-md-1 item-total-weight text-center">' + (item.item_box_weight * item.count_box) + '</td>' +
-                    '<td class="col-md-2 text-center" id="price">' + item.item_discount_box_price + '</td>' +
-                    '<td class="col-md-2 total-price text-center" > ' + (item.item_discount_box_price * item.count_box) + '</td>' +
+                    '<td class="col-md-2 text-center" id="price">' + item.item_discount_box_price + ' ₽' + '</td>' +
+                    '<td class="col-md-2 total-price text-center" > ' + (item.item_discount_box_price * item.count_box) + ' ₽' + '</td>' +
                     //'';
                     '</tr>';
-                    //'</table>';
+                //'</table>';
             }
         }
     }
@@ -222,13 +235,28 @@ function showItems() {
             '<div>Пока тут ничего нет(</div>';
     }
 
-    hot.appendChild(hot_div);
+    hot_wrapper = document.createElement('div');
+    hot_wrapper.className = 'table-responsive';
+    hot_wrapper.innerHTML = hot_div.outerHTML;
+
+    //hot_table.appendChild(hot_div);
+    hot.appendChild(hot_wrapper);
     hot.appendChild(hot_total);
     //==================================End HOT Items ===============================================//
     //==================================Ordinary Items ==============================================//
     var ordinary = document.getElementById('ordinary');
     var ordinary_div = document.createElement('table');
     ordinary_div.className = "table table-products";
+    ordinary_div.innerHTML =
+        '<tr class="heading">' +
+        '<td class="text-center">Наименование</td>' +
+        '<td class="text-center"></td>' +
+        '<td class="text-center">Количесвто</td>' +
+        '<td class="text-center">Вес шт.</td>' +
+        '<td class="text-center">Вес всего (кг)</td>' +
+        '<td class="text-center">Цена</td>' +
+        '<td class="text-center">Сумма</td>' +
+        '</tr>';
     for (var item_name in localStorage) {
         item = JSON.parse(localStorage.getItem(item_name));
         if (item !== null) {
@@ -242,18 +270,18 @@ function showItems() {
                     // '<div class="row">' +
                     '<tr>' +
                     //'<td class="col-md-1 text-center"></td>' +
-                    '<td class="col-md-2 text-center"><i class="fa fa-trash" data-item="\' + item_name + \'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
+                    '<td class="col-md-3 text-center"><i class="fa fa-trash" data-item="'+item_name+'" aria-hidden="true"></i> <img src="' + item.item_image_link + '"' +
                     '  width="100" height="70" alt=""></a></td>' +
-                    '<td class="col-md-2 text-center">' + item.item_name + '</td>' +
+                    '<td class="col-md-1 text-center">' + item.item_name + '</td>' +
                     '<td class="col-md-2 text-center">' +
                     '<input class="count_box" data-item="' + item_name + '" type="number" name="count_box" value="' + item.count_box + '" min="1" max="100"' +
                     '                                   step="1"></td>' +
                     '<td class="col-md-1 box_weight text-center">' + item.item_box_weight + '</td>' +
                     '<td class="col-md-1 item-total-weight text-center">' + (item.item_box_weight * item.count_box) + '</td>' +
-                    '<td class="col-md-2 text-center" id="price">' + item.item_box_price + '</td>' +
-                    '<td class="col-md-2 total-price text-center" > ' + (item.item_box_price * item.count_box) + '</td>' +
+                    '<td class="col-md-2 text-center" id="price">' + item.item_box_price + ' ₽' + '</td>' +
+                    '<td class="col-md-2 total-price text-center" > ' + (item.item_box_price * item.count_box) + ' ₽' + '</td>' +
                     '</tr>';
-                    //'</div>';
+                //'</div>';
             }
         }
     }
@@ -270,8 +298,11 @@ function showItems() {
         ordinary_total.innerHTML += '<div>Пока тут ничего нет(</div>';
     }
 
+    ordinary_wrapper = document.createElement('div');
+    ordinary_wrapper.className = 'table-responsive';
+    ordinary_wrapper.innerHTML = ordinary_div.outerHTML;
 
-    ordinary.appendChild(ordinary_div);
+    ordinary.appendChild(ordinary_wrapper);
     ordinary.appendChild(ordinary_total);
     //==================================END Ordinary Items ===========================================//
     var total = document.getElementById('total');

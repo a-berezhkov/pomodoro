@@ -2,9 +2,13 @@
 /**
  * @var $model \app\front\models\Store;
  */
+
 use yii\helpers\Html;
 
 ?>
+
+<div class="products-grid">
+
 
     <div class="suggest">
         <div class="picture text-center">
@@ -13,34 +17,50 @@ use yii\helpers\Html;
         <div class="name text-center">
             <?= $model->name ?>
         </div>
+
         <div class="details">
-            <div class="row current-suggestion">
-                <div class="col-md-6 special-col">
-                    <div class="old-price text-center">
-                        <s><?= $model->box_price ?></s>
-                    </div>
-                </div>
-                <div class="col-md-6 special-col">
-                    <div class="meta">
-                        <?php
-                        if (($model->boxes_count) == 0) $box_color = 'box-icon-red';
-                        else if (($model->boxes_count) < 15) $box_color = 'box-icon-yellow';
-                        else $box_color = 'box-icon-green';
-                        ?>
-                        <span class="weight"><?= $model->box_weight ?></span>
-                        <span class="boxes <?= $box_color; ?>"><?= $model->boxes_count ?></span>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-md-6">
+                    <div class="row current-suggestion">
+
+
+                        <div class="old-price text-center">
+                            <div class="col-xs-6 col-md-6">
+                                <div class="count">
+
+                                    <?php
+                                    if (($model->boxes_count) == 0) $box_color = 'box-icon-red';
+                                    else if (($model->boxes_count) < 15) $box_color = 'box-icon-yellow';
+                                    else $box_color = 'box-icon-green';
+                                    ?>
+
+                                    <div class="box-plus visible-xs-inline-block" item-id="<?= $model->id ?>">+
+                                    </div>
+                                    <input id="count_box_<?= $model->id ?>" type="number" name="count_box"
+                                           value="1"
+                                           min="1" max="100" step="1">
+                                    <div class="box-minus visible-xs-inline-block" item-id="<?= $model->id ?>">-
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-6">
+                                <div class="weight"><?= $model->box_weight ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-            <div class="row new-suggestion">
-                <div class="col-md-6 special-col">
+                <div class="col-xs-12 col-md-6 col-price">
                     <div class="new-price text-center">
                         <div class="price"><?= $model->discount_box_price ?> ₽</div>
                     </div>
                 </div>
-                <div class="col-md-6 special-col">
-                    <?= Html::button('В коризину',
+
+
+                <div class="col-xs-12 col-md-12 col-cart">
+                    <?= Html::button('В корзину',
                         [
                             'class' => 'btn button button-basket',
                             'item-id' => $model->id,
@@ -52,9 +72,9 @@ use yii\helpers\Html;
                             'item-is_sale' => $model->is_sale,
                         ])
                     ?>
-
                 </div>
-
             </div>
         </div>
+
     </div>
+</div>

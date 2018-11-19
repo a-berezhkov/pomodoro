@@ -2,6 +2,10 @@ header.header {
   background: #fff;
   nav {
     margin-top: 1%;
+    @media #{$media-phone-width} {
+      margin-top: 0%;
+      padding: 20px 15px 0;
+    }
     .navbar-brand {
       padding: 0px;
     }
@@ -12,6 +16,13 @@ header.header {
     .navbar-logo {
       width: 260px;
       height: 74px;
+      @media #{$media-phone-width} {
+        width: auto;
+        height: 50px;
+      }
+      //@media #{$media-phone-width} {
+      //  margin: 0 $wrapper-margin-sides-mobile;
+      //}
     }
 
     ul.navbar-nav {
@@ -19,13 +30,31 @@ header.header {
       padding-left: 0;
       margin: 15px 0 15px 25px;
       li.menu-item {
+        &.icon-bg-green,
+        &.icon-bg-black {
+          background: #000;
+          border-radius: 50px;
+          height: 36px;
+          width: 36px;
+          a {
+            color: #fff;
+            padding-left: 8px;
+            text-decoration: none;
+          }
+        }
+        &.icon-bg-green {
+          background: $color-box-green;
+        }
         a {
           font-size: $font-size-16px;
-          font-weight: $font-weight-normal;
+          font-weight: $font-weight-light;
           position: relative;
           display: block;
           //padding: 27px 15px;
-          padding: 12px 15px;
+          padding: 8px 13px;
+          .icon {
+            font-size: $font-size-20px;
+          }
         }
         &.call-button {
           background: #000;
@@ -40,6 +69,81 @@ header.header {
           a {
             color: $color-primary;
           }
+        }
+      }
+    }
+
+    .navbar-toggle {
+      z-index: 2;
+      margin-right: 0;
+      padding: 9px 0;
+      .icon-bar {
+        background: #000;
+      }
+    }
+
+  }
+
+  #phone-menu {
+    background: #000;
+    position: fixed;
+    width: 100%;
+    padding: 20px 30px;
+    height: 100%;
+    top: 0;
+    /* width: 100%; */
+    margin: 0;
+    z-index: 998;
+    .inner {
+      position: relative;
+      height: 100%;
+
+      button.navbar-toggle {
+        color: #fff;
+        margin-right: 0;
+        width: 30px;
+        height: 30px;
+        padding: 3px 0;
+        border: 1px solid #fff;
+        border-radius: 63px;
+        font-size: 20px;
+        z-index: 1000;
+      }
+      ul.navbar-nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding-top: 50px;
+        // margin-top: 50px;
+        li.menu-item {
+          text-align: center;
+          border-bottom: 1px solid #2D2D2D;
+          a {
+            font-size: $font-size-16px;
+            display: block;
+            color: #fff;
+          }
+        }
+      }
+      .search {
+        margin: 1% 0;
+        input[type="text"] {
+          height: 50px;
+          margin-bottom: 2%;
+        }
+        button.button-primary {
+          height: 50px;
+        }
+      }
+      .bottom {
+        position: absolute;
+        width: 100%;
+        bottom: 2%;
+        a {
+          color: #fff;
+        }
+        .phone a {
+          font-size: $font-size-20px;
         }
       }
     }

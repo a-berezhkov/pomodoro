@@ -6,6 +6,8 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 
+
+$this->title = 'Оплата';
 $script = <<< JS
    localStorage.clear();
 JS;
@@ -13,7 +15,9 @@ JS;
 $this->registerJs($script, yii\web\View::POS_READY);
 ?>
 
-<div class="page page-cart page-payment">
+
+
+<div class="page page-personal page-cart page-payment">
     <div class="row">
         <div class="col-md-3">
             <?= $this->render('_menu') ?>
@@ -42,7 +46,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
 
                     <div class="col col-md-4">
 
-                        <input id="cash" type="radio" name="payment" value="cash"/>
+                        <input id="cash" type="radio" name="payment" value="Наличная"/>
                         <label class="drinkcard-cc visa" for="cash">
                             <?= Html::img('@web/img/icons/p_cach.png') ?>
                         </label>
@@ -50,7 +54,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     </div>
 
                     <div class="col col-md-4">
-                    <input id="card" type="radio" name="payment" value="card"/>
+                    <input id="card" type="radio" name="payment" value="Платежная карта"/>
                     <label class="drinkcard-cc mastercard" for="card">
                         <?= Html::img('@web/img/icons/p_card.png') ?>
                     </label>
@@ -58,7 +62,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     </div>
 
                     <div class="col col-md-4">
-                    <input id="bill" type="radio" name="payment" value="bill"/>
+                    <input id="bill" type="radio" name="payment" value="Безналичная"/>
                     <label class="drinkcard-cc mastercard" for="bill">
                         <?= Html::img('@web/img/icons/p_check.png') ?>
                     </label>

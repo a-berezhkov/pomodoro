@@ -17,7 +17,9 @@ function EventListeners() {
     $("#cart-basket").click(goToCart);
     $("#item-checkout").click(function () {
         location.href='/web/front/cart/delivery';
-    });
+    });  
+    $(".box-plus").click(countPlus);
+    $(".box-minus").click(countMinus);
 
 }
 
@@ -29,10 +31,10 @@ function goToCart() {
             items.push(item);
         }
     }
-   $.post( "/labin/2018_senior-pomidor/web/front/cart/cart", { data: items } );
+   $.post( "/web/front/cart/cart", { data: items } );
     $.ajax({
         method: "POST",
-        url: "/labin/2018_senior-pomidor/web/front/cart/cart",
+        url: "/web/front/cart/cart",
         data: {data :items},
         async: false
 
@@ -79,7 +81,7 @@ function ShowBasket() {
     cart.appendChild(div);
     $("#cart-basket").click(goToCart);
     $("#item-checkout").click(function () {
-        location.href='/web//front/cart/delivery';
+        location.href='/web/front/cart/delivery';
     });
 }
 
@@ -106,8 +108,9 @@ function addToBasket() {
 
     localStorage.setItem('item-' + id, serialStore);
 
-    $(this).fadeOut(300).delay(200).fadeIn(400);
+   // $(this).fadeOut(300).delay(200).fadeIn(400);
     setBadgeBasket();
+    itemInBasket();
 }
 
 function setBadgeBasket() {
@@ -138,7 +141,7 @@ function setBadgeBasket() {
 function initBadge() {
     $.ajax({
         type: "POST",
-        url: "/labin/2018_senior-pomidor/web/front/cart/stores-by-session"
+        url: "/web/front/cart/stores-by-session"
 
     })
         .done(function (data) {
@@ -149,12 +152,56 @@ function initBadge() {
     });
 
 }
+function itemInBasket() {
+    var items = [];
+    for (var item in localStorage) {
+        item = JSON.parse(localStorage.getItem(item));
+        if (item !== null) {
+            console.log(   $('[item-id='+item.id+']'));
+            $('button[item-id='+item.id+']').css( "background","#39A254" );
+            $('button[item-id='+item.id+']').text( "В корзине" );
+            items.push(item);
+        }
+    }
 
+}
+
+/**
+ * $(this) = $(".box-plus").
+ */
+function countPlus() {
+    var item_id = $(this).attr('item-id');
+    var count_box = parseInt($('#count_box_' + item_id).val());
+    count_box++;
+    if (count_box >= 100){
+        return;
+    }else {
+        $('#count_box_' + item_id).val(count_box);
+    }
+}
+function countMinus() {
+    var item_id = $(this).attr('item-id');
+    var count_box = parseInt($('#count_box_' + item_id).val());
+    count_box--;
+    if (count_box <= 0){
+        return;
+    }else {
+        $('#count_box_' + item_id).val(count_box);
+    }
+}
 $(document).ready(function () {
     initBadge();
+    itemInBasket();
     EventListeners();
+
     //Handles menu drop down
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation(); //https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation
     });
+});
+
+$(document).on('ready pjax:success', function() {
+    EventListeners();
+    itemInBasket();
+
 });

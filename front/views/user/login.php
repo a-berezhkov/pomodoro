@@ -20,7 +20,8 @@ use yii\widgets\ActiveForm;
  * @var dektrium\user\Module $module
  */
 
-$this->title = Yii::t('user', 'Sign in');
+$this->title = 'Вход';
+//$this->title = Yii::t('user', 'Sign in');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -91,12 +92,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <?php if ($module->enableConfirmation): ?>
                 <p class="text-center">
-                    <?= Html::a(Yii::t('user', 'Didn\'t receive confirmation message?'), ['/user/registration/resend']) ?>
+                    <? // Html::a(Yii::t('user', 'Didn\'t receive confirmation message?'), ['/user/registration/resend']) ?>
                 </p>
             <?php endif ?>
             <?php if ($module->enableRegistration): ?>
                 <p class="text-center">
-                    <?= Html::a(Yii::t('user', 'Don\'t have an account? Sign up!'), ['/user/registration/register']) ?>
+
+                    <?= Html::a(Yii::t('user', 'Don\'t have an account? Sign up!'), ['/user/registration/register'],['class'=>'btn btn-block   button button-action']) ?>
                 </p>
             <?php endif ?>
             <?= Connect::widget([

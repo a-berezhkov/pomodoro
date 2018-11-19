@@ -5,7 +5,7 @@
   &:before {
     content: "";
     position: absolute;
-    right: 25px;
+    right: 9px;
     top: -19px;
     width: 0;
     height: 0;
@@ -18,7 +18,7 @@
   &:after {
     content: "";
     position: absolute;
-    right: 23px;
+    right: 7px;
     top: -21px;
     width: 0;
     height: 0;
@@ -51,10 +51,19 @@
   .cart-total {
     font-size: $font-size-14px;
     font-weight: $font-weight-bold;
+    margin: 4% 0;
   }
 
   a.btn {
     margin-top: 10px;
+  }
+  .buttons {
+    margin: 4% 0;
+  }
+  button {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
   }
 }
 

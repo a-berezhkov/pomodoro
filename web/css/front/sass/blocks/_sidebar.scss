@@ -5,7 +5,11 @@
     li {
       //height: 50px;
       padding: 4px 0px 8px;
-      width: 285px;
+      //width: 285px;
+      width: 100%;
+      @media #{$media-phone-width} {
+        width: 100%;
+      }
       border: 1px solid #000000;
       margin-bottom: 1.5%;
       position: relative;

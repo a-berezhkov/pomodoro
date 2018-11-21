@@ -58,7 +58,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     <label class="drinkcard-cc mastercard" for="card">
                         <?= Html::img('@web/img/icons/p_card.png') ?>
                     </label>
-                    <div>Наличные</div>
+                    <div>Картой</div>
                     </div>
 
                     <div class="col col-md-4">
@@ -66,7 +66,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     <label class="drinkcard-cc mastercard" for="bill">
                         <?= Html::img('@web/img/icons/p_check.png') ?>
                     </label>
-                    <div>Наличные</div>
+                    <div>По счету</div>
                     </div>
 
                 </div>

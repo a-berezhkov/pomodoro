@@ -64,7 +64,7 @@ $config = [
             ],
         ],
         'request' => [
-            'baseUrl' => '',
+             'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 't1Xd-e0vhaTKeFiP0Euv7W_gTZHNIKls',
         ],
@@ -82,7 +82,7 @@ $config = [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'signorpomidor.ru',
                 'username' => 'info@signorpomidor.ru',
-                'password' => 'ikfcfifgjijcct',
+                'password' => '3GEZmq1F',
                 'port' => '25 ',
 
             ],
@@ -101,7 +101,7 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => [
-          'class' => 'yii\web\UrlManager',
+            'class' => 'yii\web\UrlManager',
             // Disable index.php
             'showScriptName' => false,
             // Disable r= routes
@@ -109,9 +109,14 @@ $config = [
 
             'rules' => [
                 '' => '/front/default/index',
-               // '<action>' => 'site/<action>',
+                // '<action>' => 'site/<action>',
 
                 '/admin/export/1c_exchange.php' => '/admin/export',
+                'shop' => '/front/default/shop',
+                'about' => '/front/default/about',
+                'contacts' => '/front/default/contacts',
+                'cart' => '/front/cart/cart',
+                'orders' => '/front/orders/user-orders',
 //                         '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 //                              '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 //                            '<module:[\wd-]+>/<controller:[\wd-]+>/<action:[\wd-]+>/<id:\d+>' => '<module>/<controller>/<action>',
@@ -172,9 +177,11 @@ $config = [
                     'on ' . \dektrium\user\controllers\SecurityController::EVENT_AFTER_LOGIN => function ($e) {
 
                         if (Yii::$app->user->can('admin')) {
-                            $route = ['/admin/orders/index'];
+                            $route = ['/admin/store/index'];
                             Yii::$app->response->redirect($route)->send();
                             Yii::$app->end();
+                        } else {
+                            Yii::$app->response->redirect(Yii::$app->request->referrer)->send();
                         }
 
                     }

@@ -3,12 +3,11 @@
 
 /* @var $content string */
 
-use yii\helpers\Html;
-
-use yii\widgets\Menu; // Вместо yii\bootstrap\Nav
 use app\assets\FrontAsset;
-use rmrevin\yii\fontawesome\FA;
-use yii\bootstrap\Nav;
+use yii\helpers\Html;
+use yii\widgets\Menu;
+
+// Вместо yii\bootstrap\Nav
 
 /*
  * Разкомментируйте строки для тестирование работы корзины
@@ -53,11 +52,11 @@ $this->registerJs($script, yii\web\View::POS_READY);
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800&amp;subset=cyrillic,cyrillic-ext"
               rel="stylesheet">
 
-        <link rel="apple-touch-icon" sizes="76x76" href="<?=  \Yii::getAlias('@web') ?>/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?=  \Yii::getAlias('@web') ?>/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="<?=  \Yii::getAlias('@web') ?>/favicon/favicon-16x16.png">
-        <link rel="manifest" href="<?=  \Yii::getAlias('@web') ?>/favicon/site.webmanifest">
-        <link rel="mask-icon" href="<?=  \Yii::getAlias('@web') ?>/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="apple-touch-icon" sizes="76x76" href="<?= \Yii::getAlias('@web') ?>/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= \Yii::getAlias('@web') ?>/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?= \Yii::getAlias('@web') ?>/favicon/favicon-16x16.png">
+        <link rel="manifest" href="<?= \Yii::getAlias('@web') ?>/favicon/site.webmanifest">
+        <link rel="mask-icon" href="<?= \Yii::getAlias('@web') ?>/favicon/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
 
@@ -90,7 +89,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                             'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),
                             'template' => '<a href="{url}" data-method="post">{label}</a>'
                         ]),
-                        !\Yii::$app->user->isGuest ? (['label' => 'Выйти',    'url' => \yii\helpers\Url::toRoute(['/user/logout']), 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) :  null
+                        !\Yii::$app->user->isGuest ? (['label' => 'Выйти', 'url' => \yii\helpers\Url::toRoute(['/user/logout']), 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : null
                     ];
 
                     echo Menu::widget([
@@ -107,8 +106,8 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     // Left side menu
                     $right_menu_items = [
                         [
-                            'label' => '+7 (999) 207-97-21',
-                            'url' => '+7 (999) 207-97-21'
+                            'label' => '+7 (812) 920-09-27',
+                            'url' => '+7 (812) 920-09-27'
                         ],
                         [
                             'label' => 'Обратный звонок',
@@ -173,7 +172,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                         ['label' => 'Доставка', 'url' => ['/front/default/about']],
                         ['label' => 'Контакты', 'url' => ['/front/default/contacts']],
                         ['label' => 'Личный кабинет', 'url' => \yii\helpers\Url::toRoute(['/user/settings/profile'])],
-                        ['label' => 'Корзина', 'url' => ['/front/cart/cart']],
+                        ['label' => 'Корзина', 'url' => ['/front/cart/cart'], 'options' => ['id'=>"shopping-basket"] ],
                     ];
 
                     echo Menu::widget([
@@ -187,16 +186,25 @@ $this->registerJs($script, yii\web\View::POS_READY);
                         ],
                         'encodeLabels' => false,
                     ]); ?>
-
-
-
+                    >
                     <div class="search">
-                        <input type="text" class="form-control" placeholder="Введите поисковый запрос">
+                        <? \yii\bootstrap\ActiveForm::begin([
+                            'action' => \yii\helpers\Url::to(['/front/default/shop']),
+                            'method' => 'get',
+                        ]) ?>
+
+                        <?= \yii\helpers\Html::input('text', 'StoreSearch[name]', null, [
+                            'class' => 'form-control',
+                            'placeholder' => 'Введите поисковый запрос',
+                        ]) ?>
+
                         <button class="btn btn-block button-primary">Найти</button>
+
+                        <? \yii\bootstrap\ActiveForm::end() ?>
                     </div>
 
                     <div class="bottom text-center">
-                        <div class="phone"><a href="tel:+7 (999) 207-97-21">+7 (999) 207-97-21</a></div>
+                        <div class="phone"><a href="tel:+7 (812) 920-09-27">+7 (812) 920-09-27</a></div>
                         <div class="back"><a href="">Обратный звонок</a></div>
                     </div>
                 </div>
@@ -220,7 +228,6 @@ $this->registerJs($script, yii\web\View::POS_READY);
     </div>
 
 
-
     <footer class="footer">
 
         <div class="container">
@@ -229,7 +236,8 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     <div class="copyright">
                         <p>© 2018 / ООО «Синьор Помидор»<br/>Россия, Санкт-Петербург, ул. Софийская, 60</p>
                         <p><?= Html::a('Схема проезда', '#') ?>
-                            / <?= Html::a('Информация об ограничениях', '#') ?></p>
+                            <!--                             --><? //= Html::a('Информация об ограничениях', '#') ?>
+                        </p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3 hidden-xs">
@@ -240,7 +248,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                 <div class="col-xs-12 col-md-3">
                     <div class="call">
                         <div class="pull-left phone-icon"><?= Html::img(['/img/icons/extra-phone.png']) ?></div>
-                        <div class="text-right"><?= Html::a('8-812-921-16-06', 'tel:8-812-921-16-06', ['class' => 'number']) ?></div>
+                        <div class="text-right"><?= Html::a('8-812-920-09-27', 'tel:8-812-920-09-27', ['class' => 'number']) ?></div>
                         <div class="text-right"><?= Html::a('Обратный звонок', '#', ['class' => 'back']) ?></div>
                     </div>
                 </div>

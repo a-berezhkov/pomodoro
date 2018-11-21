@@ -16,7 +16,7 @@ function EventListeners() {
     $(".button-basket").click(addToBasket);
     $("#cart-basket").click(goToCart);
     $("#item-checkout").click(function () {
-        location.href='/web/front/cart/delivery';
+        location.href='/front/cart/delivery';
     });  
     $(".box-plus").click(countPlus);
     $(".box-minus").click(countMinus);
@@ -31,17 +31,17 @@ function goToCart() {
             items.push(item);
         }
     }
-   $.post( "/web/front/cart/cart", { data: items } );
+   $.post( "/front/cart/cart", { data: items } );
     $.ajax({
         method: "POST",
-        url: "/web/front/cart/cart",
+        url: "/front/cart/cart",
         data: {data :items},
         async: false
 
     })
         .done(function (msg) {
             console.log("yes!");
-            location.href='/web/front/cart/cart/'
+            location.href='/front/cart/cart/'
         })
         .fail(function (msg) {
             console.log("No!");
@@ -81,7 +81,7 @@ function ShowBasket() {
     cart.appendChild(div);
     $("#cart-basket").click(goToCart);
     $("#item-checkout").click(function () {
-        location.href='/web/front/cart/delivery';
+        location.href='/front/cart/delivery';
     });
 }
 
@@ -141,7 +141,7 @@ function setBadgeBasket() {
 function initBadge() {
     $.ajax({
         type: "POST",
-        url: "/web/front/cart/stores-by-session"
+        url: "/front/cart/stores-by-session"
 
     })
         .done(function (data) {

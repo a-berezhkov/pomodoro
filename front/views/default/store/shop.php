@@ -19,11 +19,9 @@ $this->title =  'Магазин';
 
     <div class="assortment">
         <h2 class="section-title text-center hidden-xs">Основной ассортимент</h2>
-        <p class="text-center hidden-xs">Автор неверно акцентирует внимание в своей работе на новину какой-то штуки. В статье
-            представлены расчеты чего-нибудь, которые полностью расходятся с тем, что должно иметь место в соответствии
-            с какой-нибудь классической теорией. </p>
+        <p class="text-center hidden-xs">  </p>
 
-        <? Pjax::begin() ?>
+
         <?php $form = \yii\bootstrap\ActiveForm::begin([
             'action'  => ['/front/default/shop'],
             'method'  => 'get',
@@ -66,14 +64,27 @@ $this->title =  'Магазин';
 
                     <?= ListView::widget([
                         'dataProvider' => $dataProvider,
+                        'beforeItem' => function ($model, $key, $index, $widget) {
+                            if ($index % 3 === 0) {
+                                return "<div class='row'>";
+                            }
+                        },
                         'itemView'    => '_shop_items',
+                        'afterItem' => function ($model, $key, $index, $widget)  {
+                            $content = '';
+                            if (($index > 0) && ($index % 3 ==  2)  ) {
+                                $content .= "</div>";
+                            }
+                            return $content;
+                        },
                         'itemOptions' => ['class' => 'col-md-4'],
                         'options'     => ['class' => 'products-grid'],
+
                     ]); ?>
 
                 </div>
             </div>
         </div>
-        <? Pjax::end() ?>
+
     </div>
 </div>

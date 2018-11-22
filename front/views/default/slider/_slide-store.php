@@ -19,10 +19,10 @@ use yii\helpers\Url;
             <s> <?= $slide->store->discount_box_price ?></s> <?= (int)$slide->store->box_price ?> ₽
         </div>
         <div class="description text-center">
-            Цена за упаковку
+            Цена за килограмм
             <div class="meta">
                 <span class="weight"><?= $slide->store->box_weight ?></span>
-                <span class="boxes"><?= $slide->store->boxes_count ?></span>
+<!--                <span class="boxes">--><?//= $slide->store->boxes_count ?><!--</span>-->
             </div>
         </div>
         <!-- TODO  изменить button на href  -->

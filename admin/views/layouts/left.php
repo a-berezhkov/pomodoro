@@ -56,6 +56,9 @@
                     ['label' => 'Все заказы', 'icon' => 'th-list', 'url' => ['/admin/orders/index'],'visible' =>
                         Yii::$app->user->can('admin')],
 
+                    ['label' => 'Статусы заказов', 'icon' => 'th-list', 'url' => ['/admin/orders-status/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
+
 
 
 

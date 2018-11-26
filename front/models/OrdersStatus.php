@@ -29,7 +29,7 @@ class OrdersStatus extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'integer'],
+            [['id'], 'integer'],
         ];
     }
 
@@ -40,7 +40,7 @@ class OrdersStatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Название',
         ];
     }
 

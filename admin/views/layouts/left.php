@@ -39,6 +39,10 @@
 
                     ['label' => 'Категории товаров', 'icon' => 'th-list', 'url' => ['/admin/categories/index'],'visible' =>
                         Yii::$app->user->can('admin')],
+
+                    ['label' => 'Страны', 'icon' => 'th-list', 'url' => ['/admin/countries/index'],'visible' =>
+                        Yii::$app->user->can('admin')],
+
                     ['label' => 'Уаправление складом', 'icon' => 'archive', 'url' => ['/admin/store/index'],'visible' =>
                             Yii::$app->user->can('admin')],
 

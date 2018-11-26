@@ -40,7 +40,7 @@ class Countries extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
+            'name' => 'Наименование',
         ];
     }
 

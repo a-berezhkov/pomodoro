@@ -37,7 +37,7 @@ ListView::widget([
             'loaderAppendType'    => \mranger\load_more_pager\LoadMorePager::LOADER_APPEND_TYPE_CONTENT,
             // Тот эллемент, к которому будет прикреплен индикатор загрузки. Варианты: тег body, после контента, перед кнопкой пагинации, внутри кнопки пагинации
             'loaderTemplate'      => '<i class="load-more-loader"></i>', // Шаблон индикатора загрузки
-            'options'             => ['class' => 'button round button-theme'], // Массив опций кнопки паганации
+            'options'             => ['class' => 'btn button'], // Массив опций кнопки паганации
             'onLoad'              => new JsExpression('function(){ console.log("onLoad");}'),
             // Событие javascript которое будет вызываться в момент начала загрузки новых эллементов, обработчик должен быть описан через JsExpression, в функцию будет передаваться объект с настройками пагинатора, которые вы указали при инициализации
             'onAfterLoad'         => new JsExpression('function(){ console.log("onAfterLoad");}'),

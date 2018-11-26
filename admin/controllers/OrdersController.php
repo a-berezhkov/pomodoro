@@ -38,6 +38,7 @@ class OrdersController extends Controller
 
         $searchModel  = new aOrdersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->orderBy('created_at DESC');
 
         return $this->render('index', [
             'searchModel'  => $searchModel,

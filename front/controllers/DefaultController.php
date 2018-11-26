@@ -92,6 +92,10 @@ class DefaultController extends Controller
 
         $searchModel  = new StoreSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $dataProvider->query->andWhere(['is_active'=>true]);
+        $dataProvider->pagination = [
+            'pageSize' => 18,
+        ];
 
         // Если получена цена от слайлера
         if (isset(\Yii::$app->request->queryParams['price'])) {

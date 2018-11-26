@@ -54,7 +54,7 @@ use yii\helpers\Html;
 
                 <div class="col-xs-12 col-md-6 col-price">
                     <div class="new-price text-center">
-                        <div class="price"><?= $model->discount_box_price ?> ₽</div>
+                        <div class="price"><?= $model->discount_box_price ? $model->discount_box_price : (int) $model->box_price  ?> ₽</div>
                     </div>
                 </div>
 

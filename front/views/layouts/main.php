@@ -235,7 +235,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                 <div class="col-xs-12 col-md-3">
                     <div class="copyright">
                         <p>© 2018 / ООО «Синьор Помидор»<br/>Россия, Санкт-Петербург, ул. Софийская, 60</p>
-                        <p><?= Html::a('Схема проезда', '#') ?>
+                        <p><?= Html::a('Схема проезда', \yii\helpers\Url::toRoute(['contacts'])) ?>
                             <!--                             --><? //= Html::a('Информация об ограничениях', '#') ?>
                         </p>
                     </div>

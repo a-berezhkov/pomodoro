@@ -33,7 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <table class="table table-products">
                             <tr class="row heading">
-                                <td class="col-md-4 text-center">
+                                <td class="col-md-2 text-center">
+
+                                </td>
+                                <td class="col-md-2 text-center">
                                     Наименование
                                 </td>
 

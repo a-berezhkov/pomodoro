@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $searchModel app\admin\models\aOrdersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title                   = 'Заказы';
+$this->title = 'Заказы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="a-orders-index">
@@ -23,38 +23,46 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= \kartik\grid\GridView::widget([
                 'dataProvider' => $dataProvider,
-                'filterModel'  => $searchModel,
-                'toolbar'      => [
+                'filterModel' => $searchModel,
+                'rowOptions' => function ($model) {
+                    if ($model->deliveryStatus->name == 'Заказ доставлен') {
+                        return ['class' => 'success'];
+                    }
+                    if ($model->deliveryStatus->name == 'Заказ отменен') {
+                        return ['class' => 'danger'];
+                    }
+                },
+                'toolbar' => [
                     '{export}',
 
                 ],
-                'export'       => [
+                'export' => [
                     'fontAwesome' => true,
                 ],
-                'panel'        => [
+                'panel' => [
                     'type' => \kartik\grid\GridView::TYPE_PRIMARY,
                     // 'heading' => $heading,
                 ],
-                'columns'      => [
+                'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
 
                     'id',
                     [
                         'attribute' => 'address_street',
-                        'label'     => 'Адрес',
-                        'value'     => 'fullAddress',
+                        'label' => 'Адрес',
+                        'value' => 'fullAddress',
                     ],
 
                     'address_phone',
                     [
 
                         'attribute' => 'delivery_date',
-                        'filter'    => \kartik\date\DatePicker::widget([
-                            'model'         => $searchModel,
-                            'attribute'     => 'delivery_date',
-                            'options'       => ['placeholder' => 'Выберите дату доставки'],
+                        'filter' => \kartik\date\DatePicker::widget([
+                            'model' => $searchModel,
+                            'attribute' => 'delivery_date',
+                            'options' => ['placeholder' => 'Выберите дату доставки'],
                             'pluginOptions' => [
-                                'format'         => 'yyyy-mm-dd',
+                                'format' => 'yyyy-mm-dd',
                                 'todayHighlight' => true,
                             ],
                         ]),
@@ -64,35 +72,35 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     [
                         'attribute' => 'delivery_interval',
-                        'filter'    => '',
+                        'filter' => '',
                     ],
 
                     [
-                        'class'     => 'kartik\grid\EditableColumn',
+                        'class' => 'kartik\grid\EditableColumn',
                         'attribute' => 'delivery_status',
-                        'vAlign'    => 'middle',
-                        'width'     => '180px',
+                        'vAlign' => 'middle',
+                        'width' => '180px',
 
-                        'value'               => function ($model, $key, $index, $widget) {
+                        'value' => function ($model, $key, $index, $widget) {
                             return Html::a($model->deliveryStatus->name,
                                 '#',
                                 ['title' => $model->deliveryStatus->name]);
                         },
-                        'filterType'          => \kartik\grid\GridView::FILTER_SELECT2,
-                        'filter'              => ArrayHelper::map(aOrdersStatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+                        'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
+                        'filter' => ArrayHelper::map(aOrdersStatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
                         'filterWidgetOptions' => [
                             'pluginOptions' => ['allowClear' => true],
                         ],
-                        'filterInputOptions'  => ['placeholder' => 'Выберите статус закза'],
-                        'format'              => 'raw',
-                        'editableOptions'     => function ($model, $key, $index) {
+                        'filterInputOptions' => ['placeholder' => 'Выберите статус закза'],
+                        'format' => 'raw',
+                        'editableOptions' => function ($model, $key, $index) {
                             return [
-                                'header'      => 'Name',
-                                'size'        => 'md',
-                                'inputType'   => \kartik\editable\Editable::INPUT_SELECT2,
-                                'options'     => [
+                                'header' => 'Name',
+                                'size' => 'md',
+                                'inputType' => \kartik\editable\Editable::INPUT_SELECT2,
+                                'options' => [
                                     'attribute' => 'delivery_status',
-                                    'data'      => ArrayHelper::map(aOrdersStatus::find()->asArray()->all(), 'id', 'name'),
+                                    'data' => ArrayHelper::map(aOrdersStatus::find()->asArray()->all(), 'id', 'name'),
                                 ],
                                 'formOptions' => [
                                     'method' => 'post',
@@ -112,16 +120,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     [
                         'class' => 'kartik\grid\BooleanColumn',
-                        'attribute' =>  'dropping',
-                        'falseLabel' =>'Нет',
-                        'trueLabel' =>'Да',
+                        'attribute' => 'dropping',
+                        'falseLabel' => 'Нет',
+                        'trueLabel' => 'Да',
                         'label' => 'Заказ отменен'
                     ],
                     [
                         'class' => 'yii\grid\ActionColumn',
 
                         'template' => '{view}{update}{cart}',
-                        'buttons'  => [
+                        'buttons' => [
                             'cart' => function ($url, $model) {
                                 return Html::a(
                                     '<span class="glyphicon glyphicon-screenshot"></span>',

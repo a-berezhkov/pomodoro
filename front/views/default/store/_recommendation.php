@@ -12,7 +12,10 @@ use yii\helpers\Html;
 
     <div class="suggest">
         <div class="picture text-center">
+            <a href="<?= \yii\helpers\Url::toRoute(['/front/default/single-store-view', 'id' =>
+                $model->id]) ?>" data-pjax="0">
             <?= Html::img(\Yii::$app->imagemanager->getImagePath($model->logo_id, '440', '190', 'inset')); ?>
+            </a>
         </div>
         <div class="name text-center">
             <?= $model->name ?>

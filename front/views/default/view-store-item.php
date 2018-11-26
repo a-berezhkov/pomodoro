@@ -54,7 +54,7 @@ $this->registerMetaTag([
                     <div class="description"><?= $item->desc ?></div>
                     <div class="meta">
                         <div class="weigh"><?= $item->box_weight ?></div>
-                        <div class="count"><?= $item->boxes_count ?></div>
+<!--                        <div class="count">--><?//= $item->boxes_count ?><!--</div>-->
                         <div class="country">Страна: <?= $item->country->name ?></div>
                     </div>
                     <div class="action">

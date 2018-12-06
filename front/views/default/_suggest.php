@@ -16,7 +16,10 @@ $countPerRow = 4; //Количество колонок в одной строк
     <div class="col-xs-6 col-md-3">
         <div class="suggest">
             <div class="picture text-center">
+                <a href="<?= \yii\helpers\Url::toRoute(['/front/default/single-store-view', 'id' =>
+                    $suggest->id]) ?>" data-pjax="0">
                 <?= Html::img(\Yii::$app->imagemanager->getImagePath($suggest->logo_id, '440', '190', 'inset')); ?>
+                </a>
             </div>
             <div class="name text-center">
                 <?= $suggest->name ?>

@@ -30,7 +30,8 @@
         "bizley/migration": "*",
         "mranger/yii2-load-more-pager": "*",
         "kartik-v/yii2-slider": "*",
-        "kartik-v/yii2-editable": "*"
+        "kartik-v/yii2-editable": "*",
+        "mihaildev/yii2-ckeditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

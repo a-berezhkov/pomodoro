@@ -6,6 +6,7 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use app\front\models\Countries;
 use app\front\models\Categories;
+use mihaildev\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model app\front\models\Store */
@@ -75,7 +76,12 @@ use app\front\models\Categories;
     </div>
     <div class="row">
         <div class="col-md-12">
-	        <?= $form->field( $model, 'desc' )->textarea( [ 'rows' => 6 ] ) ?>
+	        <?= $form->field( $model, 'desc' )->widget(CKEditor::className(),[
+                'editorOptions' => [
+                    'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
+                    'inline' => false, //по умолчанию false
+                ],
+            ]); ?>
     </div>
 
 

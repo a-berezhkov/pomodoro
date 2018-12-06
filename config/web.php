@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'Сеньор Помидор',
+    'name' => 'сИньор Помидор',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     // set target language to be Russian

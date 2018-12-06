@@ -39,13 +39,14 @@ $countPerRow = 4; //Количество колонок в одной строк
                                         else $box_color = 'box-icon-green';
                                         ?>
 
-                                        <div class="box-plus visible-xs-inline-block" item-id="<?= $suggest->id ?>">+
+                                        <div class="box-minus visible-xs-inline-block" item-id="<?= $suggest->id ?>">-
                                         </div>
                                         <input id="count_box_<?= $suggest->id ?>" type="number" name="count_box"
                                                value="1"
                                                min="1" max="100" step="1">
-                                        <div class="box-minus visible-xs-inline-block" item-id="<?= $suggest->id ?>">-
+                                        <div class="box-plus visible-xs-inline-block" item-id="<?= $suggest->id ?>">+
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-md-6">

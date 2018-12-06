@@ -41,8 +41,8 @@ $this->registerMetaTag([
 
             <div class="col-md-6">
                 <div class="details">
-                    <h1><?= $item->name ?></h1>
-                    <div class="prices">
+                    <h1 class="text-center"><?= $item->name ?></h1>
+                    <div class="prices text-center">
                         <? if ($item->discount_box_price) : ?>
                             <div class="price-sale"><?= $item->discount_box_price ?></div>
                             <div class="price-old"><?= $item->box_price ?></div>
@@ -51,15 +51,15 @@ $this->registerMetaTag([
                         <? endif; ?>
 
                     </div>
-                    <div class="description"><?= $item->desc ?></div>
-                    <div class="meta">
+                    <div class="description text-center"><?= $item->desc ?></div>
+                    <div class="meta text-center">
                         <div class="weigh"><?= $item->box_weight ?></div>
 <!--                        <div class="count">--><?//= $item->boxes_count ?><!--</div>-->
                         <div class="country">Страна: <?= $item->country->name ?></div>
                     </div>
-                    <div class="action">
+                    <div class=" action">
                         <div class="row">
-                            <div class="col-md-1">
+                            <div class="col-md-2 col-lg-offset-3 col-xs-12 text-center">
                                 <div class="count">
 
                                     <?php
@@ -78,7 +78,7 @@ $this->registerMetaTag([
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-lg-offset-1">
+                            <div class="col-md-4  col-xs-12 text-center">
                                 <?= Html::button('В корзину',
                                     [
                                         'class' => 'btn button button-basket',

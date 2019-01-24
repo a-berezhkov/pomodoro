@@ -12,8 +12,8 @@
 
 <div class="shop-sortable pull-right">
 
-Сортировка по алфавиту:
-    <? echo $sort->link('name_down') . ' ' . $sort->link('name_up'); ?>
+Сортировка
+    <? // echo $sort->link('name_down') . ' ' . $sort->link('name_up'); ?>
     по цене:
     <? echo $sort->link('box_price_down') . ' ' . $sort->link('box_price_up'); ?>
 </div>

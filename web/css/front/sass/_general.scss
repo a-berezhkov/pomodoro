@@ -42,8 +42,9 @@ input.form-control {
 }
 
 h2.section-title {
-  font-size: $font-size-28px;
-  font-weight: $font-weight-normal;
+  font-size: $font-size-40px !important;
+  font-weight: $font-weight-bold;
+  margin: 25px 0px 25px 0px;
 }
 
 input[type="text"]:focus,

@@ -27,8 +27,9 @@ input.form-control {
   border-radius: 0; }
 
 h2.section-title {
-  font-size: 1.75rem;
-  font-weight: 500; }
+  font-size: 2.5rem !important;
+  font-weight: 700;
+  margin: 50px 0px 50px 0px; }
 
 input[type="text"]:focus,
 .form-control {
@@ -654,7 +655,7 @@ a.button-rounded {
   font-weight: 700; }
 #cart-stores .item-box_price {
   font-weight: 700; }
-#cart-stores .item-summa {
+#cart-stores .item-summa, #cart-stores cart-total-count {
   font-weight: 700;
   display: inline-block;
   border: 1px solid #000;

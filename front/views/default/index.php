@@ -61,6 +61,32 @@ $this->registerMetaTag([
         ?>
 
     </div>
+    <div class="front-search">
+        <div class="special-row">
+            <div class="search-panel">
+                <? \yii\bootstrap\ActiveForm::begin([
+                    'action' => \yii\helpers\Url::to(['/front/default/shop']),
+                    'method' => 'get',
+                    'options' => [
+                        'class' => '',
+                        'id' => 'search-form',
+                    ],
+
+                ]) ?>
+                <div class="input-group">
+                    <?= \yii\helpers\Html::input('text', 'StoreSearch[name]', null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'Введите название товара',
+                    ]) ?>
+
+                    <span class="input-group-btn"><button class="btn button-search"
+                                                          type="submit">Найти</button></span>
+                </div><!-- /input-group -->
+                <? \yii\bootstrap\ActiveForm::end() ?>
+            </div>
+
+        </div><!-- /.row -->
+    </div>
     <div class="categories-phone row visible-xs-block">
         <div class="col-xs-12">
             <div class="banner">
@@ -89,32 +115,6 @@ $this->registerMetaTag([
         $this->render('_suggest', ['suggests' => $suggests])
         ?>
 
-    </div>
-    <div class="front-search">
-        <div class="special-row">
-            <div class="search-panel">
-                <? \yii\bootstrap\ActiveForm::begin([
-                    'action' => \yii\helpers\Url::to(['/front/default/shop']),
-                    'method' => 'get',
-                    'options' => [
-                        'class' => '',
-                        'id' => 'search-form',
-                    ],
-
-                ]) ?>
-                <div class="input-group">
-                    <?= \yii\helpers\Html::input('text', 'StoreSearch[name]', null, [
-                        'class' => 'form-control',
-                        'placeholder' => 'Введите название товара',
-                    ]) ?>
-
-                    <span class="input-group-btn"><button class="btn button-search"
-                                                          type="submit">Найти</button></span>
-                </div><!-- /input-group -->
-                <? \yii\bootstrap\ActiveForm::end() ?>
-            </div>
-
-        </div><!-- /.row -->
     </div>
     <div class="front-helpdesk">
         <div class="row">

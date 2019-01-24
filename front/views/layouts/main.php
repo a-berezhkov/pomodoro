@@ -108,7 +108,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                     $right_menu_items = [
                         [
                             'label' => '+7 (812) 920-09-27',
-                            'url' => '+7 (812) 920-09-27'
+                            'url' => 'tel:+7 (812) 920-09-27'
                         ],
                         [
                             'label' => 'Обратный звонок',

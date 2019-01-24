@@ -62,7 +62,7 @@ function ShowBasket() {
         item = JSON.parse(localStorage.getItem(item));
         if (item !== null) { //так как в localStorage еще есть методы
             total = total + parseInt(item.count_box) * parseInt(item.item_box_price);
-            total_count = total_count + parseInt(item.count_box) * parseInt(item.count_box);
+            total_count = total_count + parseInt(item.count_box) + parseInt(item.count_box);
 
             // div.innerHTML = div.innerHTML +
             //     ' <div class="row">' +
@@ -77,7 +77,7 @@ function ShowBasket() {
         }
     }
     div.innerHTML = div.innerHTML +
-        '<div id="cart-total-count" class="cart-total-count text-center"> Всего позиций: ' + total + ' </div>' +
+        '<div id="cart-total-count" class="cart-total-count text-center"> Всего позиций: ' + total_count + ' </div>' +
         '<div id="cart-total" class="cart-total text-center"> Общий итог: ' + total + ' ₽</div>' +
         '<button  id="cart-basket" class="btn button"   >Корзина</button>' +
         '<button id="item-checkout" class="btn button button-inverse"> Оформить заказ</button> </form>'

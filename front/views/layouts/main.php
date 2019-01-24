@@ -84,12 +84,13 @@ $this->registerJs($script, yii\web\View::POS_READY);
                         ['label' => 'Магазин', 'url' => ['/front/default/shop']],
                         ['label' => 'Доставка', 'url' => ['/front/default/about']],
                         ['label' => 'Контакты', 'url' => ['/front/default/contacts']],
-                        \Yii::$app->user->isGuest ? (['label' => 'Войти', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
-                            'label' => 'Личный кабинет',
-                            'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),
-                            'template' => '<a href="{url}" data-method="post">{label}</a>'
-                        ]),
-                        !\Yii::$app->user->isGuest ? (['label' => 'Выйти', 'url' => \yii\helpers\Url::toRoute(['/user/logout']), 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : null
+//                        \Yii::$app->user->isGuest ? (['label' => 'Войти', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : ([
+//                            'label' => 'Личный кабинет',
+//                            'url' => \yii\helpers\Url::toRoute(['/user/settings/profile']),
+//                            'template' => '<a href="{url}" data-method="post">{label}</a>'
+//                        ]),
+//                        !\Yii::$app->user->isGuest ? (['label' => 'Выйти', 'url' => \yii\helpers\Url::toRoute(['/user/logout']), 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]) : null
+                        ['label' => 'О компании', 'url' => ['/front/default/about']],
                     ];
 
                     echo Menu::widget([
@@ -172,7 +173,7 @@ $this->registerJs($script, yii\web\View::POS_READY);
                         ['label' => 'Доставка', 'url' => ['/front/default/about']],
                         ['label' => 'Контакты', 'url' => ['/front/default/contacts']],
                         ['label' => 'Личный кабинет', 'url' => \yii\helpers\Url::toRoute(['/user/settings/profile'])],
-                        ['label' => 'Корзина', 'url' => ['/front/cart/cart'], 'options' => ['id'=>"shopping-basket"] ],
+                        ['label' => 'Корзина', 'url' => ['/front/cart/cart'], 'options' => ['id' => "shopping-basket"]],
                     ];
 
                     echo Menu::widget([

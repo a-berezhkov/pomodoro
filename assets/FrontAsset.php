@@ -22,7 +22,7 @@ class FrontAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $js = [
-        'js/front/main.min.js',
+        'js/front/main.js',
         'js/front/location.js',
         // TODO передать ключ параметром
         'https://maps.googleapis.com/maps/api/js?key=AIzaSyA1K2I3aWBkvWkzriMdNeJkBFDi318pPaw&callback=initMap',

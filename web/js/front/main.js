@@ -52,6 +52,7 @@ function goToCart() {
 
 function ShowBasket() {
     var total = 0;
+    var total_count = 0;
     var cart = document.getElementById('cart-stores');
     var div = document.createElement('div');
 
@@ -61,20 +62,23 @@ function ShowBasket() {
         item = JSON.parse(localStorage.getItem(item));
         if (item !== null) { //так как в localStorage еще есть методы
             total = total + parseInt(item.count_box) * parseInt(item.item_box_price);
-            div.innerHTML = div.innerHTML +
-                ' <div class="row">' +
-                '<div class="col-md-5"><img src="' + item.item_image_link + '"' +
-                '  width="100" height="70" alt=""></a></div>' +
-                '<div class="col-md-7"><div class="item-name">' + item.item_name + '</div>' +
-                '<div class="item-box_price">' + item.item_box_price + '</div>' +
-                '<div class="item-count"> Количество:' + item.count_box + '</div>' +
-                '<div class="item-box_weigh">Вес упаковки: ' + item.item_box_weight + '</div>' +
-                '<div class="item-summa">Итого : ' + item.count_box * item.item_box_price + '</div>' +
-                '</div><hr>';
+            total_count = total_count + parseInt(item.count_box) * parseInt(item.count_box);
+
+            // div.innerHTML = div.innerHTML +
+            //     ' <div class="row">' +
+            //     '<div class="col-md-5"><img src="' + item.item_image_link + '"' +
+            //     '  width="100" height="70" alt=""></a></div>' +
+            //     '<div class="col-md-7"><div class="item-name">' + item.item_name + '</div>' +
+            //     '<div class="item-box_price">' + item.item_box_price + '</div>' +
+            //     '<div class="item-count"> Количество:' + item.count_box + '</div>' +
+            //     '<div class="item-box_weigh">Вес упаковки: ' + item.item_box_weight + '</div>' +
+            //     '<div class="item-summa">Итого : ' + item.count_box * item.item_box_price + '</div>' +
+            //     '</div><hr>';
         }
     }
     div.innerHTML = div.innerHTML +
-        '<div id="cart-total" class="cart-total text-center"> Общий итог: ' + total + ' </div>' +
+        '<div id="cart-total-count" class="cart-total-count text-center"> Всего позиций: ' + total + ' </div>' +
+        '<div id="cart-total" class="cart-total text-center"> Общий итог: ' + total + ' ₽</div>' +
         '<button  id="cart-basket" class="btn button"   >Корзина</button>' +
         '<button id="item-checkout" class="btn button button-inverse"> Оформить заказ</button> </form>'
     ;

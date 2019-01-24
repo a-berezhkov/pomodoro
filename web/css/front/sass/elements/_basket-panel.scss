@@ -37,7 +37,7 @@
   .item-box_price {
     font-weight: $font-weight-bold;
   }
-  .item-summa {
+  .item-summa, cart-total-count {
     font-weight: $font-weight-bold;
     display: inline-block;
     border: 1px solid #000;
@@ -48,11 +48,13 @@
     border-top: 1px solid #000;
   }
 
-  .cart-total {
+  .cart-total, .cart-total-count {
     font-size: $font-size-14px;
     font-weight: $font-weight-bold;
     margin: 4% 0;
+
   }
+
 
   a.btn {
     margin-top: 10px;

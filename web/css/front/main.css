@@ -661,7 +661,7 @@ a.button-rounded {
   padding: 2px 6px 1px; }
 #cart-stores hr {
   border-top: 1px solid #000; }
-#cart-stores .cart-total {
+#cart-stores .cart-total, #cart-stores .cart-total-count {
   font-size: 0.875rem;
   font-weight: 700;
   margin: 4% 0; }
@@ -1317,4 +1317,3 @@ header.header #phone-menu .inner .bottom .phone a {
 
 header {
   background: #fff; }
-

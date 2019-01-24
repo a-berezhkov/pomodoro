@@ -29,7 +29,15 @@ $this->registerJs($script, yii\web\View::POS_READY);
 
 
         </div>
+        <h2 class="section-title hidden-xs">Поиск</h2>
 
+            <div class="input-group">
+        <?= $form->field($model,'name')->textInput(['class'=>'form-control'])->label(false)->error(false) ?>
+                <span class="input-group-btn">
+        <?= \yii\helpers\Html::submitButton('Найти',['onclick'=>"function() { $('form').submit() }",'class' =>'btn button']) ?>
+                </span>
+
+        </div>
         <h2 class="section-title hidden-xs">Категории</h2>
 
         <div class="store-categories">

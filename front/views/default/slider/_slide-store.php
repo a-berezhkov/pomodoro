@@ -13,16 +13,22 @@ use yii\helpers\Url;
     <?= Html::img(\Yii::$app->imagemanager->getImagePath($image, '740', '480', 'inset')); ?>
     <div class="details">
         <div class="name text-center">
-            <?= $slide->title ?>
+            <?
+            $content = explode(' ', $slide->title);
+            foreach ($content as $item){
+                echo $item.'<br>';
+            }
+
+        ?>
         </div>
         <div class="price text-center">
-            <s> <?= $slide->store->discount_box_price ?></s> <?= (int)$slide->store->box_price ?> ₽
+            <s> <?= $slide->store->discount_box_price ?></s> <?= (int)$slide->store->box_price ?> ₽ / кг
         </div>
         <div class="description text-center">
-            Цена за килограмм
+            Остаток в магазине
             <div class="meta">
-                <span class="weight"><?= $slide->store->box_weight ?></span>
-<!--                <span class="boxes">--><?//= $slide->store->boxes_count ?><!--</span>-->
+<!--                <span class="weight">--><?//= $slide->store->box_weight ?><!--</span>-->
+               <span class="boxes"> <?= $slide->store->boxes_count ?> кг</span>
             </div>
         </div>
         <!-- TODO  изменить button на href  -->

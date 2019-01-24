@@ -27,9 +27,12 @@ input.form-control {
   border-radius: 0; }
 
 h2.section-title {
-  font-size: 2.5rem !important;
-  font-weight: 700;
-  margin: 50px 0px 50px 0px; }
+  font-size: 1.75rem;
+  font-weight: 700; }
+
+.hot {
+  margin: 25px 0px 25px 0px;
+  font-size: 1.75rem !important; }
 
 input[type="text"]:focus,
 .form-control {
@@ -346,7 +349,7 @@ ul.navbar.nav-horizontal li {
   height: 100%;
   width: 50%;
   top: 0;
-  padding-top: 8%;
+  padding-top: 5%;
   border-right: 1px solid #000;
   text-align: center; }
 @media only screen and (max-width: 768px) {

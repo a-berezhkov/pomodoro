@@ -48,15 +48,11 @@ class ExportController extends Controller
             return $this->renderPartial('abc',['data'=>$data]);
         }
         else{
-
-            $txt = date(" Y-m-d H:i:s")." mode query = begin  \n";
+                       $txt = date(" Y-m-d H:i:s")." mode query = begin  \n";
             fwrite($myfile, $txt);
             \Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
-
             $headers = \Yii::$app->response->headers;
-            $headers->add('Content-Type', 'text/xml');
-
-
+            $headers->add('Content-Type', 'text/xml; charset=windows-1251');
             $dom = new \DOMDocument('1.0', 'windows-1251');
             $orders = aOrders::find()->all();
             /**
@@ -185,21 +181,14 @@ class ExportController extends Controller
 
                 $emailAddressField = $contactField->appendChild($dom->createElement('Значение'));
                 $emailAddressField->appendChild($dom->createTextNode($order->profile->user->email));
-
-
-
-
-
                 /**
                  * ВремяЗаказа
                  */
                 $time = $documentElement->appendChild($dom->createElement('Время'));
                 $time->appendChild($dom->createTextNode(date('h:i:s', strtotime($order->created_at))));
-
                 /**
                  *    <Товары></Товары>
                  */
-
                 $itemsElement = $documentElement->appendChild($dom->createElement('Товары'));
                 foreach ($order->carts as $cart) {
                     $itemElement = $itemsElement->appendChild($dom->createElement('Товар'));
@@ -311,8 +300,6 @@ class ExportController extends Controller
 
                 $value = $requis->appendChild($dom->createElement('Значение'));
                 $value->appendChild($dom->createTextNode(($order->dropping == 1) ?  'true' : 'false'));
-
-
                 /**
                      * Реквизит №6 Финальный статус
                      */
@@ -342,13 +329,8 @@ class ExportController extends Controller
 
                     $value = $requis->appendChild($dom->createElement('Значение'));
                     $value->appendChild($dom->createTextNode($order->fullAddress));
-
-
-
             }
-
             $dom->formatOutput = true; // установка атрибута formatOutput
-
             //  return $dom->saveXML();
             $data = $dom->saveXML();
         $txt  =  date(" Y-m-d H:i:s")."mode query = end \n";

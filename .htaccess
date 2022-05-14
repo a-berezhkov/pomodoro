@@ -10,5 +10,6 @@
     RewriteCond %{REQUEST_URI} !^/web/
     RewriteCond %{REQUEST_FILENAME} !-f [OR]
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^.*$ web/index.php
+     RewriteRule ^.*$ web/index.php
+
 </IfModule> 

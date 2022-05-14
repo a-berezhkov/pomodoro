@@ -64,7 +64,7 @@ $config = [
             ],
         ],
         'request' => [
-           // 'baseUrl' => '',
+            //'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 't1Xd-e0vhaTKeFiP0Euv7W_gTZHNIKls',
         ],
@@ -111,7 +111,14 @@ $config = [
                 '' => '/front/default/index',
                 // '<action>' => 'site/<action>',
 
-                '/admin/export/1c_exchange.php' => '/admin/export',
+              // '/admin/export/1c_exchange.php' => '/admin/export',
+               'admin/export/1c_exchange.php' => '/admin/export',
+                [
+                    'pattern' => '1c_exchange.php',
+                    'route' => '/admin/export',
+
+                ],
+              // '1c_exchange.php' => 'admin/export',
                 'shop' => '/front/default/shop',
                 'about' => '/front/default/about',
                 'contacts' => '/front/default/contacts',
@@ -203,16 +210,7 @@ $config = [
         ],
         'admin' => [
             'class' => 'app\admin\Admin',
-            'as access' => [
-                'class' => 'yii\filters\AccessControl',
-                'only' => ['create', 'update'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'] // all auth users
-                    ],
-                ]
-            ],
+        
         ],
         'gridview' => [
             'class' => '\kartik\grid\Module',
@@ -227,7 +225,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['92.100.39.60'],
     ];
 
     $config['bootstrap'][] = 'gii';
